@@ -1,0 +1,67 @@
+@font-face {
+font-family: myFirstFont;
+src: url(fonts/Traffolight.otf);
+}
+@font-face {
+  font-family: mySecondFont;
+  src: url(fonts/ABeeZee.ttf);
+}
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+      position: relative;
+  }
+  .affix {
+      top: 20px;
+  }
+
+a.disabled {
+  /* Make the disabled links grayish*/
+  color: white;
+  /* And disable the pointer events */
+  pointer-events: none;
+}
+#login{
+        padding-top: 20px;
+      }
+    .well{
+        background-color: white;
+      }
+.navbar-default {
+    background-color: #263238;
+    border-color: #263238;
+}
+.navbar-default .navbar-brand {
+    color: #76ff03;
+}
+/* Link */
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #c8e6c9;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #c8e6c9;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #c8e6c9;
+    background-color: #D5D5D5;
+}
