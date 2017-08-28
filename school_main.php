@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body data-spy="scroll" >
+  <body data-spy="scroll">
 <!-- Navigation -->
     <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
