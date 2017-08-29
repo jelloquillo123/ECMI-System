@@ -1,54 +1,7 @@
 <?php
   session_start();
   require 'connect.php';
-  $username = ($_SESSION['username']);
-  $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
-  FROM school
-  INNER JOIN diocese
-  ON school.diocese_id=diocese.diocese_id
-  INNER JOIN coordinator
-  ON school.school_id=coordinator.school_id
-  INNER JOIN account
-  ON coordinator.account_id=account.account_id
-  WHERE account.username='$username'");
-  $scn=mysqli_fetch_row($sch);
-  $school=$scn[2];
-  $stud=mysqli_query($db,"SELECT stud_id,lname,fname,mname,g_level,gender,age,account_id
-  FROM student WHERE school_id='$school'");
-
-
-if(isset($_POST['submit']))
-  {
-    $n0 = $_POST['studnum'];
-    $n1 = $_POST['lname'];
-    $n2 = $_POST['fname'];
-    $n3 = $_POST['mname'];
-    $n6 = $_POST['glevel'];
-    $n7 = $_POST['gender'];
-    $n8 = $_POST['age'];
-    
-     
- $studi=mysqli_query($db,"SELECT account_id from account");
-    
-
-    while($s=mysqli_fetch_assoc($studi))
-    {
-      $stuid=$s['account_id'];
-    }
-
-      $stuid=$stuid+1;
-     
-
-     mysqli_query($db,"INSERT INTO account (username,pword,user_id)
-        VALUES('$n0','$n0','3')");
-
-     mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age) 
-        VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$n8')");
-     echo "<script>
-        alert('Successfully Added a Student.');
-        window.location.href='school_students.php';
-        </script>";
-}
+  require 'school_studentsdb.php'
 
 ?>
 
@@ -110,6 +63,14 @@ if(isset($_POST['submit']))
 .navbar-default .navbar-nav > .open > a:focus {
     color: #c8e6c9;
     background-color: #D5D5D5;
+}
+.buttonstyle {
+  background-color: green;
+  border-radius: 10px;
+}
+.buttonstylered{
+  background-color: red;
+  border-radius: 10px;
 }
     </style>
     
@@ -281,7 +242,7 @@ if(isset($_POST['submit']))
 
         <div role="tabpanel" class="tab-pane" id="div3">
           <div class="row" style="padding-top: 20px;">
-            <div class="col-sm-12">
+            <div class="col-md-offset-1 col-md-10">
               <div class="well">
                 <div class="row" style="font-family: myFirstFont;">
                   <div class="col-sm-5">
@@ -294,8 +255,8 @@ if(isset($_POST['submit']))
                 <h3 align="left" style="font-family: myFirstFont;"><?php echo $scn[0]; ?></h3><br>
 
                 <div class="table-responsive">
-                  <table class="table" data-paging="true" id="studenttb" style="background-color:#fff;">
-                    <tbody>
+                  <table class="table table-hover tablecenter" data-paging="true" id="studenttb" style="background-color:#fff;">
+                    <thead>
                     <tr>
                       <th>Student ID</th>
                       <th>Last Name</th>
@@ -309,6 +270,8 @@ if(isset($_POST['submit']))
                       <th>Delete</th>
                       <th>Reset</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                       <?php
                           while($stu=mysqli_fetch_row($stud)){
@@ -320,13 +283,16 @@ if(isset($_POST['submit']))
                       <td><?php echo $stu[4]; ?></td>
                       <td><?php echo $stu[5]; ?></td>
                       <td><?php echo $stu[6]; ?></td>
-                      <td><?php echo "<a href='feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
+                      <td align="center"><?php echo "<a href='feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
+
                       <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit.php?id=$stu[0]'>";?>
-                      <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                      
                       <td><p data-placement="top" data-toggle="tooltip" title="Delete"><?php echo "<a href='delete.php?id=$stu[0]'>";?>
-                      <button class="btn red btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                      <button class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                      
                       <td><?php echo "<a href='resetpw.php?id=$stu[7]'>";?>
-                      <button class="btn orange btn-xs" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
+                      <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
                     </tr>
                     <!--<!-- Modal Delete 
                       <div class="modal fade" id="delete" role="dialog">

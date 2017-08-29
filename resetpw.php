@@ -2,6 +2,16 @@
   session_start();
   require 'connect.php';
 
+$sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
+FROM school
+INNER JOIN diocese
+ON school.diocese_id=diocese.diocese_id
+INNER JOIN coordinator
+ON school.school_id=coordinator.school_id
+INNER JOIN account
+ON coordinator.account_id=account.account_id
+WHERE account.username='$username'");
+$scn=mysqli_fetch_row($sch);
 $id=$_GET['id'];
 if(isset($_POST['submit']))
 {
@@ -34,55 +44,34 @@ $pw=$res[1];
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ECMI-SDOFP</title>
 
-    <title>RESET PASSWORD</title>
-
-    <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!--External CSS-->
-    <link rel="stylesheet" href="stylesdbms.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
+    <link href="css/footable.bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <style>
-
-
-    #div2{
-    padding-top:50px;
-    padding-bottom: 50px;
-    background-color:#fff;
-    }
-    #well2{
-      color:#000000;
-    }
-    #div3{
-      padding-top:50px;
-      padding-bottom: 50px;
-      background-color:#fff;
-      font-family: roboto;
-    }
-
-    </style>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-    <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-inverse" style="padding:6px; font-family:mySecondFont; " role="navigation">
+    <link rel="stylesheet" href="styles(sdofp).css">
+
+    <style type="text/css">
+
+    </style>
+    
+  </head>
+<body data-spy="scroll">
+<!-- Navigation -->
+    <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -96,12 +85,20 @@ $pw=$res[1];
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <a href="school_report.php">Reports</a>
+                <ul class="nav navbar-nav">
+                   <li>
+                      <a href="school_students.php">Students</a>
                   </li>
+                  <li>
+                      <a href="school_main.php"> Reports</a>
+                  </li> 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <p class="navbar-text" style="color: #f5f5f5;"><?php echo $scn[0]; ?></p>
+                </li>
                   <li class="button">
-                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b>Logout</b></a>
+                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                   </li>
                 </ul>
               </div>
@@ -109,55 +106,72 @@ $pw=$res[1];
         </div>
         <!-- /.container -->
     </nav>
-        <!-- /.container -->
-    </nav>
-    <!-- Page Content -->
-    
 
-  <div class="container-fluid green">
-    <div class="row">
-    <div class="col-md-offset-3 col-md-6 col-md-offset-3">
-    <br><br>
-      <div class="well" align="center">
-        <div class="row">
-        <div class="col-sm-12">
-        <!--<h3 align="left">Reset Student Account</h3>-->
+
+
+    <div class="container-fluid" style="background-color: #00c853; padding-top: 20px; height: 670px;">
+      <div class="row">
+        <!--Banner Main-->
+        <div class="col-md-offset-1 col-md-10">
+          <div class="row">
+            <div class="col-md-12" style="font-family:myFirstFont;">
+                <br />
+                  <div class="well" style="background-color: white;">
+                  <div class="row">
+                    <div class="col-lg-4" style="padding-top:15px;">
+                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                    </div>
+                    <div class="col-lg-8 text-center" style="padding-top: 15px;">
+                        <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
+                      <footer>
+                        <p style="font-size:17px;">
+                          The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
+                        </p>
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <br><br>
         </div>
-        <div class="col-sm-offset-2 col-sm-5">
+      </div>
+
+
+    <div class="row">
+    <div class="col-md-offset-3 col-md-6 ">
+      <div class="well">
+        <div class="row">
+        <div class="col-md-4">
+        <h4 align="left">Reset Password</h4>
         </div>
         </div>
       <br />
-  <form class="form-horizontal" method="POST">
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="pword">New Password:</label>
-    <div class="col-sm-8">
-      <input type="Password" class="form-control" id="pword" name="upword" required>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="pword">Confirm Password:</label>
-    <div class="col-sm-8">
-      <input type="Password" class="form-control" id="pword" name="cpword" required>
-    </div>
-  </div>
+      <form class="form-horizontal" method="POST">
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="pword">New Password:</label>
+          <div class="col-sm-8">
+            <input type="Password" class="form-control" id="pword" name="upword" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="pword">Confirm Password:</label>
+          <div class="col-sm-8">
+            <input type="Password" class="form-control" id="pword" name="cpword" required>
+          </div>
+        </div>
    
 
     <div class="row">
-    <div class="col-sm-offset-3 col-sm-4 col-sm-offset-4" align="middle">
-    <br/> 
-    <input type="submit" class="btn btn-primary btn-lg" align="center" name="submit" align="center" value="Change Password">
+    <div class="col-md-offset-4 col-md-4">
+    <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
+  </form>
     </div>
-    </div>
-</div>
-</form>
-    </div>
-    </div>
-    </div>
-  </div>
 
-    </div>
-    </div>
   </div>
+</div>
+
+    
 
     
 
