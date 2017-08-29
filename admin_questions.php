@@ -1,50 +1,6 @@
 <?php
   session_start();
   require 'connect.php';
-
-$dio=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_name");
-$scool=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.diocese_name 
-       FROM school
-       JOIN diocese
-       ON school.diocese_id=diocese.diocese_id");
-if(isset($_POST['submit']))
-  {
-    $s1 = $_POST['nschool'];
-    $s2 = $_POST['diocese_name'];
-    $s3 = $_POST['uname'];
-    $s4 = $_POST['pword'];
-    $s5 = $_POST['coor_fname'];
-    $s6 = $_POST['coor_mname'];
-    $s7 = $_POST['coor_lname'];
-    $school=mysqli_query($db,"SELECT school_id from school");
-   // $school1=mysqli_fetch_row($school);
-
-    while($r=mysqli_fetch_assoc($school))
-    {
-      $schid=$r['school_id'];
-    }
-
-    $coord=mysqli_query($db,"SELECT account_id from account");
-    //$coord1=mysqli_fetch_row($coord);
-
-    while($s=mysqli_fetch_assoc($coord))
-    {
-      $coordid=$s['account_id'];
-    }
-
-    $schid=$schid+1;
-    $coordid=$coordid+1;
-
-     mysqli_query($db, "INSERT INTO school (school_name,diocese_id) 
-       VALUES ('$s1','$s2')");
-     mysqli_query($db,"INSERT INTO account (username,pword,user_id,account_id) 
-       VALUES ('$s3','$s4','2','$coordid')");
-     mysqli_query($db,"INSERT INTO coordinator (fname,mname,lname,school_id,account_id) 
-       VALUES ('$s5','$s6','$s7','$schid','$coordid')" );
-     header("Location:admin_schools.php");
-  }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,13 +87,14 @@ if(isset($_POST['submit']))
         <h3 align="left">Questions</h3>
         </div>
         </div>
-
+        <form method="POST">
         <!--Grade Level and Submit button-->
         <div class="row">
         <div class="col-sm-offset-8 col-sm-3">
         <div class="form-group">
-            <label for="grde_lvl">Grade Level</label>
-            <select name="grd_lvl" id="grde_lvl" class="form-control input-md">
+            <label for="grdlvl">Grade Level</label>
+            <select name="grdlvl" id="grde_lvl" class="form-control input-md">
+            <option value=<?php echo $_POST['grdlvl']; ?>><?php echo 'Grade'." ".$_POST['grdlvl']; ?></option>
             <option value="1">Grade 1</option>
             <option value="2">Grade 2</option>
             <option value="3">Grade 3</option>
@@ -156,6 +113,7 @@ if(isset($_POST['submit']))
         <input type="submit" class="btn btn-primary btn-md" align="center" name="submit" align="center" value="Select">
         </div>
       </div>
+      </form>
       <br><br>
 
       <!--Questions List-->
@@ -165,279 +123,211 @@ if(isset($_POST['submit']))
       <!--Sample Questions(for edit)-->
 
 <?php
-
-$qt1=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='1' ");
+if(isset($_POST['submit'])){
+$qt1=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='1' ");
 $qs1=mysqli_fetch_row($qt1);
 
-$qt2=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='2' ");
+$qt2=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='2' ");
 $qs2=mysqli_fetch_row($qt2);
 
-$qt3=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='3' ");
+$qt3=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='3' ");
 $qs3=mysqli_fetch_row($qt3);
 
-$qt4=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='4' ");
+$qt4=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='4' ");
 $qs4=mysqli_fetch_row($qt4);
 
-$qt5=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='5' ");
+$qt5=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='5' ");
 $qs5=mysqli_fetch_row($qt5);
 
-$qt6=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='6' ");
+$qt6=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='6' ");
 $qs6=mysqli_fetch_row($qt6);
 
-$qt7=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='7' ");
+$qt7=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='7' ");
 $qs7=mysqli_fetch_row($qt7);
 
-$qt8=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='8' ");
+$qt8=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='8' ");
 $qs8=mysqli_fetch_row($qt8);
 
-$qt9=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='grd_lvl' AND questions.q_num='9' ");
+$qt9=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='9' ");
 $qs9=mysqli_fetch_row($qt9);
 
 ?>
 
 
 
-
-
-
-
+<form method="POST">
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p align="left">
-1. <?php 
+1.<input type="text" name="q1" value="<?php 
    echo $qs1[0];
-?>
-</p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
 <div class="input-field" align="left">
   <p>
-    <input id="a1" type="radio" name="q1" value="a" required>
-    <label for="a1">a. <?php 
-      echo $qs1[1];
-?></label>
+    a.<input type="text" name="a1" value="<?php 
+      echo $qs1[1];?>">
   </p>
   <p>
-    <input id="b1" type="radio" name="q1" value="b" required>
-    <label for="b1">b. <?php 
-      echo $qs1[2];
-?></label>
+    b.<input type="text" name="b1" value="<?php 
+      echo $qs1[2];?>">
   </p>
   <p>
-    <input id="c1" type="radio" name="q1" value="c" required>
-    <label for="c1">c. <?php 
-      echo $qs1[3];
-?></label>
+    c.<input type="text" name="c1" value="<?php 
+      echo $qs1[3];?>">
   </p>
   <p>
-    <input id="d1" type="radio" name="q1" value="d" required>
-    <label for="d1">d.<?php 
-       echo $qs1[4];
-?></label>
+    d.<input type="text" name="d1" value="<?php 
+      echo $qs1[4];?>">
   </p>
-  
 </div>
 </div>
 </div>
-<br />
+<br/>
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p >
-  2.<?php 
+  2.<input type="text" name="q2" value="<?php 
    echo $qs2[0];
-?>
-</p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
-    <p>
-      <input id="a2" type="radio" name="q2" value="a" required>
-      <label for="a2">a. <?php 
-      echo $qs2[1];
-?></label>
-    </p>
-    <p>
-      <input id="b2" type="radio" name="q2" value="b" required>
-      <label for="b2">b.<?php 
-      echo $qs2[2];
-?></label>
-    </p>
-    <p>
-      <input id="c2" type="radio" name="q2" value="c" required>
-      <label for="c2">c.<?php 
-      echo $qs2[3];
-?></label>
-    </p>
-    <p>
-      <input id="d2" type="radio" name="q2" value="d" required>
-      <label for="d2">d.<?php 
-      echo $qs2[4];
-?></label>
-    </p>
-    
+      <p>
+    a.<input type="text" name="a2" value="<?php 
+      echo $qs2[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b2" value="<?php 
+      echo $qs2[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c2" value="<?php 
+      echo $qs2[3];?>">
+  </p>
+  <p>
+    d.<input type="text" name="d2" value="<?php 
+      echo $qs2[4];?>">
+  </p>
   </div>
 </div>
 </div>
 <br />
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p>
-3. <?php 
+3.<input type="text" name="q3" value="<?php 
    echo $qs3[0];
-?></p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
-    <p>
-      <input id="a3" type="radio" name="q3" value="a" required>
-      <label for="a3">a.<?php 
-      echo $qs3[1];
-?></label>
-    </p>
-    <p>
-      <input id="b3" type="radio" name="q3" value="b" required>
-      <label for="b3">b.<?php 
-      echo $qs3[2];
-?></label>
-    </p>
-    <p>
-      <input id="c3" type="radio" name="q3" value="c" required>
-      <label for="c3">c.<?php 
-      echo $qs3[3];
-?></label>
-    </p>
-    <p>
-      <input id="d3" type="radio" name="q3" value="d" required>
-      <label for="d3">d.<?php 
-      echo $qs3[4];
-?></label>
-    </p>
-    
+      <p>
+    a.<input type="text" name="a3" value="<?php 
+      echo $qs3[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b3" value="<?php 
+      echo $qs3[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c3" value="<?php 
+      echo $qs3[3];?>">
+  </p>
+  <p>
+    d.<input type="text" name="d3" value="<?php 
+      echo $qs3[4];?>">
+  </p>
   </div>
 </div>
 </div>
 <br />
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p >
-4.<?php 
+4.<input type="text" name="q4" value="<?php 
    echo $qs4[0];
-?></p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
-    <p>
-      <input id="a4" type="radio" name="q4" value="a" required>
-      <label for="a4">a.<?php 
-    echo $qs4[1];
-?></label>
-    </p>
-    <p>
-      <input id="b4" type="radio" name="q4" value="b" required>
-      <label for="b4">b. <?php 
-   echo $qs4[2];
-?></label>
-    </p>
-    <p>
-      <input id="c4" type="radio" name="q4" value="c" required>
-      <label for="c4">c.<?php 
-      echo $qs4[3];
-?></label>
-    </p>
-    <p>
-      <input id="d4" type="radio" name="q4" value="d" required>
-      <label for="d4">d.<?php 
-      echo $qs4[4];
-?></label>
-    </p>
+      <p>
+    a.<input type="text" name="a4" value="<?php 
+      echo $qs4[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b4" value="<?php 
+      echo $qs4[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c4" value="<?php 
+      echo $qs4[3];?>">
+  </p>
+  <p>
+    d.<input type="text" name="d4" value="<?php 
+      echo $qs4[4];?>">
+  </p>
     </div>
 </div>
 </div>
 <br />
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p>
-5.<?php 
+5.<input type="text" name="q5" value="<?php 
    echo $qs5[0];
-?>
-</p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
-    <p>
-      <input id="a5" type="radio" name="q5" value="a" required>
-      <label for="a5">a.<?php 
-    echo $qs5[1];
-?></label>
-    </p>
-    <p>
-      <input id="b5" type="radio" name="q5" value="b" required>
-      <label for="b5">b.<?php 
-   echo $qs5[2];
-?></label>
-    </p>
-    <p>
-      <input id="c5" type="radio" name="q5" value="c" required>
-      <label for="c5">c.<?php 
-   echo $qs5[3];
-?></label>
-    </p>
-    <p>
-      <input id="c5" type="radio" name="q5" value="c" required>
-      <label for="c5">c.<?php 
-   echo $qs5[4];
-?></label>
-    </p>
+      <p>
+    a.<input type="text" name="a5" value="<?php 
+      echo $qs1[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b5" value="<?php 
+      echo $qs1[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c5" value="<?php 
+      echo $qs1[3];?>">
+  </p>
+  <p>
+    d.<input type="text" name="d5" value="<?php 
+      echo $qs1[4];?>">
+  </p>
   </div>
 </div>
 </div>
 <br />
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p>
-6.<?php 
+6.<input type="text" name="q6" value="<?php 
    echo $qs6[0];
-?> 
-</p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
-    <p>
-      <input id="a6" type="radio" name="q6" value="a" required>
-      <label for="a6">a.<?php 
-   echo $qs6[1];
-?></label>
-    </p>
-    <p>
-      <input id="b6" type="radio" name="q6" value="b" required>
-      <label for="b6">b.<?php 
-   echo $qs6[2];
-?></label>
-    </p>
-    <p>
-      <input id="c6" type="radio" name="q6" value="c" required>
-      <label for="c6">c. <?php 
-   echo $qs6[3];
-?></label>
-    </p>
+  <p>
+    a.<input type="text" name="a6" value="<?php 
+      echo $qs6[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b6" value="<?php 
+      echo $qs6[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c6" value="<?php 
+      echo $qs6[3];?>">
+  </p>
   </div>
 
 </div>
@@ -445,114 +335,86 @@ $qs9=mysqli_fetch_row($qt9);
 <br />
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p>
-7. <?php 
+7.<input type="text" name="q7" value="<?php 
    echo $qs7[0];
-?>
-</p>
+?>">
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
-    <p>
-      <input id="a7" type="radio" name="q7" value="a" required>
-      <label for="a7">a.<?php 
-   echo $qs7[1];
-?></label>
-    </p>
-    <p>
-      <input id="b7" type="radio" name="q7" value="b" required>
-      <label for="b7">b. <?php 
-   echo $qs7[2];
-?></label>
-    </p>
-    <p>
-      <input id="c7" type="radio" name="q7" value="c" required>
-      <label for="c7">c. <?php 
-   echo $qs7[3];
-?></label>
-    </p>
+          <p>
+    a.<input type="text" name="a7" value="<?php 
+      echo $qs7[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b7" value="<?php 
+      echo $qs7[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c7" value="<?php 
+      echo $qs7[3];?>">
+  </p>
   </div>
 </div>
 </div>
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p>
-8.  <?php 
+8.<input type="text" name="q8" value="<?php 
    echo $qs8[0];
-?>
-</p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
     <p>
-      <input id="a8" type="radio" name="q8" value="a" required>
-      <label for="a8">a. <?php 
-   echo $qs8[1];
-?></label>
-    </p>
-    <p>
-      <input id="b8" type="radio" name="q8" value="b" required>
-      <label for="b8">b. <?php 
-   echo $qs8[2];
-?></label>
-    </p>
-    <p>
-      <input id="c8" type="radio" name="q8" value="c" required>
-      <label for="c8">c. <?php 
-   echo $qs8[3];
-?></label>
-    </p>
+    a.<input type="text" name="a8" value="<?php 
+      echo $qs8[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b8" value="<?php 
+      echo $qs8[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c8" value="<?php 
+      echo $qs8[3];?>">
+  </p>
   </div>
 </div>
 </div>
 <div class="row">
 <div class="col-sm-offset-10 col-sm-2">
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="edit_questions">Edit</button></a>
 </div>
 </div>
-<p>
-9.<?php 
+9.<input type="text" name="q9" value="<?php 
    echo $qs9[0];
-?>
-</p>
+?>"> 
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="left">
-    <p>
-      <input id="a9" type="radio" name="q9" value="a" required>
-      <label for="a9">a.<?php 
-   echo $qs9[1];
-?></label>
-    </p>
-    <p>
-      <input id="b9" type="radio" name="q9" value="b" required>
-      <label for="b9">b. <?php 
-   echo $qs9[2];
-?></label>
-    </p>
-    <p>
-      <input id="c9" type="radio" name="q9" value="c" required>
-      <label for="c9">c.<?php 
-   echo $qs9[3];
-?></label>
-    </p>
+  <p>
+    a.<input type="text" name="a9" value="<?php 
+      echo $qs9[1];?>">
+  </p>
+  <p>
+    b.<input type="text" name="b9" value="<?php 
+      echo $qs9[2];?>">
+  </p>
+  <p>
+    c.<input type="text" name="c9" value="<?php 
+      echo $qs9[3];?>">
+  </p>
+</form>
   </div>
 </div>
 </div>
-
-
-
-
-
+<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="save">Save</button></a>   
+<?php
+}
+?>
       </div>
       </div>
-    
     </div>
     </div>
     </div>
