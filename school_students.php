@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
     $n3 = $_POST['mname'];
     $n6 = $_POST['glevel'];
     $n7 = $_POST['gender'];
-    $n8 = $_POST['age'];
+    $n8 = $_POST['bday'];
     
      
  $studi=mysqli_query($db,"SELECT account_id from account");
@@ -37,13 +37,17 @@ if(isset($_POST['submit']))
     }
 
       $stuid=$stuid+1;
+
+    $today = date("Y-m-d");
+     $diff = date_diff(date_create($n8),date_create($today));
+     $ag = $diff->format('%y');
      
 
      mysqli_query($db,"INSERT INTO account (username,pword,user_id)
         VALUES('$n0','$n0','3')");
 
      mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age) 
-        VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$n8')");
+        VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag')");
      echo "<script>
         alert('Successfully Added a Student.');
         window.location.href='school_students.php';
