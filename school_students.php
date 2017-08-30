@@ -288,8 +288,8 @@
                       <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit.php?id=$stu[0]'>";?>
                       <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                       
-                      <td><p data-placement="top" data-toggle="tooltip" title="Delete"><?php echo "<a href='delete.php?id=$stu[0]'>";?>
-                      <button class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                      <td>
+                      <button onclick="del(<?php echo $stu[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                       
                       <td><?php echo "<a href='resetpw.php?id=$stu[7]'>";?>
                       <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
@@ -337,7 +337,6 @@
 
 
 
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -346,5 +345,14 @@
     <script type="text/javascript">
       $("#studenttb").footable();
     </script>
+    <script language="javascript">
+      function del(x) {
+        var delo = confirm('Are you sure you want to delete?');
+        if(delo == true)
+        {
+        window.location.href="delete.php?id=" +x+" ";
+        }
+        
+      }
+    </script>
   </body>
-</html>
