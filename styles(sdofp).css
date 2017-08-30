@@ -65,3 +65,8 @@ a.disabled {
     color: #c8e6c9;
     background-color: #D5D5D5;
 }
+.tablecenter tr, .tablecenter td, .tablecenter th {
+  text-align: center;
+}
+.modal { overflow: visible; }
+.modal-body { overflow-y: visible !important; }

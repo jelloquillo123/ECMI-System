@@ -1,91 +1,39 @@
 <?php
   session_start();
   require 'connect.php';
+  require 'editdb.php'
 
-$id=$_GET['id'];
-if(isset($_POST['submit']))
-{
-  $u1 = $_POST['ulname'];
-  $u2 = $_POST['ufname'];
-  $u3 = $_POST['umname'];
-  $u4 = $_POST['uglevel'];
-  $u5 = $_POST['ugender'];         
-  $u6 = $_POST['uage'];
-  mysqli_query($db,"UPDATE student 
-    SET lname='$u1', fname='$u2', mname='$u3', g_level='$u4', gender='$u5', age='$u6'
-    WHERE stud_id='$id'");
-        echo "<script>
-        alert('Successfully Updated.');
-        window.location.href='school_students.php';
-        </script>";
-}
-
-?>
-<?php
-//selecting data associated with this particular id
-$result = mysqli_query($db, "SELECT * FROM student WHERE stud_id=$id");
- 
-while($res = mysqli_fetch_array($result))
-{
-$fname=$res[1];
-$mname=$res[2];
-$lname=$res[3];
-$g_level=$res[4];
-$gender=$res[6];
-$age=$res[7];
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ECMI-SDOFP</title>
 
-    <title>EDIT STUDENT</title>
-
-    <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!--External CSS-->
-    <link rel="stylesheet" href="stylesdbms.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
+    <link href="css/footable.bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <style>
-
-
-    #div2{
-    padding-top:50px;
-    padding-bottom: 50px;
-    background-color:#fff;
-    }
-    #well2{
-      color:#000000;
-    }
-    #div3{
-      padding-top:50px;
-      padding-bottom: 50px;
-      background-color:#fff;
-      font-family: roboto;
-    }
-
-    </style>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-    <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-inverse" style="padding:6px; font-family:mySecondFont; " role="navigation">
+    <link rel="stylesheet" href="styles(sdofp).css">
+
+    <style type="text/css">
+
+    </style>
+    
+  </head>
+<body data-spy="scroll">
+<!-- Navigation -->
+    <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -99,12 +47,20 @@ $age=$res[7];
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <a href="school_report.php">Reports</a>
+                <ul class="nav navbar-nav">
+                   <li>
+                      <a href="school_students.php">Students</a>
                   </li>
+                  <li>
+                      <a href="school_main.php"> Reports</a>
+                  </li> 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <p class="navbar-text" style="color: #f5f5f5;"><?php echo $scn[0]; ?></p>
+                </li>
                   <li class="button">
-                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b>Logout</b></a>
+                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                   </li>
                 </ul>
               </div>
@@ -112,37 +68,41 @@ $age=$res[7];
         </div>
         <!-- /.container -->
     </nav>
-        <!-- /.container -->
-    </nav>
-    <!-- Page Content -->
-    <div class="container-fluid green" style="font-family:myFirstFont">
-      <br />
-      <div class="card-panel white z-depth-3">
-        <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-4" style="padding-top:35px;">
-            <img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" />
-          </div>
-          <div class="col-lg-8 text-center">
-            <div class="page-header">
-              <h1 class="display-3">ECMI-Sons and Daughters of OFW Program Website</h1>
-            </div>
-            <footer>
-              <p style="font-size:17px;">
-                The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
-              </p>
-            </footer>
-          </div>
-        </div>
-        <!-- /.row -->
-      </div>
-    </div>
-  </div>
 
-  <div class="container-fluid green">
-    <div class="row">
-    <div class="col-md-offset-3 col-md-6 col-md-offset-3">
-      <div class="well" align="center">
+
+
+    <div class="container-fluid" style="background-color: #00c853; padding-top: 20px; padding-bottom: 20px;">
+      <div class="row">
+        <!--Banner Main-->
+        <div class="col-md-offset-1 col-md-10">
+          <div class="row">
+            <div class="col-md-12" style="font-family:myFirstFont;">
+                <br />
+                  <div class="well" style="background-color: white;">
+                  <div class="row">
+                    <div class="col-lg-4" style="padding-top:15px;">
+                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                    </div>
+                    <div class="col-lg-8 text-center" style="padding-top: 15px;">
+                        <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
+                      <footer>
+                        <p style="font-size:17px;">
+                          The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
+                        </p>
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+
+  
+    <div class="row" style="padding-top:20px; ">
+    <div class="col-md-offset-3 col-md-6">
+      <div class="well">
         <div class="row">
         <div class="col-sm-5">
         <h3 align="left">Edit Student</h3>
@@ -207,6 +167,7 @@ $age=$res[7];
           </div>
     </div>
 
+    <div class="row">
     <div class="col-md-offset-2 col-md-3">
           <div class="form-group">
             <label for="gender">Gender:</label>
@@ -217,11 +178,13 @@ $age=$res[7];
             </select>
           </div>
     </div>
+    </div>
 
     <div class="row">
-    <div class="col-sm-offset-4 col-sm-4 col-sm-offset-4" align="middle">
-    <br/> 
-    <input type="submit" class="btn btn-primary btn-lg" align="center" name="submit" align="center" value="Edit Student">
+    <div class="col-md-offset-4 col-md-4 ">
+    <br/>
+    <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Edit Student">
+    </div>
     </div>
     </div>
 </div>
@@ -229,11 +192,11 @@ $age=$res[7];
     </div>
     </div>
     </div>
-  </div>
+  
 
     </div>
-    </div>
-  </div>
+    
+  
 
     
 
