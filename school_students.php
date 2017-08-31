@@ -1,7 +1,7 @@
 <?php
   session_start();
   require 'connect.php';
-  require 'school_studentsdb.php'
+  require 'school_studentsdb.php';
 
 ?>
 

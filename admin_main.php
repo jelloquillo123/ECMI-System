@@ -63,7 +63,7 @@
                   <p class="navbar-text" style="color: #f5f5f5;"></p>
                 </li>
                   <li class="button">
-                    <a href="admin_main.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
+                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                   </li>
                 </ul>
               </div>
