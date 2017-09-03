@@ -4,43 +4,42 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ECMI-SDOFP</title>
 
-    <title>Administrator</title>
-
-    <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link href="css/dropdowns-enhancement.min.css" rel="stylesheet">
+    <link href="css/footable.bootstrap.min.css" rel="stylesheet">
 
-    <!--External CSS-->
-    <link rel="stylesheet" type="text/css" href="stylesdbms.css">
-    <!-- Custom CSS -->
-    <style>
-
-
-    </style>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
+    <link rel="stylesheet" href="stylessdofp.css">
+
+    <style type="text/css">
+      #edit_header{
+      margin-bottom: 50px;
+    }
+    #coor_header{
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+    </style>
+    
+  </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-inverse" style="padding:6px; font-family:mySecondFont; " role="navigation">
+    <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -55,17 +54,22 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                   <li>
                       <a href="admin_students.php">Students</a>
                   </li>
                   <li>
-                      <a href="admin_students.php">Schools</a>
+                      <a href="admin_questions.php">Questions</a>
                   </li>
+                  <li>
+                      <a href="admin_report.php">Reports</a>
+                  </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  
+                <li>
+                  <p class="navbar-text" style="color: #f5f5f5;"></p>
+                </li>
                   <li class="button">
-                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b>Logout</b></a>
+                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                   </li>
                 </ul>
               </div>
@@ -75,13 +79,39 @@
     </nav>
 
     <!-- Page Content -->
-    
+    <div class="container-fluid" id="cont-banner">
+      <div class="row">
+        <!--Banner Main-->
+        <div class="col-md-offset-1 col-md-10">
+          <div class="row">
+            <div class="col-md-12" style="font-family:myFirstFont;">
+                <br />
+                  <div class="well" style="background-color: white;">
+                  <div class="row">
+                    <div class="col-lg-4" style="padding-top:15px;">
+                      <a href="admin_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                    </div>
+                    <div class="col-lg-8 text-center" style="padding-top: 15px;">
+                        <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
+                      <footer>
+                        <p style="font-size:17px;">
+                          The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
+                        </p>
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
 
     <!--Questions Page -->
     <div class="container-fluid green" style="font-family:mySecondFont;" id="div2">
     <div class="row">
     <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
-      <div class="well" align="center">
+      <div class="well">
         <div class="row">
         <div class="col-sm-7">
         <h3 align="left">Questions</h3>
@@ -421,15 +451,14 @@ $qs9=mysqli_fetch_row($qt9);
   </div>
     <!-- /.container -->
 
-    <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-
-    <!-- Dropdowns Enhancement -->
-    <script src="js/dropdowns-enhancement.js"></script>
+    <script src="js/footable.min.js"></script>
+    <script type="text/javascript">
+      $("#schooltb").footable();
+    </script
 
 </body>
 

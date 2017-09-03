@@ -1,7 +1,7 @@
 <?php
   session_start();
   require 'connect.php';
-  require 'admin_schoolsdb.php'
+  require 'admin_schoolsdb.php';
 ?>
 <html lang="en">
   <head>
@@ -22,10 +22,16 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
-
+      #edit_header{
+      margin-bottom: 50px;
+    }
+    #coor_header{
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
     </style>
     
   </head>
@@ -73,7 +79,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container-fluid" style="background-color: #00c853; padding-top: 60px; padding-bottom: 20px;">
+    <div class="container-fluid" id="cont-banner">
       <div class="row">
         <!--Banner Main-->
         <div class="col-md-offset-1 col-md-10">
@@ -116,7 +122,7 @@
                   <div class="well">
                     <div class="row" style="font-family: myFirstFont;">
                       <div class="col-md-6">
-                        <h3 align="left">Add Participating School</h3>
+                        <h3 align="left" >Add Participating School</h3>
                       </div>
                     </div>
                     <br />
@@ -141,7 +147,7 @@
                                           $i=1;
                                           while($dion=mysqli_fetch_row($dio)){
                                           ?>
-                                          <option value="<?php echo $dion[0] ?>">Diocese of <?php echo $dion[1]?></option>
+                                          <option value="<?php echo $dion[0] ?>"> Diocese of <?php echo $dion[1]?></option>
                                           <?php
                                           $i=$i+1;
                                           }
@@ -198,7 +204,7 @@
               </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane light-green lighten-5" id="div3">
+            <div role="tabpanel" class="tab-pane" id="div3">
               <div class="row" style="padding-top: 20px;">
                 <div class="col-md-offset-1 col-md-10">
                   <div class="well">
@@ -209,8 +215,8 @@
                     </div>
                     <br />
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="edit" role="dialog">
+                    <!-- <!-- Modal -->
+                   <!--  <div class="modal fade" id="edit" role="dialog">
                       <div class="modal-dialog modal-md">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -264,7 +270,7 @@
                                         $i=$i+1;
                                         }
                                         ?>-->
-                              </div>
+                            <!--   </div>
                           
 
                           <div class="modal-footer">
@@ -274,8 +280,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-
+                    </div> -->
 
                     <div class="table-responsive">
                       <table class="table table-hover tablecenter" data-paging="true" id="schooltb" style="background-color:#fff;">
@@ -295,7 +300,7 @@
                           <th><?php echo $sc[0]?></th>
                           <td><?php echo $sc[1]?></td>
                           <td><?php echo $sc[2]?></td>
-                          <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                          <td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>
                           <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                         </tr>
                         <?php

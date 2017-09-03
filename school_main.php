@@ -25,7 +25,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
 
@@ -49,7 +49,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                   <li>
+                  <li>
+                      <a href="school_main.php">Reports</a>
+                  </li>
+                  <li>
                       <a href="school_students.php">Students</a>
                   </li> 
                 </ul>

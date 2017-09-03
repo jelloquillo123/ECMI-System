@@ -30,7 +30,7 @@ ON student.account_id=account.account_id");
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
 
@@ -56,7 +56,9 @@ ON student.account_id=account.account_id");
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                   
+                   <li>
+                      <a href="admin_students.php">Students</a>
+                  </li>
                   <li>
                       <a href="admin_questions.php">Questions</a>
                   </li>
@@ -116,8 +118,8 @@ ON student.account_id=account.account_id");
         <div class="col-sm-5" style="font-family: myFirstFont;">
         <h3 >List of Students</h3>
         </div>
-        <div class="col-sm-offset-5 col-sm-2">
-        <a href="printry3.php"><button class="btn btn-primary" align="left"> Print</button></a>
+        <div class="col-sm-offset-5 col-sm-2" style="padding-left: 100px;">
+        <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
         <!--Dropdown Sort -->
         <div class="dropdown">
   <br/><br/>
@@ -148,7 +150,7 @@ ON student.account_id=account.account_id");
         <div class="form-group">
             <label class="control-label col-sm-3" for="stud_id">Student ID:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="stud_id" name="stud_id">
+              <input type="text" class="form-control" id="stud_id" value="stud_id" name="stud_id">
             </div>
           </div>
         <div class="form-group">
@@ -268,9 +270,10 @@ ON student.account_id=account.account_id");
     <td><?php echo $to1[7];?></td>
     <td><?php echo $to1[8];?></td>
     <td><?php echo $to1[9];?></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-  </tr>
+    <td><a data-toggle="modal" data-id="<?php echo $to1[0]; ?>" title="edit" href="#edit" class="btn btn-success btn-md move-studid"><span class="glyphicon glyphicon-pencil"></span></a></td>
+    <td>
+    <button onclick="del(<?php echo $to1[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+    </tr>
   <?php
     }
   ?>
@@ -290,6 +293,24 @@ ON student.account_id=account.account_id");
     <script src="js/footable.min.js"></script>
     <script type="text/javascript">
       $("#studenttb").footable();
+    </script>
+    <script language="javascript">
+      function del(x) {
+        var delo = confirm('Are you sure you want to delete?');
+        if(delo == true)
+        {
+        window.location.href="delete.php?id=" +x+" ";
+        }
+        
+      }
+
+$(document).on("click", ".move-studid", function () {
+     var myStudId = $(this).data('id');
+     $(".modal-body #stud_id").val( myBookId );
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
     </script>
 </body>
 

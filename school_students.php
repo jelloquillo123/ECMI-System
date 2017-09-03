@@ -25,42 +25,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
-      #login{
-        padding-top: 20px;
-      }
-      .well{
-        background-color: white;
-      }
-      .navbar-default {
-    background-color: #263238;
-    border-color: #263238;
-}
-.navbar-default .navbar-brand {
-    color: #76ff03;
-}
-/* Link */
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #c8e6c9;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #c8e6c9;
-    background-color: #E7E7E7;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-    color: #c8e6c9;
-    background-color: #D5D5D5;
-}
 .buttonstyle {
   background-color: green;
   border-radius: 10px;
@@ -89,8 +56,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                   <li>
+                  <li>
                       <a href="school_main.php">Reports</a>
+                  </li>
+                  <li>
+                      <a href="school_students.php">Students</a>
                   </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -106,7 +76,6 @@
         </div>
         <!-- /.container -->
     </nav>
-
 
 
     <div class="container-fluid" style="background-color: #00c853; padding-top: 60px; padding-bottom: 20px;">
@@ -282,7 +251,7 @@
                       <td><?php echo $stu[6]; ?></td>
                       <td align="center"><?php echo "<a href='feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
 
-                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit.php?id=$stu[0]'>";?>
+                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_students.php?id=$stu[0]'>";?>
                       <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                       
                       <td>
