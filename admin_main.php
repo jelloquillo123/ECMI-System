@@ -1,7 +1,7 @@
 <?php
   session_start();
   require 'connect.php';
-  require 'admin_schoolsdb.php'
+  require 'admin_schoolsdb.php';
 ?>
 <html lang="en">
   <head>
@@ -22,10 +22,16 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
-
+      #edit_header{
+      margin-bottom: 50px;
+    }
+    #coor_header{
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
     </style>
     
   </head>
@@ -63,7 +69,7 @@
                   <p class="navbar-text" style="color: #f5f5f5;"></p>
                 </li>
                   <li class="button">
-                    <a href="admin_main.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
+                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                   </li>
                 </ul>
               </div>
@@ -73,7 +79,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container-fluid" style="background-color: #00c853; padding-top: 60px; padding-bottom: 20px;">
+    <div class="container-fluid" id="cont-banner">
       <div class="row">
         <!--Banner Main-->
         <div class="col-md-offset-1 col-md-10">
@@ -83,7 +89,7 @@
                   <div class="well" style="background-color: white;">
                   <div class="row">
                     <div class="col-lg-4" style="padding-top:15px;">
-                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                      <a href="admin_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
                     </div>
                     <div class="col-lg-8 text-center" style="padding-top: 15px;">
                         <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
@@ -116,7 +122,7 @@
                   <div class="well">
                     <div class="row" style="font-family: myFirstFont;">
                       <div class="col-md-6">
-                        <h3 align="left">Add Participating School</h3>
+                        <h3 align="left" >Add Participating School</h3>
                       </div>
                     </div>
                     <br />
@@ -131,24 +137,25 @@
                             </div>
                           </div>
                             <div class="row">
-                          <label class="control-label col-md-3">Diocese:</label>
-                            <div class="col-md-9">
-                              <div class="btn-group">
-                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" name="diocese">Diocese <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu scrollable-menu" role="menu">
-                                <?php
-                                $i=1;
-                                while($dion=mysqli_fetch_row($dio)){
-                                ?>
-                                  <li><input type="radio" id="diocs_name<?php echo $i; ?>" name="diocese_name" value="<?php echo $dion[0]?>"><label for="diocs_name<?php echo $i; ?>">
-                                  Diocese of <?php echo $dion[1]?></label></li>
-                                <?php
-                                $i=$i+1;
-                                }
-                                ?>
-                                </ul>
+                            <div class="col-md-offset-1 col-md-10">
+
+                              <div class="form-group">
+                                <label class="control-label col-md-2" for="diocese">Diocese:</label>
+                                <div class="col-md-9" style="padding-left: 30px;">
+                                  <select name="diocese" id="diocese" class="form-control">
+                                          <?php
+                                          $i=1;
+                                          while($dion=mysqli_fetch_row($dio)){
+                                          ?>
+                                          <option value="<?php echo $dion[0] ?>"> Diocese of <?php echo $dion[1]?></option>
+                                          <?php
+                                          $i=$i+1;
+                                          }
+                                          ?>
+                                  </select> 
+                                </div>
                               </div>
+
                             </div>
                             </div>
                           <br/>
@@ -197,7 +204,7 @@
               </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane light-green lighten-5" id="div3">
+            <div role="tabpanel" class="tab-pane" id="div3">
               <div class="row" style="padding-top: 20px;">
                 <div class="col-md-offset-1 col-md-10">
                   <div class="well">
@@ -208,8 +215,8 @@
                     </div>
                     <br />
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="edit" role="dialog">
+                    <!-- <!-- Modal -->
+                   <!--  <div class="modal fade" id="edit" role="dialog">
                       <div class="modal-dialog modal-md">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -218,18 +225,38 @@
                           </div>
 
                           <div class="modal-body">
-                            <div class="container-fluid">
-                              <form class="form-horizontal" method="POST">
+                            <div class="container-fluid" style="height: 500px;">
+                              <div class="row">
+                                <div class="col-md-12">
+                              <form method="POST">
                                 <div class="form-group">
-                                  <label class="control-label col-sm-3" for="lname">School Name:</label>
-                                  <div class="col-sm-8">
+                                  <label class="control-label col-md-3" for="lname">School Name:</label>
+                                  <div class="col-md-8">
                                     <input type="text" class="form-control" id="lname" name="ulname">
                                   </div>
                                 </div>
-                                <label class="control-label col-sm-3">Diocese:</label>
-                                <div class="row">
-                                  <div class="col-sm-3">
-                                    <div class="btn-group">
+  
+                                    <div class="form-group">
+                                <label class="control-label col-md-2" for="diocese">Diocese:</label>
+                                <div class="col-md-9" style="padding-left: 30px;">
+                                  <select name="diocese" id="diocese" class="form-control">
+                                          <?php
+                                          $i=1;
+                                          while($dion=mysqli_fetch_row($dio)){
+                                          ?>
+                                          <option value="<?php echo $dion[0] ?>">Diocese of <?php echo $dion[1]?></option>
+                                          <?php
+                                          $i=$i+1;
+                                          }
+                                          ?>
+                                  </select> 
+                                </div>
+                              </div>
+                                 </form> 
+                                </div>
+                              </div>
+                            </div>
+                                    <!-- <div class="btn-group">
                                       <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" name="diocese">Diocese <span class="caret"></span>
                                       </button>
                                       <ul class="dropdown-menu scrollable-menu" role="menu">
@@ -242,31 +269,30 @@
                                         <?php
                                         $i=$i+1;
                                         }
-                                        ?>
-                                        <!-- Other items -->
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>
+                                        ?>-->
+                            <!--   </div>
+                          
 
                           <div class="modal-footer">
-                            <input type="submit" name="save" class="btn btn-lg btn-primary teal" align="center" value="Save">
+                            <input type="submit" name="save" class="btn btn-md btn-primary" align="center" value="Save">
                             <button type="button" class="btn btn-default red" data-dismiss="modal">Close</button>
-                            </form>
+                            
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="table-responsive">
-                      <table class="table table-hover" data-paging="true" id="schooltb" style="background-color:#fff;">
+                      <table class="table table-hover tablecenter" data-paging="true" id="schooltb" style="background-color:#fff;">
+                        <thead>
                         <tr>
                           <th>School ID</th>
                           <th>School Name</th>
                           <th>Diocese</th>
-                        </tr>
+                          <th>Edit</th>
+                          <th>Delete</th>
+                        </tr>  
+                        </thead>
                           <?php 
                           while($sc=mysqli_fetch_row($scool)){
                           ?>
@@ -274,8 +300,8 @@
                           <th><?php echo $sc[0]?></th>
                           <td><?php echo $sc[1]?></td>
                           <td><?php echo $sc[2]?></td>
-                          <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                          <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn red btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                          <td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>
+                          <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                         </tr>
                         <?php
                           }

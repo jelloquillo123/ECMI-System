@@ -9,44 +9,39 @@ ON student.school_id=school.school_id
 JOIN account
 ON student.account_id=account.account_id");
 ?>
-<!DOCTYPE html>
+
+
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ECMI-SDOFP</title>
 
-    <title>Administrator</title>
-
-    <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link href="css/dropdowns-enhancement.min.css" rel="stylesheet">
+    <link href="css/footable.bootstrap.min.css" rel="stylesheet">
 
-    <!--External CSS-->
-    <link rel="stylesheet" type="text/css" href="stylesdbms.css">
-    <!-- Custom CSS -->
-    <style>
-
-    </style>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
+    <link rel="stylesheet" href="stylessdofp.css">
+
+    <style type="text/css">
+
+    </style>
+    
+  </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-inverse" style="padding:6px; font-family:mySecondFont; " role="navigation">
+    <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -61,17 +56,22 @@ ON student.account_id=account.account_id");
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                     <li>
-                      <a href="admin_schools.php">Schools</a>
+                   <li>
+                      <a href="admin_students.php">Students</a>
                   </li>
                   <li>
                       <a href="admin_questions.php">Questions</a>
                   </li>
+                  <li>
+                      <a href="admin_report.php">Reports</a>
+                  </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  
+                <li>
+                  <p class="navbar-text" style="color: #f5f5f5;"></p>
+                </li>
                   <li class="button">
-                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b>Logout</b></a>
+                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                   </li>
                 </ul>
               </div>
@@ -81,43 +81,45 @@ ON student.account_id=account.account_id");
     </nav>
 
     <!-- Page Content -->
-    <div class="container-fluid green" style="font-family:myFirstFont">
-			<br />
-			<div class="card-panel white z-depth-3">
-				<div class="container-fluid">
-        <div class="row">
-					<div class="col-lg-4" style="padding-top:35px;">
-						<img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" />
-					</div>
-          <div class="col-lg-8 text-center">
-				    <div class="page-header">
-              <h1 class="display-3">ECMI-Sons and Daughters of OFW Program Website</h1>
-            </div>
-            <footer>
-              <p style="font-size:17px;">
-                The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
-              </p>
-            </footer>
+    <div class="container-fluid" style="background-color: #00c853; padding-top: 60px; padding-bottom: 20px;">
+      <div class="row">
+        <!--Banner Main-->
+        <div class="col-md-offset-1 col-md-10">
+          <div class="row">
+            <div class="col-md-12" style="font-family:myFirstFont;">
+                <br />
+                  <div class="well" style="background-color: white;">
+                  <div class="row">
+                    <div class="col-lg-4" style="padding-top:15px;">
+                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                    </div>
+                    <div class="col-lg-8 text-center" style="padding-top: 15px;">
+                        <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
+                      <footer>
+                        <p style="font-size:17px;">
+                          The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
+                        </p>
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
+          <br><br>
         </div>
-        <!-- /.row -->
-			</div>
-		</div>
-	</div>
+      </div>
 
     <!--Table Results -->
-
-<div class="container-fluid green" style="font-family:mySecondFont;" id="div3">
     
     <div class="row">
     <div class="col-sm-12">
-      <div class="well" align="center">
+      <div class="well">
         <div class="row">
         <div class="col-sm-5" style="font-family: myFirstFont;">
-        <h3 align="left">List of Students</h3>
+        <h3 >List of Students</h3>
         </div>
-        <div class="col-sm-offset-5 col-sm-2">
-        <a href="printry3.php"><button class="btn btn-primary" align="left"> Print</button></a>
+        <div class="col-sm-offset-5 col-sm-2" style="padding-left: 100px;">
+        <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
         <!--Dropdown Sort -->
         <div class="dropdown">
   <br/><br/>
@@ -140,7 +142,7 @@ ON student.account_id=account.account_id");
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="font-family: roboto;">Edit Student</h4>
+          <h4 class="modal-title" style="font-family: myFirstFont;">Edit Student</h4>
         </div>
         <div class="modal-body">
         <div class="container-fluid">
@@ -148,7 +150,7 @@ ON student.account_id=account.account_id");
         <div class="form-group">
             <label class="control-label col-sm-3" for="stud_id">Student ID:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="stud_id" name="stud_id">
+              <input type="text" class="form-control" id="stud_id" value="stud_id" name="stud_id">
             </div>
           </div>
         <div class="form-group">
@@ -169,7 +171,16 @@ ON student.account_id=account.account_id");
               <input type="text" class="form-control" id="mname" name="mname">
             </div>
         </div>
-        <div class="col-md-offset-2 col-md-3">
+            <div class="form-group">
+            <label class="control-label col-md-3" for="age">Age:</label>
+            <div class="col-md-3">
+              <input type="number" class="form-control" id="age" name="age">
+            </div>
+            </div>
+
+        
+        <div class="row">
+          <div class="col-md-offset-3 col-md-3">
           <div class="form-group">
             <label for="glevel">Grade Level:</label>
             <select name="glevel" id="glevel" class="form-control input-md">
@@ -187,7 +198,7 @@ ON student.account_id=account.account_id");
           </div>
         </div>
 
-        <div class="col-md-offset-2 col-md-3">
+          <div class="col-md-offset-1 col-md-3">
           <div class="form-group">
             <label for="gender">Gender:</label>
             <select name="gender" id="gender" class="form-control input-md">
@@ -196,18 +207,13 @@ ON student.account_id=account.account_id");
             </select>
           </div>
         </div>
-        <div class="row">
-        <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+          
+        </div>
+        
+        
+        
         <div class="form-group">
-            <label class="control-label col-sm-3" for="age">Age:</label>
-            <div class="col-sm-8">
-              <input type="number" class="form-control" id="age" name="age">
-            </div>
-        </div>
-        </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="uname">Userame:</label>
+            <label class="control-label col-sm-3" for="uname">Username:</label>
             <div class="col-sm-8">
               <input type="text" class="form-control" id="uname" name="uname">
             </div>
@@ -221,8 +227,8 @@ ON student.account_id=account.account_id");
 
         </div>
         <div class="modal-footer">
-          <input type="submit" name="submit" class="btn btn-lg btn-primary teal" align="center" value="Save">
-          <button type="button" class="btn btn-default red" data-dismiss="modal">Close</button>
+          <input type="submit" name="submit" class="btn btn-primary" align="center" value="Save">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
         </div>
       </div>
@@ -231,8 +237,9 @@ ON student.account_id=account.account_id");
   </div> 
 
   <div class="table-responsive">
-  <table class="table table-hover" style="background-color:#fff;">
-  <tr>
+  <table class="table table-hover tablecenter" data-paging="true" id="studenttb" style="background-color:#fff;">
+  <thead>
+    <tr>
     <th>Student ID</th>
     <th>Last Name</th>
     <th>First Name</th>
@@ -243,9 +250,13 @@ ON student.account_id=account.account_id");
     <th>Age</th>
     <th>Username</th>
     <th>Password</th>
+    <th></th>
+    <th></th>
   </tr>
-
-  <tr>
+  </thead>
+  
+  <tbody>
+    <tr>
   <?php
   while($to1=mysqli_fetch_row($to)){
   ?>
@@ -259,13 +270,14 @@ ON student.account_id=account.account_id");
     <td><?php echo $to1[7];?></td>
     <td><?php echo $to1[8];?></td>
     <td><?php echo $to1[9];?></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn red btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-  </tr>
+    <td><a data-toggle="modal" data-id="<?php echo $to1[0]; ?>" title="edit" href="#edit" class="btn btn-success btn-md move-studid"><span class="glyphicon glyphicon-pencil"></span></a></td>
+    <td>
+    <button onclick="del(<?php echo $to1[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+    </tr>
   <?php
     }
   ?>
-  </tr>
+  </tbody>
 </table>
 </div>
 </div>
@@ -274,16 +286,32 @@ ON student.account_id=account.account_id");
 </div>	
     <!-- /.container -->
 
-    <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/materialize.min.js"></script>
+    <script src="js/footable.min.js"></script>
+    <script type="text/javascript">
+      $("#studenttb").footable();
+    </script>
+    <script language="javascript">
+      function del(x) {
+        var delo = confirm('Are you sure you want to delete?');
+        if(delo == true)
+        {
+        window.location.href="delete.php?id=" +x+" ";
+        }
+        
+      }
 
-    <!-- Dropdowns Enhancement -->
-    <script src="js/dropdowns-enhancement.js"></script>
-
+$(document).on("click", ".move-studid", function () {
+     var myStudId = $(this).data('id');
+     $(".modal-body #stud_id").val( myBookId );
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+    </script>
 </body>
 
 </html>

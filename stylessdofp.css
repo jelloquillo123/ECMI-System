@@ -65,3 +65,26 @@ a.disabled {
     color: #c8e6c9;
     background-color: #D5D5D5;
 }
+.tablecenter tr, .tablecenter td, .tablecenter th {
+  text-align: center;
+}
+.modal { overflow: visible; }
+.modal-body { overflow-y: visible !important; }
+
+#cont-banner{
+    background-color: #00c853; 
+    padding-top: 60px; 
+    padding-bottom: 10px;
+}
+.cont-body{
+    background-color: #00c853; 
+    padding-top: 10px; 
+    padding-bottom: 20px;
+}
+.submit_mid{
+  margin-left: 230px;
+}
+#header_table{
+  font-family: myFirstFont;
+  margin-top: 10px;
+}

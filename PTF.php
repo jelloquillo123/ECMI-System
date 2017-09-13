@@ -68,41 +68,36 @@ while($pp=mysqli_fetch_assoc($pare))
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ECMI-SDOFP</title>
 
-    <title>Pre-Awareness Testing Form</title>
-
-    <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/materialize.min.css">
+    <link href="css/footable.bootstrap.min.css" rel="stylesheet">
 
-    <!--External CSS-->
-    <link rel="stylesheet" type="text/css" href="stylesdbms.css">
-    <!-- Custom CSS -->
-    <style>
-
-    </style>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
+    <link rel="stylesheet" href="styles(sdofp).css">
 
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-inverse" style="padding:6px; font-family:mySecondFont; " role="navigation">
+    <style type="text/css">
+    .content_body{
+      background-color: #00c853;
+    }
+    </style>
+    
+  </head>
+<body data-spy="scroll">
+<!-- Navigation -->
+    <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -112,16 +107,24 @@ while($pp=mysqli_fetch_assoc($pare))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="student.php">Student</a>
+                <a class="navbar-brand" href="school_main.php">School</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-
+                   <li>
+                      <a href="school_students.php">Students</a>
+                  </li>
+                  <li>
+                      <a href="school_main.php"> Reports</a>
+                  </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <p class="navbar-text" style="color: #f5f5f5;"><?php echo $stud_det[2]." "; echo $stud_det[3]." "; echo $stud_det[1]?></p>
+                </li>
                   <li class="button">
-                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b>Logout</b></a>
+                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                   </li>
                 </ul>
               </div>
@@ -130,40 +133,46 @@ while($pp=mysqli_fetch_assoc($pare))
         <!-- /.container -->
     </nav>
 
-    <!-- Page Content -->
-    <div class="container-fluid green" style="font-family:myFirstFont">
-			<br />
-			<div class="card-panel white z-depth-3">
-				<div class="container-fluid">
-        <div class="row">
-					<div class="col-lg-4" style="padding-top:35px;">
-						<img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" />
-					</div>
-          <div class="col-lg-8 text-center">
-				    <div class="page-header">
-              <h1 class="display-3">ECMI-Sons and Daughters of OFW Program Website</h1>
-            </div>
-            <footer>
-              <p style="font-size:17px;">
-                The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
-              </p>
-            </footer>
+
+
+    <div class="container-fluid content_body" style="background-color: #00c853; margin-top: 60px; padding-bottom: 20px;">
+      <div class="row">
+        <!--Banner Main-->
+        <div class="col-md-offset-1 col-md-10">
+          <div class="row">
+            <div class="col-md-12" style="font-family:myFirstFont;">
+                <br />
+                  <div class="well" style="background-color: white;">
+                  <div class="row">
+                    <div class="col-lg-4" style="padding-top:15px;">
+                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                    </div>
+                    <div class="col-lg-8 text-center" style="padding-top: 15px;">
+                        <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
+                      <footer>
+                        <p style="font-size:17px;">
+                          The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
+                        </p>
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
+          
         </div>
-        <!-- /.row -->
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
 <?php 
 if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
 {
 ?>
 	<!--Pre-Awareness Testing Form -->
-  <div class="container-fluid green" style="font-family:mySecondFont;" align="center">
+  <div class="container-fluid content_body" style="font-family:mySecondFont;" align="center">
     <div class="row">
     <div class="col-md-offset-1 col-md-10 col-md-offset-1">
 
-  <div class="well well-sm">
+  <div class="well">
 
 	<div class="row">
 	<div class="col-sm-4">
@@ -376,7 +385,7 @@ echo $qs2[1];
       <input id="b2" type="radio" name="q2" value="b" required>
       <label for="b2">b.<?php
 echo $qs2[2];
- 
+
 ?></label>
     </p>
     <p>

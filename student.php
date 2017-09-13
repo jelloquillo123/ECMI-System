@@ -84,7 +84,7 @@
         <!-- /.container -->
     </nav>
 
-    <div class="container-fluid" style="background-color: #00c853; padding-top: 60px;">
+    <div class="container-fluid" style="background-color: #00c853; padding-top: 60px; padding-bottom: 30px;">
       <div class="row">
         <!--Banner Main-->
         <div class="col-md-offset-1 col-md-10">
@@ -108,7 +108,7 @@
                 </div>
               </div>
           </div>
-          <br><br>
+          <br>
         </div>
       </div>
 
