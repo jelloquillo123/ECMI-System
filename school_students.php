@@ -222,7 +222,7 @@
                 <h3 align="left" style="font-family: myFirstFont;"><?php echo $scn[0]; ?></h3><br>
 
                 <div class="table-responsive">
-                  <table class="table table-hover tablecenter" data-paging="true" id="studenttb" style="background-color:#fff;">
+                  <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" id="studenttb" style="background-color:#fff;">
                     <thead>
                     <tr>
                       <th>Student ID</th>

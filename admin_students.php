@@ -237,7 +237,7 @@ ON student.account_id=account.account_id");
   </div> 
 
   <div class="table-responsive">
-  <table class="table table-hover tablecenter" data-paging="true" id="studenttb" style="background-color:#fff;">
+  <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" id="studenttb" style="background-color:#fff;">
   <thead>
     <tr>
     <th>Student ID</th>
