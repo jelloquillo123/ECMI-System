@@ -2,6 +2,7 @@
   session_start();
   require 'connect.php';
   require 'admin_schoolsdb.php';
+
 ?>
 <html lang="en">
   <head>
@@ -116,33 +117,37 @@
                 <h3 align="left" id="header_table">Baseline Data Summary Results</h3>
               </div>
               <div class="col-md-offset-2 col-md-6">
+                <form method="POST">
                 <div class="form-group" id="form-group-align">
                   <div class="col-md-7">
-                    <select name="diocese" id="diocese" class="form-control">
+                    
+                    <select name="diocese" id="diocse" class="form-control input-md x">
                       <?php
                       $i=1;
                       while($dion=mysqli_fetch_row($dio)){
-                      ?>
-                      <option value="<?php echo $dion[0] ?>"> Diocese of <?php echo $dion[1]?></option>
-                      <?php
-                      $i=$i+1;
+                        echo '
+                              <option value="'.$dion[0].'">Diocese of '.$dion[1].'</option>
+                              ';
+                          $i=$i+1;
                       }
                       ?>
                     </select> 
                   </div>
                   <div class="col-md-3">
-                    <input type="submit" class="btn btn-primary btn-md" align="center" name="submit" value = "Select Diocese">
+                    <input type="submit" class="btn btn-primary btn-md" align="center" name="medsubmit" value = "Select Diocese">
                   </div>
                 </div>
+               </form>
               </div>
             </div>
+
 
 
             <div class="row">
               <div class="col-md-12">
                 <div class="table-responsive">
                   <table class="table table-hover table-bordered" style="background-color:#fff;">
-                    <thead>
+                    
                     <tr>
                       <th rowspan="2">SCHOOL</th>
                       <th colspan="3">Number of SDO</th>
@@ -150,12 +155,13 @@
                       <th colspan="5">Country</th>
                       <th colspan="5">Years of Stay Overseas</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                    
+                    
                     
 
 
                     <tr>
+                      
                       <th>Total</th>
                       <th>Male</th>
                       <th>Female</th>
@@ -179,63 +185,53 @@
 
 
              <?php 
-                     $schoolcount_sql=mysqli_query($db,"SELECT COUNT(school.school_id) 
-                      FROM school 
-                      INNER JOIN diocese 
-                      ON diocese.diocese_id=school.diocese_id 
-                      WHERE diocese.diocese_id='16'");
                      
-                     $schoolcount=mysqli_fetch_row($schoolcount_sql);
-                     
-          $count=$schoolcount[0];
 
-                     
-                     $school_sql=mysqli_query($db,"SELECT school.school_id
+                     if(isset($_POST['medsubmit'])){
+                     $school_sql=mysqli_query($db,"SELECT school.school_id,school.school_name
                       FROM school 
                       INNER JOIN diocese 
                       ON diocese.diocese_id=school.diocese_id
-                      WHERE diocese.diocese_id='16'");
+                      WHERE diocese.diocese_id='$_POST[diocese]'");
                      
-                     $school=mysqli_fetch_row($school_sql);
 
-                    
-                     for($d=0;$d<$count;$d++)
+                     while($school=mysqli_fetch_row($school_sql))
                      {   
 
-                       $info1_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
-(SELECT COUNT(*) FROM student WHERE school_id='$school[$d]' AND gender='Male') as 'male',
-(SELECT COUNT(*) FROM student WHERE school_id='$school[$d]' AND gender='Female') as 'female',
+$info1_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
+(SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Male') as 'male',
+(SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Female') as 'female',
 
-(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'tatay' AND d.school_id = '$school[$d]') as 'tatay',
-(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'nanay' AND d.school_id = '$school[$d]') as 'nanay',
-(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'pareho' AND d.school_id = '$school[$d]') as 'pareho',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'tatay' AND d.school_id = '$school[0]') as 'tatay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'nanay' AND d.school_id = '$school[0]') as 'nanay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'pareho' AND d.school_id = '$school[0]') as 'pareho',
 
-(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.job_based = 'LB' AND d.school_id = '$school[$d]') as 'LB',
-(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.job_based = 'SB' AND d.school_id = '$school[$d]') as 'SB',
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.job_based = 'LB' AND d.school_id = '$school[0]') as 'LB',
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.job_based = 'SB' AND d.school_id = '$school[0]') as 'SB',
 
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'AS' AND d.school_id = '$school[$d]') as 'AS',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'EU' AND d.school_id = '$school[$d]') as 'EU',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'NA' AND d.school_id = '$school[$d]') as 'NA',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'OC' AND d.school_id = '$school[$d]') as 'OC',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND d.school_id = '$school[$d]') as 'OTHERS',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'AS' AND d.school_id = '$school[0]') as 'AS',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'EU' AND d.school_id = '$school[0]') as 'EU',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'NA' AND d.school_id = '$school[0]') as 'NA',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'OC' AND d.school_id = '$school[0]') as 'OC',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND d.school_id = '$school[0]') as 'OTHERS',
 
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '1' AND d.school_id = '$school[$d]') as '1st',
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '2' AND d.school_id = '$school[$d]') as '2nd',
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '3'AND d.school_id = '$school[$d]') as '3rd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '1' AND d.school_id = '$school[0]') as '1st',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '2' AND d.school_id = '$school[0]') as '2nd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '3'AND d.school_id = '$school[0]') as '3rd',
 (SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE 
-    a.years_stay = '4' AND d.school_id = '$school[$d]') as '4th',
+    a.years_stay = '4' AND d.school_id = '$school[0]') as '4th',
 (SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE 
-    a.years_stay = '5' AND d.school_id = '$school[$d]') as '5th'
+    a.years_stay = '5' AND d.school_id = '$school[0]') as '5th'
 
 FROM parent a
 JOIN family b ON b.parent_id = a.parent_id
 JOIN student d ON d.fam_id = b.fam_id
-WHERE d.school_id='$school[$d]' ");
+WHERE d.school_id='$school[0]' ");
 
 $info1=mysqli_fetch_row($info1_sql);
 
                        echo "<tr>
-                              <td>GRAND TOTAL</td>
+                              <td>".$school[1]."</td>
                               <td>".$info1[0]."</td>
                               <td>".$info1[1]."</td>
                               <td>".$info1[2]."</td>
@@ -262,7 +258,67 @@ $info1=mysqli_fetch_row($info1_sql);
 
                      }
 
+              $info_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
+(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Male') as 'male',
+(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Female') as 'female',
+
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'tatay' AND e.diocese_id = '$_POST[diocese]') as 'tatay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'nanay' AND e.diocese_id = '$_POST[diocese]') as 'nanay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'pareho' AND e.diocese_id = '$_POST[diocese]') as 'pareho',
+
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.job_based = 'LB' AND f.diocese_id = '$_POST[diocese]') as 'LB',
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.job_based = 'LB' AND f.diocese_id = '$_POST[diocese]') as 'SB',
+
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'AS' AND f.diocese_id = '$_POST[diocese]') as 'AS',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'EU' AND f.diocese_id = '$_POST[diocese]') as 'EU',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'NA' AND f.diocese_id = '$_POST[diocese]') as 'NA',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'OC' AND f.diocese_id = '$_POST[diocese]') as 'OC',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND d.school_id = '$_POST[diocese]') as 'OTHERS',
+
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '1' AND f.diocese_id = '$_POST[diocese]') as '1st',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '2' AND f.diocese_id = '$_POST[diocese]') as '2nd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '3' AND f.diocese_id = '$_POST[diocese]') as '3rd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '4' AND f.diocese_id = '$_POST[diocese]') as '4th',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '5' AND f.diocese_id = '$_POST[diocese]') as '5th'
+
+FROM parent a
+INNER JOIN family b ON b.parent_id = a.parent_id
+INNER JOIN student d ON d.fam_id = b.fam_id
+INNER JOIN school e ON e.school_id=d.school_id
+INNER JOIN diocese f ON f.diocese_id=e.diocese_id
+WHERE f.diocese_id='$_POST[diocese]' ");
+
+$info=mysqli_fetch_row($info_sql);
+
+                       echo "<tr>
+                              <td><b>TOTAL:</b> </td>
+                              <td>".$info[0]."</td>
+                              <td>".$info[1]."</td>
+                              <td>".$info[2]."</td>
+                              <td>".$info[3]."</td>
+                              <td>".$info[4]."</td>
+                              <td>".$info[5]."</td>
+                              <td>".$info[6]."</td>
+                              <td>".$info[7]."</td>
+                              <td>".$info[8]."</td>
+                              <td>".$info[9]."</td>
+                              <td>".$info[10]."</td>
+                              <td>".$info[11]."</td>
+                              <td>".$info[12]."</td>
+                              <td>".$info[13]."</td>
+                              <td>".$info[14]."</td>
+                              <td>".$info[15]."</td>
+                              <td>".$info[16]."</td>
+                              <td>".$info[17]."</td>";   
+            
+
+
+}
                  
+          
+
+
+
                    ?>  
                     <!-- <tr>
                       <td>GRADE 1</td>
@@ -308,7 +364,7 @@ $info1=mysqli_fetch_row($info1_sql);
                       <td><?php echo $yqr1[0];?></td>
                       <td><?php echo $ywr1[0];?></td>
                     </tr> -->
-                    </tbody>
+                    
                   </table>
                 </div>
               </div>
