@@ -116,8 +116,8 @@
                   <div class="col-md-5" style="font-family: myFirstFont;">
                     <h3 align="left">Baseline Data Summary Results</h3>
                   </div>
-                  <div class="col-md-offset-6 col-md-1">
-                    <a href="printry1.php"><button class="btn btn-primary"> Print</button></a>
+                  <div class="col-md-offset-5 col-md-1">
+                    <a href="printry1.php"><button class="btn btn-primary" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -397,7 +397,7 @@
                     <h3 align="left">Pre Awareness Test Summary Baseline</h3>
                   </div>
                   <div class="col-md-offset-6 col-md-1">
-                    <a href="printry.php"><button class="btn btn-primary"> Print</button></a>
+                    <a href="printry.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                   </div>
                 </div>
                 <div class="table-responsive">

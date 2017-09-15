@@ -116,7 +116,7 @@
         
           <div class="tab-content">
 
-            <div role="tabpanel" class="tab-pane active light-green lighten-5" id="div2">
+            <div role="tabpanel" class="tab-pane active" id="div2">
               <div class="row" style="padding-top: 20px;">
                 <div class="col-md-offset-3 col-md-6">
                   <div class="well">
@@ -204,13 +204,16 @@
               </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane" id="div3">
+            <div role="tabpanel" class="tab-pane fade" id="div3">
               <div class="row" style="padding-top: 20px;">
                 <div class="col-md-offset-1 col-md-10">
                   <div class="well">
                     <div class="row" style="font-family: myFirstFont;">
                       <div class="col-md-5">
                         <h3 align="left">List of Participating Schools</h3>
+                      </div>
+                      <div class="col-md-offset-5 col-md-2" id="btn-plcmnt1">
+                        <a href="printry.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
                       </div>
                     </div>
                     <br />
