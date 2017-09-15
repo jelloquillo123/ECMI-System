@@ -2,6 +2,7 @@
   session_start();
   require 'connect.php';
   require 'admin_schoolsdb.php';
+
 ?>
 <html lang="en">
   <head>
@@ -116,33 +117,37 @@
                 <h3 align="left" id="header_table">Baseline Data Summary Results</h3>
               </div>
               <div class="col-md-offset-2 col-md-6">
+                <form method="POST">
                 <div class="form-group" id="form-group-align">
                   <div class="col-md-7">
-                    <select name="diocese" id="diocese" class="form-control">
+                    
+                    <select name="diocese" id="diocse" class="form-control input-md x">
                       <?php
                       $i=1;
                       while($dion=mysqli_fetch_row($dio)){
-                      ?>
-                      <option value="<?php echo $dion[0] ?>"> Diocese of <?php echo $dion[1]?></option>
-                      <?php
-                      $i=$i+1;
+                        echo '
+                              <option value="'.$dion[0].'">Diocese of '.$dion[1].'</option>
+                              ';
+                          $i=$i+1;
                       }
                       ?>
                     </select> 
                   </div>
                   <div class="col-md-3">
-                    <input type="submit" class="btn btn-primary btn-md" align="center" name="submit" value = "Select Diocese">
+                    <input type="submit" class="btn btn-primary btn-md" align="center" name="medsubmit" value = "Select Diocese">
                   </div>
                 </div>
+               </form>
               </div>
             </div>
+
 
 
             <div class="row">
               <div class="col-md-12">
                 <div class="table-responsive">
                   <table class="table table-hover table-bordered" style="background-color:#fff;">
-                    <thead>
+                    
                     <tr>
                       <th rowspan="2">SCHOOL</th>
                       <th colspan="3">Number of SDO</th>
@@ -150,9 +155,13 @@
                       <th colspan="5">Country</th>
                       <th colspan="5">Years of Stay Overseas</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                    
+                    
+                    
+
+
                     <tr>
+                      
                       <th>Total</th>
                       <th>Male</th>
                       <th>Female</th>
@@ -172,7 +181,146 @@
                       <th>11-15</th>
                       <th>16-20</th>
                     </tr>     
-                    <tr>
+                    
+
+
+             <?php 
+                     
+
+                     if(isset($_POST['medsubmit'])){
+                     $school_sql=mysqli_query($db,"SELECT school.school_id,school.school_name
+                      FROM school 
+                      INNER JOIN diocese 
+                      ON diocese.diocese_id=school.diocese_id
+                      WHERE diocese.diocese_id='$_POST[diocese]'");
+                     
+
+                     while($school=mysqli_fetch_row($school_sql))
+                     {   
+
+$info1_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
+(SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Male') as 'male',
+(SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Female') as 'female',
+
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'tatay' AND d.school_id = '$school[0]') as 'tatay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'nanay' AND d.school_id = '$school[0]') as 'nanay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'pareho' AND d.school_id = '$school[0]') as 'pareho',
+
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.job_based = 'LB' AND d.school_id = '$school[0]') as 'LB',
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.job_based = 'SB' AND d.school_id = '$school[0]') as 'SB',
+
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'AS' AND d.school_id = '$school[0]') as 'AS',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'EU' AND d.school_id = '$school[0]') as 'EU',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'NA' AND d.school_id = '$school[0]') as 'NA',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code = 'OC' AND d.school_id = '$school[0]') as 'OC',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id WHERE b.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND d.school_id = '$school[0]') as 'OTHERS',
+
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '1' AND d.school_id = '$school[0]') as '1st',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '2' AND d.school_id = '$school[0]') as '2nd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE     a.years_stay = '3'AND d.school_id = '$school[0]') as '3rd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE 
+    a.years_stay = '4' AND d.school_id = '$school[0]') as '4th',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE 
+    a.years_stay = '5' AND d.school_id = '$school[0]') as '5th'
+
+FROM parent a
+JOIN family b ON b.parent_id = a.parent_id
+JOIN student d ON d.fam_id = b.fam_id
+WHERE d.school_id='$school[0]' ");
+
+$info1=mysqli_fetch_row($info1_sql);
+
+                       echo "<tr>
+                              <td>".$school[1]."</td>
+                              <td>".$info1[0]."</td>
+                              <td>".$info1[1]."</td>
+                              <td>".$info1[2]."</td>
+                              <td>".$info1[3]."</td>
+                              <td>".$info1[4]."</td>
+                              <td>".$info1[5]."</td>
+                              <td>".$info1[6]."</td>
+                              <td>".$info1[7]."</td>
+                              <td>".$info1[8]."</td>
+                              <td>".$info1[9]."</td>
+                              <td>".$info1[10]."</td>
+                              <td>".$info1[11]."</td>
+                              <td>".$info1[12]."</td>
+                              <td>".$info1[13]."</td>
+                              <td>".$info1[14]."</td>
+                              <td>".$info1[15]."</td>
+                              <td>".$info1[16]."</td>
+                              <td>".$info1[17]."</td>";  
+
+
+
+                           
+
+
+                     }
+
+              $info_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
+(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Male') as 'male',
+(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Female') as 'female',
+
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'tatay' AND e.diocese_id = '$_POST[diocese]') as 'tatay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'nanay' AND e.diocese_id = '$_POST[diocese]') as 'nanay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'pareho' AND e.diocese_id = '$_POST[diocese]') as 'pareho',
+
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.job_based = 'LB' AND f.diocese_id = '$_POST[diocese]') as 'LB',
+(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.job_based = 'LB' AND f.diocese_id = '$_POST[diocese]') as 'SB',
+
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'AS' AND f.diocese_id = '$_POST[diocese]') as 'AS',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'EU' AND f.diocese_id = '$_POST[diocese]') as 'EU',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'NA' AND f.diocese_id = '$_POST[diocese]') as 'NA',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'OC' AND f.diocese_id = '$_POST[diocese]') as 'OC',
+(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND d.school_id = '$_POST[diocese]') as 'OTHERS',
+
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '1' AND f.diocese_id = '$_POST[diocese]') as '1st',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '2' AND f.diocese_id = '$_POST[diocese]') as '2nd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '3' AND f.diocese_id = '$_POST[diocese]') as '3rd',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '4' AND f.diocese_id = '$_POST[diocese]') as '4th',
+(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '5' AND f.diocese_id = '$_POST[diocese]') as '5th'
+
+FROM parent a
+INNER JOIN family b ON b.parent_id = a.parent_id
+INNER JOIN student d ON d.fam_id = b.fam_id
+INNER JOIN school e ON e.school_id=d.school_id
+INNER JOIN diocese f ON f.diocese_id=e.diocese_id
+WHERE f.diocese_id='$_POST[diocese]' ");
+
+$info=mysqli_fetch_row($info_sql);
+
+                       echo "<tr>
+                              <td><b>TOTAL:</b> </td>
+                              <td>".$info[0]."</td>
+                              <td>".$info[1]."</td>
+                              <td>".$info[2]."</td>
+                              <td>".$info[3]."</td>
+                              <td>".$info[4]."</td>
+                              <td>".$info[5]."</td>
+                              <td>".$info[6]."</td>
+                              <td>".$info[7]."</td>
+                              <td>".$info[8]."</td>
+                              <td>".$info[9]."</td>
+                              <td>".$info[10]."</td>
+                              <td>".$info[11]."</td>
+                              <td>".$info[12]."</td>
+                              <td>".$info[13]."</td>
+                              <td>".$info[14]."</td>
+                              <td>".$info[15]."</td>
+                              <td>".$info[16]."</td>
+                              <td>".$info[17]."</td>";   
+            
+
+
+}
+                 
+          
+
+
+
+                   ?>  
+                    <!-- <tr>
                       <td>GRADE 1</td>
                       <td><?php echo $jr1[0];  ?></td>
                       <td><?php echo $gen1[0];  ?></td>
@@ -193,195 +341,7 @@
                       <td><?php echo $yq1[0]; ?></td>
                       <td><?php echo $yw1[0]; ?></td>
                     </tr>
-                    <tr>
-                      <td>GRADE 2</td>
-                      <td><?php echo $jr2[0];  ?></td>
-                      <td><?php echo $gen2[0];  ?></td>
-                      <td><?php echo $gen12[0];  ?></td>
-                      <td><?php echo $pp2[0]; ?></td>
-                      <td><?php echo $ps2[0]; ?></td>
-                      <td><?php echo $pn2[0]; ?></td>
-                      <td><?php echo $lb2[0]; ?></td>
-                      <td><?php echo $sb2[0]; ?></td>
-                      <td><?php echo $cn2[0]; ?></td>
-                      <td><?php echo $eu2[0]; ?></td>
-                      <td><?php echo $na2[0]; ?></td>
-                      <td><?php echo $oc2[0]; ?></td>
-                      <td><?php echo $ot2[0]; ?></td>
-                      <td><?php echo $yt2[0]; ?></td>
-                      <td><?php echo $yr2[0]; ?></td>
-                      <td><?php echo $ye2[0]; ?></td>
-                      <td><?php echo $yq2[0]; ?></td>
-                      <td><?php echo $yw2[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 3</td>
-                      <td><?php echo $jr3[0];  ?></td>
-                      <td><?php echo $gen3[0];  ?></td>
-                      <td><?php echo $gen13[0];  ?></td>
-                      <td><?php echo $pp3[0]; ?></td>
-                      <td><?php echo $ps3[0]; ?></td>
-                      <td><?php echo $pn3[0]; ?></td>
-                      <td><?php echo $lb3[0]; ?></td>
-                      <td><?php echo $sb3[0]; ?></td>
-                      <td><?php echo $cn3[0]; ?></td>
-                      <td><?php echo $eu3[0]; ?></td>
-                      <td><?php echo $na3[0]; ?></td>
-                      <td><?php echo $oc3[0]; ?></td>
-                      <td><?php echo $ot3[0]; ?></td>
-                      <td><?php echo $yt3[0]; ?></td>
-                      <td><?php echo $yr3[0]; ?></td>
-                      <td><?php echo $ye3[0]; ?></td>
-                      <td><?php echo $yq3[0]; ?></td>
-                      <td><?php echo $yw3[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 4</td>
-                      <td><?php echo $jr4[0];  ?></td>
-                      <td><?php echo $gen4[0];  ?></td>
-                      <td><?php echo $gen14[0];  ?></td>
-                      <td><?php echo $pp4[0]; ?></td>
-                      <td><?php echo $ps4[0]; ?></td>
-                      <td><?php echo $pn4[0]; ?></td>
-                      <td><?php echo $lb4[0]; ?></td>
-                      <td><?php echo $sb4[0]; ?></td>
-                      <td><?php echo $cn4[0]; ?></td>
-                      <td><?php echo $eu4[0]; ?></td>
-                      <td><?php echo $na4[0]; ?></td>
-                      <td><?php echo $oc4[0]; ?></td>
-                      <td><?php echo $ot4[0]; ?></td>
-                      <td><?php echo $yt4[0]; ?></td>
-                      <td><?php echo $yr4[0]; ?></td>
-                      <td><?php echo $ye4[0]; ?></td>
-                      <td><?php echo $yq4[0]; ?></td>
-                      <td><?php echo $yw4[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 5</td>
-                      <td><?php echo $jr5[0];  ?></td>
-                      <td><?php echo $gen5[0];  ?></td>
-                      <td><?php echo $gen15[0];  ?></td>
-                      <td><?php echo $pp5[0]; ?></td>
-                      <td><?php echo $ps5[0]; ?></td>
-                      <td><?php echo $pn5[0]; ?></td>
-                      <td><?php echo $lb5[0]; ?></td>
-                      <td><?php echo $sb5[0]; ?></td>
-                      <td><?php echo $cn5[0]; ?></td>
-                      <td><?php echo $eu5[0]; ?></td>
-                      <td><?php echo $na5[0]; ?></td>
-                      <td><?php echo $oc5[0]; ?></td>
-                      <td><?php echo $ot5[0]; ?></td>
-                      <td><?php echo $yt5[0]; ?></td>
-                      <td><?php echo $yr5[0]; ?></td>
-                      <td><?php echo $ye5[0]; ?></td>
-                      <td><?php echo $yq5[0]; ?></td>
-                      <td><?php echo $yw5[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 6</td>
-                      <td><?php echo $jr6[0];  ?></td>
-                      <td><?php echo $gen6[0];  ?></td>
-                      <td><?php echo $gen16[0];  ?></td>
-                      <td><?php echo $pp6[0]; ?></td>
-                      <td><?php echo $ps6[0]; ?></td>
-                      <td><?php echo $pn6[0]; ?></td>
-                      <td><?php echo $lb6[0]; ?></td>
-                      <td><?php echo $sb6[0]; ?></td>
-                      <td><?php echo $cn6[0]; ?></td>
-                      <td><?php echo $eu6[0]; ?></td>
-                      <td><?php echo $na6[0]; ?></td>
-                      <td><?php echo $oc6[0]; ?></td>
-                      <td><?php echo $ot6[0]; ?></td>
-                      <td><?php echo $yt6[0]; ?></td>
-                      <td><?php echo $yr6[0]; ?></td>
-                      <td><?php echo $ye6[0]; ?></td>
-                      <td><?php echo $yq6[0]; ?></td>
-                      <td><?php echo $yw6[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 7</td>
-                      <td><?php echo $jr7[0];  ?></td>
-                      <td><?php echo $gen7[0];  ?></td>
-                      <td><?php echo $gen17[0];  ?></td>
-                      <td><?php echo $pp7[0]; ?></td>
-                      <td><?php echo $ps7[0]; ?></td>
-                      <td><?php echo $pn7[0]; ?></td>
-                      <td><?php echo $lb7[0]; ?></td>
-                      <td><?php echo $sb7[0]; ?></td>
-                      <td><?php echo $cn7[0]; ?></td>
-                      <td><?php echo $eu7[0]; ?></td>
-                      <td><?php echo $na7[0]; ?></td>
-                      <td><?php echo $oc7[0]; ?></td>
-                      <td><?php echo $ot7[0]; ?></td>
-                      <td><?php echo $yt7[0]; ?></td>
-                      <td><?php echo $yr7[0]; ?></td>
-                      <td><?php echo $ye7[0]; ?></td>
-                      <td><?php echo $yq7[0]; ?></td>
-                      <td><?php echo $yw7[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 8</td>
-                      <td><?php echo $jr8[0];  ?></td>
-                      <td><?php echo $gen8[0];  ?></td>
-                      <td><?php echo $gen18[0];  ?></td>
-                      <td><?php echo $pp8[0]; ?></td>
-                      <td><?php echo $ps8[0]; ?></td>
-                      <td><?php echo $pn8[0]; ?></td>
-                      <td><?php echo $lb8[0]; ?></td>
-                      <td><?php echo $sb8[0]; ?></td>
-                      <td><?php echo $cn8[0]; ?></td>
-                      <td><?php echo $eu8[0]; ?></td>
-                      <td><?php echo $na8[0]; ?></td>
-                      <td><?php echo $oc8[0]; ?></td>
-                      <td><?php echo $ot8[0]; ?></td>
-                      <td><?php echo $yt8[0]; ?></td>
-                      <td><?php echo $yr8[0]; ?></td>
-                      <td><?php echo $ye8[0]; ?></td>
-                      <td><?php echo $yq8[0]; ?></td>
-                      <td><?php echo $yw8[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 9</td>
-                      <td><?php echo $jr9[0];  ?></td>
-                      <td><?php echo $gen9[0];  ?></td>
-                      <td><?php echo $gen19[0];  ?></td>
-                      <td><?php echo $pp9[0]; ?></td>
-                      <td><?php echo $ps9[0]; ?></td>
-                      <td><?php echo $pn9[0]; ?></td>
-                      <td><?php echo $lb9[0]; ?></td>
-                      <td><?php echo $sb9[0]; ?></td>
-                      <td><?php echo $cn9[0]; ?></td>
-                      <td><?php echo $eu9[0]; ?></td>
-                      <td><?php echo $na9[0]; ?></td>
-                      <td><?php echo $oc9[0]; ?></td>
-                      <td><?php echo $ot9[0]; ?></td>
-                      <td><?php echo $yt9[0]; ?></td>
-                      <td><?php echo $yr9[0]; ?></td>
-                      <td><?php echo $ye9[0]; ?></td>
-                      <td><?php echo $yq9[0]; ?></td>
-                      <td><?php echo $yw9[0]; ?></td>
-                    </tr>
-                    <tr>
-                      <td>GRADE 10</td>
-                      <td><?php echo $jr10[0];  ?></td>
-                      <td><?php echo $gen10[0];  ?></td>
-                      <td><?php echo $gen20[0];  ?></td>
-                      <td><?php echo $pp10[0]; ?></td>
-                      <td><?php echo $ps10[0]; ?></td>
-                      <td><?php echo $pn10[0]; ?></td>
-                      <td><?php echo $lb10[0]; ?></td>
-                      <td><?php echo $sb10[0]; ?></td>
-                      <td><?php echo $cn10[0]; ?></td>
-                      <td><?php echo $eu10[0]; ?></td>
-                      <td><?php echo $na10[0]; ?></td>
-                      <td><?php echo $oc10[0]; ?></td>
-                      <td><?php echo $ot10[0]; ?></td>
-                      <td><?php echo $yt10[0]; ?></td>
-                      <td><?php echo $yr10[0]; ?></td>
-                      <td><?php echo $ye10[0]; ?></td>
-                      <td><?php echo $yq10[0]; ?></td>
-                      <td><?php echo $yw10[0]; ?></td>
-                    </tr>
+                    
 
                     <tr style="font-weight: bold;">
                       <th>GRAND TOTAL</th>
@@ -403,8 +363,8 @@
                       <td><?php echo $yer1[0];?></td>
                       <td><?php echo $yqr1[0];?></td>
                       <td><?php echo $ywr1[0];?></td>
-                    </tr>
-                    </tbody>
+                    </tr> -->
+                    
                   </table>
                 </div>
               </div>
