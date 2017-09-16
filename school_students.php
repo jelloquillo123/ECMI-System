@@ -36,6 +36,7 @@
   background-color: red;
   border-radius: 10px;
 }
+
     </style>
     
   </head>
@@ -214,14 +215,14 @@
                   <div class="col-sm-5">
                     <h3 align="left">List of Students</h3>
                   </div>
-                  <div class="col-sm-offset-6 col-sm-1">
-                    <a href="printry2.php"><button class="btn btn-primary" align="left" style="font-family: mySecondFont;"> Print</button></a>
+                  <div class="col-md-offset-5 col-md-2">
+                    <a href="printry2.php"><button class="btn btn-primary" style="font-family: mySecondFont;" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                   </div>
                 </div>
                 <h3 align="left" style="font-family: myFirstFont;"><?php echo $scn[0]; ?></h3><br>
 
                 <div class="table-responsive">
-                  <table class="table table-hover tablecenter" data-paging="true" id="studenttb" style="background-color:#fff;">
+                  <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" id="studenttb" style="background-color:#fff;">
                     <thead>
                     <tr>
                       <th>Student ID</th>

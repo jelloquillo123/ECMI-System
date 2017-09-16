@@ -91,7 +91,7 @@ ON student.account_id=account.account_id");
                   <div class="well" style="background-color: white;">
                   <div class="row">
                     <div class="col-lg-4" style="padding-top:15px;">
-                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                      <a href="admin_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
                     </div>
                     <div class="col-lg-8 text-center" style="padding-top: 15px;">
                         <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
@@ -215,7 +215,7 @@ ON student.account_id=account.account_id");
   </div> 
 
   <div class="table-responsive">
-  <table class="table table-hover tablecenter" data-paging="true" id="studenttb" style="background-color:#fff;">
+  <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" id="studenttb" style="background-color:#fff;">
   <thead>
     <tr>
     <th>Student ID</th>

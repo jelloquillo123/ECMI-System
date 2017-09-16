@@ -116,12 +116,12 @@
         
           <div class="tab-content">
 
-            <div role="tabpanel" class="tab-pane active light-green lighten-5" id="div2">
+            <div role="tabpanel" class="tab-pane active" id="div2">
               <div class="row" style="padding-top: 20px;">
                 <div class="col-md-offset-3 col-md-6">
                   <div class="well">
                     <div class="row" style="font-family: myFirstFont;">
-                      <div class="col-md-6">
+                      <div class="col-md-6">                         
                         <h3 align="left" >Add Participating School</h3>
                       </div>
                     </div>
@@ -204,7 +204,7 @@
               </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane" id="div3">
+            <div role="tabpanel" class="tab-pane fade" id="div3">
               <div class="row" style="padding-top: 20px;">
                 <div class="col-md-offset-1 col-md-10">
                   <div class="well">
@@ -212,78 +212,87 @@
                       <div class="col-md-5">
                         <h3 align="left">List of Participating Schools</h3>
                       </div>
+                      <div class="col-md-offset-5 col-md-2" id="btn-plcmnt1">
+                        <a href="printry.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
+                      </div>
                     </div>
                     <br />
 
-                    <!-- <!-- Modal -->
-                   <!--  <div class="modal fade" id="edit" role="dialog">
-                      <div class="modal-dialog modal-md">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title" style="font-family: roboto;">Edit School</h4>
-                          </div>
+                   <!-- Modal -->
+  <div class="modal fade" id="edit" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="font-family: myFirstFont;">Edit School</h4>
+        </div>
+        <div class="modal-body">
+        <div class="container-fluid">
+        <form class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="stud_id">School Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="stud_id" value="stud_id" name="stud_id">
+            </div>
+          </div>
+        <select name="diocese" id="diocse" class="form-control input-md x">
+          <?php
+          $i=1;
+          while($dion=mysqli_fetch_row($dio)){
+            echo '
+                  <option value="'.$dion[0].'">Diocese of '.$dion[1].'</option>
+                  ';
+              $i=$i+1;
+          }
+          ?>
+        </select>
 
-                          <div class="modal-body">
-                            <div class="container-fluid" style="height: 500px;">
-                              <div class="row">
-                                <div class="col-md-12">
-                              <form method="POST">
-                                <div class="form-group">
-                                  <label class="control-label col-md-3" for="lname">School Name:</label>
-                                  <div class="col-md-8">
-                                    <input type="text" class="form-control" id="lname" name="ulname">
-                                  </div>
-                                </div>
-  
-                                    <div class="form-group">
-                                <label class="control-label col-md-2" for="diocese">Diocese:</label>
-                                <div class="col-md-9" style="padding-left: 30px;">
-                                  <select name="diocese" id="diocese" class="form-control">
-                                          <?php
-                                          $i=1;
-                                          while($dion=mysqli_fetch_row($dio)){
-                                          ?>
-                                          <option value="<?php echo $dion[0] ?>">Diocese of <?php echo $dion[1]?></option>
-                                          <?php
-                                          $i=$i+1;
-                                          }
-                                          ?>
-                                  </select> 
-                                </div>
-                              </div>
-                                 </form> 
-                                </div>
-                              </div>
-                            </div>
-                                    <!-- <div class="btn-group">
-                                      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" name="diocese">Diocese <span class="caret"></span>
-                                      </button>
-                                      <ul class="dropdown-menu scrollable-menu" role="menu">
-                                      <?php
-                                      $i=1;
-                                      while($dion=mysqli_fetch_row($dio)){
-                                      ?>
-                                        <li><input type="radio" id="diocs_name<?php echo $i; ?>" name="diocese_name" value="<?php echo $dion[0]?>"><label for="diocs_name<?php echo $i; ?>">
-                                        Diocese of <?php echo $dion[1]?></label></li>
-                                        <?php
-                                        $i=$i+1;
-                                        }
-                                        ?>-->
-                            <!--   </div>
-                          
+        <h3 align="center">School Coordinator</h3>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="lname">Last Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="lname" name="lname">
+            </div>
+          </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="fname">First Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="fname" name="fname">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="mname">Middle Name:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="mname" name="mname">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="uname">Username:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="uname" name="uname">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="pword">Password:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="pword" name="pword">
+            </div>
+        </div>
 
-                          <div class="modal-footer">
-                            <input type="submit" name="save" class="btn btn-md btn-primary" align="center" value="Save">
-                            <button type="button" class="btn btn-default red" data-dismiss="modal">Close</button>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
+        </div>
+        <div class="modal-footer">
+          <input type="submit" name="submit" class="btn btn-primary" align="center" value="Save">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
                     <div class="table-responsive">
-                      <table class="table table-hover tablecenter" data-paging="true" id="schooltb" style="background-color:#fff;">
+                      <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" id="schooltb" style="background-color:#fff;">
                         <thead>
                         <tr>
                           <th>School ID</th>
@@ -300,7 +309,11 @@
                           <th><?php echo $sc[0]?></th>
                           <td><?php echo $sc[1]?></td>
                           <td><?php echo $sc[2]?></td>
-                          <td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>
+
+                          <td><a data-toggle="modal" data-id="<?php echo $to1[0]; ?>" title="edit" href="#edit" class="btn btn-success btn-md move-studid"><span class="glyphicon glyphicon-pencil"></span></a></td>
+
+                          <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
+
                           <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                         </tr>
                         <?php

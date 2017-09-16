@@ -21,7 +21,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
       #login{
@@ -62,7 +62,7 @@
           </div>
           <!--Image Carousel-->
           <div class="well" style="background-color: white;">
-          <h2 align="center" style="font-family: myFirstFont;">Image Slideshow</h2> <br>
+          <h2 align="center" style="font-family: myFirstFont;">Activities Slideshow</h2> <br>
           <div id="images" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -135,7 +135,7 @@
         <div class="well">
           <h2>Contact Us</h2>
           <p>
-          MR. EDMUNDO H. RUGA – Regional Coordinator <br>C/o CBCP Bldg., 470 Gen. Luna Street 1002 Intramuros, Manila <br>Tel #: 527-4135 / 527-4142 Fax #: 527-9568 <br>E-Mail: ecmiluzon97@yahoo.com
+          MR. EDMUNDO H. RUGA – Regional Coordinator <br>C/o CBCP Bldg., 470 Gen. Luna Street 1002 Intramuros, Manila <br><b>Tel #</b>: 527-4135 / 527-4142 Fax #: 527-9568 <br><b>E-Mail:</b> ecmiluzon97@yahoo.com
           </p>
           <br><br>
           <a align="left" href="about.php" class="btn btn-primary btn-sm" role="button">About the Program!</a>
