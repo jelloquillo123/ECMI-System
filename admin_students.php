@@ -148,42 +148,28 @@ ON student.account_id=account.account_id");
         <div class="container-fluid">
         <form class="form-horizontal" method="POST">
         <div class="form-group">
-            <label class="control-label col-sm-3" for="stud_id">Student ID:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="stud_id" value="stud_id" name="stud_id">
-            </div>
-          </div>
-        <div class="form-group">
             <label class="control-label col-sm-3" for="lname">Last Name:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="lname" name="lname">
+              <input type="text" class="form-control" id="lname" name="ulname">
             </div>
           </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="fname">First Name:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="fname" name="fname">
+              <input type="text" class="form-control" id="fname" name="ufname">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="mname">Middle Name:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="mname" name="mname">
+              <input type="text" class="form-control" id="mname" name="umname">
             </div>
         </div>
-            <div class="form-group">
-            <label class="control-label col-md-3" for="age">Age:</label>
-            <div class="col-md-3">
-              <input type="number" class="form-control" id="age" name="age">
-            </div>
-            </div>
-
-        
         <div class="row">
           <div class="col-md-offset-3 col-md-3">
           <div class="form-group">
             <label for="glevel">Grade Level:</label>
-            <select name="glevel" id="glevel" class="form-control input-md">
+            <select name="uglevel" id="glevel" class="form-control input-md">
             <option value="1">Grade 1</option>
             <option value="2">Grade 2</option>
             <option value="3">Grade 3</option>
@@ -201,7 +187,7 @@ ON student.account_id=account.account_id");
           <div class="col-md-offset-1 col-md-3">
           <div class="form-group">
             <label for="gender">Gender:</label>
-            <select name="gender" id="gender" class="form-control input-md">
+            <select name="ugender" id="gender" class="form-control input-md">
             <option value="male">Male</option>
             <option value="female">Female</option>
             </select>
@@ -210,18 +196,10 @@ ON student.account_id=account.account_id");
           
         </div>
         
-        
-        
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="uname">Username:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="uname" name="uname">
-            </div>
-        </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="pword">Password:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="pword" name="pword">
+              <input type="text" class="form-control" id="pword" name="upword">
             </div>
         </div>
 

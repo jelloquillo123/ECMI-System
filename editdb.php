@@ -1,4 +1,6 @@
 <?php
+require 'connect.php';
+$username=$_SESSION['username'];
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
 FROM school
 INNER JOIN diocese
@@ -16,10 +18,9 @@ if(isset($_POST['submit']))
   $u2 = $_POST['ufname'];
   $u3 = $_POST['umname'];
   $u4 = $_POST['uglevel'];
-  $u5 = $_POST['ugender'];         
-  $u6 = $_POST['uage'];
+  $u5 = $_POST['ugender'];
   mysqli_query($db,"UPDATE student 
-    SET lname='$u1', fname='$u2', mname='$u3', g_level='$u4', gender='$u5', age='$u6'
+    SET lname='$u1', fname='$u2', mname='$u3', g_level='$u4', gender='$u5'
     WHERE stud_id='$id'");
         echo "<script>
         alert('Successfully Updated.');
@@ -27,8 +28,6 @@ if(isset($_POST['submit']))
         </script>";
 }
 
-?>
-<?php
 //selecting data associated with this particular id
 $result = mysqli_query($db, "SELECT * FROM student WHERE stud_id=$id");
  
@@ -39,6 +38,5 @@ $mname=$res[2];
 $lname=$res[3];
 $g_level=$res[4];
 $gender=$res[6];
-$age=$res[7];
 }
 ?>

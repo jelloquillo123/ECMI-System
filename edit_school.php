@@ -118,9 +118,9 @@
           <h3 align="left" id="edit_header">Edit School</h3>
             <form class="form-horizontal" method="POST">
               <div class="form-group">
-                <label class="control-label col-sm-3" for="lname">Name of School:</label>
+                <label class="control-label col-sm-3" for="nsch">Name of School:</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="lname" name="ulname" value="<?php echo $lname ?>" required>
+                  <input type="text" class="form-control" id="nsch" name="nsch" value="<?php echo $lname ?>" required>
                 </div>
               </div>
               <div class="form-group">

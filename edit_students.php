@@ -1,7 +1,7 @@
 <?php
   session_start();
   require 'connect.php';
-  require 'editdb.php'
+  require 'editdb.php';
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
 
@@ -142,12 +142,6 @@
       <input type="text" class="form-control" id="pword" name="upword">
     </div>
   </div>-->
-   <div class="form-group">
-    <label class="control-label col-sm-3" for="age">Age:</label>
-    <div class="col-sm-8">
-      <input type="number" class="form-control" id="age" name="uage" min="4" max="20" maxlength="2" value="<?php echo $age ?>" required>
-    </div>
-  </div>
 
 <div class="col-md-offset-2 col-md-3">
           <div class="form-group">

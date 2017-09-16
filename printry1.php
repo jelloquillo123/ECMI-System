@@ -727,7 +727,7 @@ $username = ($_SESSION['username']);
     <link rel="stylesheet" type="text/css" href="stylesdbms.css">
 </head>
 
-<body onload = "">
+<body onload = "prints();">
 
       <div class="table-responsive">
       <div class="container-fluid">

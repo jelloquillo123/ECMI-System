@@ -124,7 +124,14 @@
         <div class="form-group">
             <label for="grdlvl">Grade Level</label>
             <select name="grdlvl" id="grde_lvl" class="form-control input-md">
-            <option value=<?php echo $_POST['grdlvl']; ?>><?php echo 'Grade'." ".$_POST['grdlvl']; ?></option>
+            <?php
+            for($i=0;$i<11;$i++){
+            ?>
+            <option value="<?php echo $i[0];?>">Grade <?php echo $i[0];?></option>
+            <?php
+            }
+            ?>
+            <!--<option value=<?php /*echo $_POST['grdlvl']; ?>><?php echo 'Grade'." ".$_POST['grdlvl']; */?></option>
             <option value="1">Grade 1</option>
             <option value="2">Grade 2</option>
             <option value="3">Grade 3</option>
@@ -135,7 +142,7 @@
             <option value="8">Grade 8</option>
             <option value="9">Grade 9</option>
             <option value="10">Grade 10</option>
-            <option value="11">Grade 11</option>
+            <option value="11">Grade 11</option>-->
             </select>
           </div>
         </div>
@@ -439,8 +446,11 @@ $qs9=mysqli_fetch_row($qt9);
   </div>
 </div>
 </div>
-<a href="edit_questions.php"><button class="btn btn-primary btn-xs green" name="save">Save</button></a>   
+<button class="btn btn-primary btn-xs green" name="save">Save</button>   
 <?php
+}
+if(isset($_POST['save'])){
+  
 }
 ?>
       </div>
