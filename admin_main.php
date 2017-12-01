@@ -133,7 +133,7 @@
                           <div class="form-group">
                             <label class="control-label col-md-3" for="school_name">Name of School:</label>
                             <div class="col-md-9">
-                              <input type="text" class="form-control" id="school_name" name="nschool">
+                              <input type="text" class="form-control" id="school_name" name="nschool" required>
                             </div>
                           </div>
                             <div class="row">
@@ -142,7 +142,7 @@
                               <div class="form-group">
                                 <label class="control-label col-md-2" for="diocese">Diocese:</label>
                                 <div class="col-md-9" style="padding-left: 30px;">
-                                  <select name="diocese" id="diocese" class="form-control">
+                                  <select name="diocese" id="diocese" class="form-control" required>
                                           <?php
                                           $i=1;
                                           while($dion=mysqli_fetch_row($dio)){
@@ -163,31 +163,31 @@
                           <div class="form-group">
                             <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="coor_fname" name="coor_fname">
+                              <input type="text" class="form-control" id="coor_fname" name="coor_fname" required>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="coor_mname" name="coor_mname">
+                              <input type="text" class="form-control" id="coor_mname" name="coor_mname" required>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="coor_lname" name="coor_lname">
+                              <input type="text" class="form-control" id="coor_lname" name="coor_lname" required>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-3" for="username">Username:</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="username" name="uname">
+                              <input type="text" class="form-control" id="username" name="uname" required>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-sm-3" for="pword">Password:</label>
                             <div class="col-sm-9">
-                              <input type="Password" class="form-control" id="pword" name="pword">
+                              <input type="Password" class="form-control" id="pword" name="pword" required>
                             </div>
                           </div>
                           <div class="form-group">
@@ -213,7 +213,7 @@
                         <h3 align="left">List of Participating Schools</h3>
                       </div>
                       <div class="col-md-offset-5 col-md-2" id="btn-plcmnt1">
-                        <a href="printry.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
+                        <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
                       </div>
                     </div>
                     <br />
@@ -232,10 +232,10 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="stud_id">School Name:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="stud_id" value="stud_id" name="stud_id">
+              <input type="text" class="form-control" id="stud_id" value="stud_id" name="stud_id" required>
             </div>
           </div>
-        <select name="diocese" id="diocse" class="form-control input-md x">
+        <select name="diocese" id="diocse" class="form-control input-md x" required>
           <?php
           $i=1;
           while($dion=mysqli_fetch_row($dio)){
@@ -251,32 +251,32 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="lname">Last Name:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="lname" name="lname">
+              <input type="text" class="form-control" id="lname" name="lname" pattern="[A-Za-z]" required>
             </div>
           </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="fname">First Name:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="fname" name="fname">
+              <input type="text" class="form-control" id="fname" name="fname" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="mname">Middle Name:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="mname" name="mname">
+              <input type="text" class="form-control" id="mname" name="mname" required>
             </div>
         </div>
         
         <div class="form-group">
             <label class="control-label col-sm-3" for="uname">Username:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="uname" name="uname">
+              <input type="text" class="form-control" id="uname" name="uname" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3" for="pword">Password:</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="pword" name="pword">
+              <input type="password" class="form-control" id="pword" name="pword" required>
             </div>
         </div>
 

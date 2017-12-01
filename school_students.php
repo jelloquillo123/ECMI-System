@@ -129,25 +129,25 @@
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="studnum">Student Number:</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="studnum" name="studnum">
+                      <input type="number" class="form-control" id="studnum" name="studnum" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="lname">Last Name:</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="lname" name="lname">
+                      <input type="char" class="form-control" id="lname" name="lname" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="fname">First Name:</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="fname" name="fname">
+                      <input type="text" class="form-control" id="fname" name="fname" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="mname">Middle Name:</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="mname" name="mname">
+                      <input type="text" class="form-control" id="mname" name="mname" required>
                     </div>
                   </div>
                   <!--<div class="form-group">
@@ -165,14 +165,14 @@
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="bday">Birthdate:</label>
                     <div class="col-sm-8">
-                      <input type="date" class="form-control" id="bday" name="bday">
+                      <input type="date" class="form-control" id="bday" name="bday" required>
                     </div>
                   </div>
 
                     <div class="col-md-offset-2 col-md-3">
                       <div class="form-group">
                         <label for="glevel">Grade Level:</label>
-                        <select name="glevel" id="glevel" class="form-control input-md">
+                        <select name="glevel" id="glevel" class="form-control input-md" required>
                         <?php
                         $num=1;
                         for($i=0;$i<10;$i++){

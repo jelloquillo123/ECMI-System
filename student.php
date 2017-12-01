@@ -39,7 +39,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!--External CSS-->
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
     <!-- Custom CSS -->
     <style>
 
@@ -66,7 +66,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="school_main.php">Student</a>
+                <a class="navbar-brand" href="student.php">Student</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -146,7 +146,8 @@
                                                         ?>
                                                     <div class="row">
                                                       <div class="col-sm-offset-4 col-sm-4 ">
-                                                        <a href="PTF.php" class="btn btn-primary btn-md" align="center" disabled>Start SDOFP Testing</a>
+                                                      
+                                                    <button class="btn btn-primary btn-md" align="center" disabled>Start SDOFP Testing</a>
                                                       </div>
                                                     </div>
                                                     <?php

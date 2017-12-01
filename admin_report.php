@@ -3,6 +3,7 @@
   require 'connect.php';
   require 'admin_schoolsdb.php';
 
+
 ?>
 <html lang="en">
   <head>
@@ -119,7 +120,7 @@
               <div class="col-md-offset-2 col-md-6">
                 <form method="POST">
                 <div class="form-group" id="form-group-align">
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                     
                     <select name="diocese" id="diocse" class="form-control input-md x">
                       <?php
@@ -135,6 +136,9 @@
                   </div>
                   <div class="col-md-3">
                     <input type="submit" class="btn btn-primary btn-md" align="center" name="medsubmit" value = "Select Diocese">
+                  </div>
+                  <div class="col-md-3">
+                    <a href="admin_report_print.php" class="btn btn-primary"> PRINT <span class="glyphicon glyphicon-print"></span></a>
                   </div>
                 </div>
                </form>
@@ -194,6 +198,7 @@
                       ON diocese.diocese_id=school.diocese_id
                       WHERE diocese.diocese_id='$_POST[diocese]'");
                      
+                      $_SESSION['diocese']=$_POST['diocese'];
 
                      while($school=mysqli_fetch_row($school_sql))
                      {   

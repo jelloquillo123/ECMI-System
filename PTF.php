@@ -86,7 +86,7 @@ while($pp=mysqli_fetch_assoc($pare))
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="styles(sdofp).css">
+    <link rel="stylesheet" href="stylessdofp.css">
 
     <style type="text/css">
     .content_body{
@@ -107,25 +107,17 @@ while($pp=mysqli_fetch_assoc($pare))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="school_main.php">School</a>
+                <a class="navbar-brand" href="student.php">Student</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                   <li>
-                      <a href="school_students.php">Students</a>
-                  </li>
-                  <li>
-                      <a href="school_main.php"> Reports</a>
-                  </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <p class="navbar-text" style="color: #f5f5f5;"><?php echo $stud_det[2]." "; echo $stud_det[3]." "; echo $stud_det[1]?></p>
-                </li>
-                  <li class="button">
-                    <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
-                  </li>
+                    <p class="navbar-text" style="color: #f5f5f5;"><?php echo $stud_det[1]." ".$stud_det[2]." ".$stud_det[3] ?></p>
+                      <li class="button">
+                        <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
+                      </li>
                 </ul>
               </div>
             <!-- /.navbar-collapse -->
@@ -168,7 +160,7 @@ if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
 {
 ?>
 	<!--Pre-Awareness Testing Form -->
-  <div class="container-fluid content_body" style="font-family:mySecondFont;" align="center">
+  <div class="container-fluid content_body" style="font-family:mySecondFont;">
     <div class="row">
     <div class="col-md-offset-1 col-md-10 col-md-offset-1">
 
@@ -209,7 +201,7 @@ if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
           <div class="form-group">
           <div class="radio">
             <label for="parentgender">Magulang na nagtatrabaho sa ibang bansa(Tatay/Nanay/Pareho):</label>
-            <select name="parent" id="parentgender" class="form-control input-sm">
+            <select name="parent" id="parentgender" class="form-control input-sm" required>
             <option value="">Pumili...</option>
             <option value="nanay">Nanay</option>
             <option value="tatay">Tatay</option>
@@ -221,7 +213,7 @@ if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
       <div class="col-md-6">
           <div class="form-group">
             <label for="parent_country">Saang bansa nagtatrabaho:</label>
-            <select name="country" id="parent_country" class="form-control input-sm">
+            <select name="country" id="parent_country" class="form-control input-sm" required>
             <option value="" >Pumili...</option>
             <?php
             while($res=mysqli_fetch_row($cou)){
@@ -238,7 +230,7 @@ if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
       <div class="col-md-6">
           <div class="form-group">
             <label for="parent_work">Anong trabaho:</label>
-            <select name="work" id="parent_work" class="form-control input-sm">
+            <select name="work" id="parent_work" class="form-control input-sm" required>
             <option value="">Pumili</option>
             <?php while($p=mysqli_fetch_row($par)){
             ?>
@@ -252,7 +244,7 @@ if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
       <div class="col-md-6">
           <div class="form-group">
             <label for="duration">Ilang taon ng nagtatrabaho sa ibang bansa:</label>
-            <select name="duration" id="duration" class="form-control input-sm">
+            <select name="duration" id="duration" class="form-control input-sm" required>
             <option value="">Pumili...</option>
             <option value="1">1-3 years</option>
             <option value="2">4-6 years</option>
@@ -268,7 +260,7 @@ if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
     <div class="col-md-6">
             <div class="form-group">
             <label for="when">Gaano kadalas umuwi:</label>
-            <select name="when" id="when" class="form-control input-sm">
+            <select name="when" id="when" class="form-control input-sm" required>
             <option value="">Pumili...</option>
             <option value="1">1 beses sa isang taon</option>
             <option value="2">2 beses sa isang taon</option>

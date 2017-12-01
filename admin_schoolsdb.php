@@ -1,4 +1,6 @@
 <?php
+session_start();
+require 'connect.php';
 $dio=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_name");
 $scool=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.diocese_name 
        FROM school
@@ -7,7 +9,7 @@ $scool=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.dioc
 if(isset($_POST['submit']))
   {
     $s1 = $_POST['nschool'];
-    $s2 = $_POST['diocese_name'];
+    $s2 = $_POST['diocese'];
     $s3 = $_POST['uname'];
     $s4 = $_POST['pword'];
     $s5 = $_POST['coor_fname'];
@@ -38,6 +40,6 @@ if(isset($_POST['submit']))
        VALUES ('$s3','$s4','2','$coordid')");
      mysqli_query($db,"INSERT INTO coordinator (fname,mname,lname,school_id,account_id) 
        VALUES ('$s5','$s6','$s7','$schid','$coordid')" );
-     header("Location:admin_schools.php");
+     header("Location:admin_main.php");
   }
   ?>
