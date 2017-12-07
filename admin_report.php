@@ -256,12 +256,6 @@ $info1=mysqli_fetch_row($info1_sql);
                               <td>".$info1[16]."</td>
                               <td>".$info1[17]."</td>
                               <td>".$info1[18]."</td>";  
-
-
-
-                           
-
-
                      }
 
               $info_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
@@ -317,15 +311,7 @@ $info=mysqli_fetch_row($info_sql);
                               <td>".$info[16]."</td>
                               <td>".$info[17]."</td>
                               <td>".$info[18]."</td>";   
-            
-
-
 }
-                 
-          
-
-
-
                    ?>  
                     <!-- <tr>
                       <td>GRADE 1</td>
