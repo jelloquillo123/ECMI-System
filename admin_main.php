@@ -212,7 +212,7 @@
                       <div class="col-md-5">
                         <h3 align="left">List of Participating Schools</h3>
                       </div>
-                      <div class="col-md-offset-5 col-md-2" id="btn-plcmnt1">
+                      <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
                         <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
                       </div>
                     </div>
