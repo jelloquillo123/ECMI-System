@@ -207,6 +207,7 @@
 $info1_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
 (SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Male') as 'male',
 (SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Female') as 'female',
+(SELECT COUNT(*) FROM student WHERE school_id='$school[0]'),
 
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'tatay' AND d.school_id = '$school[0]') as 'tatay',
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'nanay' AND d.school_id = '$school[0]') as 'nanay',
@@ -233,15 +234,13 @@ FROM parent a
 JOIN family b ON b.parent_id = a.parent_id
 JOIN student d ON d.fam_id = b.fam_id
 WHERE d.school_id='$school[0]' ");
-
 $info1=mysqli_fetch_row($info1_sql);
 
                        echo "<tr>
                               <td>".$school[1]."</td>
-                              <td>".$info1[0]."</td>
+                              <td>".$info1[3]."</td>
                               <td>".$info1[1]."</td>
                               <td>".$info1[2]."</td>
-                              <td>".$info1[3]."</td>
                               <td>".$info1[4]."</td>
                               <td>".$info1[5]."</td>
                               <td>".$info1[6]."</td>
@@ -255,7 +254,8 @@ $info1=mysqli_fetch_row($info1_sql);
                               <td>".$info1[14]."</td>
                               <td>".$info1[15]."</td>
                               <td>".$info1[16]."</td>
-                              <td>".$info1[17]."</td>";  
+                              <td>".$info1[17]."</td>
+                              <td>".$info1[18]."</td>";  
 
 
 
@@ -267,6 +267,7 @@ $info1=mysqli_fetch_row($info1_sql);
               $info_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
 (SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Male') as 'male',
 (SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Female') as 'female',
+(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]'),
 
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'tatay' AND e.diocese_id = '$_POST[diocese]') as 'tatay',
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'nanay' AND e.diocese_id = '$_POST[diocese]') as 'nanay',
@@ -298,10 +299,9 @@ $info=mysqli_fetch_row($info_sql);
 
                        echo "<tr>
                               <td><b>TOTAL:</b> </td>
-                              <td>".$info[0]."</td>
+                              <td>".$info[3]."</td>
                               <td>".$info[1]."</td>
                               <td>".$info[2]."</td>
-                              <td>".$info[3]."</td>
                               <td>".$info[4]."</td>
                               <td>".$info[5]."</td>
                               <td>".$info[6]."</td>
@@ -315,7 +315,8 @@ $info=mysqli_fetch_row($info_sql);
                               <td>".$info[14]."</td>
                               <td>".$info[15]."</td>
                               <td>".$info[16]."</td>
-                              <td>".$info[17]."</td>";   
+                              <td>".$info[17]."</td>
+                              <td>".$info[18]."</td>";   
             
 
 
