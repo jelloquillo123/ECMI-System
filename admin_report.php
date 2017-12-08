@@ -117,11 +117,12 @@
               <div class="col-md-4">
                 <h3 align="left" id="header_table">Baseline Data Summary Results</h3>
               </div>
-              <div class="col-md-offset-2 col-md-6">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
                 <form method="POST">
-                <div class="form-group" id="form-group-align">
+                
                   <div class="col-md-6">
-                    
                     <select name="diocese" id="diocse" class="form-control input-md x">
                       <?php
                       $i=1;
@@ -140,7 +141,7 @@
                   <div class="col-md-3">
                     <a href="admin_report_print.php" class="btn btn-primary"> PRINT <span class="glyphicon glyphicon-print"></span></a>
                   </div>
-                </div>
+                
                </form>
               </div>
             </div>
@@ -378,7 +379,18 @@ $info=mysqli_fetch_row($info_sql);
           </div>
         </div>
       </div>
+      <div class="col-md-12">
+        <div class="well">
+          <h3>Significant Findings</h3>
+          <p>1. Top 3 schools with the biggest OFW Sons and Daughters enrolees:</p>
+          <p>2. Male or Female OFW Sons has the highest percentage</p>
+          <p>3. School with highest number of Male OFW students:</p>
+          <p>4. School with highest number of Female OFW students:</p>
+          <p>5. Father working abroad percentage: Mother working abroad percentage:</p>
+        </div>
+      </div>
     </div>
+
 
 
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
