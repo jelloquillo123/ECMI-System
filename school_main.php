@@ -8,6 +8,92 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      var widthdata=350;
+      var heightdata=300;
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(country);
+      google.charts.setOnLoadCallback(yearsofstay);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Male', <?php echo $totm1[0];?>],
+          ['Female', <?php echo $totf1[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of SDOFP Population Gender',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+      function country() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Asia', <?php echo $cnr1[0];?>],
+          ['Europe', <?php echo $eur1[0];?>],
+          ['North America', <?php echo $nar1[0];?>],
+          ['Oceania', <?php echo $ocr1[0];?>],
+          ['Others', <?php echo $otr1[0];?>],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Country OFW Distribution',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('country'));
+        chart.draw(data, options);
+      }
+      function yearsofstay() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['1-3 years', <?php echo $ytr1[0];?>],
+          ['4-6 years', <?php echo $yrr1[0];?>],
+          ['7-10 years', <?php echo $yer1[0];?>],
+          ['11-15 years', <?php echo $yqr1[0];?>],
+          ['16-20 years', <?php echo $ywr1[0];?>],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Years of Stay of OFW',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('yearsofstay'));
+        chart.draw(data, options);
+      }
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -384,6 +470,21 @@
                   </table>
                 </div>
               </div>
+              <div class="well">
+                <h3 align="center">Significant Findings</h3><hr>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-3">
+                    <div id="chart_div"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="country"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="yearsofstay"></div>
+                  </div>
+
+              </div>
+            </div>
             </div>
           </div>
         </div>

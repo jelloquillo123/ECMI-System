@@ -112,110 +112,23 @@ ON student.account_id=account.account_id");
     <!--Table Results -->
     
     <div class="row">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="well">
         <div class="row">
-        <div class="col-sm-5" style="font-family: myFirstFont;">
+        <div class="col-md-5" style="font-family: myFirstFont;">
         <h3 >List of Students</h3>
         </div>
-        <div class="col-sm-offset-5 col-sm-2" style="padding-left: 100px;">
+        <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
         <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
-        <!--Dropdown Sort -->
-        <div class="dropdown">
-  <br/><br/>
-  <!--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort by
-  <span class="caret"></span></button>
-  -->
-  <ul class="dropdown-menu">
-  
-    <li>School</li>
-    <li>Diocese</li>
-  </ul>
-</div>
+
         </div>
         </div>
       <br />
 
-<!-- Modal -->
-  <div class="modal fade" id="edit" role="dialog">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="font-family: myFirstFont;">Edit Student</h4>
-        </div>
-        <div class="modal-body">
-        <div class="container-fluid">
-        <form class="form-horizontal" method="POST">
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="lname">Last Name:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="lname" name="ulname">
-            </div>
-          </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="fname">First Name:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="fname" name="ufname">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="mname">Middle Name:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="mname" name="umname">
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-md-offset-3 col-md-3">
-          <div class="form-group">
-            <label for="glevel">Grade Level:</label>
-            <select name="uglevel" id="glevel" class="form-control input-md">
-            <option value="1">Grade 1</option>
-            <option value="2">Grade 2</option>
-            <option value="3">Grade 3</option>
-            <option value="4">Grade 4</option>
-            <option value="5">Grade 5</option>
-            <option value="6">Grade 6</option>
-            <option value="7">Grade 7</option>
-            <option value="8">Grade 8</option>
-            <option value="9">Grade 9</option>
-            <option value="10">Grade 10</option>
-            </select>
-          </div>
-        </div>
 
-          <div class="col-md-offset-1 col-md-3">
-          <div class="form-group">
-            <label for="gender">Gender:</label>
-            <select name="ugender" id="gender" class="form-control input-md">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            </select>
-          </div>
-        </div>
-          
-        </div>
-        
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="pword">Password:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="pword" name="upword">
-            </div>
-        </div>
-
-        </div>
-        <div class="modal-footer">
-          <input type="submit" name="submit" class="btn btn-primary" align="center" value="Save">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div> 
 
   <div class="table-responsive">
-  <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" id="studenttb" style="background-color:#fff;">
+  <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
   <thead>
     <tr>
     <th>Student ID</th>
