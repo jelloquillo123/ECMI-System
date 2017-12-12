@@ -990,10 +990,31 @@
         </div>
        </div>
 
+<?php
 
+$resm=$totm1[0]/$cu1[0]*100;
+$resf=$totf1[0]/$cu1[0]*100;
+
+
+
+
+?>
+      <div class="col-md-12">
+        <div class="well">
+          <h3>Significant Findings</h3>
+          <p>1. <?php echo round($resm,2); ?>% are male</p>
+          <p>2. <?php echo round($resf,2); ?>% are female</p>
+          <p>3. School with highest number of Male OFW students:</p>
+          <p>4. School with highest number of Female OFW students:</p>
+          <p>5. Father working abroad percentage: Mother working abroad percentage:</p>
+        </div>
+      </div>
 
 <!--End of Container-Fluid-->
     </div>
+    
+    
+
 
 
 
