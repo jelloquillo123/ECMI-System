@@ -20,10 +20,24 @@
       google.charts.setOnLoadCallback(drawChart);
       google.charts.setOnLoadCallback(country);
       google.charts.setOnLoadCallback(yearsofstay);
+      google.charts.setOnLoadCallback(parent);
+      google.charts.setOnLoadCallback(parentjob);
+      google.charts.setOnLoadCallback(Q1);
+      google.charts.setOnLoadCallback(Q2);
+      google.charts.setOnLoadCallback(Q3);
+      google.charts.setOnLoadCallback(Q4);
+      google.charts.setOnLoadCallback(Q5);
+      google.charts.setOnLoadCallback(Q6);
+      google.charts.setOnLoadCallback(Q7);
+      google.charts.setOnLoadCallback(Q8);
+      google.charts.setOnLoadCallback(Q9);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
+
+
+
       function drawChart() {
 
         // Create the data table.
@@ -45,6 +59,8 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+
+
       function country() {
 
         // Create the data table.
@@ -69,6 +85,8 @@
         var chart = new google.visualization.PieChart(document.getElementById('country'));
         chart.draw(data, options);
       }
+
+
       function yearsofstay() {
 
         // Create the data table.
@@ -91,6 +109,271 @@
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('yearsofstay'));
+        chart.draw(data, options);
+      }
+
+
+      function parent() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Mother', <?php echo $pdf2[0];?>],
+          ['Father',<?php echo $psm1[0];?>],
+          ['Both', <?php echo $pnr1[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Parents OFW',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('parent'));
+        chart.draw(data, options);
+      }
+
+
+      function parentjob() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Landbased', <?php echo $lbm1[0];?>],
+          ['Seabased',<?php echo $sbm1[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Parents OFW',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('parentjob'));
+        chart.draw(data, options);
+      }
+      
+
+      function Q1() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s1[0]; ?>],
+          ['B',<?php echo $s2[0];?>],
+          ['C',<?php echo $s3[0];?>],
+          ['D',<?php echo $s4[0];?>],
+          ['E',<?php echo $s5[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 1',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q1'));
+        chart.draw(data, options);
+      }
+
+
+      function Q2() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s6[0]; ?>],
+          ['B',<?php echo $s7[0];?>],
+          ['C',<?php echo $s8[0];?>],
+          ['D',<?php echo $s9[0];?>],
+          ['E',<?php echo $s10[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 2',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q2'));
+        chart.draw(data, options);
+      }
+
+      function Q3() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s11[0]; ?>],
+          ['B',<?php echo $s12[0];?>],
+          ['C',<?php echo $s13[0];?>],
+          ['D',<?php echo $s14[0];?>],
+          ['E',<?php echo $s15[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 3',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q3'));
+        chart.draw(data, options);
+      }
+
+
+      function Q4() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s16[0]; ?>],
+          ['B',<?php echo $s17[0];?>],
+          ['C',<?php echo $s18[0];?>],
+          ['D',<?php echo $s19[0];?>],
+          ['E',<?php echo $s20[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 4',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q4'));
+        chart.draw(data, options);
+      }
+
+      function Q5() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s21[0]; ?>],
+          ['B',<?php echo $s22[0];?>],
+          ['C',<?php echo $s23[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 5',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q5'));
+        chart.draw(data, options);
+      }
+
+      function Q6() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s24[0]; ?>],
+          ['B',<?php echo $s25[0];?>],
+          ['C',<?php echo $s26[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 6',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q6'));
+        chart.draw(data, options);
+      }
+
+      function Q7() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s27[0]; ?>],
+          ['B',<?php echo $s28[0];?>],
+          ['C',<?php echo $s29[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 7',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q7'));
+        chart.draw(data, options);
+      }
+
+      function Q8() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s30[0]; ?>],
+          ['B',<?php echo $s31[0];?>],
+          ['C',<?php echo $s32[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 8',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q8'));
+        chart.draw(data, options);
+      }
+
+      function Q9() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['A', <?php echo $s33[0]; ?>],
+          ['B',<?php echo $s34[0];?>],
+          ['C',<?php echo $s35[0];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Question 9',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('Q9'));
         chart.draw(data, options);
       }
     </script>
@@ -470,7 +753,7 @@
                   </table>
                 </div>
               </div>
-              <div class="well">
+              <div class="well" style="height: 720px;">
                 <h3 align="center">Significant Findings</h3><hr>
                 <div class="row">
                   <div class="col-md-offset-1 col-md-3">
@@ -482,9 +765,16 @@
                   <div class="col-md-3">
                     <div id="yearsofstay"></div>
                   </div>
-
+                </div>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-3">
+                    <div id="parent"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="parentjob"></div>
+                  </div>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -985,6 +1275,42 @@
                   </table>
                 </div>
               </div>
+              <div class="well">
+                <h3 align="center">Significant Findings</h3><hr>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-3">
+                    <div id="Q1"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="Q2"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="Q3"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-3">
+                    <div id="Q4"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="Q5"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="Q6"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-3">
+                    <div id="Q7"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="Q8"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="Q9"></div>
+                  </div>
+                </div>                
+              </div>
             </div>
           </div>
         </div>
@@ -999,16 +1325,6 @@ $resf=$totf1[0]/$cu1[0]*100;
 
 
 ?>
-      <div class="col-md-12">
-        <div class="well">
-          <h3>Significant Findings</h3>
-          <p>1. <?php echo round($resm,2); ?>% are male</p>
-          <p>2. <?php echo round($resf,2); ?>% are female</p>
-          <p>3. School with highest number of Male OFW students:</p>
-          <p>4. School with highest number of Female OFW students:</p>
-          <p>5. Father working abroad percentage: Mother working abroad percentage:</p>
-        </div>
-      </div>
 
 <!--End of Container-Fluid-->
     </div>
