@@ -15,41 +15,41 @@ $scn=mysqli_fetch_row($sch);
 
 $school=$scn[2];
 
-$total=mysqli_query($db,"SELECT count('school_id') from student where school_id='1'");
+$total=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'");
 //grade level
-$gr1=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='1'");
-$gr2=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='2'");
-$gr3=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='3'");
-$gr4=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='4'");
-$gr5=mysqli_query($db,"SELECT count('school_id') from student where school_id='$school' and g_level='5'");
-$gr6=mysqli_query($db,"SELECT count('school_id') from student where school_id='$school' and g_level='6'");
-$gr7=mysqli_query($db,"SELECT count('school_id') from student where school_id='$school' and g_level='7'");
-$gr8=mysqli_query($db,"SELECT count('school_id') from student where school_id='$school' and g_level='8'");
-$gr9=mysqli_query($db,"SELECT count('school_id') from student where school_id='$school' and g_level='9'");
-$gr10=mysqli_query($db,"SELECT count('school_id') from student where school_id='$school' and g_level='10'");
+$gr1=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id WHERE student.school_id='$school' AND g_level='1'");
+$gr2=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id WHERE student.school_id='$school' AND g_level='2'");
+$gr3=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id WHERE student.school_id='$school' AND g_level='3'");
+$gr4=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id WHERE student.school_id='$school' AND g_level='4'");
+$gr5=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' and g_level='5'");
+$gr6=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' and g_level='6'");
+$gr7=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' and g_level='7'");
+$gr8=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' and g_level='8'");
+$gr9=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' and g_level='9'");
+$gr10=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' and g_level='10'");
 
 //gender
-$ge1m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='1' AND gender='Male'");
-$ge2m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='2' AND gender='Male'");
-$ge3m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='3' AND gender='Male'");
-$ge4m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='4' AND gender='Male'");
-$ge5m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='5' AND gender='Male'");
-$ge6m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='6' AND gender='Male'");
-$ge7m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='7' AND gender='Male'");
-$ge8m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='8' AND gender='Male'");
-$ge9m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='9' AND gender='Male'");
-$ge10m=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='10' AND gender='Male'");
+$ge1m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='1' AND gender='Male'");
+$ge2m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='2' AND gender='Male'");
+$ge3m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='3' AND gender='Male'");
+$ge4m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='4' AND gender='Male'");
+$ge5m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='5' AND gender='Male'");
+$ge6m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='6' AND gender='Male'");
+$ge7m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='7' AND gender='Male'");
+$ge8m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='8' AND gender='Male'");
+$ge9m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='9' AND gender='Male'");
+$ge10m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='10' AND gender='Male'");
 
-$ge1f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='1' AND gender='Female'");
-$ge2f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='2' AND gender='Female'");
-$ge3f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='3' AND gender='Female'");
-$ge4f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='4' AND gender='Female'");
-$ge5f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='5' AND gender='Female'");
-$ge6f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='6' AND gender='Female'");
-$ge7f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='7' AND gender='Female'");
-$ge8f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='8' AND gender='Female'");
-$ge9f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='9' AND gender='Female'");
-$ge10f=mysqli_query($db,"SELECT count('school_id') FROM student WHERE school_id='$school' AND g_level='10' AND gender='Female'");
+$ge1f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='1' AND gender='Female'");
+$ge2f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='2' AND gender='Female'");
+$ge3f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='3' AND gender='Female'");
+$ge4f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='4' AND gender='Female'");
+$ge5f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='5' AND gender='Female'");
+$ge6f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='6' AND gender='Female'");
+$ge7f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='7' AND gender='Female'");
+$ge8f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='8' AND gender='Female'");
+$ge9f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='9' AND gender='Female'");
+$ge10f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='10' AND gender='Female'");
 
 //PAT ans
 
@@ -1181,11 +1181,12 @@ $s34=mysqli_fetch_row($t34);
 $s35=mysqli_fetch_row($t35);
 
 
-$cu=mysqli_query($db,"SELECT COUNT(stud_id) FROM student WHERE school_id='$school'");
+$cu=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id 
+	where student.school_id='$school'");
 $cu1=mysqli_fetch_row($cu);
-$totm=mysqli_query($db,"SELECT COUNT(stud_id) FROM student WHERE school_id='$school' AND gender='Male'");
+$totm=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where school_id='$school' AND gender='Male'");
 $totm1=mysqli_fetch_row($totm);
-$totf=mysqli_query($db,"SELECT COUNT(stud_id) FROM student WHERE school_id='$school' AND gender='Female'");
+$totf=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id WHERE school_id='$school' AND gender='Female'");
 $totf1=mysqli_fetch_row($totf);
 
 //total
