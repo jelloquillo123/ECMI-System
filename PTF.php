@@ -172,10 +172,7 @@ $fam_cou=$fam_cou+1;
         </div>
       </div>
     </div>
-<?php 
-if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
-{
-?>
+
 	<!--Pre-Awareness Testing Form -->
   <div class="container-fluid content_body" style="font-family:mySecondFont;">
     <div class="row">
@@ -296,31 +293,31 @@ if($stud_det[4] =='1' || $stud_det[4] =='2' || $stud_det[4] =='3')
 
 <?php
 
-$qt1=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='1' ");
+$qt1=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='1' ");
 $qs1=mysqli_fetch_row($qt1);
 
-$qt2=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='2' ");
+$qt2=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='2' ");
 $qs2=mysqli_fetch_row($qt2);
 
-$qt3=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='3' ");
+$qt3=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='3' ");
 $qs3=mysqli_fetch_row($qt3);
 
-$qt4=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='4' ");
+$qt4=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='4' ");
 $qs4=mysqli_fetch_row($qt4);
 
-$qt5=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='5' ");
+$qt5=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='5' ");
 $qs5=mysqli_fetch_row($qt5);
 
-$qt6=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='6' ");
+$qt6=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='6' ");
 $qs6=mysqli_fetch_row($qt6);
 
-$qt7=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='7' ");
+$qt7=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='7' ");
 $qs7=mysqli_fetch_row($qt7);
 
-$qt8=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='8' ");
+$qt8=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='8' ");
 $qs8=mysqli_fetch_row($qt8);
 
-$qt9=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group=$stud_det[4] AND questions.q_num='9' ");
+$qt9=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='9' ");
 $qs9=mysqli_fetch_row($qt9);
 
 ?>
@@ -713,15 +710,7 @@ echo $qs9[4];
     </div>
 </div>
 </form>
-<?php
-}
-else if($stud_det[4] =='4' || $stud_det[4] =='5' || $stud_det[4] =='6')
-{
-?>
-  
-<?php
-}
-?>
+
 
 
 

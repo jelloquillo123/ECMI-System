@@ -22,6 +22,7 @@
       google.charts.setOnLoadCallback(yearsofstay);
       google.charts.setOnLoadCallback(parent);
       google.charts.setOnLoadCallback(parentjob);
+      google.charts.setOnLoadCallback(totg);
       google.charts.setOnLoadCallback(Q1);
       google.charts.setOnLoadCallback(Q2);
       google.charts.setOnLoadCallback(Q3);
@@ -159,6 +160,40 @@
         chart.draw(data, options);
       }
       
+
+    
+      function totg() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Grade 1', <?php echo $jr1[0];?>],
+          ['Grade 2', <?php echo $jr2[0];?>],
+          ['Grade 3', <?php echo $jr3[0];?>],
+          ['Grade 4', <?php echo $jr4[0];?>],
+          ['Grade 5', <?php echo $jr5[0];?>],
+          ['Grade 6', <?php echo $jr6[0];?>],
+          ['Grade 7', <?php echo $jr7[0];?>],
+          ['Grade 8', <?php echo $jr8[0];?>],
+          ['Grade 9', <?php echo $jr9[0];?>],
+          ['Grade 10', <?php echo $jr10[0];?>]
+
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Sons and Daughters of OFW per grade level',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('totg'));
+        chart.draw(data, options);
+      }
+      
+
 
       function Q1() {
 
@@ -772,6 +807,9 @@
                   </div>
                   <div class="col-md-3">
                     <div id="parentjob"></div>
+                  </div>
+                    <div class="col-md-3">
+                    <div id="totg"></div>
                   </div>
                 </div>
               </div>
