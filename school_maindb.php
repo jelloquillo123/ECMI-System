@@ -15,7 +15,7 @@ $scn=mysqli_fetch_row($sch);
 
 $school=$scn[2];
 
-$total=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'");
+$total=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'");
 //grade level
 $gr1=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id WHERE student.school_id='$school' AND g_level='1'");
 $gr2=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id WHERE student.school_id='$school' AND g_level='2'");
@@ -29,27 +29,27 @@ $gr9=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN 
 $gr10=mysqli_query($db,"SELECT count('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' and g_level='10'");
 
 //gender
-$ge1m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='1' AND gender='Male'");
-$ge2m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='2' AND gender='Male'");
-$ge3m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='3' AND gender='Male'");
-$ge4m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='4' AND gender='Male'");
-$ge5m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='5' AND gender='Male'");
-$ge6m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='6' AND gender='Male'");
-$ge7m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='7' AND gender='Male'");
-$ge8m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='8' AND gender='Male'");
-$ge9m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1'AND g_level='9' AND gender='Male'");
-$ge10m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='10' AND gender='Male'");
+$ge1m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='1' AND gender='Male'");
+$ge2m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='2' AND gender='Male'");
+$ge3m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='3' AND gender='Male'");
+$ge4m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='4' AND gender='Male'");
+$ge5m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='5' AND gender='Male'");
+$ge6m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='6' AND gender='Male'");
+$ge7m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='7' AND gender='Male'");
+$ge8m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='8' AND gender='Male'");
+$ge9m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'AND g_level='9' AND gender='Male'");
+$ge10m=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='10' AND gender='Male'");
 
-$ge1f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='1' AND gender='Female'");
-$ge2f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='2' AND gender='Female'");
-$ge3f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='3' AND gender='Female'");
-$ge4f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='4' AND gender='Female'");
-$ge5f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='5' AND gender='Female'");
-$ge6f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='6' AND gender='Female'");
-$ge7f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='7' AND gender='Female'");
-$ge8f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='8' AND gender='Female'");
-$ge9f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='9' AND gender='Female'");
-$ge10f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='1' AND g_level='10' AND gender='Female'");
+$ge1f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='1' AND gender='Female'");
+$ge2f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='2' AND gender='Female'");
+$ge3f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='3' AND gender='Female'");
+$ge4f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='4' AND gender='Female'");
+$ge5f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='5' AND gender='Female'");
+$ge6f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='6' AND gender='Female'");
+$ge7f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='7' AND gender='Female'");
+$ge8f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='8' AND gender='Female'");
+$ge9f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='9' AND gender='Female'");
+$ge10f=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school' AND g_level='10' AND gender='Female'");
 
 //PAT ans
 
@@ -1233,7 +1233,7 @@ INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON stu
 
 $ocr1=mysqli_fetch_row($ocr_1);
 
-$otr_1=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') ");
+$otr_1=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') ");
 $otr1=mysqli_fetch_row($otr_1);
 
 $ytr_1=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent 
@@ -1565,22 +1565,22 @@ $oc8=mysqli_fetch_row($oc_8);
 $oc9=mysqli_fetch_row($oc_9);
 $oc10=mysqli_fetch_row($oc_10);
 
-$ot_1=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='1'");
+$ot_1=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='1'");
 
 
-$ot_2=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND  country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='2'");
+$ot_2=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND  country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='2'");
 
 
-$ot_3=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND  country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='3'");
+$ot_3=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND  country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='3'");
 
 
-$ot_4=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND  country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='4' ");
-$ot_5=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='5' ");
-$ot_6=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='6' ");
-$ot_7=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='7' ");
-$ot_8=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='8' ");
-$ot_9=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='9' ");
-$ot_10=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='1' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='10' ");
+$ot_4=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND  country.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND student.g_level='4' ");
+$ot_5=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='5' ");
+$ot_6=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='6' ");
+$ot_7=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='7' ");
+$ot_8=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='8' ");
+$ot_9=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='9' ");
+$ot_10=mysqli_query($db,"SELECT COUNT(parent_who) FROM parent INNER JOIN family ON parent.parent_id=family.parent_id INNER JOIN student ON student.fam_id=family.fam_id INNER JOIN country on parent.country_id=country.country_id INNER JOIN continent on country.cont_code=continent.cont_code WHERE student.school_id='$school' AND country.cont_code NOT IN('AS', 'EU', 'NA', 'OC')AND student.g_level='10' ");
 
 $ot1=mysqli_fetch_row($ot_1);
 $ot2=mysqli_fetch_row($ot_2);
