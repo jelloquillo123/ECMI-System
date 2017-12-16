@@ -7,6 +7,155 @@
 ?>
 <html lang="en">
   <head>
+    
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      var widthdata=350;
+      var heightdata=300;
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(country);
+      google.charts.setOnLoadCallback(yearsofstay);
+      google.charts.setOnLoadCallback(parent);
+      google.charts.setOnLoadCallback(parentjob);
+     
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+
+
+
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Male', <?php echo $info[1];?>],
+          ['Female', <?php echo $info[2];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of SDOFP Population Gender',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+        chart.draw(data, options);
+      }
+
+
+      function country() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Asia', <?php echo $info[9];?>],
+          ['Europe', <?php echo $info[10];?>],
+          ['North America', <?php echo $info[11];?>],
+          ['Oceania', <?php echo $info[12];?>],
+          ['Others', <?php echo $info[13];?>],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Country OFW Distribution',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('country1'));
+        chart.draw(data, options);
+      }
+
+
+      function yearsofstay() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['1-3 years', <?php echo $info[14];?>],
+          ['4-6 years', <?php echo $info[15];?>],
+          ['7-10 years', <?php echo $info[16];?>],
+          ['11-15 years', <?php echo $info[17];?>],
+          ['16-20 years', <?php echo $info[18];?>],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Years of Stay of OFW',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('yearsofstay1'));
+        chart.draw(data, options);
+      }
+
+
+      function parent() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Mother', <?php echo $info[4];?>],
+          ['Father',<?php echo $info[5];?>],
+          ['Both', <?php echo $info[6];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Parents OFW',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('parent1'));
+        chart.draw(data, options);
+      }
+
+
+      function parentjob() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Data');
+        data.addRows([
+          ['Landbased', <?php echo $info[7];?>],
+          ['Seabased',<?php echo $info[8];?>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Range of Parents OFW',
+                       'width':widthdata,
+                       'height':heightdata,
+                      'pieHole':0.3};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('parentjob1'));
+        chart.draw(data, options);
+      }
+      
+
+      
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -361,9 +510,32 @@ $info=mysqli_fetch_row($info_sql);
                   </table>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
+                  <div class="well" style="height: 720px;">
+                <h3 align="center">Significant Findings</h3><hr>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-3">
+                    <div id="chart_div1"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="country1"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="yearsofstay1"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-3">
+                    <div id="parent1"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div id="parentjob1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
       <div class="col-md-12">
