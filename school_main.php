@@ -202,11 +202,11 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s1[0]; ?>],
-          ['B',<?php echo $s2[0];?>],
-          ['C',<?php echo $s3[0];?>],
-          ['D',<?php echo $s4[0];?>],
-          ['E',<?php echo $s5[0];?>]
+          ['A. Galit', <?php echo $s1[0]; ?>],
+          ['B. Masaya',<?php echo $s2[0];?>],
+          ['C. Malungkot',<?php echo $s3[0];?>],
+          ['D. Walang Naramdaman',<?php echo $s4[0];?>],
+          ['E. Masama ang loob',<?php echo $s5[0];?>]
         ]);
 
         // Set chart options
@@ -228,11 +228,11 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s6[0]; ?>],
-          ['B',<?php echo $s7[0];?>],
-          ['C',<?php echo $s8[0];?>],
-          ['D',<?php echo $s9[0];?>],
-          ['E',<?php echo $s10[0];?>]
+          ['A. Galit', <?php echo $s6[0]; ?>],
+          ['B. Masaya',<?php echo $s7[0];?>],
+          ['C. Malungkot',<?php echo $s8[0];?>],
+          ['D. Walang Naramdaman',<?php echo $s9[0];?>],
+          ['E. Masama ang loob',<?php echo $s10[0];?>]
         ]);
 
         // Set chart options
@@ -253,11 +253,11 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s11[0]; ?>],
-          ['B',<?php echo $s12[0];?>],
-          ['C',<?php echo $s13[0];?>],
-          ['D',<?php echo $s14[0];?>],
-          ['E',<?php echo $s15[0];?>]
+          ['A. Galit', <?php echo $s11[0]; ?>],
+          ['B. Masaya',<?php echo $s12[0];?>],
+          ['C. Malungkot',<?php echo $s13[0];?>],
+          ['D. Walang Naramdaman',<?php echo $s14[0];?>],
+          ['E. Masama ang loob',<?php echo $s15[0];?>]
         ]);
 
         // Set chart options
@@ -279,11 +279,11 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s16[0]; ?>],
-          ['B',<?php echo $s17[0];?>],
-          ['C',<?php echo $s18[0];?>],
-          ['D',<?php echo $s19[0];?>],
-          ['E',<?php echo $s20[0];?>]
+          ['A. Sulat', <?php echo $s16[0]; ?>],
+          ['B. Telepono',<?php echo $s17[0];?>],
+          ['C. Cellphone',<?php echo $s18[0];?>],
+          ['D. Voice Tape',<?php echo $s19[0];?>],
+          ['E. Email',<?php echo $s20[0];?>]
         ]);
 
         // Set chart options
@@ -304,9 +304,9 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s21[0]; ?>],
-          ['B',<?php echo $s22[0];?>],
-          ['C',<?php echo $s23[0];?>]
+          ['A. Masasayang balita tungkol sa pag-aaral at ng pamilya', <?php echo $s21[0]; ?>],
+          ['B. Di magagandang balita tungkol sa pag-aaral at ng pamilya',<?php echo $s22[0];?>],
+          ['C. Humihingi na padalhan ng mga gamit at pera',<?php echo $s23[0];?>]
         ]);
 
         // Set chart options
@@ -327,9 +327,9 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s24[0]; ?>],
-          ['B',<?php echo $s25[0];?>],
-          ['C',<?php echo $s26[0];?>]
+          ['A. Walang trabaho sa Pilipinas', <?php echo $s24[0]; ?>],
+          ['B. Maliit ang kita sa Pilipinas',<?php echo $s25[0];?>],
+          ['C. Penitisyon ng kamag-anak',<?php echo $s26[0];?>]
         ]);
 
         // Set chart options
@@ -350,9 +350,9 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s27[0]; ?>],
-          ['B',<?php echo $s28[0];?>],
-          ['C',<?php echo $s29[0];?>]
+          ['A. Oo', <?php echo $s27[0]; ?>],
+          ['B. Hindi',<?php echo $s28[0];?>],
+          ['C. Di-tiyak',<?php echo $s29[0];?>]
         ]);
 
         // Set chart options
@@ -373,9 +373,9 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s30[0]; ?>],
-          ['B',<?php echo $s31[0];?>],
-          ['C',<?php echo $s32[0];?>]
+          ['A. Oo', <?php echo $s30[0]; ?>],
+          ['B. Hindi',<?php echo $s31[0];?>],
+          ['C. Di-tiyak',<?php echo $s32[0];?>]
         ]);
 
         // Set chart options
@@ -396,9 +396,9 @@
         data.addColumn('string', 'Category');
         data.addColumn('number', 'Data');
         data.addRows([
-          ['A', <?php echo $s33[0]; ?>],
-          ['B',<?php echo $s34[0];?>],
-          ['C',<?php echo $s35[0];?>]
+          ['A. Oo', <?php echo $s33[0]; ?>],
+          ['B. Hindi',<?php echo $s34[0];?>],
+          ['C. Di-tiyak',<?php echo $s35[0];?>]
         ]);
 
         // Set chart options
@@ -1316,35 +1316,35 @@
               <div class="well">
                 <h3 align="center">Significant Findings</h3><hr>
                 <div class="row">
-                  <div class="col-md-offset-1 col-md-3">
+                  <div class="col-md-4">
                     <div id="Q1"></div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div id="Q2"></div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div id="Q3"></div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-offset-1 col-md-3">
+                  <div class="col-md-4">
                     <div id="Q4"></div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div id="Q5"></div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div id="Q6"></div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-offset-1 col-md-3">
+                  <div class="col-md-4">
                     <div id="Q7"></div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div id="Q8"></div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div id="Q9"></div>
                   </div>
                 </div>                

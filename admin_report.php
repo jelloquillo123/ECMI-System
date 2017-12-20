@@ -2,13 +2,11 @@
   session_start();
   require 'connect.php';
   require 'admin_schoolsdb.php';
-
+  require 'admin_reportdb.php';
 
 ?>
 <html lang="en">
-  <head>
-    
-    
+  <head>   
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       var widthdata=350;
@@ -18,11 +16,12 @@
       google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(gendertable);
       google.charts.setOnLoadCallback(country);
       google.charts.setOnLoadCallback(yearsofstay);
       google.charts.setOnLoadCallback(parent);
       google.charts.setOnLoadCallback(parentjob);
+
      
 
       // Callback that creates and populates a data table,
@@ -31,7 +30,7 @@
 
 
 
-      function drawChart() {
+      function gendertable() {
 
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -49,7 +48,7 @@
                       'pieHole':0.3};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+        var chart = new google.visualization.PieChart(document.getElementById('gendertable'));
         chart.draw(data, options);
       }
 
@@ -75,7 +74,7 @@
                       'pieHole':0.3};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('country1'));
+        var chart = new google.visualization.PieChart(document.getElementById('country'));
         chart.draw(data, options);
       }
 
@@ -101,7 +100,7 @@
                       'pieHole':0.3};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('yearsofstay1'));
+        var chart = new google.visualization.PieChart(document.getElementById('yearsofstay'));
         chart.draw(data, options);
       }
 
@@ -125,7 +124,7 @@
                       'pieHole':0.3};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('parent1'));
+        var chart = new google.visualization.PieChart(document.getElementById('parent'));
         chart.draw(data, options);
       }
 
@@ -148,7 +147,7 @@
                       'pieHole':0.3};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('parentjob1'));
+        var chart = new google.visualization.PieChart(document.getElementById('parentjob'));
         chart.draw(data, options);
       }
       
@@ -340,16 +339,6 @@
 
              <?php 
                      
-
-                     if(isset($_POST['medsubmit'])){
-                     $school_sql=mysqli_query($db,"SELECT school.school_id,school.school_name
-                      FROM school 
-                      INNER JOIN diocese 
-                      ON diocese.diocese_id=school.diocese_id
-                      WHERE diocese.diocese_id='$_POST[diocese]'");
-                     
-                      $_SESSION['diocese']=$_POST['diocese'];
-
                      while($school=mysqli_fetch_row($school_sql))
                      {   
 
@@ -407,60 +396,28 @@ $info1=mysqli_fetch_row($info1_sql);
                               <td>".$info1[18]."</td>";  
                      }
 
-              $info_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
-(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Male') as 'male',
-(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Female') as 'female',
-(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]'),
-
-(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'tatay' AND e.diocese_id = '$_POST[diocese]') as 'tatay',
-(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'nanay' AND e.diocese_id = '$_POST[diocese]') as 'nanay',
-(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'pareho' AND e.diocese_id = '$_POST[diocese]') as 'pareho',
-
-(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.job_based = 'LB' AND f.diocese_id = '$_POST[diocese]') as 'LB',
-(SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.job_based = 'LB' AND f.diocese_id = '$_POST[diocese]') as 'SB',
-
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'AS' AND f.diocese_id = '$_POST[diocese]') as 'AS',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'EU' AND f.diocese_id = '$_POST[diocese]') as 'EU',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'NA' AND f.diocese_id = '$_POST[diocese]') as 'NA',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code = 'OC' AND f.diocese_id = '$_POST[diocese]') as 'OC',
-(SELECT COUNT(*) FROM parent a INNER JOIN country b ON b.country_id = a.country_id INNER JOIN family c ON c.parent_id = a.parent_id JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE b.cont_code NOT IN('AS', 'EU', 'NA', 'OC') AND d.school_id = '$_POST[diocese]') as 'OTHERS',
-
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '1' AND f.diocese_id = '$_POST[diocese]') as '1st',
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '2' AND f.diocese_id = '$_POST[diocese]') as '2nd',
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '3' AND f.diocese_id = '$_POST[diocese]') as '3rd',
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '4' AND f.diocese_id = '$_POST[diocese]') as '4th',
-(SELECT COUNT(*) FROM parent a  INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school e ON e.school_id=d.school_id INNER JOIN diocese f ON f.diocese_id=e.diocese_id WHERE  a.years_stay = '5' AND f.diocese_id = '$_POST[diocese]') as '5th'
-
-FROM parent a
-INNER JOIN family b ON b.parent_id = a.parent_id
-INNER JOIN student d ON d.fam_id = b.fam_id
-INNER JOIN school e ON e.school_id=d.school_id
-INNER JOIN diocese f ON f.diocese_id=e.diocese_id
-WHERE f.diocese_id='$_POST[diocese]' ");
-
-$info=mysqli_fetch_row($info_sql);
+              
 
                        echo "<tr>
                               <td><b>TOTAL:</b> </td>
-                              <td>".$info[3]."</td>
-                              <td>".$info[1]."</td>
-                              <td>".$info[2]."</td>
-                              <td>".$info[4]."</td>
-                              <td>".$info[5]."</td>
-                              <td>".$info[6]."</td>
-                              <td>".$info[7]."</td>
-                              <td>".$info[8]."</td>
-                              <td>".$info[9]."</td>
-                              <td>".$info[10]."</td>
-                              <td>".$info[11]."</td>
-                              <td>".$info[12]."</td>
-                              <td>".$info[13]."</td>
-                              <td>".$info[14]."</td>
-                              <td>".$info[15]."</td>
-                              <td>".$info[16]."</td>
-                              <td>".$info[17]."</td>
-                              <td>".$info[18]."</td>";   
-}
+                              <td><b>".$info[3]."</b></td>
+                              <td><b>".$info[1]."</b></td>
+                              <td><b>".$info[2]."</b></td>
+                              <td><b>".$info[4]."</b></td>
+                              <td><b>".$info[5]."</b></td>
+                              <td><b>".$info[6]."</b></td>
+                              <td><b>".$info[7]."</b></td>
+                              <td><b>".$info[8]."</b></td>
+                              <td><b>".$info[9]."</b></td>
+                              <td><b>".$info[10]."</b></td>
+                              <td><b>".$info[11]."</b></td>
+                              <td><b>".$info[12]."</b></td>
+                              <td><b>".$info[13]."</b></td>
+                              <td><b>".$info[14]."</b></td>
+                              <td><b>".$info[15]."</b></td>
+                              <td><b>".$info[16]."</b></td>
+                              <td><b>".$info[17]."</b></td>
+                              <td><b>".$info[18]."</b></td>";   
                    ?>  
                     <!-- <tr>
                       <td>GRADE 1</td>
@@ -513,42 +470,32 @@ $info=mysqli_fetch_row($info_sql);
 
             </div>
           </div>
-                  <div class="well" style="height: 720px;">
-                <h3 align="center">Significant Findings</h3><hr>
-                <div class="row">
+          <div class="well">
+            <h3 align="center">Significant Findings</h3><hr>
+              <div class="row">
                   <div class="col-md-offset-1 col-md-3">
-                    <div id="chart_div1"></div>
+                    <div id="gendertable"></div>
                   </div>
                   <div class="col-md-3">
-                    <div id="country1"></div>
+                    <div id="country"></div>
                   </div>
                   <div class="col-md-3">
-                    <div id="yearsofstay1"></div>
+                    <div id="yearsofstay"></div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-offset-1 col-md-3">
-                    <div id="parent1"></div>
+                    <div id="parent"></div>
                   </div>
                   <div class="col-md-3">
-                    <div id="parentjob1"></div>
+                    <div id="parentjob"></div>
                   </div>
                 </div>
-              </div>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="well">
-          <h3>Significant Findings</h3>
-          <p>1. Top 3 schools with the biggest OFW Sons and Daughters enrolees:</p>
-          <p>2. Male or Female OFW Sons has the highest percentage</p>
-          <p>3. School with highest number of Male OFW students:</p>
-          <p>4. School with highest number of Female OFW students:</p>
-          <p>5. Father working abroad percentage: Mother working abroad percentage:</p>
+          </div>
         </div>
       </div>
     </div>
+
 
 
 
