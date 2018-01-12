@@ -74,8 +74,6 @@ session_start();
     <th>Grade Level</th>
     <th>Gender</th>
     <th>Age</th>
-    <th></th>
-    <th></th>
   </tr>
   </thead>
   <tr>

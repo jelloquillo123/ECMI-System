@@ -13,7 +13,8 @@ $username = ($_SESSION['username']);
   $school=$scn[2];
   $stud=mysqli_query($db,"SELECT stud_id,lname,fname,mname,g_level,gender,age,account_id
   FROM student WHERE school_id='$school'");
-
+  $stud_totalq=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE school_id='$school'");
+  $stud_total=mysqli_fetch_row($stud_totalq);
 
 if(isset($_POST['submit']))
   {

@@ -8,6 +8,8 @@ JOIN school
 ON student.school_id=school.school_id
 JOIN account
 ON student.account_id=account.account_id");
+$total_studentq=mysqli_query($db,"SELECT COUNT(student.stud_id)FROM student");
+$total_student=mysqli_fetch_row($total_studentq);
 ?>
 
 
@@ -116,7 +118,8 @@ ON student.account_id=account.account_id");
       <div class="well">
         <div class="row">
         <div class="col-md-5" style="font-family: myFirstFont;">
-        <h3 >List of Students</h3>
+        <h3>List of Students</h3>
+        <h4>Total number of students = <?php echo $total_student[0]; ?></h4>
         </div>
         <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
         <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>

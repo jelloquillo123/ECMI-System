@@ -214,15 +214,15 @@
                 <div class="row" style="font-family: myFirstFont;">
                   <div class="col-sm-5">
                     <h3 align="left">List of Students</h3>
+                    <h4>Total number of students = <?php echo $stud_total[0]; ?></h4>
                   </div>
                   <div class="col-md-offset-5 col-md-2">
                     <a href="printry2.php"><button class="btn btn-primary" style="font-family: mySecondFont;" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                   </div>
                 </div>
-                <h3 align="left" style="font-family: myFirstFont;"><?php echo $scn[0]; ?></h3><br>
-
+                
                 <div class="table-responsive">
-                  <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" id="studenttb" style="background-color:#fff;">
+                  <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
                     <thead>
                     <tr>
                       <th>Student ID</th>
