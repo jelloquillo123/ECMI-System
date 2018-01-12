@@ -142,8 +142,8 @@
 					<h4>Compose:</h4>
 				</div>
 				<div class="col-sm-8">
-				<textarea class="form-control" name="message" rows="5" placeholder="Enter Message Here . . ." required/></textarea>
-				</div>
+				<textarea class="form-control" name="message" rows="5" required/>Good day! Mr/Mrs. <?php echo $em[2].". ";?>We have information regarding the results of your son/daughter's recent Pre-Awareness test results.</textarea>
+        </div>
 			</div>
 			
 			<div class="row">
