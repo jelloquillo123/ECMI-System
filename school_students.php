@@ -172,7 +172,7 @@
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="email">Parents Email:</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="email" name="email" required>
+                      <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                   </div>
 
