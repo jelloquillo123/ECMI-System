@@ -78,6 +78,8 @@ $fam_cou=$fam_cou+1;
 
      mysqli_query($db,"UPDATE student SET fam_id='$fam_cou' WHERE stud_id='$stud_det[0]'  ");
 
+     mysqli_query($db,"UPDATE student SET t_stat='Taken' WHERE stud_id='$stud_det[0]' ");
+
     
 
     header("Location:student.php");
