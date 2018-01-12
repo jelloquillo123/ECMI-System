@@ -125,7 +125,7 @@
                   </div>
                 </div>
                 <br />
-                <form class="form-horizontal" method="POST">
+                <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST">
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="studnum">Student Number:</label>
                     <div class="col-sm-8">

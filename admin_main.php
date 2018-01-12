@@ -126,7 +126,7 @@
                       </div>
                     </div>
                     <br />
-                    <form class="form-horizontal" method="POST">
+                    <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST">
                       <h4 align="center">School</h4>
                       <div class="row">
                         <div class="col-md-offset-1 col-md-10">     
