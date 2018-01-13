@@ -218,7 +218,7 @@
 
         <div role="tabpanel" class="tab-pane" id="div3">
           <div class="row" style="padding-top: 20px;">
-            <div class="col-md-offset-1 col-md-10">
+            <div class="col-md-12">
               <div class="well">
                 <div class="row" style="font-family: myFirstFont;">
                   <div class="col-sm-5">
