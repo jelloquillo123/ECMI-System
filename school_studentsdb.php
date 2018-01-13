@@ -11,7 +11,7 @@ $username = ($_SESSION['username']);
   WHERE account.username='$username'");
   $scn=mysqli_fetch_row($sch);
   $school=$scn[2];
-  $stud=mysqli_query($db,"SELECT stud_id,lname,fname,mname,g_level,gender,age,account_id
+  $stud=mysqli_query($db,"SELECT stud_id,lname,fname,mname,g_level,gender,age,account_id,email,t_stat
   FROM student WHERE school_id='$school'");
 
 
@@ -24,6 +24,7 @@ if(isset($_POST['submit']))
     $n6 = $_POST['glevel'];
     $n7 = $_POST['gender'];
     $n8 = $_POST['bday'];
+    $n9=$_POST['email'];
     
      
  $studi=mysqli_query($db,"SELECT account_id from account");
@@ -43,8 +44,8 @@ if(isset($_POST['submit']))
      mysqli_query($db,"INSERT INTO account (username,pword,user_id)
         VALUES('$n0','$n0','3')");
 
-     mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age) 
-        VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag')");
+     mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age,email,t_stat) 
+        VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag','$n9','Not taken')");
      echo "<script>
         alert('Successfully Added a Student.');
         window.location.href='school_students.php';
