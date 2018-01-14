@@ -25,7 +25,7 @@ session_start();
   WHERE account.username='$username'");
   $scn=mysqli_fetch_row($sch);
   $school=$scn[2];
-  $stud=mysqli_query($db,"SELECT stud_id,lname,fname,mname,g_level,gender,age
+  $stud=mysqli_query($db,"SELECT stud_id,lname,fname,mname,g_level,gender,age,email,t_stat
   FROM student WHERE school_id='$school'");
 
 
@@ -74,6 +74,8 @@ session_start();
     <th>Grade Level</th>
     <th>Gender</th>
     <th>Age</th>
+    <th>Parents Email</th>
+    <th>Test status</th>
   </tr>
   </thead>
   <tr>
@@ -87,6 +89,8 @@ session_start();
     <td><?php echo $stu[4]; ?></td>
     <td><?php echo $stu[5]; ?></td>
     <td><?php echo $stu[6]; ?></td>
+    <td><?php echo $stu[7]; ?></td>
+    <td><?php echo $stu[8]; ?></td>
   </tr>
   
   <?php

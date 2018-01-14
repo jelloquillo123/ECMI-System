@@ -71,7 +71,7 @@
 
 
 
-    <div class="container-fluid" style="background-color: #00c853; padding-top: 20px; padding-bottom: 20px;">
+    <div class="container-fluid" style="background-color: #00c853; padding-top: 50px; padding-bottom: 20px;">
       <div class="row">
         <!--Banner Main-->
         <div class="col-md-offset-1 col-md-10">
@@ -99,9 +99,49 @@
         </div>
       </div>
 
-	
+	<?php
+
+$qt1=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='1' ");
+$qs1=mysqli_fetch_row($qt1);
+
+$qt2=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='2' ");
+$qs2=mysqli_fetch_row($qt2);
+
+$qt3=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='3' ");
+$qs3=mysqli_fetch_row($qt3);
+
+$qt4=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='4' ");
+$qs4=mysqli_fetch_row($qt4);
+
+$qt5=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='5' ");
+$qs5=mysqli_fetch_row($qt5);
+
+$qt6=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='6' ");
+$qs6=mysqli_fetch_row($qt6);
+
+$qt7=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='7' ");
+$qs7=mysqli_fetch_row($qt7);
+
+$qt8=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='8' ");
+$qs8=mysqli_fetch_row($qt8);
+
+$qt9=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='1' AND questions.q_num='9' ");
+$qs9=mysqli_fetch_row($qt9);
+
+$sql_ans=mysqli_query($db,"SELECT * FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id  WHERE pre_test.stud_id='$id' ");
+$ans=mysqli_fetch_row($sql_ans);
+
+
+?>
+
+
+
+
+
+
+
 		<div class="row">
-			<div class="col-sm-offset-3 col-sm-6">
+			<div class="col-sm-offset-1 col-sm-10">
 				<div class="well">
 					<div class="row">
         				<div class="col-sm-5">
@@ -113,7 +153,7 @@
 		<form method="post">
 					<input type="hidden" name="fromEmail" value="<?php echo $email;?>" required/>
 			<div class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<h4>Email of Receiver:</h4>
 				</div>
 				<div class="col-sm-8">
@@ -122,7 +162,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<h4>Name of Receiver:</h4>
 				</div>
 				<div class="col-sm-8">
@@ -130,7 +170,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<h4>Subject of Email:</h4>
 				</div>
 				<div class="col-sm-8">
@@ -138,18 +178,62 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<h4>Compose:</h4>
 				</div>
 				<div class="col-sm-8">
-				<textarea class="form-control" name="message" rows="5" required/>Good day! Mr/Mrs. <?php echo $em[2].". ";?>We have information regarding the results of your son/daughter's recent Pre-Awareness test results.</textarea>
+				<textarea class="form-control" name="message" rows="9" required/>Good day! Mr/Mrs. <?php echo $em[2].". ";?>We have information regarding the results of your son/daughter's recent Pre-Awareness test results. 
+
+        1. <?php echo $qs1[0];  ?>
+           
+           Answer:<?php echo $ans[2]; ?> 
+        
+        2. <?php echo $qs2[0];  ?>
+
+           Answer:
+
+        
+        3. <?php echo $qs3[0];  ?>
+
+           Answer:
+
+        
+        4. <?php echo $qs4[0];  ?>
+
+           Answer:
+
+        
+        5. <?php echo $qs5[0];  ?>
+
+           Answer:
+
+        
+        6. <?php echo $qs6[0];  ?>
+
+           Answer:
+
+        
+        7. <?php echo $qs7[0];  ?>
+
+           Answer:
+
+        
+        8. <?php echo $qs8[0];  ?>
+
+           Answer:
+
+        
+        9. <?php echo $qs9[0];  ?>
+
+           Answer: 
+
+       </textarea>
         </div>
 			</div>
 			
 			<div class="row">
-			<div class="col-md-offset-4 col-md-4">
-			<br/><br/>
-			<input class="btn btn-md btn-success" type="submit" name="sendEmail" value="Submit">
+			<div class="col-md-offset-4 col-md-4" style="padding-top: 50px;">
+			<input class="btn btn-lg btn-success" type="submit" name="sendEmail" value="Submit">
 			</div>
 			</div>
 			</div>
