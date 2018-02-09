@@ -1,7 +1,7 @@
 <?php
   session_start();
   require 'connect.php';
-  require 'editdb.php';
+  require 'editdb_admin.php';
 
 ?>
 <!DOCTYPE html>

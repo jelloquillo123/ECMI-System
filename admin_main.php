@@ -310,11 +310,12 @@
                           <td><?php echo $sc[1]?></td>
                           <td><?php echo $sc[2]?></td>
 
-                          <td><a data-toggle="modal" data-id="<?php echo $to1[0]; ?>" title="edit" href="#edit" class="btn btn-success btn-md move-studid"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                          <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
+                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
 
                           <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
 
-                          <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                          <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                         </tr>
                         <?php
                           }
@@ -337,6 +338,16 @@
     <script src="js/footable.min.js"></script>
     <script type="text/javascript">
       $("#schooltb").footable();
+    </script>
+    <script language="javascript">
+      function del(x) {
+        var delo = confirm('Are you sure you want to delete?');
+        if(delo == true)
+        {
+        window.location.href="delete_school.php?id=" +x+" ";
+        }
+        
+      }
     </script>
 
 </body>
