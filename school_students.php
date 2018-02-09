@@ -266,7 +266,7 @@
 
                       <td align="center"><?php echo "<a href='feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
 
-                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_students.php?id=$stu[0]'>";?>
+                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_students_school.php?id=$stu[0]'>";?>
                       <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                       
                       <td>
@@ -331,7 +331,7 @@
         var delo = confirm('Are you sure you want to delete?');
         if(delo == true)
         {
-        window.location.href="delete.php?id=" +x+" ";
+        window.location.href="delete_school_students.php?id=" +x+" ";
         }
         
       }

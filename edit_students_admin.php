@@ -1,18 +1,10 @@
 <?php
-    session_start();
-    require 'connect.php';
-$to=mysqli_query($db,"SELECT student.stud_id,student.lname,student.fname,student.mname,school.school_name,student.g_level,
-student.gender,student.age,account.username,account.pword 
-FROM student
-JOIN school
-ON student.school_id=school.school_id
-JOIN account
-ON student.account_id=account.account_id");
-$total_studentq=mysqli_query($db,"SELECT COUNT(student.stud_id)FROM student");
-$total_student=mysqli_fetch_row($total_studentq);
+  session_start();
+  require 'connect.php';
+  require 'editdb.php';
+
 ?>
-
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -39,10 +31,7 @@ $total_student=mysqli_fetch_row($total_studentq);
     </style>
     
   </head>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-
-    <!-- Navigation -->
+<body data-spy="scroll">
     <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -111,102 +100,108 @@ $total_student=mysqli_fetch_row($total_studentq);
         </div>
       </div>
 
-    <!--Table Results -->
-    
-    <div class="row">
-    <div class="col-md-12">
+  
+    <div class="row" style="padding-top:20px; ">
+    <div class="col-md-offset-3 col-md-6">
       <div class="well">
         <div class="row">
-        <div class="col-md-5" style="font-family: myFirstFont;">
-        <h3>List of Students</h3>
-        <h4>Total number of students = <?php echo $total_student[0]; ?></h4>
+        <div class="col-sm-5">
+        <h3 align="left">Edit Student</h3>
         </div>
-        <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
-        <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
-
+        <div class="col-sm-offset-2 col-sm-5">
         </div>
         </div>
       <br />
+  <form class="form-horizontal" method="POST">
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="lname">Last Name:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="lname" name="ulname" value="<?php echo $lname ?>" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="fname">First Name:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="fname" name="ufname" value="<?php echo $fname ?>" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="mname">Middle Name:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="mname" name="umname" value="<?php echo $mname ?>" required>
+    </div>
+  </div>
+  <!--<div class="form-group">
+    <label class="control-label col-sm-3" for="uname">Username:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="uname" name="uuname">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="pword">Password:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="pword" name="upword">
+    </div>
+  </div>-->
 
+<div class="col-md-offset-2 col-md-3">
+          <div class="form-group">
+            <label for="glevel">Grade Level:</label>
+            <select name="uglevel" id="glevel" class="form-control input-md" required>
+            <option value="<?php echo $g_level; ?>">Grade <?php echo $g_level; ?></option>
+            <?php
+            $num=1;
+            for($i=0;$i<10;$i++){
+            ?>
+            <option value="<?php echo $num; ?>">Grade <?php echo $num; ?></option>
+            <?php
+            $num=$num+1;
+            }
+            ?>
+            </select>
+          </div>
+    </div>
 
+    <div class="row">
+    <div class="col-md-offset-2 col-md-4">
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select name="ugender" id="gender" class="form-control input-md" required>
+            <option value="<?php echo $gender ?>"><?php echo $gender ?></option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            </select>
+          </div>
+    </div>
+    </div>
 
-  <div class="table-responsive">
-  <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
-  <thead>
-    <tr>
-    <th>Student ID</th>
-    <th>Last Name</th>
-    <th>First Name</th>
-    <th>Middle Name</th>
-    <th>School</th>
-    <th>Grade Level</th>
-    <th>Gender</th>
-    <th>Age</th>
-    <th>Username</th>
-    <th>Password</th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
+    <div class="row">
+    <div class="col-md-offset-4 col-md-4 ">
+    <br/>
+    <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Edit Student">
+    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
   
-  <tbody>
-    <tr>
-  <?php
-  while($to1=mysqli_fetch_row($to)){
-  ?>
-    <th><?php echo $to1[0];?></th>
-    <td><?php echo $to1[1];?></td>
-    <td><?php echo $to1[2];?></td>
-    <td><?php echo $to1[3];?></td>
-    <td><?php echo $to1[4];?></td>
-    <td><?php echo $to1[5];?></td>
-    <td><?php echo $to1[6];?></td>
-    <td><?php echo $to1[7];?></td>
-    <td><?php echo $to1[8];?></td>
-    <td><?php echo $to1[9];?></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_students_admin.php?id=$to1[0]'>";?>
-                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-    <td>
-    <button onclick="del(<?php echo $to1[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-    </tr>
-  <?php
-    }
-  ?>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>	
+
+    </div>
+    
+  
+
+    
+
     <!-- /.container -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/footable.min.js"></script>
-    <script type="text/javascript">
-      $("#studenttb").footable();
-    </script>
-    <script language="javascript">
-      function del(x) {
-        var delo = confirm('Are you sure you want to delete?');
-        if(delo == true)
-        {
-        window.location.href="delete_admin_students.php?id=" +x+" ";
-        }
-        
-      }
-
-$(document).on("click", ".move-studid", function () {
-     var myStudId = $(this).data('id');
-     $(".modal-body #stud_id").val( myBookId );
-     // As pointed out in comments, 
-     // it is superfluous to have to manually call the modal.
-     // $('#addBookDialog').modal('show');
-});
-    </script>
+    <script src="js/materialize.min.js"></script>
 </body>
-
 </html>
