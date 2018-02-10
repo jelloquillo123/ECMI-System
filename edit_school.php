@@ -1,7 +1,8 @@
 <?php
   session_start();
   require 'connect.php';
-  require 'admin_schoolsdb.php'
+  require 'admin_schoolsdb.php';
+  require 'edit_schooldb.php';
 
 ?>
 <!DOCTYPE html>
@@ -120,13 +121,14 @@
               <div class="form-group">
                 <label class="control-label col-sm-3" for="nsch">Name of School:</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="nsch" name="nsch" value="<?php echo $lname ?>" required>
+                  <input type="text" class="form-control" id="nsch" name="nsch" value="<?php echo $nsc ?>" required>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-2" for="diocese" id="dio_label">Diocese:</label>
                 <div class="col-md-5" style="padding-left: 30px;">
-                  <select name="diocese" id="diocese" class="form-control">
+                  <select name="cdio" id="diocese" class="form-control">
+                    <option value="<?php echo $dioid ?>"> Diocese of <?php echo $dionm?></option>
                     <?php
                     $i=1;
                     while($dion=mysqli_fetch_row($dio)){
@@ -143,31 +145,31 @@
               <div class="form-group">
                 <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="coor_fname" name="coor_fname">
+                  <input type="text" class="form-control" id="coor_fname" name="cfname" value="<?php echo $fname ?>">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="coor_mname" name="coor_mname">
+                  <input type="text" class="form-control" id="coor_mname" name="cmname" value="<?php echo $mname ?>">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="coor_lname" name="coor_lname">
+                  <input type="text" class="form-control" id="coor_lname" name="clname" value="<?php echo $lname ?>">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3" for="username">Username:</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="username" name="uname">
+                  <input type="text" class="form-control" id="uname" name="cuname" value="<?php echo $usrnm ?>">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-3" for="pword">Password:</label>
                 <div class="col-sm-9">
-                  <input type="Password" class="form-control" id="pword" name="pword">
+                  <input type="Password" class="form-control" id="pword" name="cpword" value="<?php echo $psswrd ?>">
                 </div>
               </div>
               <div class="form-group">

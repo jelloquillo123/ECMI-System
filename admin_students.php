@@ -164,7 +164,8 @@ $total_student=mysqli_fetch_row($total_studentq);
     <td><?php echo $to1[7];?></td>
     <td><?php echo $to1[8];?></td>
     <td><?php echo $to1[9];?></td>
-    <td><a data-toggle="modal" data-id="<?php echo $to1[0]; ?>" title="edit" href="#edit" class="btn btn-success btn-md move-studid"><span class="glyphicon glyphicon-pencil"></span></a></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_students_admin.php?id=$to1[0]'>";?>
+                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
     <td>
     <button onclick="del(<?php echo $to1[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
     </tr>
@@ -193,7 +194,7 @@ $total_student=mysqli_fetch_row($total_studentq);
         var delo = confirm('Are you sure you want to delete?');
         if(delo == true)
         {
-        window.location.href="delete.php?id=" +x+" ";
+        window.location.href="delete_admin_students.php?id=" +x+" ";
         }
         
       }

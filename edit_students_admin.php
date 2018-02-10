@@ -1,7 +1,7 @@
 <?php
   session_start();
   require 'connect.php';
-  require 'editdb.php';
+  require 'editdb_admin.php';
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,6 @@
     
   </head>
 <body data-spy="scroll">
-<!-- Navigation -->
     <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,21 +42,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="school_main.php">School</a>
+                <a class="navbar-brand" href="admin_main.php">Administrator</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                    <li>
-                      <a href="school_students.php">Students</a>
+                      <a href="admin_students.php">Students</a>
                   </li>
                   <li>
-                      <a href="school_main.php"> Reports</a>
+                      <a href="admin_questions.php">Questions</a>
+                  </li>
+                  <li>
+                      <a href="admin_report.php">Reports</a>
                   </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <li>
-                  <p class="navbar-text" style="color: #f5f5f5;"><?php echo $scn[0]; ?></p>
+                  <p class="navbar-text" style="color: #f5f5f5;"></p>
                 </li>
                   <li class="button">
                     <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
@@ -69,9 +71,8 @@
         <!-- /.container -->
     </nav>
 
-
-
-    <div class="container-fluid" style="background-color: #00c853; padding-top: 20px; padding-bottom: 20px;">
+    <!-- Page Content -->
+    <div class="container-fluid" style="background-color: #00c853; padding-top: 60px; padding-bottom: 20px;">
       <div class="row">
         <!--Banner Main-->
         <div class="col-md-offset-1 col-md-10">
@@ -81,7 +82,7 @@
                   <div class="well" style="background-color: white;">
                   <div class="row">
                     <div class="col-lg-4" style="padding-top:15px;">
-                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                      <a href="admin_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
                     </div>
                     <div class="col-lg-8 text-center" style="padding-top: 15px;">
                         <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
@@ -95,7 +96,7 @@
                 </div>
               </div>
           </div>
-          
+          <br><br>
         </div>
       </div>
 
@@ -162,7 +163,7 @@
     </div>
 
     <div class="row">
-    <div class="col-md-offset-2 col-md-3">
+    <div class="col-md-offset-2 col-md-4">
           <div class="form-group">
             <label for="gender">Gender:</label>
             <select name="ugender" id="gender" class="form-control input-md" required>
