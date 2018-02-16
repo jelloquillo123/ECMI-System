@@ -147,13 +147,19 @@
           <div class="form-group">
             <label for="glevel">Grade Level:</label>
             <select name="uglevel" id="glevel" class="form-control input-md" required>
-            <option value="<?php echo $g_level; ?>">Grade <?php echo $g_level; ?></option>
             <?php
             $num=1;
             for($i=0;$i<10;$i++){
+                if($num == $g_level){
             ?>
-            <option value="<?php echo $num; ?>">Grade <?php echo $num; ?></option>
+            <option value="<?php echo $num; ?>" selected>Grade <?php echo $num; ?></option>
             <?php
+                }
+            else{
+            ?>
+             <option value="<?php echo $num; ?>">Grade <?php echo $num; ?></option>
+            <?php
+            }
             $num=$num+1;
             }
             ?>
@@ -166,9 +172,8 @@
           <div class="form-group">
             <label for="gender">Gender:</label>
             <select name="ugender" id="gender" class="form-control input-md" required>
-            <option value="<?php echo $gender ?>"><?php echo $gender ?></option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+            <option value="Male" <?php if($gender == 'Male') echo 'selected'; ?>>Male</option>
+            <option value="Female" <?php if($gender == 'Female') echo 'selected'; ?>>Female</option>
             </select>
           </div>
     </div>
