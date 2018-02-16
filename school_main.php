@@ -787,29 +787,37 @@
                     </tr>
                   </table>
                 </div>
-              </div>
-              <div class="well" style="height: 720px;">
-                <h3 align="center">Significant Findings</h3><hr>
                 <div class="row">
-                  <div class="col-md-offset-1 col-md-3">
-                    <div id="chart_div"></div>
-                  </div>
-                  <div class="col-md-3">
-                    <div id="country"></div>
-                  </div>
-                  <div class="col-md-3">
-                    <div id="yearsofstay"></div>
-                  </div>
+                <div class="col-md-offset-5 col-md-2">
+                  <button class="btn btn-primary btn-md" type="button" data-toggle="collapse" data-target="#sigfindbase" aria-expanded="false" aria-controls="sigfindbase">Significant Findings <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
                 </div>
-                <div class="row">
-                  <div class="col-md-offset-1 col-md-3">
-                    <div id="parent"></div>
-                  </div>
-                  <div class="col-md-3">
-                    <div id="parentjob"></div>
-                  </div>
+              </div>
+              </div>
+              
+              <div class="collapse" id="sigfindbase">
+                <div class="well" style="height: 720px;">
+                  <h3 align="center">Significant Findings</h3><hr>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-3">
+                      <div id="chart_div"></div>
+                    </div>
                     <div class="col-md-3">
-                    <div id="totg"></div>
+                      <div id="country"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div id="yearsofstay"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-3">
+                      <div id="parent"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div id="parentjob"></div>
+                    </div>
+                      <div class="col-md-3">
+                      <div id="totg"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1312,42 +1320,50 @@
                     </tr>
                   </table>
                 </div>
+                <div class="row">
+                <div class="col-md-offset-5 col-md-2">
+                  <button class="btn btn-primary btn-md" type="button" data-toggle="collapse" data-target="#sigfindpat" aria-expanded="false" aria-controls="sigfindpat">Significant Findings <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                </div>
               </div>
-              <div class="well">
-                <h3 align="center">Significant Findings</h3><hr>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div id="Q1"></div>
+              </div>
+              
+              <div class="collapse" id="sigfindpat">
+                <div class="well">
+                  <h3 align="center">Significant Findings</h3><hr>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div id="Q1"></div>
+                    </div>
+                    <div class="col-md-4">
+                      <div id="Q2"></div>
+                    </div>
+                    <div class="col-md-4">
+                      <div id="Q3"></div>
+                    </div>
                   </div>
-                  <div class="col-md-4">
-                    <div id="Q2"></div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div id="Q4"></div>
+                    </div>
+                    <div class="col-md-4">
+                      <div id="Q5"></div>
+                    </div>
+                    <div class="col-md-4">
+                      <div id="Q6"></div>
+                    </div>
                   </div>
-                  <div class="col-md-4">
-                    <div id="Q3"></div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div id="Q4"></div>
-                  </div>
-                  <div class="col-md-4">
-                    <div id="Q5"></div>
-                  </div>
-                  <div class="col-md-4">
-                    <div id="Q6"></div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div id="Q7"></div>
-                  </div>
-                  <div class="col-md-4">
-                    <div id="Q8"></div>
-                  </div>
-                  <div class="col-md-4">
-                    <div id="Q9"></div>
-                  </div>
-                </div>                
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div id="Q7"></div>
+                    </div>
+                    <div class="col-md-4">
+                      <div id="Q8"></div>
+                    </div>
+                    <div class="col-md-4">
+                      <div id="Q9"></div>
+                    </div>
+                  </div>                
+                </div>   
               </div>
             </div>
           </div>
