@@ -244,7 +244,7 @@
                       <th>Parents Email</th>
                       <th>Test status</th>
                       <th>Feedback</th>
-                      <th>Edit</th>
+                      <th>Profile</th>
                       <th>Delete</th>
                       <th>Reset</th>
                     </tr>
