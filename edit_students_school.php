@@ -184,22 +184,10 @@
     </div>
     </form>
     </div>
-    </div>
-    </div>
-  
-
-    </div>
-
-    <div class="container-fluid content_body" style="font-family:mySecondFont;">
     <div class="row">
-    <div class="col-md-offset-1 col-md-10 col-md-offset-1">
-
-
-
-
-
-
-<?php
+    <div class="col-md-offset-2 col-md-8">
+    <div class="well">
+      <?php
 $sql_ans=mysqli_query($db,"SELECT * FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id  WHERE pre_test.stud_id='$id' ");
 $ans=mysqli_fetch_row($sql_ans);
 
@@ -403,11 +391,12 @@ echo $qs9[0];
   <div class="input-field" align="center">
     
      Answer:<?php echo $feed9[0]; ?> 
+    </div>
 
-  </div>
+
 </div>
 </div>
-
+</div>
 <!--Pre-Awareness Button  -->
 
 </form>
