@@ -18,8 +18,8 @@
 	$mail->Port = 587;
 	$mail->SMTPSecure = 'tls';
 	$mail->SMTPAuth = true;
-	$mail->Username = "ucres.test@gmail.com";
-	$mail->Password = "plmucres";
+	$mail->Username = "danjen.eran.david@gmail.com";
+	$mail->Password = "danjen16";
 
 	//Sender
 	$mail->setFrom($fromEmail, $fromName);

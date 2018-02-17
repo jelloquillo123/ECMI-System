@@ -467,28 +467,36 @@ $info1=mysqli_fetch_row($info1_sql);
               </div>
 
             </div>
+            <div class="row">
+                <div class="col-md-offset-5 col-md-2">
+                  <button class="btn btn-primary btn-md" type="button" data-toggle="collapse" data-target="#sigfindbase" aria-expanded="false" aria-controls="sigfindbase">Significant Findings <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                </div>
+              </div>
           </div>
-          <div class="well">
-            <h3 align="center">Significant Findings</h3><hr>
-              <div class="row">
-                  <div class="col-md-offset-1 col-md-3">
-                    <div id="gendertable"></div>
-                  </div>
-                  <div class="col-md-3">
-                    <div id="country"></div>
-                  </div>
-                  <div class="col-md-3">
-                    <div id="yearsofstay"></div>
-                  </div>
-                </div>
+          <div class="collapse" id="sigfindbase">
+            
+            <div class="well">
+              <h3 align="center">Significant Findings</h3><hr>
                 <div class="row">
-                  <div class="col-md-offset-1 col-md-3">
-                    <div id="parent"></div>
+                    <div class="col-md-offset-1 col-md-3">
+                      <div id="gendertable"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div id="country"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div id="yearsofstay"></div>
+                    </div>
                   </div>
-                  <div class="col-md-3">
-                    <div id="parentjob"></div>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-3">
+                      <div id="parent"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div id="parentjob"></div>
+                    </div>
                   </div>
-                </div>
+            </div>
           </div>
         </div>
       </div>
