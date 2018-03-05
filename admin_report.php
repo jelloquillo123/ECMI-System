@@ -501,6 +501,15 @@ $info1=mysqli_fetch_row($info1_sql);
         </div>
       </div>
     </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <h4>Compose:</h4>
+        </div>
+        <div class="col-sm-8">
+    
+        </div>
+      </div>
+      
 
 
 
