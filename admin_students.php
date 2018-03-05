@@ -10,6 +10,14 @@ JOIN account
 ON student.account_id=account.account_id");
 $total_studentq=mysqli_query($db,"SELECT COUNT(student.stud_id)FROM student");
 $total_student=mysqli_fetch_row($total_studentq);
+$toto=mysqli_query($db,"SELECT student.stud_id,student.lname,student.fname,student.mname,school.school_name,student.g_level,
+student.gender,student.age,account.username,account.pword 
+FROM student
+JOIN school
+ON student.school_id=school.school_id
+JOIN account
+ON student.account_id=account.account_id
+WHERE student.g_level='$sort_level'");
 ?>
 
 
@@ -123,14 +131,75 @@ $total_student=mysqli_fetch_row($total_studentq);
         </div>
         <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
         <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
-
+        <select name="sort_level" id="sort_level" class="form-control input-md x">
+        <?php
+        $i=1;
+        while($i<=11){
+        echo '
+        <option value="'.$i.'">Grade '.$i.'</option>
+        ';
+        $i=$i+1;
+        }
+        ?>
+         </select>
+         <input type="button" name="submit" class="btn btn-primary" align="left" value="Search">
         </div>
         </div>
       <br />
 
 
-
+  <?php
+  if(isset($_POST['submit']))
+  {
+  ?>
   <div class="table-responsive">
+  <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
+  <thead>
+    <tr>
+    <th>Student ID</th>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Middle Name</th>
+    <th>School</th>
+    <th>Grade Level</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+  <?php
+
+  while($toti=mysqli_fetch_row($toto)){
+  ?>
+    <th><?php echo $toti[0];?></th>
+    <td><?php echo $toti[1];?></td>
+    <td><?php echo $toti[2];?></td>
+    <td><?php echo $toti[3];?></td>
+    <td><?php echo $toti[4];?></td>
+    <td><?php echo $toti[5];?></td>
+    <td><?php echo $toti[6];?></td>
+    <td><?php echo $toti[7];?></td>
+    <td><?php echo $toti[8];?></td>
+    <td><?php echo $toti[9];?></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_students_admin.php?id=$toti[0]'>";?>
+                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+    <td>
+    <button onclick="del(<?php echo $toti[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+    </tr>
+  <?php
+  echo "<script>
+        window.location.href='admin_students.php';
+        </script>";
+    }
+  }
+  ?>
+    <div class="table-responsive">
   <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
   <thead>
     <tr>
