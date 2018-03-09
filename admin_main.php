@@ -3,11 +3,6 @@
   require 'connect.php';
   require 'admin_schoolsdb.php';
   require 'admin_diodb.php';
-=======
-session_start();
-require 'connect.php';
-require 'admin_schoolsdb.php';
->>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
 ?>
 <html lang="en">
 <head>
@@ -113,19 +108,15 @@ require 'admin_schoolsdb.php';
     </div>
   </div>
 
-<<<<<<< HEAD
       <ul class="nav nav-pills justified" role="tablist">
         <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Add School</a></li>
         <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Schools</a></li>
         <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div4" aria-controls="div4" role="tab" data-toggle="tab">Add Diocese</a></li>
       </ul>
-=======
   <ul class="nav nav-pills justified" role="tablist">
     <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Add School</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Schools</a></li>
   </ul>
->>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
-
 
   
   <div class="tab-content">
@@ -218,7 +209,6 @@ require 'admin_schoolsdb.php';
       </div>
     </div>
 
-<<<<<<< HEAD
 
             <div role="tabpanel" class="tab-pane active" id="div4">
               <div class="row" style="padding-top: 20px;">
