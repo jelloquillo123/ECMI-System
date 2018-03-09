@@ -218,15 +218,15 @@ require 'school_studentsdb.php';
 
         <div role="tabpanel" class="tab-pane" id="div3">
           <div class="row" style="padding-top: 20px;">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="well">
                 <div class="row" style="font-family: myFirstFont;">
-                  <div class="col-sm-5">
+                  <div class="col-sm-5 col-md-5 col-xs-5 col-lg-5">
                     <h3 align="left">List of Students</h3>
                     <h4>Total number of students = <?php echo $stud_total[0]; ?></h4>
                   </div>
-                  <div class="col-md-offset-5 col-md-2">
-                    <a href="printry2.php"><button class="btn btn-primary" style="font-family: mySecondFont;" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
+                  <div class="col-md-offset-5 col-md-1 col-sm-offset-4 col-sm-1 col-xs-offset-1 col-xs-1">
+                    <a href="printry2.php"><button class="btn btn-primary btn-md" style="font-family: mySecondFont;" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                   </div>
                 </div>
                 

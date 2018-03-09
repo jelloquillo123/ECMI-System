@@ -1,8 +1,8 @@
 <?php
-  session_start();
-  require 'connect.php';
-  require 'admin_schoolsdb.php';
-  require 'admin_dsc.php';
+session_start();
+require 'connect.php';
+require 'admin_schoolsdb.php';
+require 'admin_dsc.php';
 ?>
 <html lang="en">
 <head>
@@ -108,11 +108,11 @@
     </div>
   </div>
 
-      <ul class="nav nav-pills justified" role="tablist">
-        <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Add School</a></li>
-        <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Schools</a></li>
-        <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div4" aria-controls="div4" role="tab" data-toggle="tab">Add Diocese</a></li>
-      </ul>
+  <ul class="nav nav-pills justified" role="tablist">
+    <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Add School</a></li>
+    <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Schools</a></li>
+    <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div4" aria-controls="div4" role="tab" data-toggle="tab">Add Diocese</a></li>
+  </ul>
   
   <div class="tab-content">
 
@@ -205,54 +205,9 @@
     </div>
 
 
-            <div role="tabpanel" class="tab-pane active" id="div4">
-              <div class="row" style="padding-top: 20px;">
-                <div class="col-md-offset-3 col-md-6">
-                  <div class="well">
-                    <div class="row" style="font-family: myFirstFont;">
-                      <div class="col-md-6">  
-                      <h3 align="left" >Add Diocese</h3>
-                      </div>
-                    </div>
-                    <br />
-                    <form onsubmit="return confirm('Are you sure you want to add this diocese?');" class="form-horizontal" method="POST">
-                      <h4 align="center">Diocese</h4>
-                      <div class="row">
-                        <div class="col-md-offset-1 col-md-10">     
-                          <div class="form-group">
-                            <label class="control-label col-md-3" for="dioname">Name of Diocese:</label>
-                            <div class="col-md-9">
-                              <input type="text" class="form-control" id="dioname" name="dioname" required>
-                            </div>
-                          </div>
-                            <div class="row">
-                            <div class="col-md-offset-1 col-md-10">
-                            <br />
-                            <div class="col-md-offset-4 col-md-2">
-                            <input type="submit" class="btn btn-primary btn-lg green" align="center" name="diocese_submit" value = "Add Diocese">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-            <div role="tabpanel" class="tab-pane fade" id="div3">
-              <div class="row" style="padding-top: 20px;">
-                <div class="col-md-offset-1 col-md-10">
-                  <div class="well">
-                    <div class="row" style="font-family: myFirstFont;">
-                      <div class="col-md-5">
-                        <h3 align="left">List of Participating Schools</h3>
-                      </div>
-                      <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
-                        <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
-                      </div>
-                    </div>
-                    <br />
+
+
     <div role="tabpanel" class="tab-pane fade" id="div3">
       <div class="row" style="padding-top: 20px;">
         <div class="col-md-offset-1 col-md-10">
@@ -267,7 +222,7 @@
             </div>
             <br />
             <div class="table-responsive">
-              <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" id="schooltb" style="background-color:#fff;">
+              <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="schooltb" style="background-color:#fff;">
                 <thead>
                   <tr>
                     <th>School ID</th>
@@ -297,13 +252,54 @@
                   ?>
                 </table>
               </div>
+
             </div>
           </div>
         </div>
       </div>
+
+
+      <div role="tabpanel" class="tab-pane" id="div4">
+        <div class="row" style="padding-top: 20px;">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="well">
+              <div class="row" style="font-family: myFirstFont;">
+                <div class="col-md-6">  
+                  <h3 align="left" >Add Diocese</h3>
+                </div>
+              </div>
+              <br />
+              <form onsubmit="return confirm('Are you sure you want to add this diocese?');" class="form-horizontal" method="POST">
+                <h4 align="center">Diocese</h4>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-10">     
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="dioname">Name of Diocese:</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="dioname" name="dioname" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-10">
+                    <br />
+                    <div class="col-md-offset-4 col-md-2">
+                      <input type="submit" class="btn btn-primary btn-lg green" align="center" name="diocese_submit" value = "Add Diocese">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
 
-    
+
+
     <!-- /.container -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -321,7 +317,7 @@
         {
           window.location.href="delete_school.php?id=" +x+" ";
         }
-        
+
       }
     </script>
 
