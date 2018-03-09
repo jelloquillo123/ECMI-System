@@ -498,34 +498,29 @@ echo "<tr>
                   <div id="parentjob"></div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-     <div class="row">
-    <div class="col-md-offset-2 col-md-8">
-    <div class="well">
 
-<?php
-$an=$info[1]/$info[3];
-$an1=$an*100;
+              <div class="row">
+                <div class="col-md-offset-2 col-md-8">
 
-$ansa=$info[2]/$info[3];
-$ansa1=$ansa*100;
+                  <?php
+                  $an=$info[1]/$info[3];
+                  $an1=$an*100;
 
-$ptot=$info[4]+$info[5];
-$pans=$info[4]/$ptot;
-$pans1=$pans*100;
+                  $ansa=$info[2]/$info[3];
+                  $ansa1=$ansa*100;
 
-$pansa=$info[5]/$ptot;
-$pansa1=$pansa*100;
+                  $ptot=$info[4]+$info[5];
+                  $pans=$info[4]/$ptot;
+                  $pans1=$pans*100;
 
-$asia="ASIA".$info[9];
-$europe="EUROPE".$info[10];
-$na="NORTH AMERICA".$info[11];
-$oceania="OCENIA".$info[12];
-$others="OTHERS".$info[13];
+                  $pansa=$info[5]/$ptot;
+                  $pansa1=$pansa*100;
+
+                  $asia="ASIA".$info[9];
+                  $europe="EUROPE".$info[10];
+                  $na="NORTH AMERICA".$info[11];
+                  $oceania="OCENIA".$info[12];
+                  $others="OTHERS".$info[13];
 
 
 
@@ -547,170 +542,175 @@ foreach ($cntry as $key => $val) {
 
 <h4 align="center">SUMMARY REPORT</h4>
 <p align="center"> 1.
-<?php
+  <?php
 
 
-if($info[1]>$info[2])
-{
-echo "Male ANAK OFW HAS THE HIGHEST PERCENTAGE enrolled with ";
-echo number_format((float)$an1, 2, '.', ''); 
-}
-else
-{
+  if($info[1]>$info[2])
+  {
+    echo "Male ANAK OFW HAS THE HIGHEST PERCENTAGE enrolled with ";
+    echo number_format((float)$an1, 2, '.', ''); 
+  }
+  else
+  {
 
-echo "Female ANAK OFW HAS THE HIGHEST PERCENTAGE enrolled with ";
-echo number_format((float)$ansa1, 2, '.', '');
+    echo "Female ANAK OFW HAS THE HIGHEST PERCENTAGE enrolled with ";
+    echo number_format((float)$ansa1, 2, '.', '');
 
-}
-
-
+  }
 
 
-?>
+
+
+  ?>
 
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-<div class="input-field" align="center">
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
 
 
-</div>
-</div>
+    </div>
+  </div>
 </div>
 <br />
 <p align="center">
   2.  <?php
 
-    if($info[4]>$info[5])
-    {  
-      echo "Mother WORKING ABROAD IS THE HIGHEST with ";
-      echo number_format((float)$pans1, 2, '.', '');
-      echo "% than Father with ";
-      echo number_format((float)$pansa1, 2, '.', '');
-      echo "%";
-    }
-    else
-   {
+  if($info[4]>$info[5])
+  {  
+    echo "Mother WORKING ABROAD IS THE HIGHEST with ";
+    echo number_format((float)$pans1, 2, '.', '');
+    echo "% than Father with ";
+    echo number_format((float)$pansa1, 2, '.', '');
+    echo "%";
+  }
+  else
+  {
 
-     echo "Father WORKING ABROAD IS THE HIGHEST with ";
-      echo number_format((float)$pansa1, 2, '.', '');
-      echo "% than Mother with ";
-      echo number_format((float)$pans1, 2, '.', '');
-      echo "%";
-
-
-   }
+   echo "Father WORKING ABROAD IS THE HIGHEST with ";
+   echo number_format((float)$pansa1, 2, '.', '');
+   echo "% than Mother with ";
+   echo number_format((float)$pans1, 2, '.', '');
+   echo "%";
 
 
+ }
 
-  ?>
+
+
+ ?>
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-    
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
+      
 
-    
+      
+    </div>
   </div>
-</div>
 </div>
 <br />
 <p align="center">
 3.</p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
 
 
-    
+      
+    </div>
   </div>
-</div>
 </div>
 <br />
 <p align="center">
 4.</p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
 
+    </div>
   </div>
-</div>
 </div>
 <br />
 <p align="center">
-5. 
+  5. 
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-   
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
+     
 
 
+    </div>
   </div>
-</div>
 </div>
 <br />
 
 <p align="center">
-6.  
+  6.  
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
 
-  
+      
+    </div>
+
   </div>
-
-</div>
 </div>
 <br />
 <p align="center">
-7. 
+  7. 
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-   
- 
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
+     
+     
 
+    </div>
   </div>
 </div>
-</div>
 <p align="center">
-8. 
+  8. 
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-  
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
+      
 
+    </div>
   </div>
 </div>
-</div>
 <p align="center">
-9. 
+  9. 
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-    
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
+      
 
     </div>
 
 
+  </div>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 </div>
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/footable.min.js"></script>
-    <script type="text/javascript" src="js/selectize.min.js"></script>
-    
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/footable.min.js"></script>
+<script type="text/javascript" src="js/selectize.min.js"></script>
+
 <!--                       <script>
 $('#diocse').selectize({
     create: true,
