@@ -164,7 +164,7 @@ require 'admin_reportdb.php';
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/footable.bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/selectize.bootstrap3.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -268,20 +268,37 @@ require 'admin_reportdb.php';
         </div>
         <div class="row">
           <div class="col-md-6">
+<<<<<<< HEAD
             <form method="POST">
 
               <div class="col-md-6">
                 <select name="diocese" id="diocse" class="form-control input-md x">
+=======
+            <form name="select_diocese" method="POST">
+
+              <div class="col-md-6">
+
+                <select name="diocese" id="diocese_try" class="form-control input-md select-diocese">
+>>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
                   <?php
                   $i=1;
                   while($dion=mysqli_fetch_row($dio)){
                     echo '
+<<<<<<< HEAD
                     <option value="'.$dion[0].'">Diocese of '.$dion[1].'</option>
+=======
+                    <option onclick="this.form.submit();" value="'.$dion[0].'" >Diocese of '.$dion[1].'</option>
+>>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
                     ';
                     $i=$i+1;
                   }
                   ?>
+<<<<<<< HEAD
                 </select> 
+=======
+                </select>
+
+>>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
               </div>
               <div class="col-md-3">
                 <input type="submit" class="btn btn-primary btn-md" align="center" name="medsubmit" value = "Select Diocese">
@@ -306,7 +323,17 @@ require 'admin_reportdb.php';
                   <th colspan="5">Country</th>
                   <th colspan="5">Years of Stay Overseas</th>
                 </tr>
+<<<<<<< HEAD
                 <tr>
+=======
+
+
+
+
+
+                <tr>
+
+>>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
                   <th>Total</th>
                   <th>Male</th>
                   <th>Female</th>
@@ -363,7 +390,11 @@ require 'admin_reportdb.php';
                     FROM parent a
                     JOIN family b ON b.parent_id = a.parent_id
                     JOIN student d ON d.fam_id = b.fam_id
+<<<<<<< HEAD
                     WHERE d.school_id='$school[0]'");
+=======
+                    WHERE d.school_id='$school[0]' ");
+>>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
 $info1=mysqli_fetch_row($info1_sql);
 
 echo "<tr>
@@ -489,6 +520,7 @@ echo "<tr>
                   <div id="parentjob"></div>
                 </div>
               </div>
+<<<<<<< HEAD
               <h3 align="center">Basic Interpretation</h3><hr>
               <div class="row">
                 <div class="col-md-10">
@@ -537,6 +569,107 @@ echo "<tr>
                       </h4>
                     </div>
                   </div>
+=======
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+    <div class="well">
+
+<?php
+$an=$info[1]/$info[3];
+$an1=$an*100;
+
+$ansa=$info[2]/$info[3];
+$ansa1=$ansa*100;
+
+$ptot=$info[4]+$info[5];
+$pans=$info[4]/$ptot;
+$pans1=$pans*100;
+
+$pansa=$info[5]/$ptot;
+$pansa1=$pansa*100;
+
+$asia="ASIA".$info[9];
+$europe="EUROPE".$info[10];
+$na="NORTH AMERICA".$info[11];
+$oceania="OCENIA".$info[12];
+$others="OTHERS".$info[13];
+
+
+
+
+
+/*$cntry = array($info[9],$info[10],$info[11],$info[12],$info[13]);
+sort($cntry,  SORT_NUMERIC);
+foreach ($cntry as $key => $val) {
+    echo "cntry[" . $key . "] = " . $val . "\n";
+}
+*/
+
+?>
+
+
+
+
+
+
+<h4 align="center">SUMMARY REPORT</h4>
+<p align="center"> 1.
+<?php
+
+
+if($info[1]>$info[2])
+{
+echo "Male ANAK OFW HAS THE HIGHEST PERCENTAGE enrolled with ";
+echo number_format((float)$an1, 2, '.', ''); 
+}
+else
+{
+
+echo "Female ANAK OFW HAS THE HIGHEST PERCENTAGE enrolled with ";
+echo number_format((float)$ansa1, 2, '.', '');
+
+}
+
+
+
+
+?>
+
+</p>
+<div class="row">
+<div class="col-md-offset-2 col-md-6 col-md-offset-4">
+<div class="input-field" align="center">
+
+
+</div>
+</div>
+</div>
+<br />
+<p align="center">
+  2.  <?php
+
+    if($info[4]>$info[5])
+    {  
+      echo "Mother WORKING ABROAD IS THE HIGHEST with ";
+      echo number_format((float)$pans1, 2, '.', '');
+      echo "% than Father with ";
+      echo number_format((float)$pansa1, 2, '.', '');
+      echo "%";
+    }
+    else
+   {
+
+     echo "Father WORKING ABROAD IS THE HIGHEST with ";
+      echo number_format((float)$pansa1, 2, '.', '');
+      echo "% than Mother with ";
+      echo number_format((float)$pans1, 2, '.', '');
+      echo "%";
+>>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
 
                   <div class="row">
                     <div class="col-md-10">
@@ -582,6 +715,7 @@ echo "<tr>
 
 
 
+<<<<<<< HEAD
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
    <script src="js/jquery-3.1.1.min.js"></script>
    <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -590,5 +724,55 @@ echo "<tr>
    <script type="text/javascript">
     $("#schooltb").footable();
   </script>
+=======
+  </div>
+</div>
+</div>
+<p align="center">
+8. 
+</p>
+<div class="row">
+<div class="col-md-offset-2 col-md-6 col-md-offset-4">
+  <div class="input-field" align="center">
+  
+
+  </div>
+</div>
+</div>
+<p align="center">
+9. 
+</p>
+<div class="row">
+<div class="col-md-offset-2 col-md-6 col-md-offset-4">
+  <div class="input-field" align="center">
+    
+
+    </div>
+
+
+</div>
+</div>
+</div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/footable.min.js"></script>
+    <script type="text/javascript" src="js/selectize.min.js"></script>
+    
+<!--                       <script>
+$('#diocse').selectize({
+    create: true,
+    sortField: 'text'
+});
+
+</script> -->
+<script type="text/javascript">
+  $("#schooltb").footable();
+</script>
+>>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
 </body>
 </html>
