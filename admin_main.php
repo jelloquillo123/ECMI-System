@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
   session_start();
   require 'connect.php';
   require 'admin_schoolsdb.php';
@@ -269,7 +268,6 @@ require 'admin_schoolsdb.php';
                       </div>
                     </div>
                     <br />
-=======
     <div role="tabpanel" class="tab-pane fade" id="div3">
       <div class="row" style="padding-top: 20px;">
         <div class="col-md-offset-1 col-md-10">
@@ -283,8 +281,6 @@ require 'admin_schoolsdb.php';
               </div>
             </div>
             <br />
->>>>>>> cc550eeca28ae80adc1ecaf5053b2d5553e8206c
-
             <div class="table-responsive">
               <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" id="schooltb" style="background-color:#fff;">
                 <thead>
