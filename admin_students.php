@@ -205,7 +205,6 @@ $total_student=mysqli_fetch_row($total_studentq);
                       }
                   if(isset($_POST['submit']))
                   {
-                    while
                     $toto=mysqli_query($db,"SELECT student.stud_id,student.lname,student.fname,student.mname,school.school_name,student.g_level,
                       student.gender,student.age,account.username,account.pword 
                       FROM student

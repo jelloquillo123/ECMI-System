@@ -113,11 +113,6 @@
         <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Schools</a></li>
         <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div4" aria-controls="div4" role="tab" data-toggle="tab">Add Diocese</a></li>
       </ul>
-  <ul class="nav nav-pills justified" role="tablist">
-    <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Add School</a></li>
-    <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Schools</a></li>
-  </ul>
-
   
   <div class="tab-content">
 
