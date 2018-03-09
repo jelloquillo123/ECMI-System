@@ -2,7 +2,7 @@
   session_start();
   require 'connect.php';
   require 'admin_schoolsdb.php';
-  require 'admin_diodb.php';
+  require 'admin_dsc.php';
 ?>
 <html lang="en">
 <head>
