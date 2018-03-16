@@ -271,14 +271,22 @@ require 'admin_reportdb.php';
             <form method="POST">
 
               <div class="col-md-6">
-                <select name="diocese" id="diocse" class="form-control input-md x">
+                <select name="diocese" id="diocese" class="form-control input-md x">
                   <?php
+                  $dd=mysqli_query($db,"SELECT diocese.diocese_name
+                    FROM diocese
+                    WHERE diocese_id='$_POST[diocese]'");
+                  while($dd1=mysqli_fetch_row($dd)){
+                    ?>
+                    <option value=<?php echo $_POST['diocese']; ?>><?php echo 'Diocese of'." ".$dd1[0];?></option>
+                    <?php
+                  }
                   $i=1;
                   while($dion=mysqli_fetch_row($dio)){
+                    $i=$i+1;
                     echo '
                     <option value="'.$dion[0].'">Diocese of '.$dion[1].'</option>
                     ';
-                    $i=$i+1;
                   }
                   ?>
                 </select> 
