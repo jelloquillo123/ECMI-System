@@ -1761,21 +1761,21 @@ if($g_9_sort[2] == $g9_c_oo)
 {
 
 
-  echo "And laslty if they are given a chance to work abroad they will definitely accept it.";
+  echo " And laslty if they are given a chance to work abroad they will definitely accept it.";
 }
 
 if($g_9_sort[2] == $g9_c_hindi)
 {
 
 
-  echo "And laslty if they are given a chance to work abroad they will not accept it.";
+  echo " And laslty if they are given a chance to work abroad they will not accept it.";
 }
 
 if($g_9_sort[2] == $g9_c_di_tiyak)
 {
 
 
-  echo "And laslty if they are given a chance to work abroad they are unsure if they will accept it.";
+  echo " And laslty if they are given a chance to work abroad they are unsure if they will accept it.";
 }
 
 

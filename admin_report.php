@@ -547,65 +547,64 @@ echo "<tr>
                       </h4>
                     </div>
                   </div>
+                  <?php
+                  $ptot=$info[4]+$info[5];
+                  $pans=$info[4]/$ptot;
+                  $pans1=$pans*100;
 
-<<<<<<< HEAD
-$ptot=$info[4]+$info[5];
-$pans=$info[4]/$ptot;
-$pans1=$pans*100;
+                  $pansa=$info[5]/$ptot;
+                  $pansa1=$pansa*100;
 
-$pansa=$info[5]/$ptot;
-$pansa1=$pansa*100;
-
-$asia=$info[9];
-$europe=$info[10];
-$na=$info[11];
-$oceania=$info[12];
-$others=$info[13];
-
+                  $asia=$info[9];
+                  $europe=$info[10];
+                  $na=$info[11];
+                  $oceania=$info[12];
+                  $others=$info[13];
 
 
 
 
-$cntry = array($info[9],$info[10],$info[11],$info[12],$info[13]);
-sort($cntry,  SORT_NUMERIC);
+
+                  $cntry = array($info[9],$info[10],$info[11],$info[12],$info[13]);
+                  sort($cntry,  SORT_NUMERIC);
 // foreach ($cntry as $key => $val) {
 //     echo "cntry[" . $key . "] = " . $val . "\n";
 // }
 
-$ctot=$asia+$europe+$na+$oceania+$others;
-$ctotal=($cntry[4]/$ctot)*100;
-$ctotal1=($cntry[3]/$ctot)*100;
+                  $ctot=$asia+$europe+$na+$oceania+$others;
+                  $ctotal=($cntry[4]/$ctot)*100;
+                  $ctotal1=($cntry[3]/$ctot)*100;
 
 
 
 
-$ott=$info[14];
-$fts=$info[15];
-$stt=$info[16];
-$etf=$info[17];
-$saa=$info[17];
+                  $ott=$info[14];
+                  $fts=$info[15];
+                  $stt=$info[16];
+                  $etf=$info[17];
+                  $saa=$info[17];
 
-$range = array($info[14],$info[15],$info[16],$info[17],$info[18]);
-sort($range,  SORT_NUMERIC);
+                  $range = array($info[14],$info[15],$info[16],$info[17],$info[18]);
+                  sort($range,  SORT_NUMERIC);
 /*foreach ($range as $key => $val) {
     echo "range[" . $key . "] = " . $val . "\n";
-}*/
+  }*/
 
-$rtot=$ott+$fts+$stt+$etf+$saa;
-$rtotal=($range[4]/$rtot)*100;
-$rtotal1=($range[3]/$rtot)*100;
-
-
-
-
-?>
+  $rtot=$ott+$fts+$stt+$etf+$saa;
+  $rtotal=($range[4]/$rtot)*100;
+  $rtotal1=($range[3]/$rtot)*100;
 
 
 
 
+  ?>
 
 
-<h4 align="center">SUMMARY REPORT</h4>
+
+
+
+
+<!-- <h4 align="center">SUMMARY REPORT</h4>
 <p align="center"> 1.
 <?php
 
@@ -626,284 +625,239 @@ echo number_format((float)$ansa1, 2, '.', '');
 
 
 
-?>
+?> -->
 
 </p>
 <div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-<div class="input-field" align="center">
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
 
 
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<br />
-<p align="center">
-  2.  <?php
 
+<div class="row">
+  <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+    <div class="input-field" align="center">
+
+
+
+    </div>
+  </div>
+</div>
+<h4>
+  <p align="center">
+    <div class="row">
+      <div class="col-md-10">
+
+        <?php
+        if ($cntry[4]==$asia)
+        {
+
+
+          echo "2. ASIA is the top area of destination with ";
+          echo number_format((float)$ctotal, 2, '.', '');
+          echo "% ";
+
+
+        }
+
+        else if($cntry[4]==$europe)
+        {
+
+          echo "2. EUROPE is the top area of destination with ";
+          echo number_format((float)$ctotal, 2, '.', '');
+          echo "% ";
+
+
+        }
+        else if($cntry[4]==$na)
+        {
+         echo "2. NOTRH AMERICA is the top area of destination with ";
+         echo number_format((float)$ctotal, 2, '.', '');
+         echo "% ";   
+       }
+       else if($cntry[4]==$oceania)
+       {
+
+        echo "2. OCEANIA is the top area of destination with ";
+        echo number_format((float)$ctotal, 2, '.', '');
+        echo "% ";
+
+
+      }
+
+      else if($cntry[4]==$others)
+      {
+
+        echo "2. OTHERS(not on the main continents) is the top area of destination with ";
+        echo number_format((float)$ctotal, 2, '.', '');
+        echo "% ";
+
+
+      }
+
+
+
+      if ($cntry[3]==$asia)
+      {
+
+
+        echo "followed by ASIA with ";
+        echo number_format((float)$ctotal1, 2, '.', '');
+        echo "%.";
+
+
+      }
+
+      else if($cntry[3]==$europe)
+      {
+
+        echo "followed by EUROPE with ";
+        echo number_format((float)$ctotal1, 2, '.', '');
+        echo "%.";
+
+      }
+
+
+      else if($cntry[3]==$na)
+      {
+       echo "followed by NORTH AMERICA with ";
+       echo number_format((float)$ctotal1, 2, '.', '');
+       echo "%.";
+
+
+     }
+
+     else if($cntry[3]==$oceania)
+     {
+
+      echo "followed by OCEANIA with ";
+      echo number_format((float)$ctotal1, 2, '.', ''); 
+      echo "%.";
+    }
+
+    else if($cntry[3]==$others)
+    {
+
+      echo "followed by OTHERS with ";
+      echo number_format((float)$ctotal1, 2, '.', '');
+      echo "%.";
+
+
+    }
+
+
+    ?>
+
+
+
+  </p>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-6 col-md-offset-4">
+      <div class="input-field" align="center">
+      </div>
+    </div>
+  </div>
+  <br />
+  <?php
+  if ($range[4]==$ott)
+  {
     if($info[4]>$info[5])
     {  
-      echo "Mother WORKING ABROAD IS THE HIGHEST with ";
+      echo "3. Mother WORKING ABROAD IS THE HIGHEST with ";
       echo number_format((float)$pans1, 2, '.', '');
       echo "% than Father with ";
       echo number_format((float)$pansa1, 2, '.', '');
       echo "%";
     }
     else
-   {
+    {
 
-     echo "Father WORKING ABROAD IS THE HIGHEST with ";
-      echo number_format((float)$pansa1, 2, '.', '');
-      echo "% than Mother with ";
-      echo number_format((float)$pans1, 2, '.', '');
-      echo "%";
+     echo "3. Father WORKING ABROAD IS THE HIGHEST with ";
+     echo number_format((float)$pansa1, 2, '.', '');
+     echo "% than Mother with ";
+     echo number_format((float)$pans1, 2, '.', '');
+     echo "%";
 
 
    }
+   ?>
+   <p align="center">
+    <div class="row">
+      <div class="col-md-10">
+       <br/>
+       <?php
+       echo "4. ONE to THREE is the top years of stay of the parent abroad with ";
+       echo number_format((float)$rtotal, 2, '.', '');
+       echo "% ";
 
 
+     }
+
+     else if($range[4]==$fts)
+     {
+
+      echo "4. FOUR to SIX is the top years of stay of the parent abroad with ";
+      echo number_format((float)$rtotal, 2, '.', '');
+      echo "% ";
+
+
+    }
+    else if($range[4]==$stt)
+    {
+     echo "4. SEVEN to TEN is the top years of stay of the parent abroad with ";
+     echo number_format((float)$rtotal, 2, '.', '');
+     echo "% ";   
+   }
+   else if($range[4]==$etf)
+   {
+
+    echo "4. ELEVEN to FIFTEEN is the top years of stay of the parent abroad with ";
+    echo number_format((float)$rtotal, 2, '.', '');
+    echo "% ";
+
+
+  }
+
+  else if($range[4]==$saa)
+  {
+
+    echo "4. SIXTEEN and ABOVE is the top years of stay of the parent abroad with ";
+    echo number_format((float)$rtotal, 2, '.', '');
+    echo "% ";
+
+
+  }
 
   ?>
-</p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-    
 
-    
-  </div>
-</div>
-</div>
-<br />
-<p align="center">
-3. 
-<?php 
-
-
-
-=======
-                  <div class="row">
-                    <div class="col-md-10">
-                      <h4>
-                        <?php
->>>>>>> 3847df8714ec4f2877eea19772fb940d57744a5f
-
-if ($cntry[4]==$asia)
-{
-
-<<<<<<< HEAD
-
-echo "ASIA is the top area of destination with ";
-echo number_format((float)$ctotal, 2, '.', '');
-echo "% ";
-
-
-}
-
-else if($cntry[4]==$europe)
-{
-
-  echo "EUROPE is the top area of destination with ";
-  echo number_format((float)$ctotal, 2, '.', '');
-  echo "% ";
-
-
-}
-else if($cntry[4]==$na)
-{
-   echo "NOTRH AMERICA is the top area of destination with ";
-   echo number_format((float)$ctotal, 2, '.', '');
-   echo "% ";   
-}
-else if($cntry[4]==$oceania)
-{
-
-  echo "OCEANIA is the top area of destination with ";
-  echo number_format((float)$ctotal, 2, '.', '');
-  echo "% ";
-
-
-}
-
-else if($cntry[4]==$others)
-{
-
-  echo "OTHERS(not on the main continents) is the top area of destination with ";
-  echo number_format((float)$ctotal, 2, '.', '');
-  echo "% ";
-
-
-}
-
-
-
-if ($cntry[3]==$asia)
-{
-
-
-echo "followed by ASIA with ";
-echo number_format((float)$ctotal1, 2, '.', '');
-echo "%.";
-
-
-}
-
-else if($cntry[3]==$europe)
-{
-
-echo "followed by EUROPE with ";
-echo number_format((float)$ctotal1, 2, '.', '');
-echo "%.";
-
-}
-
-
-else if($cntry[3]==$na)
-{
-   echo "followed by NORTH AMERICA with ";
-   echo number_format((float)$ctotal1, 2, '.', '');
-   echo "%.";
-
-
-}
-
-else if($cntry[3]==$oceania)
-{
-
-  echo "followed by OCEANIA with ";
-  echo number_format((float)$ctotal1, 2, '.', ''); 
-  echo "%.";
-}
-
-else if($cntry[3]==$others)
-{
-
-  echo "followed by OTHERS with ";
-  echo number_format((float)$ctotal1, 2, '.', '');
-  echo "%.";
-
-
-}
-
-
-?>
 
 
 
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-   </div>
+</h4>
 </div>
 </div>
-<br />
-<p align="center">
-4.
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-<?php
-if ($range[4]==$ott)
-{
-=======
-                        if($info[4]>$info[5])
-                        {  
-                          echo "2. Mother WORKING ABROAD IS THE HIGHEST with ";
-                          echo number_format((float)$pans1, 2, '.', '');
-                          echo "% than Father with ";
-                          echo number_format((float)$pansa1, 2, '.', '');
-                          echo "%";
-                        }
-                        else
-                        {
-
-                         echo "2. Father WORKING ABROAD IS THE HIGHEST with ";
-                         echo number_format((float)$pansa1, 2, '.', '');
-                         echo "% than Mother with ";
-                         echo number_format((float)$pans1, 2, '.', '');
-                         echo "%";
-
-
-                       }
-
-
-
-                       ?>
-                     </h4>
-                   </div>
-                 </div>
->>>>>>> 3847df8714ec4f2877eea19772fb940d57744a5f
-
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
-
-<<<<<<< HEAD
-echo "ONE to THREE is the top years of stay of the parent abroad with ";
-echo number_format((float)$rtotal, 2, '.', '');
-echo "% ";
-
-
-}
-
-else if($range[4]==$fts)
-{
-
-  echo "FOUR to SIX is the top years of stay of the parent abroad with ";
-  echo number_format((float)$rtotal, 2, '.', '');
-  echo "% ";
-
-
-}
-else if($range[4]==$stt)
-{
-   echo "SEVEN to TEN is the top years of stay of the parent abroad with ";
-   echo number_format((float)$rtotal, 2, '.', '');
-   echo "% ";   
-}
-else if($range[4]==$etf)
-{
-
-  echo "ELEVEN to FIFTEEN is the top years of stay of the parent abroad with ";
-  echo number_format((float)$rtotal, 2, '.', '');
-  echo "% ";
-
-
-}
-
-else if($range[4]==$saa)
-{
-
-  echo "SIXTEEN and ABOVE is the top years of stay of the parent abroad with ";
-  echo number_format((float)$rtotal, 2, '.', '');
-  echo "% ";
-
-
-}
-
-?>
-
-
-
-
-</p>
 
 </div>
-=======
->>>>>>> 3847df8714ec4f2877eea19772fb940d57744a5f
 
-
-
-   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <script src="js/jquery-3.1.1.min.js"></script>
-   <!-- Include all compiled plugins (below), or include individual files as needed -->
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/footable.min.js"></script>
-   <script type="text/javascript">
-    $("#schooltb").footable();
-  </script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/footable.min.js"></script>
+<script type="text/javascript">
+  $("#schooltb").footable();
+</script>
 </body>
 </html>
