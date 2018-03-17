@@ -519,22 +519,47 @@ $pans1=$pans*100;
 $pansa=$info[5]/$ptot;
 $pansa1=$pansa*100;
 
-$asia="ASIA".$info[9];
-$europe="EUROPE".$info[10];
-$na="NORTH AMERICA".$info[11];
-$oceania="OCENIA".$info[12];
-$others="OTHERS".$info[13];
+$asia=$info[9];
+$europe=$info[10];
+$na=$info[11];
+$oceania=$info[12];
+$others=$info[13];
 
 
 
 
 
-/*$cntry = array($info[9],$info[10],$info[11],$info[12],$info[13]);
+$cntry = array($info[9],$info[10],$info[11],$info[12],$info[13]);
 sort($cntry,  SORT_NUMERIC);
-foreach ($cntry as $key => $val) {
-    echo "cntry[" . $key . "] = " . $val . "\n";
-}
-*/
+// foreach ($cntry as $key => $val) {
+//     echo "cntry[" . $key . "] = " . $val . "\n";
+// }
+
+$ctot=$asia+$europe+$na+$oceania+$others;
+$ctotal=($cntry[4]/$ctot)*100;
+$ctotal1=($cntry[3]/$ctot)*100;
+
+
+
+
+$ott=$info[14];
+$fts=$info[15];
+$stt=$info[16];
+$etf=$info[17];
+$saa=$info[17];
+
+$range = array($info[14],$info[15],$info[16],$info[17],$info[18]);
+sort($range,  SORT_NUMERIC);
+/*foreach ($range as $key => $val) {
+    echo "range[" . $key . "] = " . $val . "\n";
+}*/
+
+$rtot=$ott+$fts+$stt+$etf+$saa;
+$rtotal=($range[4]/$rtot)*100;
+$rtotal1=($range[3]/$rtot)*100;
+
+
+
 
 ?>
 
@@ -614,90 +639,178 @@ echo number_format((float)$ansa1, 2, '.', '');
 </div>
 <br />
 <p align="center">
-3.</p>
+3. 
+<?php 
+
+
+
+
+if ($cntry[4]==$asia)
+{
+
+
+echo "ASIA is the top area of destination with ";
+echo number_format((float)$ctotal, 2, '.', '');
+echo "% ";
+
+
+}
+
+else if($cntry[4]==$europe)
+{
+
+  echo "EUROPE is the top area of destination with ";
+  echo number_format((float)$ctotal, 2, '.', '');
+  echo "% ";
+
+
+}
+else if($cntry[4]==$na)
+{
+   echo "NOTRH AMERICA is the top area of destination with ";
+   echo number_format((float)$ctotal, 2, '.', '');
+   echo "% ";   
+}
+else if($cntry[4]==$oceania)
+{
+
+  echo "OCEANIA is the top area of destination with ";
+  echo number_format((float)$ctotal, 2, '.', '');
+  echo "% ";
+
+
+}
+
+else if($cntry[4]==$others)
+{
+
+  echo "OTHERS(not on the main continents) is the top area of destination with ";
+  echo number_format((float)$ctotal, 2, '.', '');
+  echo "% ";
+
+
+}
+
+
+
+if ($cntry[3]==$asia)
+{
+
+
+echo "followed by ASIA with ";
+echo number_format((float)$ctotal1, 2, '.', '');
+echo "%.";
+
+
+}
+
+else if($cntry[3]==$europe)
+{
+
+echo "followed by EUROPE with ";
+echo number_format((float)$ctotal1, 2, '.', '');
+echo "%.";
+
+}
+
+
+else if($cntry[3]==$na)
+{
+   echo "followed by NORTH AMERICA with ";
+   echo number_format((float)$ctotal1, 2, '.', '');
+   echo "%.";
+
+
+}
+
+else if($cntry[3]==$oceania)
+{
+
+  echo "followed by OCEANIA with ";
+  echo number_format((float)$ctotal1, 2, '.', ''); 
+  echo "%.";
+}
+
+else if($cntry[3]==$others)
+{
+
+  echo "followed by OTHERS with ";
+  echo number_format((float)$ctotal1, 2, '.', '');
+  echo "%.";
+
+
+}
+
+
+?>
+
+
+
+</p>
 <div class="row">
 <div class="col-md-offset-2 col-md-6 col-md-offset-4">
   <div class="input-field" align="center">
-
-
-    
-  </div>
+   </div>
 </div>
 </div>
 <br />
 <p align="center">
-4.</p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
+4.
 
-  </div>
-</div>
-</div>
-<br />
-<p align="center">
-5. 
+<?php
+if ($range[4]==$ott)
+{
+
+
+echo "ONE to THREE is the top years of stay of the parent abroad with ";
+echo number_format((float)$rtotal, 2, '.', '');
+echo "% ";
+
+
+}
+
+else if($range[4]==$fts)
+{
+
+  echo "FOUR to SIX is the top years of stay of the parent abroad with ";
+  echo number_format((float)$rtotal, 2, '.', '');
+  echo "% ";
+
+
+}
+else if($range[4]==$stt)
+{
+   echo "SEVEN to TEN is the top years of stay of the parent abroad with ";
+   echo number_format((float)$rtotal, 2, '.', '');
+   echo "% ";   
+}
+else if($range[4]==$etf)
+{
+
+  echo "ELEVEN to FIFTEEN is the top years of stay of the parent abroad with ";
+  echo number_format((float)$rtotal, 2, '.', '');
+  echo "% ";
+
+
+}
+
+else if($range[4]==$saa)
+{
+
+  echo "SIXTEEN and ABOVE is the top years of stay of the parent abroad with ";
+  echo number_format((float)$rtotal, 2, '.', '');
+  echo "% ";
+
+
+}
+
+?>
+
+
+
+
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-   
 
-
-  </div>
-</div>
-</div>
-<br />
-
-<p align="center">
-6.  
-</p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-
-  
-  </div>
-
-</div>
-</div>
-<br />
-<p align="center">
-7. 
-</p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-   
- 
-
-  </div>
-</div>
-</div>
-<p align="center">
-8. 
-</p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-  
-
-  </div>
-</div>
-</div>
-<p align="center">
-9. 
-</p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-    
-
-    </div>
-
-
-</div>
-</div>
 </div>
 
 
