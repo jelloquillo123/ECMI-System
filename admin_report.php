@@ -281,6 +281,7 @@ require 'admin_reportdb.php';
                     <option value=<?php echo $_POST['diocese']; ?>><?php echo 'Diocese of'." ".$dd1[0];?></option>
                     <?php
                   }
+                  echo "<option>Diocese of </option>";
                   $i=1;
                   while($dion=mysqli_fetch_row($dio)){
                     $i=$i+1;
