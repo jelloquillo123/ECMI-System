@@ -10,8 +10,8 @@
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      var widthdata=350;
-      var heightdata=300;
+      var widthdata=400;
+      var heightdata=250;
 
       // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
@@ -36,7 +36,8 @@
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
-
+        //['Male', <?php echo $totm1[0];?>],
+         // ['Female', <?php echo $totf1[0];?>]
 
 
       function drawChart() {
@@ -44,7 +45,7 @@
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Category');
-        data.addColumn('number', 'Data');
+        data.addColumn('number','Data');
         data.addRows([
           ['Male', <?php echo $totm1[0];?>],
           ['Female', <?php echo $totf1[0];?>]
@@ -54,10 +55,10 @@
         var options = {'title':'Range of SDOFP Population Gender',
                        'width':widthdata,
                        'height':heightdata,
-                      'pieHole':0.3};
-
+                      'pieHole':0.4};
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        
         chart.draw(data, options);
       }
 
@@ -80,7 +81,7 @@
         var options = {'title':'Range of Country OFW Distribution',
                        'width':widthdata,
                        'height':heightdata,
-                      'pieHole':0.3};
+                      'pieHole':0.4};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('country'));
@@ -213,7 +214,7 @@
         var options = {'title':'Question 1',
                        'width':widthdata,
                        'height':heightdata,
-                      'pieHole':0.3};
+                      'pieHole':0.4};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('Q1'));
@@ -264,7 +265,7 @@
         var options = {'title':'Question 3',
                        'width':widthdata,
                        'height':heightdata,
-                      'pieHole':0.3};
+                      'pieHole':0.4};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('Q3'));
@@ -504,7 +505,9 @@
         </div>
       </div>
 
+<div>
 
+</div>
       <ul class="nav nav-pills" role="tablist">
         <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Baseline Data Summary Results</a></li>
         <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">PAT Summary Results</a></li>
@@ -787,35 +790,31 @@
                     </tr>
                   </table>
                 </div>
-                <div class="row">
-                <div class="col-md-offset-5 col-md-2">
-                  <button class="btn btn-primary btn-md" type="button" data-toggle="collapse" data-target="#sigfindbase" aria-expanded="false" aria-controls="sigfindbase">Significant Findings <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
-                </div>
-              </div>
+            
               </div>
               
-              <div class="collapse" id="sigfindbase">
+              <div class="" id="sigfindbase">
                 <div class="well" style="height: 720px;">
                   <h3 align="center">Significant Findings</h3><hr>
                   <div class="row">
-                    <div class="col-md-offset-1 col-md-3">
+                    <div class="col-md-4">
                       <div id="chart_div"></div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div id="country"></div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div id="yearsofstay"></div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-offset-1 col-md-3">
+                    <div class="col-md-4">
                       <div id="parent"></div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div id="parentjob"></div>
                     </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                       <div id="totg"></div>
                     </div>
                   </div>
@@ -1327,7 +1326,7 @@
               </div>
               </div>
               
-              <div class="collapse" id="sigfindpat">
+              <div class="" id="sigfindpat">
                 <div class="well">
                   <h3 align="center">Significant Findings</h3><hr>
                   <div class="row">

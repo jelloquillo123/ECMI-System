@@ -7,153 +7,8 @@ require 'admin_reportdb.php';
 ?>
 <html lang="en">
 <head>   
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    var widthdata=350;
-    var heightdata=300;
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(gendertable);
-      google.charts.setOnLoadCallback(country);
-      google.charts.setOnLoadCallback(yearsofstay);
-      google.charts.setOnLoadCallback(parent);
-      google.charts.setOnLoadCallback(parentjob);
-
-
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-
-
-
-      function gendertable() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Category');
-        data.addColumn('number', 'Data');
-        data.addRows([
-          ['Male', <?php echo $info[1];?>],
-          ['Female', <?php echo $info[2];?>]
-          ]);
-
-        // Set chart options
-        var options = {'title':'Range of SDOFP Population Gender',
-        'width':widthdata,
-        'height':heightdata,
-        'pieHole':0.3};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('gendertable'));
-        chart.draw(data, options);
-      }
-
-
-      function country() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Category');
-        data.addColumn('number', 'Data');
-        data.addRows([
-          ['Asia', <?php echo $info[9];?>],
-          ['Europe', <?php echo $info[10];?>],
-          ['North America', <?php echo $info[11];?>],
-          ['Oceania', <?php echo $info[12];?>],
-          ['Others', <?php echo $info[13];?>],
-          ]);
-
-        // Set chart options
-        var options = {'title':'Range of Country OFW Distribution',
-        'width':widthdata,
-        'height':heightdata,
-        'pieHole':0.3};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('country'));
-        chart.draw(data, options);
-      }
-
-
-      function yearsofstay() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Category');
-        data.addColumn('number', 'Data');
-        data.addRows([
-          ['1-3 years', <?php echo $info[14];?>],
-          ['4-6 years', <?php echo $info[15];?>],
-          ['7-10 years', <?php echo $info[16];?>],
-          ['11-15 years', <?php echo $info[17];?>],
-          ['16-20 years', <?php echo $info[18];?>],
-          ]);
-
-        // Set chart options
-        var options = {'title':'Range of Years of Stay of OFW',
-        'width':widthdata,
-        'height':heightdata,
-        'pieHole':0.3};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('yearsofstay'));
-        chart.draw(data, options);
-      }
-
-
-      function parent() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Category');
-        data.addColumn('number', 'Data');
-        data.addRows([
-          ['Mother', <?php echo $info[4];?>],
-          ['Father',<?php echo $info[5];?>],
-          ['Both', <?php echo $info[6];?>]
-          ]);
-
-        // Set chart options
-        var options = {'title':'Range of Parents OFW',
-        'width':widthdata,
-        'height':heightdata,
-        'pieHole':0.3};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('parent'));
-        chart.draw(data, options);
-      }
-
-
-      function parentjob() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Category');
-        data.addColumn('number', 'Data');
-        data.addRows([
-          ['Landbased', <?php echo $info[7];?>],
-          ['Seabased',<?php echo $info[8];?>]
-          ]);
-
-        // Set chart options
-        var options = {'title':'Range of Parents OFW',
-        'width':widthdata,
-        'height':heightdata,
-        'pieHole':0.3};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('parentjob'));
-        chart.draw(data, options);
-      }
-      
-
-      
-    </script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -470,23 +325,24 @@ echo "<tr>
 
             <div class="well">
               <h3 align="center">Significant Findings</h3><hr>
+              <div class="ct-chart" style="height: 200px; width: 350px;"></div>
               <div class="row">
-                <div class="col-md-offset-1 col-md-3">
-                  <div id="gendertable"></div>
+                <div class="col-md-4">
+                  
                 </div>
-                <div class="col-md-3">
-                  <div id="country"></div>
+                <div class="col-md-4">
+                  <canvas id="country_chart" width="800" height="500"></canvas>
                 </div>
-                <div class="col-md-3">
-                  <div id="yearsofstay"></div>
+                <div class="col-md-4">
+                  <canvas id="year_chart" width="800" height="500"></canvas>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-offset-1 col-md-3">
-                  <div id="parent"></div>
+                <div class="col-md-4">
+                  <canvas id="parent_chart" width="800" height="450"></canvas>
                 </div>
-                <div class="col-md-3">
-                  <div id="parentjob"></div>
+                <div class="col-md-4">
+                  <canvas id="parentjob_chart" width="800" height="450"></canvas>
                 </div>
               </div>
 
@@ -580,7 +436,107 @@ echo "<tr>
      </div>
    </div>
 
+  <script type="text/javascript">
 
+    var data = {
+  series: [<?php echo $info[1]?>,<?php echo $info[2]?>]
+};
+
+var sum = function(a, b) { return a + b };
+
+new Chartist.Pie('.ct-chart', data, {
+  labelInterpolationFnc: function(value) {
+    return Math.round(value / data.series.reduce(sum) * 100) + '%';
+  }
+});
+
+
+    new Chart(document.getElementById("gender_chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Male", "Female"],
+      datasets: [{
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [<?php echo $info[1]?>,<?php echo $info[2]?>]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Range of SDOFP Population Gender'
+      }
+    }
+});
+
+   new Chart(document.getElementById("country_chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Asia", "Europe", "North America", "Oceania", "Others"],
+      datasets: [{
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [<?php echo $info[9]?>,<?php echo $info[10]?>,<?php echo $info[11]?>,<?php echo $info[12]?>,<?php echo $info[13]?>]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Range of Country of OFW Distribution'
+      }
+    }
+});
+
+   new Chart(document.getElementById("year_chart"), {
+    type: 'pie',
+    data: {
+      labels: ["1-3 years", "4-6 years", "7-10 years", "11-15 years", "16-20 years"],
+      datasets: [{
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [<?php echo $info[14]?>,<?php echo $info[15]?>,<?php echo $info[16]?>,<?php echo $info[17]?>,<?php echo $info[18]?>]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Range of Years of Stay of OFW'
+      }
+    }
+});
+
+   new Chart(document.getElementById("parent_chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Mother", "Father", "Both"],
+      datasets: [{
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [<?php echo $info[4]?>,<?php echo $info[5]?>,<?php echo $info[6]?>]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Range of Parents OFW'
+      }
+    }
+});
+
+   new Chart(document.getElementById("parentjob_chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Landbased", "Seabased"],
+      datasets: [{
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [<?php echo $info[7]?>,<?php echo $info[8]?>]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Range of Parents Job'
+      }
+    }
+});
+
+  </script>
 
 
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
