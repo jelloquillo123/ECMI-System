@@ -176,8 +176,6 @@ require 'school_studentsdb.php';
                     </div>
                   </div>
 
-
-
                   <div class="col-md-offset-2 col-md-3">
                     <div class="form-group">
                       <label for="glevel">Grade Level:</label>
