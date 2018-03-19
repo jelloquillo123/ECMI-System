@@ -34,6 +34,7 @@ $total_student=mysqli_fetch_row($total_studentq);
   xmlhttp.send();
 }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -141,11 +142,9 @@ $total_student=mysqli_fetch_row($total_studentq);
           <div class="col-md-5" style="font-family: myFirstFont;">
             <h3>List of Students</h3>
             <h4>Total number of students = <?php echo $total_student[0]; ?></h4>
-          </div>
-          <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
-            <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
-            <form method="POST">
-              <select name="sort_level" id="sort_level" class="form-control input-md x">
+            <div class="col-md-5">
+              <select name="glevel" id="glevel" class="form-control input-md x">
+                  <option value="">All Grade Levels</option>
                 <?php
                 $i=1;
                 while($i<=11){
@@ -156,11 +155,14 @@ $total_student=mysqli_fetch_row($total_studentq);
                 }
                 ?>
               </select>
-              <input type="submit" name="submit" class="btn btn-primary" align="left" value="Search">
+            </div>
+          </div>
+          <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
+            <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
             </div>
           </div>
           <br />
-          <div class="table-responsive">
+          <div class="table-responsive" id="show">
             <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
               <thead>
                 <tr>
@@ -178,10 +180,10 @@ $total_student=mysqli_fetch_row($total_studentq);
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="show">
                 <tr>
                   <?php
-                    while($toti=mysqli_fetch_row($toto)){
+                    while($toti=mysqli_fetch_row($to)){
                       ?>
                       <th><?php echo $toti[0];?></th>
                       <td><?php echo $toti[1];?></td>
@@ -193,35 +195,26 @@ $total_student=mysqli_fetch_row($total_studentq);
                       <td><?php echo $toti[7];?></td>
                       <td><?php echo $toti[8];?></td>
                       <td><?php echo $toti[9];?></td>
-                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_students_admin.php?id=$toti[0]'>";?>
-                        <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='edit_students_admin.php?id=<?php echo $toti[0];?>'>
+                          <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                         <td>
                           <button onclick="del(<?php echo $toti[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                        </tr>
+                    
+                     </tr>
                         <?php
-                        echo "<script>
-                        window.location.href='admin_students.php';
-                        </script>";
+                        
                       }
-                  if(isset($_POST['submit']))
-                  {
-                    $toto=mysqli_query($db,"SELECT student.stud_id,student.lname,student.fname,student.mname,school.school_name,student.g_level,
-                      student.gender,student.age,account.username,account.pword 
-                      FROM student
-                      JOIN school
-                      ON student.school_id=school.school_id
-                      JOIN account
-                      ON student.account_id=account.account_id
-                      WHERE student.g_level='$_POST[sort_level]'");
-                    echo $toto[1];
-                    }
                     ?>
+                </tbody>
+              </table>
+        
+        
                   </div>
-                </form>
               </div>
             </div>
           </div>
           <!-- /.container -->
+    </div>
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
           <script src="js/jquery-3.1.1.min.js"></script>
@@ -249,6 +242,22 @@ $total_student=mysqli_fetch_row($total_studentq);
      // $('#addBookDialog').modal('show');
    });
  </script>
+    
+    <script>  
+ $(document).ready(function(){  
+      $('#glevel').change(function(){  
+           var g_level = $(this).val();  
+           $.ajax({  
+                url:"glevel.php",  
+                method:"POST",  
+                data:{glevel:g_level},  
+                success:function(data){  
+                     $('#show').html(data);  
+                }  
+           });  
+      });  
+ });  
+ </script>  
 </body>
 
 </html>
