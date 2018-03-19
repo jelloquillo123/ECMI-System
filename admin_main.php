@@ -112,6 +112,7 @@ require 'admin_dsc.php';
     <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Add School</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Schools</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div4" aria-controls="div4" role="tab" data-toggle="tab">Add Diocese</a></li>
+    <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div5" aria-controls="div5" role="tab" data-toggle="tab">List of Diocese</a></li>
   </ul>
   
   <div class="tab-content">
@@ -296,6 +297,62 @@ require 'admin_dsc.php';
       </div>
 
 
+      <div role="tabpanel" class="tab-pane fade" id="div5">
+      <div class="row" style="padding-top: 20px;">
+        <div class="col-md-offset-1 col-md-10">
+          <div class="well">
+            <div class="row" style="font-family: myFirstFont;">
+              <div class="col-md-5">
+                <h3 align="left">List of Diocese</h3>
+              </div>
+              <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
+                <!-- <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a> -->
+              </div>
+            </div>
+            <br />
+            <div class="table-responsive">
+              <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="diocesetb" style="background-color:#fff;">
+                <thead>
+                  <tr>
+                    <th>Diocese ID</th>
+                    <th>Diocese Name</th>
+                    <th># of Schools Included</th>
+                  </tr> 
+                </thead>
+                <?php 
+                $dios=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_id");
+                $cnt=mysqli_query($db,"SELECT ");
+                while($dioo=mysqli_fetch_row($dios)){
+                  
+                     $num_school_sql=mysqli_query($db,"SELECT COUNT(*) from school WHERE diocese_id='$dioo[0]'");
+                     $num_school=mysqli_fetch_row($num_school_sql);
+
+                  ?>
+                  <tr>
+                     
+
+                    <th><?php echo $dioo[0]?></th>
+                    <td><?php echo $dioo[1]?></td>
+                    <td><?php echo $num_school[0]?></td>
+                    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
+                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+
+                      <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
+
+                      <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                    </tr>
+                    <?php
+                  }
+                  ?>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
 
 
@@ -309,6 +366,9 @@ require 'admin_dsc.php';
     <script src="js/footable.min.js"></script>
     <script type="text/javascript">
       $("#schooltb").footable();
+    </script>
+    <script type="text/javascript">
+      $("#diocesetb").footable();
     </script>
     <script language="javascript">
       function del(x) {
