@@ -2,9 +2,29 @@
 session_start();
 require 'connect.php';
 require 'school_studentsdb.php';
-
 ?>
-
+<script>
+  function showUser(str) {
+    if (str=="") {
+      document.getElementById("txtHint").innerHTML="";
+      return;
+    } 
+    if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","getuser.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,7 +134,7 @@ require 'school_studentsdb.php';
     </ul>
 
     <div class="tab-content">
-      
+
       <div role="tabpanel" class="tab-pane active" id="div2">
         <div class="row" style="padding-top: 20px;">
           <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
@@ -168,14 +188,12 @@ require 'school_studentsdb.php';
                       <input type="date" class="form-control" id="bday" name="bday" required>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="email">Parents Email:</label>
                     <div class="col-sm-8">
                       <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                   </div>
-
                   <div class="col-md-offset-2 col-md-3">
                     <div class="form-group">
                       <label for="glevel">Grade Level:</label>
@@ -192,7 +210,6 @@ require 'school_studentsdb.php';
                       </select>
                     </div>
                   </div>
-
                   <div class="col-md-offset-2 col-md-3">
                     <div class="form-group">
                       <label for="gender">Gender:</label>
@@ -202,78 +219,90 @@ require 'school_studentsdb.php';
                       </select>
                     </div>
                   </div>
-                  
                   <div class="col-sm-offset-4 col-sm-2">
                     <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Add Student">
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
 
 
-        <div role="tabpanel" class="tab-pane" id="div3">
-          <div class="row" style="padding-top: 20px;">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="well">
-                <div class="row" style="font-family: myFirstFont;">
-                  <div class="col-sm-5 col-md-5 col-xs-5 col-lg-5">
-                    <h3 align="left">List of Students</h3>
-                    <h4>Total number of students = <?php echo $stud_total[0]; ?></h4>
-                  </div>
-                  <div class="col-md-offset-5 col-md-1 col-sm-offset-4 col-sm-1 col-xs-offset-1 col-xs-1">
-                    <a href="printry2.php"><button class="btn btn-primary btn-md" style="font-family: mySecondFont;" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
-                  </div>
-                </div>
-                
-                <div class="table-responsive">
-                  <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
-                    <thead>
-                      <tr>
-                        <th>Student ID</th>
-                        <th>Last Name</th>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Grade Level</th>
-                        <th>Gender</th>
-                        <th>Age</th>
-                        <th>Parents Email</th>
-                        <th>Test status</th>
-                        <th>Feedback</th>
-                        <th>Profile</th>
-                        <th>Delete</th>
-                        <th>Reset</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
+
+          <div role="tabpanel" class="tab-pane" id="div3">
+            <div class="row" style="padding-top: 20px;">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="well">
+                  <div class="row" style="font-family: myFirstFont;">
+                    <div class="col-sm-5 col-md-5 col-xs-5 col-lg-5">
+                      <h3 align="left">List of Students</h3>
+                      <h4>Total number of students = <?php echo $stud_total[0]; ?></h4>
+                    </div>
+                    <div class="col-md-offset-5 col-md-1 col-sm-offset-4 col-sm-1 col-xs-offset-1 col-xs-1">
+                      <a href="printry2.php"><button class="btn btn-primary btn-md" style="font-family: mySecondFont;" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
+                    </div>
+                    <div class="col-md-5">
+                      <select name="glevels" id="glevel" class="form-control input-md x">
+                        <option value="">All Grade Levels</option>
                         <?php
-                        while($stu=mysqli_fetch_row($stud)){
-                          ?>
-                          <th><?php echo $stu[0]; ?></th>
-                          <td><?php echo $stu[1]; ?></td>
-                          <td><?php echo $stu[2]; ?></td>
-                          <td><?php echo $stu[3]; ?></td>
-                          <td><?php echo $stu[4]; ?></td>
-                          <td><?php echo $stu[5]; ?></td>
-                          <td><?php echo $stu[6]; ?></td>
-                          <td><?php echo $stu[8]; ?></td>
-                          <td><?php echo $stu[9]; ?></td>
+                        $i=1;
+                        while($i<=11){
+                          echo '
+                          <option value="'.$i.'">Grade '.$i.'</option>
+                          ';
+                          $i=$i+1;
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
 
-                          <td align="center"><?php echo "<a href='feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
+                  <div class="table-responsive">
+                    <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
+                      <thead>
+                        <tr>
+                          <th>Student ID</th>
+                          <th>Last Name</th>
+                          <th>First Name</th>
+                          <th>Middle Name</th>
+                          <th>Grade Level</th>
+                          <th>Gender</th>
+                          <th>Age</th>
+                          <th>Parents Email</th>
+                          <th>Test status</th>
+                          <th>Feedback</th>
+                          <th>Profile</th>
+                          <th>Delete</th>
+                          <th>Reset</th>
+                        </tr>
+                      </thead>
+                      <tbody id="show">
+                        <tr>
+                          <?php
+                          while($stu=mysqli_fetch_row($stud)){
+                            ?>
+                            <th><?php echo $stu[0]; ?></th>
+                            <td><?php echo $stu[1]; ?></td>
+                            <td><?php echo $stu[2]; ?></td>
+                            <td><?php echo $stu[3]; ?></td>
+                            <td><?php echo $stu[4]; ?></td>
+                            <td><?php echo $stu[5]; ?></td>
+                            <td><?php echo $stu[6]; ?></td>
+                            <td><?php echo $stu[8]; ?></td>
+                            <td><?php echo $stu[9]; ?></td>
 
-                          <td><p data-placement="top" data-toggle="tooltip" title="Profile"><?php echo "<a href='edit_students_school.php?id=$stu[0]'>";?>
-                            <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
-                            
-                            <td>
-                              <button onclick="del(<?php echo $stu[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                              
-                              <td><?php echo "<a href='resetpw.php?id=$stu[7]'>";?>
-                                <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
-                              </tr>
-                    <!--<!-- Modal Delete 
+                            <td align="center"><?php echo "<a href='feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback" title="Feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
+
+                            <td><p data-placement="top" data-toggle="tooltip" title="Profile"><?php echo "<a href='edit_students_school.php?id=$stu[0]'>";?>
+                              <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
+
+                              <td>
+                                <button onclick="del(<?php echo $stu[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+
+                                <td><?php echo "<a href='resetpw.php?id=$stu[7]'>";?>
+                                  <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
+                                </tr>
+                    <!-- Modal Delete 
                       <div class="modal fade" id="delete" role="dialog">
                         <div class="modal-dialog modal-md">
                           <div class="modal-content">
@@ -300,19 +329,19 @@ require 'school_studentsdb.php';
                     <?php
                   }
                   ?>
-                </tbody>
-              </table>
-            </div>
+                </form>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-
-
-  <!--End of Container-Fluid-->
 </div>
+
+
+<!--End of Container-Fluid-->
+
 
 
 
@@ -331,7 +360,22 @@ require 'school_studentsdb.php';
     {
       window.location.href="delete_school_students.php?id=" +x+" ";
     }
-    
+
   }
+</script>
+<script>  
+ $(document).ready(function(){  
+  $('#glevels').change(function(){  
+   var g_levels = $(this).val();  
+   $.ajax({  
+    url:"glevels.php",  
+    method:"POST",  
+    data:{glevels:g_levels},  
+    success:function(data){  
+     $('#show').html(data);  
+   }  
+ });  
+ });  
+});  
 </script>
 </body>

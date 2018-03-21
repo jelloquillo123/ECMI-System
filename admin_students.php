@@ -243,21 +243,21 @@ $total_student=mysqli_fetch_row($total_studentq);
    });
  </script>
     
-    <script>  
- $(document).ready(function(){  
-      $('#glevel').change(function(){  
-           var g_level = $(this).val();  
-           $.ajax({  
-                url:"glevel.php",  
-                method:"POST",  
-                data:{glevel:g_level},  
-                success:function(data){  
-                     $('#show').html(data);  
-                }  
-           });  
-      });  
- });  
- </script>  
+ <script>  
+   $(document).ready(function(){  
+    $('#glevel').change(function(){  
+     var g_level = $(this).val();  
+     $.ajax({  
+      url:"glevel.php",  
+      method:"POST",  
+      data:{glevel:g_level},  
+      success:function(data){  
+       $('#show').html(data);  
+     }  
+   });  
+   });  
+  });  
+</script>  
 </body>
 
 </html>
