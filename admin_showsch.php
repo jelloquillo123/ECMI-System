@@ -2,6 +2,11 @@
 session_start();
 require 'connect.php';
 require 'admin_showdb.php';
+$school=$_GET['id'];
+$schn=mysqli_query($db,"SELECT school_name
+  FROM school
+  WHERE school_id='$school'");
+$sn=mysqli_fetch_row($schn);
 ?>
 
 
@@ -465,7 +470,7 @@ require 'admin_showdb.php';
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <p class="navbar-text" style="color: #f5f5f5;"><?php echo $scn[0]; ?></p>
+          <p class="navbar-text" style="color: #f5f5f5;"><?php echo $sn[0]; ?></p>
         </li>
         <li class="button">
           <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
