@@ -527,7 +527,7 @@ $sn=mysqli_fetch_row($schn);
             <div class="row">
               <div class="col-md-5" style="font-family: myFirstFont;">
                 <h3 align="left"></h3>
-                <h3 align="left">Baseline Data Summary Results <?php echo $school_nme; ?></h3>
+                <h3 align="left">Baseline Data Summary Results</h3>
               </div>
               <div class="col-md-offset-5 col-md-1">
                 <a href="printry1.php"><button class="btn btn-primary" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
