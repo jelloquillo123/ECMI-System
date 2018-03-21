@@ -12,8 +12,10 @@ INNER JOIN account
 ON coordinator.account_id=account.account_id
 WHERE account.username='$username' AND school.school_id='$school'");
 $scn=mysqli_fetch_row($sch);
+
 if(isset($_POST['expand']))
 
+$school_nme=$scn[0];
 $school=$scn[2];
 
 $total=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school'");
