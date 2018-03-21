@@ -144,6 +144,7 @@ require 'admin_dsc.php';
                         <label class="control-label col-md-2" for="diocese">Diocese:</label>
                         <div class="col-md-9" style="padding-left: 30px;">
                           <select name="diocese" id="diocese" class="form-control" required>
+                            <option>Select Diocese</option>
                             <?php
                             $i=1;
                             while($dion=mysqli_fetch_row($dio)){
@@ -229,8 +230,9 @@ require 'admin_dsc.php';
                     <th>School ID</th>
                     <th>School Name</th>
                     <th>Diocese</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                   </tr>  
                 </thead>
                 <?php 
@@ -243,144 +245,143 @@ require 'admin_dsc.php';
 
                     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
                       <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                      <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                      <td><p data-placement="top" data-toggle="tooltip" title="Expand"><?php echo "<a href='admin_showsch.php?id=$sc[0]'>";?>
+                        <button class="btn btn-info btn-md" data-title="Expand" data-toggle="modal" data-target="#expand" name="expand"><span class="glyphicon glyphicon-new-window"></span></button></a></p></td>
+                      </tr>
+                      <?php
+                    }
+                    ?>
+                  </table>
+                </div>
 
-                      <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
-
-                      <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                    </tr>
-                    <?php
-                  }
-                  ?>
-                </table>
               </div>
-
             </div>
           </div>
         </div>
-      </div>
 
 
-      <div role="tabpanel" class="tab-pane" id="div4">
-        <div class="row" style="padding-top: 20px;">
-          <div class="col-md-offset-3 col-md-6">
-            <div class="well">
-              <div class="row" style="font-family: myFirstFont;">
-                <div class="col-md-6">  
-                  <h3 align="left" >Add Diocese</h3>
+        <div role="tabpanel" class="tab-pane" id="div4">
+          <div class="row" style="padding-top: 20px;">
+            <div class="col-md-offset-3 col-md-6">
+              <div class="well">
+                <div class="row" style="font-family: myFirstFont;">
+                  <div class="col-md-6">  
+                    <h3 align="left" >Add Diocese</h3>
+                  </div>
                 </div>
-              </div>
-              <br />
-              <form onsubmit="return confirm('Are you sure you want to add this diocese?');" class="form-horizontal" method="POST">
-                <h4 align="center">Diocese</h4>
-                <div class="row">
-                  <div class="col-md-offset-1 col-md-10">     
-                    <div class="form-group">
-                      <label class="control-label col-md-3" for="dioname">Name of Diocese:</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="dioname" name="dioname" required>
+                <br />
+                <form onsubmit="return confirm('Are you sure you want to add this diocese?');" class="form-horizontal" method="POST">
+                  <h4 align="center">Diocese</h4>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-10">     
+                      <div class="form-group">
+                        <label class="control-label col-md-3" for="dioname">Name of Diocese:</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="dioname" name="dioname" required>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-offset-1 col-md-10">
-                    <br />
-                    <div class="col-md-offset-4 col-md-2">
-                      <input type="submit" class="btn btn-primary btn-lg green" align="center" name="diocese_submit" value = "Add Diocese">
-                    </div>
-                  </form>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                      <br />
+                      <div class="col-md-offset-4 col-md-2">
+                        <input type="submit" class="btn btn-primary btn-lg green" align="center" name="diocese_submit" value = "Add Diocese">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
 
-      <div role="tabpanel" class="tab-pane fade" id="div5">
-      <div class="row" style="padding-top: 20px;">
-        <div class="col-md-offset-1 col-md-10">
-          <div class="well">
-            <div class="row" style="font-family: myFirstFont;">
-              <div class="col-md-5">
-                <h3 align="left">List of Diocese</h3>
-              </div>
-              <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
-                <!-- <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a> -->
-              </div>
-            </div>
-            <br />
-            <div class="table-responsive">
-              <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="diocesetb" style="background-color:#fff;">
-                <thead>
-                  <tr>
-                    <th>Diocese ID</th>
-                    <th>Diocese Name</th>
-                    <th># of Schools Included</th>
-                  </tr> 
-                </thead>
-                <?php 
-                $dios=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_id");
-                $cnt=mysqli_query($db,"SELECT ");
-                while($dioo=mysqli_fetch_row($dios)){
-                  
+        <div role="tabpanel" class="tab-pane fade" id="div5">
+          <div class="row" style="padding-top: 20px;">
+            <div class="col-md-offset-1 col-md-10">
+              <div class="well">
+                <div class="row" style="font-family: myFirstFont;">
+                  <div class="col-md-5">
+                    <h3 align="left">List of Diocese</h3>
+                  </div>
+                  <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
+                    <!-- <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a> -->
+                  </div>
+                </div>
+                <br />
+                <div class="table-responsive">
+                  <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="diocesetb" style="background-color:#fff;">
+                    <thead>
+                      <tr>
+                        <th>Diocese ID</th>
+                        <th>Diocese Name</th>
+                        <th># of Schools Included</th>
+                      </tr> 
+                    </thead>
+                    <?php 
+                    $dios=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_id");
+                    $cnt=mysqli_query($db,"SELECT ");
+                    while($dioo=mysqli_fetch_row($dios)){
+
                      $num_school_sql=mysqli_query($db,"SELECT COUNT(*) from school WHERE diocese_id='$dioo[0]'");
                      $num_school=mysqli_fetch_row($num_school_sql);
 
-                  ?>
-                  <tr>
-                     
+                     ?>
+                     <tr>
 
-                    <th><?php echo $dioo[0]?></th>
-                    <td><?php echo $dioo[1]?></td>
-                    <td><?php echo $num_school[0]?></td>
-                    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
-                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
 
-                      <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
+                      <th><?php echo $dioo[0]?></th>
+                      <td><?php echo $dioo[1]?></td>
+                      <td><?php echo $num_school[0]?></td>
+                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
+                        <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
 
-                      <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                    </tr>
-                    <?php
-                  }
-                  ?>
-                </table>
+                        <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
+
+                        <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                      </tr>
+                      <?php
+                    }
+                    ?>
+                  </table>
+                </div>
+
               </div>
-
             </div>
           </div>
         </div>
+
+
       </div>
 
 
-    </div>
 
+      <!-- /.container -->
 
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/footable.min.js"></script>
+      <script type="text/javascript">
+        $("#schooltb").footable();
+      </script>
+      <script type="text/javascript">
+        $("#diocesetb").footable();
+      </script>
+      <script language="javascript">
+        function del(x) {
+          var delo = confirm('Are you sure you want to delete?');
+          if(delo == true)
+          {
+            window.location.href="delete_school.php?id=" +x+" ";
+          }
 
-    <!-- /.container -->
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/footable.min.js"></script>
-    <script type="text/javascript">
-      $("#schooltb").footable();
-    </script>
-    <script type="text/javascript">
-      $("#diocesetb").footable();
-    </script>
-    <script language="javascript">
-      function del(x) {
-        var delo = confirm('Are you sure you want to delete?');
-        if(delo == true)
-        {
-          window.location.href="delete_school.php?id=" +x+" ";
         }
+      </script>
 
-      }
-    </script>
+    </body>
 
-  </body>
-
-  </html>
+    </html>
