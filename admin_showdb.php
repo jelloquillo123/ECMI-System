@@ -12,6 +12,7 @@ $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.sch
 	ON coordinator.account_id=account.account_id
 	WHERE account.username='$username' AND school.school_id='$school'");
 $scn=mysqli_fetch_row($sch);
+
 if(isset($_POST['expand']))
 
 	$school=$scn[2];
