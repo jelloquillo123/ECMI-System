@@ -142,7 +142,7 @@ $total_student=mysqli_fetch_row($total_studentq);
           <div class="col-md-5" style="font-family: myFirstFont;">
             <h3>List of Students</h3>
             <h4>Total number of students = <?php echo $total_student[0]; ?></h4>
-            <div class="col-md-5">
+            <div class="col-md-5 col-xs-6">
               <select name="glevel" id="glevel" class="form-control input-md x">
                   <option value="">All Grade Levels</option>
                 <?php
