@@ -139,10 +139,23 @@ $total_student=mysqli_fetch_row($total_studentq);
     <div class="col-md-12">
       <div class="well">
         <div class="row">
+             <div class="row">
+             <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
+            <!-- <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a> -->
+            </div>
+          </div>
           <div class="col-md-5" style="font-family: myFirstFont;">
             <h3>List of Students</h3>
             <h4>Total number of students = <?php echo $total_student[0]; ?></h4>
-            <div class="col-md-5 col-xs-6">
+            <div class="col-md-4">
+              <select name="syear" id="syear" class="form-control input-md x">
+                  <option value=''>All Years</option>
+                  <option value=2017>2017</option>
+                  <option value=2018>2018</option>
+              </select>
+            
+            </div>
+            <div class="col-md-4">
               <select name="glevel" id="glevel" class="form-control input-md x">
                   <option value="">All Grade Levels</option>
                 <?php
@@ -155,11 +168,19 @@ $total_student=mysqli_fetch_row($total_studentq);
                 }
                 ?>
               </select>
+            
             </div>
+            
+            <div class="col-md-4">
+              <select name="status" id="status" class="form-control input-md x">
+                  <option value="">All </option>
+                    <option value="taken">Taken</option>
+                    <option value="nottaken">Not taken</option>
+              </select>
+            
+            </div>
+              
           </div>
-          <div class="col-md-offset-5 col-md-2" style="padding-left: 100px;">
-            <a href="printry3.php"><button class="btn btn-primary" align="left"> Print <span class="glyphicon glyphicon-print"></span></button></a>
-            </div>
           </div>
           <br />
           <div class="table-responsive" id="show">
@@ -243,21 +264,58 @@ $total_student=mysqli_fetch_row($total_studentq);
    });
  </script>
     
+    <script>  
+ $(document).ready(function(){  
+      $('#glevel').change(function(){  
+           var g_level = $(this).val();
+           var year = $('#syear').val();
+           var status = $('#status').val();
+           $.ajax({  
+                url:"glevel.php",  
+                method:"POST",  
+                data:{glevel:g_level, year:year, status:status},  
+                success:function(data){  
+                     $('#show').html(data);  
+                }  
+           });  
+      });  
+ });  
+ </script>
  <script>  
-   $(document).ready(function(){  
-    $('#glevel').change(function(){  
-     var g_level = $(this).val();  
-     $.ajax({  
-      url:"glevel.php",  
-      method:"POST",  
-      data:{glevel:g_level},  
-      success:function(data){  
-       $('#show').html(data);  
-     }  
-   });  
-   });  
-  });  
-</script>  
+ $(document).ready(function(){  
+      $('#syear').change(function(){  
+           var g_level = $('#glevel').val();
+           var year = $(this).val();
+           var status = $('#status').val();
+           $.ajax({  
+                url:"glevel.php",  
+                method:"POST",  
+                data:{glevel:g_level, year:year, status:status},  
+                success:function(data){  
+                     $('#show').html(data);  
+                }  
+           });  
+      });  
+ });  
+ </script>
+
+<script>  
+ $(document).ready(function(){  
+      $('#status').change(function(){  
+           var g_level = $('#glevel').val();
+           var year = $('#syear').val();
+           var status = $(this).val();
+           $.ajax({  
+                url:"glevel.php",  
+                method:"POST",  
+                data:{glevel:g_level, year:year, status:status},  
+                success:function(data){  
+                     $('#show').html(data);  
+                }  
+           });  
+      });  
+ });  
+ </script>
 </body>
 
 </html>

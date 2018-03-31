@@ -480,6 +480,7 @@ echo "<tr>
             <div class="well">
               <h3 align="center">Significant Findings</h3><hr>
               <div class="row">
+              
                 <div class="col-md-offset-1 col-md-3">
                   <div id="gendertable"></div>
                 </div>

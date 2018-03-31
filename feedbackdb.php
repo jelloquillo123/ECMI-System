@@ -16,13 +16,29 @@ $id=$_GET['id'];
 		$email="cbcp.ecmi@gmail.com";
 		if(isset($_POST['sendEmail']))
 		{
-			require('PHPMailer/PHPMailerAutoload.php');
-			
-			$sendTo = $_POST['sendTo'];
+
+            $sendTo = $_POST['sendTo'];
 			$fromEmail = $_POST['fromEmail'];
 			$fromName = $_POST['fromName'];
 			$subject = $_POST['subject'];
 			$message = $_POST['message'];
+			
+			
+		   $to = "somebody@example.com";
+           $subject = "My subject";
+           $txt = "Hello world!";
+          $headers = "From: cbcp.ecmi@gmail.com" . "\r\n" .
+           "CC: somebodyelse@example.com";
+
+mail($sendTo,$subject,$message,$headers);
+			
+		    }
+		
+?>
+
+<!-- require('PHPMailer/PHPMailerAutoload.php');
+			
+			
 			
 			$mail = new PHPMailer;
 			
@@ -39,7 +55,4 @@ $id=$_GET['id'];
 			$mail->Body = $message."\n\n-----------------------------------------\nNOTE: If you have further questions, send a mail to:(".$fromEmail.")";
 			
 			if($mail->send()){
-				header("Location:school_students.php");
-		    }
-		}
-?>
+				header("Location:school_students.php"); -->

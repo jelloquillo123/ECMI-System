@@ -1,6 +1,7 @@
 <?php  
 require 'connect.php';
 require 'school_studentsdb.php';
+//session_start();
 $username = ($_SESSION['username']);
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
   FROM school
@@ -16,27 +17,33 @@ $school=$scn[2];
 $stud=mysqli_query($db,"SELECT stud_id,lname,fname,mname,g_level,gender,age,account_id,email,t_stat
   FROM student WHERE school_id='$school'");
 $output = '';
+$print = '';
+$cunt = 0;
+
+
 if(isset($_POST["glevels"]))  
 {  
 
   if($_POST["glevels"] != '')  
   { 
     $grade = $_POST["glevels"];
-    $sql = "SELECT student.stud_id,student.lname,student.fname,student.mname,student.g_level,student.gender,student.age,account.account_id,account.email,student.t_stat
+    $sql = "SELECT student.stud_id,student.lname,student.fname,student.mname,student.g_level,student.gender,student.age,account.account_id,student.email,student.t_stat
     FROM student
     JOIN account
     ON student.account_id=account.account_id
-    WHERE student.g_level=.$grade AND student.school_id=.$school";  
+    WHERE student.g_level=".$grade." AND student.school_id=".$school;  
   }
   else  
   {  
-   $sql = "SELECT student.stud_id,student.lname,student.fname,student.mname,student.g_level,student.gender,student.age,account.account_id,account.email,student.t_stat
+   $sql = "SELECT student.stud_id,student.lname,student.fname,student.mname,student.g_level,student.gender,student.age,account.account_id,student.email,student.t_stat
    FROM student
    JOIN account
    ON student.account_id=account.account_id
-   WHERE student.g_level=.$grade AND student.school_id=.$school"; 
+   WHERE student.g_level=".$grade." AND student.school_id=".$school; 
  }  
- $result = mysqli_query($db, $sql);  
+ $result = mysqli_query($db, $sql); 
+
+$num_rows = mysqli_num_rows($result);  
  
  ?>
  <!DOCTYPE html>
@@ -64,10 +71,15 @@ if(isset($_POST["glevels"]))
     <tbody>
 
 
+
+
+
       <?php
+
+
       while($row = mysqli_fetch_row($result))  
       {  
-       $output .= '<tr>
+      $output .= '<tr>
        <th>'.$row[0].'</th>
        <th>'.$row[1].'</th>
        <th>'.$row[2].'</th>
@@ -86,14 +98,31 @@ if(isset($_POST["glevels"]))
        <td>
        <button onclick="del('.$row[0].')" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
 
-       <td>"<a href="resetpw.php?id='.$row[7].'">
+       <td><a href="resetpw.php?id='.$row[7].'">
        <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
        </tr>';  
+
+      $print .= '<tr>
+       <th>'.$row[0].'</th>
+       <th>'.$row[1].'</th>
+       <th>'.$row[2].'</th>
+       <th>'.$row[3].'</th>
+       <th>'.$row[4].'</th>
+       <th>'.$row[5].'</th>
+       <th>'.$row[6].'</th>
+       <th>'.$row[8].'</th>
+       <th>'.$row[9].'</th>
+       </tr>';
+       $cunt = $cunt + 1;
      } 
      echo $output; 
      echo "</tbody>";
-     
-   }  
+     $_SESSION['output'] = $print;
+      $_SESSION['studcount'] = $num_rows;
+   } 
+
+
+
 
    ?> 
  </tbody>

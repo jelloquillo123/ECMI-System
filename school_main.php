@@ -1368,6 +1368,9 @@ require 'school_maindb.php'
             </div>
           </div>
         </div>
+        <div class="col-md-offset-5 col-md-1">
+                  <a href="prent1.php"><button class="btn btn-primary" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
+                </div>
         <div class="row">
           <div class="col-md-offset-2 col-md-8">
             <div class="well">

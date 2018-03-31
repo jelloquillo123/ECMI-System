@@ -239,10 +239,10 @@ require 'school_studentsdb.php';
                       <h4>Total number of students = <?php echo $stud_total[0]; ?></h4>
                     </div>
                     <div class="col-md-offset-5 col-md-1 col-sm-offset-4 col-sm-1 col-xs-offset-1 col-xs-1">
-                      <a href="printry2.php"><button class="btn btn-primary btn-md" style="font-family: mySecondFont;" id="btn-plcmnt"> Print <span class="glyphicon glyphicon-print"></span></button></a>
+                      <a href="pweha.php" class="btn btn-primary btn-md"> Print <span class="glyphicon glyphicon-print"></span></a>
                     </div>
-                    <div class="col-md-5">
-                      <select name="glevels" id="glevel" class="form-control input-md x">
+                    <div class="col-md-2">
+                      <select name="glevels" id="glevels" class="form-control input-md">
                         <option value="">All Grade Levels</option>
                         <?php
                         $i=1;
@@ -257,7 +257,7 @@ require 'school_studentsdb.php';
                     </div>
                   </div>
 
-                  <div class="table-responsive">
+                  <div class="table-responsive" id="show">
                     <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
                       <thead>
                         <tr>
@@ -276,7 +276,7 @@ require 'school_studentsdb.php';
                           <th>Reset</th>
                         </tr>
                       </thead>
-                      <tbody id="show">
+                      <tbody>
                         <tr>
                           <?php
                           while($stu=mysqli_fetch_row($stud)){
@@ -366,11 +366,11 @@ require 'school_studentsdb.php';
 <script>  
  $(document).ready(function(){  
   $('#glevels').change(function(){  
-   var g_levels = $(this).val();  
+   var g_level = $(this).val();  
    $.ajax({  
     url:"glevels.php",  
     method:"POST",  
-    data:{glevels:g_levels},  
+    data:{glevels:g_level},  
     success:function(data){  
      $('#show').html(data);  
    }  

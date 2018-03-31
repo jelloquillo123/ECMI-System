@@ -48,7 +48,7 @@ function prints(){
 <body onload = "prints();">
 
 
-                      <table class="table table-hover tablecenter" data-paging="true" id="schooltb" style="background-color:#fff;">
+                      <table class="table table-striped tablecenter" data-paging="true" id="schooltb" style="background-color:#fff;">
                         <thead>
                         <tr>
                           <th>School ID</th>

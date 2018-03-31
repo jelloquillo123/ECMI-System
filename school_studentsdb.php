@@ -1,4 +1,5 @@
 <?php
+session_start();
 $username = ($_SESSION['username']);
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
   FROM school
@@ -38,6 +39,7 @@ if(isset($_POST['submit']))
 
   $stuid=$stuid+1;
   
+  $year= date("Y");
   $today = date("Y-m-d");
   $diff = date_diff(date_create($n8),date_create($today));
   $ag = $diff->format('%y');
@@ -45,8 +47,8 @@ if(isset($_POST['submit']))
   mysqli_query($db,"INSERT INTO account (username,pword,user_id)
     VALUES('$n0','$n0','3')");
 
-  mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age,email,t_stat) 
-    VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag','$n9','Not taken')");
+  mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age,email,t_stat,year) 
+    VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag','$n9','Not taken','$year')");
   echo "<script>
   alert('Successfully Added a Student.');
   window.location.href='school_students.php';
