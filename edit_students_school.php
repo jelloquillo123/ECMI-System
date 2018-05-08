@@ -189,9 +189,7 @@
     </div>
     </form>
     </div>
-    <div class="row">
-    <div class="col-md-offset-2 col-md-8">
-    <div class="well">
+    
       <?php
 $sql_ans=mysqli_query($db,"SELECT * FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id  WHERE pre_test.stud_id='$id' ");
 $ans=mysqli_fetch_row($sql_ans);
@@ -255,156 +253,108 @@ $feed9=mysqli_fetch_row($sql_feed9);
 
 ?>
 
-
-
-<h4 align="center">STUDENT PTF RESULT</h4>
-<p align="center"> 1.
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+    <div class="well">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <h3 align="center">STUDENT PTF RESULT</h3>
+<p align="left" style="font-size:18px;"> 1.
 
 <?php
 echo $qs1[0];
 
 ?>
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-<div class="input-field" align="center">
-  
-  Answer:<?php echo $feed1[0]; ?> 
-
-</div>
-</div>
-</div>
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed1[0]; ?> 
+</p>
 <br />
-<p align="center">
+<p align="left" style="font-size:18px;">
   2.  <?php
 echo $qs2[0];
 
 ?>
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-    
-     Answer:<?php echo $feed2[0]; ?> 
-    
-  </div>
-</div>
-</div>
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed2[0]; ?> 
+</p>
 <br />
-<p align="center">
+<p align="left" style="font-size:18px;">
 3. <?php
 echo $qs3[0];
 
 ?></p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-
-     Answer:<?php echo $feed3[0]; ?> 
-    
-  </div>
-</div>
-</div>
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed3[0]; ?> 
+</p>
 <br />
-<p align="center">
+<p align="left" style="font-size:18px;">
 4.<?php
 echo $qs4[0];
 
 ?></p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-
-     Answer:<?php echo $feed4[0]; ?> 
-
-  </div>
-</div>
-</div>
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed4[0]; ?> 
+</p>
 <br />
-<p align="center">
+<p align="left" style="font-size:18px;">
 5. <?php
 echo $qs5[0];
 
 ?>
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-   
-    Answer:<?php echo $feed5[0]; ?> 
-
-  </div>
-</div>
-</div>
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed5[0]; ?> 
+</p>
 <br />
 
-<p align="center">
+<p align="left" style="font-size:18px;">
 6.  <?php
 echo $qs6[0];
 
 ?>
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-     
-     Answer:<?php echo $feed6[0]; ?> 
-  
-  </div>
-
-</div>
-</div>
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed6[0]; ?> 
+</p>
 <br />
-<p align="center">
+<p align="left" style="font-size:18px;">
 7. <?php
 echo $qs7[0];
 
 ?>
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-   
-     Answer:<?php echo $feed7[0]; ?>  
-
-  </div>
-</div>
-</div>
-<p align="center">
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed7[0]; ?> 
+</p>
+<p align="left" style="font-size:18px;">
 8. <?php
 echo $qs8[0];
 
 ?>
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-    
-     Answer:<?php echo $feed8[0]; ?> 
-
-  </div>
-</div>
-</div>
-<p align="center">
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed8[0]; ?> 
+</p>
+<p align="left" style="font-size:18px;">
 9. <?php
 echo $qs9[0];
 
 ?>
 </p>
-<div class="row">
-<div class="col-md-offset-2 col-md-6 col-md-offset-4">
-  <div class="input-field" align="center">
-    
-     Answer:<?php echo $feed9[0]; ?> 
-    </div>
-
-
-</div>
-</div>
+<p align="left" style="font-size:18px; font-weight:bold;">
+    Answer: <?php echo $feed9[0]; ?> 
+</p>
+     
 </div>
 <!--Pre-Awareness Button  -->
 
 </form>
+            </div>
+        </div>
+
+
 
 
 

@@ -766,7 +766,7 @@ $username = ($_SESSION['username']);
         <th>4-6</th>
         <th>7-10</th>
         <th>11-15</th>
-        <th>16-20</th>
+        <th>16+</th>
       </tr>
     
       <?php 
