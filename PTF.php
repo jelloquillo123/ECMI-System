@@ -195,7 +195,7 @@ $fam_cou=$fam_cou+1;
     <h5 align="left"><b>Pre-Awareness Test(PAT)</b></h5>
   </div>
   </div>
-  <hr />
+  <br>
   <div class="well">
     <div class="row">
       <div class="col-md-12">
@@ -212,10 +212,10 @@ $fam_cou=$fam_cou+1;
   				</div>
       </div>
     </div>
+    <br>
     <div class="row">
       <div class="col-md-6">
           <div class="form-group">
-          <div class="radio">
             <label for="parentgender">Magulang na nagtatrabaho sa ibang bansa(Tatay/Nanay/Pareho):</label>
             <select name="parent" id="parentgender" class="form-control input-sm" required>
             <option value="">Pumili...</option>
@@ -223,7 +223,6 @@ $fam_cou=$fam_cou+1;
             <option value="tatay">Tatay</option>
             <option value="pareho">Pareho</option>
             </select>
-            </div>
           </div>
       </div>
       <div class="col-md-6">
@@ -326,7 +325,7 @@ $qs9=mysqli_fetch_row($qt9);
 
 
 
-<h4 align="center">Piliin ang mga naaangkop na sagot.</h4>
+<h3 align="center">Piliin ang mga naaangkop na sagot.</h3> <br>
 <p > 1.
 
 <?php
@@ -704,13 +703,11 @@ echo $qs9[4];
 </div>
 
 <!--Pre-Awareness Button  -->
-<div class="container">
     <div class="row">
-    <div class="col-sm-offset-5 col-sm-2 col-sm-offset-5" align="middle">
-    <input type="submit" name="submit" class="btn btn-lg btn-primary green" align="center" value="Submit">
+    <div class="col-md-2" style="position: relative; left: 450px;">
+    <input type="submit" name="submit" class="btn btn-lg btn-primary" align="center" value="Submit">
     </div>
     </div>
-</div>
 </form>
 
 

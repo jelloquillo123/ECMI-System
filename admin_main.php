@@ -24,8 +24,8 @@ require 'admin_dsc.php';
     <![endif]-->
 
     <link rel="stylesheet" href="stylessdofp.css">
-
-    <style type="text/css">
+  
+  <style type="text/css">
     #edit_header{
       margin-bottom: 50px;
     }
@@ -34,7 +34,6 @@ require 'admin_dsc.php';
       margin-bottom: 30px;
     }
   </style>
-  
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -218,7 +217,7 @@ require 'admin_dsc.php';
               <div class="col-md-5">
                 <h3 align="left">List of Participating Schools</h3>
               </div>
-              <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
+              <div class="col-md-offset-6 col-md-1" style="position: relative; top:10px; right: 15px;">
                 <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
               </div>
             </div>
@@ -230,9 +229,9 @@ require 'admin_dsc.php';
                     <th>School ID</th>
                     <th>School Name</th>
                     <th>Diocese</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Expand</th>
                   </tr>  
                 </thead>
                 <?php 
@@ -243,11 +242,9 @@ require 'admin_dsc.php';
                     <td><?php echo $sc[1]?></td>
                     <td><?php echo $sc[2]?></td>
 
-                    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
-                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-                      <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                      <td><p data-placement="top" data-toggle="tooltip" title="Expand"><?php echo "<a href='admin_showsch.php?id=$sc[0]'>";?>
-                        <button class="btn btn-info btn-md" data-title="Expand" data-toggle="modal" data-target="#expand" name="expand"><span class="glyphicon glyphicon-new-window"></span></button></a></p></td>
+                      <td><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+                      <td><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                      <td><button onclick="expand_sch(<?php echo $sc[0];?>)" class="btn btn-info btn-md" name="expand"><span class="glyphicon glyphicon-new-window"></span></button></a></td>
                       </tr>
                       <?php
                     }
@@ -318,6 +315,8 @@ require 'admin_dsc.php';
                         <th>Diocese ID</th>
                         <th>Diocese Name</th>
                         <th># of Schools Included</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                       </tr> 
                     </thead>
                     <?php 
@@ -335,12 +334,12 @@ require 'admin_dsc.php';
                       <th><?php echo $dioo[0]?></th>
                       <td><?php echo $dioo[1]?></td>
                       <td><?php echo $num_school[0]?></td>
-                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
+                      <td><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
                         <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
 
                         <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
 
-                        <td><button onclick="del(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                        <td><button onclick="del_diocs(<?php echo $dioo[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                       </tr>
                       <?php
                     }
@@ -361,7 +360,7 @@ require 'admin_dsc.php';
       <!-- /.container -->
 
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="js/bootstrap.min.js"></script>
       <script src="js/footable.min.js"></script>
@@ -372,14 +371,32 @@ require 'admin_dsc.php';
         $("#diocesetb").footable();
       </script>
       <script language="javascript">
-        function del(x) {
+        function del_sch(x) {
           var delo = confirm('Are you sure you want to delete?');
           if(delo == true)
           {
-            window.location.href="delete_school.php?id=" +x+" ";
+            window.location.href="delete_school.php?id=" + x +"";
           }
 
         }
+        
+        function edit_sch(x) {
+          window.location.href ="edit_school.php?id=" + x + "";
+        }
+
+        function expand_sch(x) {
+          window.location.href = "admin_showsch.php?id=" + x + "";
+        }
+
+        function del_diocs(x){
+          var delete_sure = confirm('Are you sure you want to delete?');
+          if (delete_sure == true){
+            window.location.href = "delete_diocese.php?id=" + x + "";
+          }
+          
+        }
+
+
       </script>
 
     </body>

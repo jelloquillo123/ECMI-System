@@ -8,6 +8,7 @@ require 'school_maindb.php'
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="stylessdofp.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     var widthdata=350;
@@ -517,7 +518,7 @@ require 'school_maindb.php'
                 <div class="col-md-5" style="font-family: myFirstFont;">
                   <h3 align="left">Baseline Data Summary Results</h3>
                 </div>
-                <div class="col-md-offset-6 col-md-1" style="position: relative; top:10px; right: 5px;">
+                <div class="col-md-offset-6 col-md-1 print_btn">
                   <a href="printry1.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                 </div>
               </div>
@@ -830,7 +831,7 @@ require 'school_maindb.php'
                 <div class="col-md-5" style="font-family: myFirstFont;">
                   <h3 align="left">Pre Awareness Test Summary Baseline</h3>
                 </div>
-                <div class="col-md-offset-6 col-md-1" style="position: relative; top:10px; right: 5px;">
+                <div class="col-md-offset-6 col-md-1 print_btn">
                   <a href="printry.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                 </div>
               </div>
