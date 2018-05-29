@@ -334,10 +334,8 @@ require 'admin_dsc.php';
                       <th><?php echo $dioo[0]?></th>
                       <td><?php echo $dioo[1]?></td>
                       <td><?php echo $num_school[0]?></td>
-                      <td><?php echo "<a href='edit_school.php?id=$sc[0]'>";?>
-                        <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-
-                        <!--<td><?php echo "<a href='edit_school.php?id=$sc[0]'";?>class="btn btn-success btn-md"</a><span class="glyphicon glyphicon-pencil"></span></td>-->
+                      <td><?php echo "<a href='edit_dcs.php?id=$dioo[0]'>";?>
+                        <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="editds"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
 
                         <td><button onclick="del_diocs(<?php echo $dioo[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                       </tr>
