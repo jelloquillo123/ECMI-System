@@ -7,7 +7,7 @@ require 'admin_dsc.php';
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>ECMI-SDOFP</title>
@@ -33,6 +33,11 @@ require 'admin_dsc.php';
       margin-top: 50px;
       margin-bottom: 30px;
     }
+    .error_message{
+      color: red;
+      font-size: 15px;
+      font-family: myFirstFont;
+}
   </style>
 </head>
 
@@ -107,14 +112,66 @@ require 'admin_dsc.php';
     </div>
   </div>
 
-<ul class="nav nav-pills justified">
+  <ul class="nav nav-pills justified">
     <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="admin_schools_add.php">Add School</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="admin_schools_list.php">List of Schools</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;" ><a href="admin_diocese_add.php">Add Diocese</a></li>
-    <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="admin_diocese_list.php">List of Diocese</a></li>
+    <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="admin_diocese_list.php">List of Diocese</a></li>
   </ul>
   
+          <div class="row" style="padding-top: 20px;">
+            <div class="col-md-offset-1 col-md-10">
+              <div class="well">
+                <div class="row" style="font-family: myFirstFont;">
+                  <div class="col-md-5">
+                    <h3 align="left">List of Diocese</h3>
+                  </div>
+                  <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
+                    <!-- <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a> -->
+                  </div>
+                </div>
+                <br />
+                <div class="table-responsive">
+                  <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="diocesetb" style="background-color:#fff;">
+                    <thead>
+                      <tr>
+                        <th>Diocese ID</th>
+                        <th>Diocese Name</th>
+                        <th># of Schools Included</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr> 
+                    </thead>
+                    <?php 
+                    $dios=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_id");
+                    $cnt=mysqli_query($db,"SELECT ");
+                    while($dioo=mysqli_fetch_row($dios)){
 
+                     $num_school_sql=mysqli_query($db,"SELECT COUNT(*) from school WHERE diocese_id='$dioo[0]'");
+                     $num_school=mysqli_fetch_row($num_school_sql);
+
+                     ?>
+                     <tr>
+
+
+                      <th><?php echo $dioo[0]?></th>
+                      <td><?php echo $dioo[1]?></td>
+                      <td><?php echo $num_school[0]?></td>
+                      <td><a href="<?php echo 'edit_school.php?id=$sc[0]';?>">
+                        <button class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+
+                     
+                        <td><button onclick="del_diocs(<?php echo $dioo[0];?>)" class="btn btn-danger btn-md" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                      </tr>
+                      <?php
+                    }
+                    ?>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
 
 
 

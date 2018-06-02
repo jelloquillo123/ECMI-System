@@ -7,7 +7,7 @@ require 'admin_dsc.php';
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>ECMI-SDOFP</title>
@@ -33,6 +33,11 @@ require 'admin_dsc.php';
       margin-top: 50px;
       margin-bottom: 30px;
     }
+    .error_message{
+      color: red;
+      font-size: 15px;
+      font-family: myFirstFont;
+}
   </style>
 </head>
 
@@ -49,7 +54,7 @@ require 'admin_dsc.php';
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="admin_main.php">Administrator</a>
+        <a class="navbar-brand" href="admin_schools_add.php">Administrator</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -107,14 +112,100 @@ require 'admin_dsc.php';
     </div>
   </div>
 
-<ul class="nav nav-pills justified">
-    <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="admin_schools_add.php">Add School</a></li>
+  <ul class="nav nav-pills justified">
+    <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="admin_schools_add.php">Add School</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="admin_schools_list.php">List of Schools</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;" ><a href="admin_diocese_add.php">Add Diocese</a></li>
     <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="admin_diocese_list.php">List of Diocese</a></li>
   </ul>
   
 
+      <div class="row" style="padding-top: 20px;">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="well">
+            <div class="row" style="font-family: myFirstFont;">
+              <div class="col-md-6">                         
+                <h3 align="left" >Add Participating School</h3>
+              </div>
+            </div>
+            <br />
+            <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST">
+              <h4 align="center">School</h4>
+              <div class="row">
+                <div class="col-md-offset-1 col-md-10">     
+                  <div class="form-group">
+                    <label class="control-label col-md-3" for="school_name">Name of School:</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" id="school_name" name="nschool" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+
+                      <div class="form-group">
+                        <label class="control-label col-md-2" for="diocese">Diocese:</label>
+                        <div class="col-md-9" style="padding-left: 30px;">
+                          <select name="diocese" id="diocese" class="form-control" required>
+                            <option>Select Diocese</option>
+                            <?php
+                            $i=1;
+                            while($dion=mysqli_fetch_row($dio)){
+                              ?>
+                              <option value="<?php echo $dion[0] ?>"> Diocese of <?php echo $dion[1]?></option>
+                              <?php
+                              $i=$i+1;
+                            }
+                            ?>
+                          </select> 
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <br/>
+                  <h4 align="center">Coordinator</h4>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="coor_fname" name="coor_fname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="coor_mname" name="coor_mname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="coor_lname" name="coor_lname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="username">Username:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="username" name="uname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="pword">Password:</label>
+                    <div class="col-sm-9">
+                      <input type="Password" class="form-control" id="pword" name="pword" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <br />
+                    <div class="col-md-offset-4 col-md-2">
+                      <input type="submit" class="btn btn-primary btn-lg green" align="center" name="submit" value = "Add School">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>      
+          </div>
+        </div>
+      </div>
 
 
 

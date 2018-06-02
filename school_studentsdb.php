@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
   $n6 = $_POST['glevel'];
   $n7 = $_POST['gender'];
   $n8 = $_POST['bday'];
-  $n9=$_POST['email'];
+  $n9 = $_POST['email'];
   
   
   $studi=mysqli_query($db,"SELECT account_id from account");
@@ -44,8 +44,10 @@ if(isset($_POST['submit']))
   $diff = date_diff(date_create($n8),date_create($today));
   $ag = $diff->format('%y');
 
+  $hash_password = password_hash($n0, PASSWORD_DEFAULT);
+
   mysqli_query($db,"INSERT INTO account (username,pword,user_id)
-    VALUES('$n0','$n0','3')");
+    VALUES('$n0','$hash_password','3')");
 
   mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age,email,t_stat,year) 
     VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag','$n9','Not taken','$year')");

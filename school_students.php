@@ -114,7 +114,7 @@ require 'school_studentsdb.php';
                 </div>
               </div>
               <br />
-              <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST">
+              <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST" action="school_students.php">
                 <div class="form-group row">
                   <label class="control-label col-sm-3" for="studnum">Student Number:</label>
                   <div class="col-sm-8">
