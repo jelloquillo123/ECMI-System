@@ -116,6 +116,243 @@ require 'admin_dsc.php';
   
 
 
+    <div role="tabpanel" class="tab-pane active" id="div2">
+      <div class="row" style="padding-top: 20px;">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="well">
+            <div class="row" style="font-family: myFirstFont;">
+              <div class="col-md-6">                         
+                <h3 align="left" >Add Participating School</h3>
+              </div>
+            </div>
+            <br />
+            <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST">
+              <h4 align="center">School</h4>
+              <div class="row">
+                <div class="col-md-offset-1 col-md-10">     
+                  <div class="form-group">
+                    <label class="control-label col-md-3" for="school_name">Name of School:</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" id="school_name" name="nschool" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+
+                      <div class="form-group">
+                        <label class="control-label col-md-2" for="diocese">Diocese:</label>
+                        <div class="col-md-9" style="padding-left: 30px;">
+                          <select name="diocese" id="diocese" class="form-control" required>
+                            <option>Select Diocese</option>
+                            <?php
+                            $i=1;
+                            while($dion=mysqli_fetch_row($dio)){
+                              ?>
+                              <option value="<?php echo $dion[0] ?>"> Diocese of <?php echo $dion[1]?></option>
+                              <?php
+                              $i=$i+1;
+                            }
+                            ?>
+                          </select> 
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <br/>
+                  <h4 align="center">Coordinator</h4>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="coor_fname" name="coor_fname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="coor_mname" name="coor_mname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="coor_lname" name="coor_lname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="username">Username:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="username" name="uname" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="pword">Password:</label>
+                    <div class="col-sm-9">
+                      <input type="Password" class="form-control" id="pword" name="pword" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <br />
+                    <div class="col-md-offset-4 col-md-2">
+                      <input type="submit" class="btn btn-primary btn-lg green" align="center" name="submit" value = "Add School">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>      
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div role="tabpanel" class="tab-pane fade" id="div3">
+      <div class="row" style="padding-top: 20px;">
+        <div class="col-md-offset-1 col-md-10">
+          <div class="well">
+            <div class="row" style="font-family: myFirstFont;">
+              <div class="col-md-5">
+                <h3 align="left">List of Participating Schools</h3>
+              </div>
+              <div class="col-md-offset-6 col-md-1" style="position: relative; top:10px; right: 15px;">
+                <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a>
+              </div>
+            </div>
+            <br />
+            <div class="table-responsive">
+              <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="schooltb" style="background-color:#fff;">
+                <thead>
+                  <tr>
+                    <th>School ID</th>
+                    <th>School Name</th>
+                    <th>Diocese</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Expand</th>
+                  </tr>  
+                </thead>
+                <?php 
+                while($sc=mysqli_fetch_row($scool)){
+                  ?>
+                  <tr>
+                    <th><?php echo $sc[0]?></th>
+                    <td><?php echo $sc[1]?></td>
+                    <td><?php echo $sc[2]?></td>
+
+                      <td><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+                      <td><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                      <td><button onclick="expand_sch(<?php echo $sc[0];?>)" class="btn btn-info btn-md" name="expand"><span class="glyphicon glyphicon-new-window"></span></button></a></td>
+                      </tr>
+                      <?php
+                    }
+                    ?>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane" id="div4">
+          <div class="row" style="padding-top: 20px;">
+            <div class="col-md-offset-3 col-md-6">
+              <div class="well">
+                <div class="row" style="font-family: myFirstFont;">
+                  <div class="col-md-6">  
+                    <h3 align="left" >Add Diocese</h3>
+                  </div>
+                </div>
+                <br />
+                <form onsubmit="return confirm('Are you sure you want to add this diocese?');" class="form-horizontal" method="POST">
+                  <h4 align="center">Diocese</h4>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-10">     
+                      <div class="form-group">
+                        <label class="control-label col-md-3" for="dioname">Name of Diocese:</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="dioname" name="dioname" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                      <br />
+                      <div class="col-md-offset-4 col-md-2">
+                        <input type="submit" class="btn btn-primary btn-lg green" align="center" name="diocese_submit" value = "Add Diocese">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane fade" id="div5">
+          <div class="row" style="padding-top: 20px;">
+            <div class="col-md-offset-1 col-md-10">
+              <div class="well">
+                <div class="row" style="font-family: myFirstFont;">
+                  <div class="col-md-5">
+                    <h3 align="left">List of Diocese</h3>
+                  </div>
+                  <div class="col-md-offset-4 col-md-2" id="btn-plcmnt1">
+                    <!-- <a href="printry4.php"><button class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></button></a> -->
+                  </div>
+                </div>
+                <br />
+                <div class="table-responsive">
+                  <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="diocesetb" style="background-color:#fff;">
+                    <thead>
+                      <tr>
+                        <th>Diocese ID</th>
+                        <th>Diocese Name</th>
+                        <th># of Schools Included</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr> 
+                    </thead>
+                    <?php 
+                    $dios=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_id");
+                    $cnt=mysqli_query($db,"SELECT ");
+                    while($dioo=mysqli_fetch_row($dios)){
+
+                     $num_school_sql=mysqli_query($db,"SELECT COUNT(*) from school WHERE diocese_id='$dioo[0]'");
+                     $num_school=mysqli_fetch_row($num_school_sql);
+
+                     ?>
+                     <tr>
+
+
+                      <th><?php echo $dioo[0]?></th>
+                      <td><?php echo $dioo[1]?></td>
+                      <td><?php echo $num_school[0]?></td>
+                      <td><?php echo "<a href='edit_dcs.php?id=$dioo[0]'>";?>
+                        <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="editds"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+
+                        <td><button onclick="del_diocs(<?php echo $dioo[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                      </tr>
+                      <?php
+                    }
+                    ?>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
 
 
       <!-- /.container -->
