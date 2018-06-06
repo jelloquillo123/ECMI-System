@@ -54,7 +54,7 @@ require 'admin_dsc.php';
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="admin_main.php">Administrator</a>
+        <a class="navbar-brand" href="admin_schools_add.php">Administrator</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -157,11 +157,10 @@ require 'admin_dsc.php';
                       <th><?php echo $dioo[0]?></th>
                       <td><?php echo $dioo[1]?></td>
                       <td><?php echo $num_school[0]?></td>
-                      <td><a href="<?php echo 'edit_school.php?id=$sc[0]';?>">
-                        <button class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                      <td><?php echo "<a href='edit_dcs.php?id=$dioo[0]'>";?>
+                        <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="editds"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
 
-                     
-                        <td><button onclick="del_diocs(<?php echo $dioo[0];?>)" class="btn btn-danger btn-md" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                        <td><button onclick="del_diocs(<?php echo $dioo[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                       </tr>
                       <?php
                     }
