@@ -1,6 +1,8 @@
 <?php
 session_start();
 $username = ($_SESSION['username']);
+$error_message="";
+$n0=""; $n1=""; $n2=""; $n3=""; $n6=""; $n7=""; $n8=""; $n9="";
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
   FROM school
   INNER JOIN diocese
@@ -28,32 +30,42 @@ if(isset($_POST['submit']))
   $n8 = $_POST['bday'];
   $n9 = $_POST['email'];
   
-  
-  $studi=mysqli_query($db,"SELECT account_id from account");
-  
+  $query_stud="SELECT * FROM student WHERE stud_id='$n0'";
+  $res_stud=mysqli_query($db,$query_stud);
+    
+    if (mysqli_num_rows($res_stud) > 0 ) {
 
-  while($s=mysqli_fetch_assoc($studi))
-  {
-    $stuid=$s['account_id'];
-  }
+      $error_message = "Sorry... Student ID already listed";  
+    }
 
-  $stuid=$stuid+1;
-  
-  $year= date("Y");
-  $today = date("Y-m-d");
-  $diff = date_diff(date_create($n8),date_create($today));
-  $ag = $diff->format('%y');
+    else{
 
-  $hash_password = password_hash($n0, PASSWORD_DEFAULT);
+      $studi=mysqli_query($db,"SELECT account_id from account");
+      
 
-  mysqli_query($db,"INSERT INTO account (username,pword,user_id)
-    VALUES('$n0','$hash_password','3')");
+      while($s=mysqli_fetch_assoc($studi))
+      {
+        $stuid=$s['account_id'];
+      }
 
-  mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age,email,t_stat,year) 
-    VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag','$n9','Not taken','$year')");
-  echo "<script>
-  alert('Successfully Added a Student.');
-  window.location.href='school_students.php';
-  </script>";
+      $stuid=$stuid+1;
+      
+      $year= date("Y");
+      $today = date("Y-m-d");
+      $diff = date_diff(date_create($n8),date_create($today));
+      $ag = $diff->format('%y');
+
+      $hash_password = password_hash($n0, PASSWORD_DEFAULT);
+
+      mysqli_query($db,"INSERT INTO account (username,pword,user_id)
+        VALUES('$n0','$hash_password','3')");
+
+      mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age,email,t_stat,year) 
+        VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag','$n9','Not taken','$year')");
+      echo "<script>
+      alert('Successfully Added a Student.');
+      window.location.href='school_students.php';
+      </script>";
+    }
 }
 ?>

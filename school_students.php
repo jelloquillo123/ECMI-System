@@ -27,7 +27,13 @@ require 'school_studentsdb.php';
 
     <link rel="stylesheet" href="stylessdofp.css">
 
-  
+  <style>
+    .error_message{
+      color: red;
+      font-size: 15px;
+      font-family: myFirstFont;
+    }
+  </style>
 </head>
 <body data-spy="scroll" >
   <!-- Navigation -->
@@ -114,42 +120,43 @@ require 'school_studentsdb.php';
                 </div>
               </div>
               <br />
-              <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST" action="school_students.php">
+              <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <div class="form-group row">
                   <label class="control-label col-sm-3" for="studnum">Student Number:</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" id="studnum" name="studnum" required>
+                    <input type="number" class="form-control" id="studnum" name="studnum" value="<?php echo $n0; ?>" required>
+                    <span class="error_message"><?php echo $error_message; ?></span>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-sm-3" for="lname">Last Name:</label>
                   <div class="col-sm-8">
-                    <input type="char" class="form-control" id="lname" name="lname" required>
+                    <input type="char" class="form-control" id="lname" name="lname" value="<?php echo $n1; ?>" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-sm-3" for="fname">First Name:</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="fname" name="fname" required>
+                    <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $n2; ?>"required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-sm-3" for="mname">Middle Name:</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="mname" name="mname" required>
+                    <input type="text" class="form-control" id="mname" name="mname" value="<?php echo $n3; ?>" required>
                   </div>
                 </div>
                  
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="bday">Birthdate:</label>
                     <div class="col-sm-8">
-                      <input type="date" class="form-control" id="bday" name="bday" required>
+                      <input type="date" class="form-control" id="bday" name="bday" value="<?php echo $n8; ?>" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="control-label col-sm-3" for="email">Parents Email:</label>
                     <div class="col-sm-8">
-                      <input type="email" class="form-control" id="email" name="email" required>
+                      <input type="email" class="form-control" id="email" name="email" value="<?php echo $n9; ?>" required>
                     </div>
                   </div>
                   <div class="col-md-offset-2 col-md-3">
