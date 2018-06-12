@@ -9,7 +9,7 @@ $result1 = mysqli_query($db, "DELETE FROM coordinator WHERE school_id='$id'");
 if ($result && $result1){
 	echo "<script>
         alert('Successfully Deleted.');
-        window.location.href='admin_main.php';
+        window.location.href='admin_schools_add.php';
         </script>";	
 }
 
