@@ -1107,7 +1107,7 @@ WHERE student.school_id='$school' AND question_7='c'");
 $t30=mysqli_query($db,"SELECT COUNT(question_8) FROM pre_test
 JOIN student
 ON pre_test.stud_id = student.stud_id
-WHERE student.school_id='$school' AND question_4='a'");
+WHERE student.school_id='$school' AND question_8='a'");
 
 $t31=mysqli_query($db,"SELECT COUNT(question_8) FROM pre_test
 JOIN student

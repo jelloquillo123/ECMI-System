@@ -55,7 +55,7 @@ $total_student=mysqli_fetch_row($total_studentq);
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="admin_main.php">Administrator</a>
+        <a class="navbar-brand" href="admin_schools_add.php">Administrator</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -175,8 +175,7 @@ $total_student=mysqli_fetch_row($total_studentq);
                   <th>Grade Level</th>
                   <th>Gender</th>
                   <th>Age</th>
-                  <th>Username</th>
-                  <th>Password</th>
+                  <th>Username</th>    
                   <th></th>
                   <th></th>
                 </tr>
@@ -194,12 +193,11 @@ $total_student=mysqli_fetch_row($total_studentq);
                       <td><?php echo $toti[5];?></td>
                       <td><?php echo $toti[6];?></td>
                       <td><?php echo $toti[7];?></td>
-                      <td><?php echo $toti[8];?></td>
-                      <td><?php echo $toti[9];?></td>
+                      <td><?php echo $toti[8];?></td>                     
                       <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='edit_students_admin.php?id=<?php echo $toti[0];?>'>
                           <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                         <td>
-                          <button onclick="del(<?php echo $toti[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                          <button onclick="del(<?php echo $toti[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                     
                      </tr>
                         <?php
