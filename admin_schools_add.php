@@ -2,7 +2,6 @@
 session_start();
 require 'connect.php';
 require 'admin_schoolsdb.php';
-require 'admin_dsc.php';
 ?>
 <html lang="en">
 <head>
@@ -129,14 +128,15 @@ require 'admin_dsc.php';
               </div>
             </div>
             <br />
-            <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST">
+            <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
               <h4 align="center">School</h4>
               <div class="row">
                 <div class="col-md-offset-1 col-md-10">     
                   <div class="form-group">
                     <label class="control-label col-md-3" for="school_name">Name of School:</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" id="school_name" name="nschool" required>
+                      <input type="text" class="form-control" id="school_name" name="nschool" value="<?php echo $name_school; ?>" required>
+                      <span class="error_message"><?php echo $error_message; ?></span>
                     </div>
                   </div>
                   <div class="row">
@@ -167,25 +167,25 @@ require 'admin_dsc.php';
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="coor_fname" name="coor_fname" required>
+                      <input type="text" class="form-control" id="coor_fname" name="coor_fname" value="<? echo $coor_fname; ?>" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="coor_mname" name="coor_mname" required>
+                      <input type="text" class="form-control" id="coor_mname" name="coor_mname" value="<? echo $coor_mname; ?>" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="coor_lname" name="coor_lname" required>
+                      <input type="text" class="form-control" id="coor_lname" name="coor_lname" value="<? echo $coor_lname; ?>" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="username">Username:</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="username" name="uname" required>
+                      <input type="text" class="form-control" id="username" name="uname" value="<? echo $uname; ?>" required>
                     </div>
                   </div>
                   <div class="form-group">
