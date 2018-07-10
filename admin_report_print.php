@@ -5,7 +5,10 @@ function prints(){
 }
 </script>
 <?php
-  session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
   require 'connect.php';
 
   $d=$_SESSION['diocese'];  

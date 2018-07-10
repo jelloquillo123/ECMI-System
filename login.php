@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 require 'connect.php';
 
 
@@ -22,7 +25,7 @@ if(isset($_POST['submit'])){
             if ($account_fetch[2]==1){
               echo "<script>
               alert('You are now logged in.');
-              window.location.href='admin_schools_add.php';
+              window.location.href='admin_dashboard.php';
               </script>";
             }
 

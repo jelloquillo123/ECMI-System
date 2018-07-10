@@ -23,7 +23,7 @@ else{
       { 
           $grade = $_POST["glevel"];
            $sql = "SELECT student.stud_id,student.lname,student.fname,student.mname,school.school_name,student.g_level,
-                  student.gender,student.age,account.username,account.pword 
+                  student.gender,student.age,account.username
                   FROM student
                   JOIN school
                   ON student.school_id=school.school_id
@@ -34,7 +34,7 @@ else{
       else  
       {  
            $sql = "SELECT student.stud_id,student.lname,student.fname,student.mname,school.school_name,student.g_level,
-                  student.gender,student.age,account.username,account.pword 
+                  student.gender,student.age,account.username
                   FROM student
                   JOIN school
                   ON student.school_id=school.school_id
@@ -61,7 +61,6 @@ else{
                   <th>Gender</th>
                   <th>Age</th>
                   <th>Username</th>
-                  <th>Password</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -84,7 +83,6 @@ else{
                       <td>'.$row[6].'</td>
                       <td>'.$row[7].'</td>
                       <td>'.$row[8].'</td>
-                      <td>'.$row[9].'</td>
                       
                       <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="edit_students_admin.php?id='.$row[0].'">
                         <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>

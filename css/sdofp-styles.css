@@ -1,0 +1,15 @@
+.well {
+	background-color: white;
+}
+
+#main-body{
+	background-color: #00c853;
+}
+
+#body-header{
+	background-color: white;
+}
+
+#body-content{
+	padding-top: 35px;
+}

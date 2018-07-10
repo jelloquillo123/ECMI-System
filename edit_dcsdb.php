@@ -19,7 +19,7 @@ if(isset($_POST['submitdcs']))
 		WHERE diocese_id=$id");
 	echo "<script>
 	alert('Successfully Updated.');
-	window.location.href='admin_main.php';
+	window.location.href='admin_diocese_list.php';
 	</script>";
 }
 

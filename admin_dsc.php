@@ -28,7 +28,10 @@ if(isset($_POST['diocese_submit']))
 
       $query_add="INSERT INTO diocese (diocese_name) VALUES ('$diocese_name')";
       $result_add=mysqli_query($db,$query_add);
-      header("Location: admin_diocese_add.php");
+      echo "<script>
+      alert('Successfully Added.');
+      window.location.href='admin_diocese_list.php';
+      </script>";
     }
 
   }
