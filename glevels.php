@@ -1,8 +1,12 @@
-<?php  
+<?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 require 'connect.php';
 require 'school_studentsdb.php';
 //session_start();
-$username = ($_SESSION['username']);
+$username = $_SESSION['username'];
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
   FROM school
   INNER JOIN diocese
@@ -50,18 +54,18 @@ $num_rows = mysqli_num_rows($result);
  <head>
  </head>
  <body>
-  <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
+  <table class="table table-hover" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
     <thead>
       <tr>
         <th>Student ID</th>
         <th>Last Name</th>
-        <th>First Name</th>
-        <th>Middle Name</th>
-        <th>Grade Level</th>
-        <th>Gender</th>
-        <th>Age</th>
-        <th>Parents Email</th>
-        <th>Test status</th>
+        <th data-breakpoints="xs">First Name</th>
+        <th data-breakpoints="xs sm">Middle Name</th>
+        <th data-breakpoints="xs sm">Grade Level</th>
+        <th data-breakpoints="xs sm md">Gender</th>
+        <th data-breakpoints="xs md sm">Age</th>
+        <th data-breakpoints="lg md sm xs">Parents Email</th>
+        <th data-breakpoints="xs sm">Test status</th>
         <th>Feedback</th>
         <th>Profile</th>
         <th>Delete</th>

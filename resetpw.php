@@ -81,7 +81,7 @@ $pw=$res[1];
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="school_main.php">School</a>
+                <a class="navbar-brand" href="school_dashboard.php">School</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -90,7 +90,7 @@ $pw=$res[1];
                       <a href="school_students.php">Students</a>
                   </li>
                   <li>
-                      <a href="school_main.php"> Reports</a>
+                      <a href="school_baseline_reports.php"> Reports</a>
                   </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
