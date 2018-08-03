@@ -57,7 +57,7 @@ require 'school_maindb.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color: #76ff03;" href="school_dashboard.php">School</a>
+                <a class="navbar-brand" style="color: #76ff03;">School</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
