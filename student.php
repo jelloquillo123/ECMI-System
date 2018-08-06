@@ -1,28 +1,10 @@
 <?php
     session_start();
     require 'connect.php';
+    require 'studentdb.php';
 ?>
 
 
-<?php
-                      $username = ($_SESSION['username']);
-                     
-                      $pts=mysqli_query($db,"SELECT pre_test.stud_id FROM pre_test
-                            JOIN student
-                            ON student.stud_id=pre_test.stud_id
-                            JOIN account
-                            ON student.account_id=account.account_id
-                            WHERE account.username='$username'");
-                      $stud=mysqli_query($db,"SELECT stud_id,fname,mname,lname,g_level,gender,age
-                        FROM student
-                        JOIN account
-                        ON student.account_id=account.account_id
-                        WHERE account.username='$username'");
-                        $stud_det=mysqli_fetch_row($stud);
-                        $studid=$stud_det[0];
-                        $pts1=mysqli_fetch_row($pts);
-                        $pts2=$pts1[0];
-                        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +57,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <p class="navbar-text" style="color: #f5f5f5;"><?php echo $stud_det[1]." ".$stud_det[2]." ".$stud_det[3] ?></p>
                       <li class="button">
-                        <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
+                        <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                       </li>
                 </ul>
               </div>
@@ -114,7 +96,7 @@
 
 	<!--Table Personal Info -->
 	   <div class="row" style="font-family: mySecondFont;">
-	        <div class="col-sm-offset-3 col-sm-6">
+	        <div class="col-lg-offset-3 col-lg-6 col-sm-offset-1 col-sm-10 col-xs-12" style="text-align: center;">
             <div class="well">
             <br />
 		          <h3>Personal Information</h3>
@@ -144,21 +126,22 @@
                                                         <?php
                                                         if($pts2==$studid){
                                                         ?>
-                                                    <div class="row">
-                                                      <div class="col-sm-offset-4 col-sm-4 ">
-                                                      
-                                                    <button class="btn btn-primary btn-md" align="center" disabled>Start SDOFP Testing</a>
-                                                      </div>
+                                                    
+                                                    <div>
+                                                    <button class="btn btn-primary" align="center" disabled>Start SDOFP Testing</button>
+                                                        
                                                     </div>
+
                                                     <?php
                                                     }
                                                     else{
                                                     ?>
-                                                        <div class="row">
-                                                      <div class="col-sm-offset-4 col-sm-4">
-                                                        <a href="PTF.php" class="btn btn-primary btn-md" >Start SDOFP Testing</a>
-                                                      </div>
+                                                    <div>
+                                                        <a href="PTF.php" class="btn btn-primary" >Start SDOFP Testing</a>
                                                     </div>
+
+                                                        
+
                                                     <?php
                                                     }
                                                     ?>
@@ -177,7 +160,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/materialize.min.js"></script>
 
 </body>
 

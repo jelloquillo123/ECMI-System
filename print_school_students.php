@@ -3,7 +3,7 @@ require 'connect.php';
 //require 'school_studentsdb.php';
 require 'glevels.php';
 
-$gale = $_SESSION['studcount'];
+$stud_count = $_SESSION['studcount'];
 
 ?>
 
@@ -52,7 +52,7 @@ function prints(){
 
   </table>
 
-  <h4>Total number of students = <?php echo $gale; ?></h4>
+  <h4>Total number of students = <?php echo $stud_count; ?></h4>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

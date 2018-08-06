@@ -1,325 +1,257 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 require 'connect.php';
 require 'school_studentsdb.php';
+require 'school_maindb.php';
 ?>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>ECMI-SDOFP</title>
 
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/footable.bootstrap.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <title>SDOFP-ECMI</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="css/sdofp-styles.css">
+
+    <link href="css/footable.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="stylessdofp.css">
-
-  <style>
-    .error_message{
-      color: red;
-      font-size: 15px;
-      font-family: myFirstFont;
-    }
-  </style>
 </head>
-<body data-spy="scroll" >
-  <!-- Navigation -->
-  <nav class="navbar navbar-fixed-top navbar-default" style="padding:6px; font-family:mySecondFont; " role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="school_main.php">School</a>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="school_main.php">Reports</a>
-          </li>
-          <li>
-            <a href="school_students.php">Students</a>
-          </li> 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <p class="navbar-text" style="color: #f5f5f5;"><?php echo $scn[0]; ?></p>
-          </li>
-          <li class="button">
-            <a href="index.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
 
+<body>
 
-  <div class="container-fluid" style="background-color: #00c853; padding-top: 60px; padding-bottom: 20px;">
-    <div class="row">
-      <!--Banner Main-->
-      <div class="col-md-offset-1 col-md-10">
-        <div class="row">
-          <div class="col-md-12" style="font-family:myFirstFont;">
-            <br />
-            <div class="well" style="background-color: white;">
-              <div class="row">
-                <div class="col-lg-4" style="padding-top:15px;">
-                  <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
-                </div>
-                <div class="col-lg-8 text-center" style="padding-top: 15px;">
-                  <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
-                  <footer>
-                    <p style="font-size:17px;">
-                      The migrant is to be considered, not merely as an instrument of production but as a subject endowed with human dignity -Pope John Paul II
-                    </p>
-                  </footer>
-                </div>
-              </div>
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color: #76ff03;">School</a>
             </div>
-          </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
-
-
-    <ul class="nav nav-pills" role="tablist">
-      <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Add Student</a></li>
-      <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">List of Students</a></li>
-    </ul>
-
-    <div class="tab-content">
-
-      <div role="tabpanel" class="tab-pane active" id="div2">
-        <div class="row" style="padding-top: 20px;">
-          <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
-            <div class="well">
-              <div class="row">
-                <div class="col-sm-12">
-                  <h3 align="left" style="font-family: myFirstFont;">Add Student</h3>
-                </div>
-              </div>
-              <br />
-              <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                <div class="form-group row">
-                  <label class="control-label col-sm-3" for="studnum">Student Number:</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control" id="studnum" name="studnum" value="<?php echo $n0; ?>" required>
-                    <span class="error_message"><?php echo $error_message; ?></span>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="control-label col-sm-3" for="lname">Last Name:</label>
-                  <div class="col-sm-8">
-                    <input type="char" class="form-control" id="lname" name="lname" value="<?php echo $n1; ?>" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="control-label col-sm-3" for="fname">First Name:</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $n2; ?>"required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="control-label col-sm-3" for="mname">Middle Name:</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="mname" name="mname" value="<?php echo $n3; ?>" required>
-                  </div>
-                </div>
-                 
-                  <div class="form-group row">
-                    <label class="control-label col-sm-3" for="bday">Birthdate:</label>
-                    <div class="col-sm-8">
-                      <input type="date" class="form-control" id="bday" name="bday" value="<?php echo $n8; ?>" required>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="control-label col-sm-3" for="email">Parents Email:</label>
-                    <div class="col-sm-8">
-                      <input type="email" class="form-control" id="email" name="email" value="<?php echo $n9; ?>" required>
-                    </div>
-                  </div>
-                  <div class="col-md-offset-2 col-md-3">
-                    <div class="form-group">
-                      <label for="glevel">Grade Level:</label>
-                      <select name="glevel" id="glevel" class="form-control input-md" required>
-                        <?php
-                        $num=1;
-                        for($i=0;$i<10;$i++){
-                          ?>
-                          <option value="<?php echo $num; ?>">Grade <?php echo $num; ?></option>
-                          <?php
-                          $num=$num+1;
-                        }
-                        ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-offset-2 col-md-3">
-                    <div class="form-group">
-                      <label for="gender">Gender:</label>
-                      <select name="gender" id="gender" class="form-control input-md">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-offset-4 col-sm-2">
-                    <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Add Student">
-                  </div>
-                </div>
-              </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li>
+                  <p class="navbar-text" style="color: #e5e5e5;"><?php echo $scn[0]; ?></p>
+                </li>                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $coor_name; ?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="school_students.php"><i class="glyphicon glyphicon-user"></i> Students</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#reports"><i class="fa fa-fw fa-bar-chart-o"></i>  Reports <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="reports" class="collapse">
+                            <li>
+                                <a href="school_baseline_reports.php">Baseline Data Summary Results</a>
+                            </li>
+                            <li>
+                                <a href="school_pat_reports.php">Pre Awareness Test Summary Results</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
             </div>
-          </div>
+            <!-- /.navbar-collapse -->
+        </nav>
 
 
+        <div id="main-body">
 
-          <div role="tabpanel" class="tab-pane" id="div3">
-            <div class="row" style="padding-top: 20px;">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="well">
-                  <div class="row" style="font-family: myFirstFont;">
-                    <div class="col-sm-5 col-md-5 col-xs-5 col-lg-5">
-                      <h3 align="left">List of Students</h3>
-                      <h4>Total number of students = <?php echo $stud_total[0]; ?></h4>
+            <div class="container-fluid">
+
+
+                <!-- /.row -->
+
+                <div class="row" id="body-content">
+                    <div class="col-lg-12">
+                        <div class="well">
+                            <div class="row">   
+                               <div class="col-lg-6">
+                                    <h2>List of Students</h2>
+                                    <h4>Total number of students = <?php echo $stud_total[0]; ?></h4>
+                               </div> 
+                               <div class="col-lg-6" style="text-align: right; padding-bottom: 20px;">
+                                    <a href="school_student_add.php" class="btn btn-primary"> Add Student <span class="glyphicon glyphicon-plus"></span></a>
+                               </div>
+                            </div>  
+                                
+                            <div class="row">
+                                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-8 " style="padding-bottom: 20px;">
+                                  <select name="glevels" id="glevels" class="form-control input-md">
+                                    <option value="">All Grade Levels</option>
+                                    <?php
+                                    $i=1;
+                                    while($i<=11){
+                                      echo '
+                                      <option value="'.$i.'">Grade '.$i.'</option>
+                                      ';
+                                      $i=$i+1;
+                                    }
+                                    ?>
+                                  </select>
+                                
+                                </div>  
+                            </div>
+
+                               
+                            
+
+                            <!--Start of Table Div-->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive" id="show2"></div>            
+                                    <div class="table-responsive" id="show">
+                                        <table class="table table-hover" data-sorting="true" data-paging="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
+                                            <thead>
+                                                <th>Student ID</th>
+                                                <th>Last Name</th>
+                                                <th data-breakpoints="xs sm">First Name</th>
+                                                <th data-breakpoints="xs sm md">Middle Name</th>
+                                                <th data-breakpoints="xs">Grade Level</th>
+                                                <th data-breakpoints="xs sm md">Gender</th>
+                                                <th data-breakpoints="xs md sm">Age</th>
+                                                <th data-breakpoints="lg md sm xs">Parents Email</th>
+                                                <th data-breakpoints="xs sm">Test status</th>
+                                                <th>Feedback</th>
+                                                <th>Profile</th>
+                                                <th>Delete</th>
+                                                <th>Reset</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                  <?php
+                                                  while($stu=mysqli_fetch_row($stud)){
+                                                    ?>
+                                                    <th><?php echo $stu[0]; ?></th>
+                                                    <td><?php echo $stu[1]; ?></td>
+                                                    <td><?php echo $stu[2]; ?></td>
+                                                    <td><?php echo $stu[3]; ?></td>
+                                                    <td><?php echo $stu[4]; ?></td>
+                                                    <td><?php echo $stu[5]; ?></td>
+                                                    <td><?php echo $stu[6]; ?></td>
+                                                    <td><?php echo $stu[8]; ?></td>
+                                                    <td><?php echo $stu[9]; ?></td>
+
+                                                    <td align="center"><?php echo "<a href='school_student_feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback" title="Feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
+
+                                                    <td><p data-placement="top" data-toggle="tooltip" title="Profile"><?php echo "<a href='edit_students_school.php?id=$stu[0]'>";?>
+                                                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
+
+                                                    <td>
+                                                    <button onclick="del(<?php echo $stu[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+
+                                                    <td><?php echo "<a href='resetpw.php?id=$stu[7]'>";?>
+                                                    <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
+                                                </tr><?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <a href="print_school_students.php" class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--end of table div-->
+
+
+                        </div>
+                        <!--End of Well-->
                     </div>
-                    <div class="col-md-offset-6 col-md-1 col-sm-offset-4 col-sm-1 col-xs-offset-1 col-xs-1" style="position: relative; top:10px; right: 5px;">
-                      <a href="pweha.php" class="btn btn-primary btn-md"> Print <span class="glyphicon glyphicon-print"></span></a>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-2">
-                      <select name="glevels" id="glevels" class="form-control input-md">
-                        <option value="">All Grade Levels</option>
-                        <?php
-                        $i=1;
-                        while($i<=11){
-                          echo '
-                          <option value="'.$i.'">Grade '.$i.'</option>
-                          ';
-                          $i=$i+1;
-                        }
-                        ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="table-responsive" id="show2"></div>
-                  <div class="table-responsive" id="show">
-                    <table class="table table-hover tablecenter" data-sorting="true" data-paging="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
-                      <thead>
-                        <tr>
-                          <th>Student ID</th>
-                          <th>Last Name</th>
-                          <th>First Name</th>
-                          <th>Middle Name</th>
-                          <th>Grade Level</th>
-                          <th>Gender</th>
-                          <th>Age</th>
-                          <th>Parents Email</th>
-                          <th>Test status</th>
-                          <th>Feedback</th>
-                          <th>Profile</th>
-                          <th>Delete</th>
-                          <th>Reset</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <?php
-                          while($stu=mysqli_fetch_row($stud)){
-                            ?>
-                            <th><?php echo $stu[0]; ?></th>
-                            <td><?php echo $stu[1]; ?></td>
-                            <td><?php echo $stu[2]; ?></td>
-                            <td><?php echo $stu[3]; ?></td>
-                            <td><?php echo $stu[4]; ?></td>
-                            <td><?php echo $stu[5]; ?></td>
-                            <td><?php echo $stu[6]; ?></td>
-                            <td><?php echo $stu[8]; ?></td>
-                            <td><?php echo $stu[9]; ?></td>
+                </div>
 
-                            <td align="center"><?php echo "<a href='feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback" title="Feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
+            </div>
+            <!-- /.container-fluid -->
 
-                            <td><p data-placement="top" data-toggle="tooltip" title="Profile"><?php echo "<a href='edit_students_school.php?id=$stu[0]'>";?>
-                              <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
-
-                              <td>
-                                <button onclick="del(<?php echo $stu[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-
-                                <td><?php echo "<a href='resetpw.php?id=$stu[7]'>";?>
-                                  <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
-                                </tr>
-                    <?php
-                  }
-                  ?>
-                </form>
-              </tbody>
-            </table>
-          </div>
         </div>
-      </div>
+        <!-- /#page-wrapper -->
+
     </div>
-  </div>
-</div>
+    <!-- /#wrapper -->
 
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-<!--End of Container-Fluid-->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
+    <script src="js/footable.js"></script>
+    <script type="text/javascript">
+      $("#studenttb").footable();
+    </script>
+    <script language="javascript">
+      function del(x) {
+        var delo = confirm('Are you sure you want to delete?');
+        if(delo == true)
+        {
+          window.location.href="delete_school_students.php?id=" +x+" ";
+        }
 
+      }
+    </script>
+    <script>  
+     $(document).ready(function(){  
+      $('#glevels').change(function(){  
+       var g_level = $(this).val();  
+       $.ajax({  
+        url:"glevels.php",  
+        method:"POST",  
+        data:{glevels:g_level},  
+        success:function(data){
+          $('#show').hide();  
+         $('#show2').html(data);  
+       }  
+     });  
+     });  
+    });  
+    </script>
 
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-3.1.1.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/footable.js"></script>
-<script type="text/javascript">
-  $("#studenttb").footable();
-</script>
-<script language="javascript">
-  function del(x) {
-    var delo = confirm('Are you sure you want to delete?');
-    if(delo == true)
-    {
-      window.location.href="delete_school_students.php?id=" +x+" ";
-    }
-
-  }
-</script>
-<script>  
- $(document).ready(function(){  
-  $('#glevels').change(function(){  
-   var g_level = $(this).val();  
-   $.ajax({  
-    url:"glevels.php",  
-    method:"POST",  
-    data:{glevels:g_level},  
-    success:function(data){
-      $('#show').hide();  
-     $('#show2').html(data);  
-   }  
- });  
- });  
-});  
-</script>
 </body>
+
+</html>

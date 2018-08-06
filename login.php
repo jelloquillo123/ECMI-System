@@ -25,14 +25,14 @@ if(isset($_POST['submit'])){
             if ($account_fetch[2]==1){
               echo "<script>
               alert('You are now logged in.');
-              window.location.href='admin_dashboard.php';
+              window.location.href='admin_schools_list.php';
               </script>";
             }
 
             else if ($account_fetch[2]==2){
               echo "<script>
               alert('You are now logged in.');
-              window.location.href='school_main.php';
+              window.location.href='school_students.php';
               </script>";
             }
 

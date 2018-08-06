@@ -47,7 +47,10 @@ function prints(){
 
 <body onload = "prints();">
 
+  <h1 style="padding-bottom: 20px;">List of Schools</h1>
 
+<div class="well">
+  
                       <table class="table table-striped tablecenter" data-paging="true" id="schooltb" style="background-color:#fff;">
                         <thead>
                         <tr>
@@ -73,6 +76,7 @@ function prints(){
                           }
                         ?>
                       </table>
+</div>
                     </div>
                   </div>
                 </div>

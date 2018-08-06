@@ -54,16 +54,19 @@ require 'admin_maindb.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color: #76ff03;" href="admin_dashboard.php">Administrator</a>
+                <a class="navbar-brand" style="color: #76ff03;">Administrator</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $admin_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+                        <li style="padding-bottom: 5px;">
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                        </li> 
                         <li class="divider"></li>
                         <li>
                             <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -74,9 +77,6 @@ require 'admin_maindb.php';
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="admin_dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
                     <li>
                         <a href="admin_schools_list.php"><i class="fa fa-graduation-cap"></i> Schools </a>
                     </li>
@@ -205,6 +205,112 @@ require 'admin_maindb.php';
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                  <div class="col-lg-10 col-lg-offset-1">
+                    <div class="well">
+                      <div class="row">
+                        <div class="col-md-5" style="padding-bottom: 20px;">
+                          <h2>Student PTF Result</h2>
+                        </div>                       
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p align="left" style="font-size:18px;"> 1.
+
+                          <?php
+                          echo $qs1[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed1[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                            2.  <?php
+                          echo $qs2[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed2[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          3. <?php
+                          echo $qs3[0];
+
+                          ?></p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed3[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          4.<?php
+                          echo $qs4[0];
+
+                          ?></p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed4[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          5. <?php
+                          echo $qs5[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed5[0]; ?> 
+                          </p>
+                          <br />
+
+                          <p align="left" style="font-size:18px;">
+                          6.  <?php
+                          echo $qs6[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed6[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          7. <?php
+                          echo $qs7[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed7[0]; ?> 
+                          </p>
+                          <p align="left" style="font-size:18px;">
+                          8. <?php
+                          echo $qs8[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed8[0]; ?> 
+                          </p>
+                          <p align="left" style="font-size:18px;">
+                          9. <?php
+                          echo $qs9[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed9[0]; ?> 
+                          </p>                          
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
 
             </div>
             <!-- /.container-fluid -->

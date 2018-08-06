@@ -66,16 +66,19 @@ require 'admin_maindb.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color: #76ff03;" href="admin_dashboard.php">Administrator</a>
+                <a class="navbar-brand" style="color: #76ff03;">Administrator</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $admin_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+                        <li style="padding-bottom: 5px;">
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                        </li> 
                         <li class="divider"></li>
                         <li>
                             <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -86,9 +89,6 @@ require 'admin_maindb.php';
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="admin_dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
                     <li class="active">
                         <a href="admin_schools_list.php"><i class="fa fa-graduation-cap"></i> Schools </a>
                     </li>
@@ -140,9 +140,9 @@ require 'admin_maindb.php';
                               <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="schooltb" style="background-color:#fff;">
                                 <thead>
                                   <tr>
-                                    <th>School ID</th>
+                                    <th data-breakpoints="xs sm md lg">School ID</th>
                                     <th>School Name</th>
-                                    <th>Diocese</th>
+                                    <th data-breakpoints="xs sm">Diocese</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                     <th>Expand</th>
@@ -165,9 +165,15 @@ require 'admin_maindb.php';
                                     ?>
                               </table>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align: center;">
+                                    <a href="print_admin_schools.php" class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></a>
+                                </div> 
+                            </div>                
                         </div>
                     </div>
                 </div>
+
 
             </div>
             <!-- /.container-fluid -->

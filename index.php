@@ -141,7 +141,9 @@ if(!isset($_SESSION))
           MR. EDMUNDO H. RUGA – Regional Coordinator <br>C/o CBCP Bldg., 470 Gen. Luna Street 1002 Intramuros, Manila <br><b>Tel #</b>: 527-4135 / 527-4142 Fax #: 527-9568 <br><b>E-Mail:</b> ecmiluzon97@yahoo.com
           </p>
           <br><br>
-          <a align="left" href="about.php" class="btn btn-primary btn-sm" role="button">About the Program!</a>
+          <div style="text-align: center;">
+	          <a align="left" href="about.php" class="btn btn-primary btn-sm" role="button">About the Program!</a>        	
+          </div>
         </div>
       </div>
 

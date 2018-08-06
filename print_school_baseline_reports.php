@@ -102,8 +102,8 @@ for($i=1;$i<11;$i++)
 (SELECT COUNT(*) FROM student WHERE school_id='$school' AND g_level='$i' AND gender='Male') as 'male',
 (SELECT COUNT(*) FROM student WHERE school_id='$school' AND g_level='$i' AND gender='Female') as 'female',
 
-(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'tatay' AND d.g_level = '$i' AND d.school_id = '$school') as 'tatay',
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'nanay' AND d.g_level = '$i' AND d.school_id = '$school') as 'nanay',
+(SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'tatay' AND d.g_level = '$i' AND d.school_id = '$school') as 'tatay',
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'pareho' AND d.g_level = '$i' AND d.school_id = '$school') as 'pareho',
 
 (SELECT COUNT(*) FROM parent a INNER JOIN job b ON b.job_id = a.job_id INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE b.job_based = 'LB' AND d.g_level = '$i' AND d.school_id = '$school') as 'LB',

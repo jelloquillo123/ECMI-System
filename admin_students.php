@@ -54,16 +54,19 @@ require 'admin_maindb.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color: #76ff03;" href="admin_dashboard.php">Administrator</a>
+                <a class="navbar-brand" style="color: #76ff03;">Administrator</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $admin_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+                        <li style="padding-bottom: 5px;">
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                        </li> 
                         <li class="divider"></li>
                         <li>
                             <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -74,9 +77,6 @@ require 'admin_maindb.php';
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="admin_dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
                     <li>
                         <a href="admin_schools_list.php"><i class="fa fa-graduation-cap"></i> Schools </a>
                     </li>
@@ -164,17 +164,17 @@ require 'admin_maindb.php';
                                         <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
                                           <thead>
                                             <tr>
-                                              <th>Student ID</th>
+                                              <th data-breakpoints="xs sm md">Student ID</th>
                                               <th>Last Name</th>
                                               <th>First Name</th>
-                                              <th>Middle Name</th>
-                                              <th>School</th>
-                                              <th>Grade Level</th>
-                                              <th>Gender</th>
-                                              <th>Age</th>
-                                              <th>Username</th>    
-                                              <th></th>
-                                              <th></th>
+                                              <th data-breakpoints="xs">Middle Name</th>
+                                              <th data-breakpoints="xs">School</th>
+                                              <th >Grade Level</th>
+                                              <th data-breakpoints="xs sm md">Gender</th>
+                                              <th data-breakpoints="xs sm md">Age</th>
+                                              <th data-breakpoints="xs sm">Username</th>    
+                                              <th>Profile</th>
+                                              <th>Delete</th>
                                             </tr>
                                           </thead>
                                           <tbody id="show">
@@ -192,7 +192,7 @@ require 'admin_maindb.php';
                                                   <td><?php echo $toti[7];?></td>
                                                   <td><?php echo $toti[8];?></td>                     
                                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='edit_students_admin.php?id=<?php echo $toti[0];?>'>
-                                                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                                                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
                                                     <td>
                                                       <button onclick="del(<?php echo $toti[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                                                 

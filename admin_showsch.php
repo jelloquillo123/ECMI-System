@@ -459,17 +459,22 @@ $sn=mysqli_fetch_row($schn);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color: #76ff03;" href="admin_dashboard.php">Administrator</a>
+                <a class="navbar-brand" style="color: #76ff03;">Administrator</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-
+                <li>
+                  <p class="navbar-text" style="color: #e5e5e5;"><?php echo $sn[0]; ?></p>
+                </li>   
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $admin_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+                        <li style="padding-bottom: 5px;">
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                        </li> 
                         <li class="divider"></li>
                         <li>
                             <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -480,19 +485,8 @@ $sn=mysqli_fetch_row($schn);
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="admin_dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
                     <li class="active">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#schools"><i class=" fa fa-graduation-cap"></i>  Schools <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="schools" class="collapse">
-                            <li>
-                                <a href="admin_schools_add.php">Add School</a>
-                            </li>
-                            <li>
-                                <a href="admin_schools_list.php">List of Schools</a>
-                            </li>
-                        </ul>
+                        <a href="admin_schools_list.php"><i class="fa fa-graduation-cap"></i> Schools </a>
                     </li>
                     <li>
                         <a href="admin_diocese_list.php"><i class="fa fa-table"></i> Diocese</a>
@@ -522,10 +516,17 @@ $sn=mysqli_fetch_row($schn);
         <div id="main-body">
 
             <div class="container-fluid" style="padding-top: 40px;">
+              <div class="row" style="padding-bottom: 20px;">
+                <div class="col-lg-2">
+                  <a href="admin_schools_list.php" class="btn btn-primary"><span class="glyphicon glyphicon-menu-left"></span> Return to List</a>
+                </div> 
+              </div>
+
               <ul class="nav nav-pills" role="tablist">
                 <li role="presentation" style="background-color: white; border-radius: 5px;" class="active"><a href="#div2" aria-controls="div2" role="tab" data-toggle="tab">Baseline Data Summary Results</a></li>
                 <li role="presentation" style="background-color: white; border-radius: 5px;"><a href="#div3" aria-controls="div3" role="tab" data-toggle="tab">PAT Summary Results</a></li>
-              </ul>
+              </ul>                
+             
 
               <div class="tab-content">
 
