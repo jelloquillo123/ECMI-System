@@ -16,7 +16,8 @@ $scool=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.dioc
        FROM school
        JOIN diocese
        ON school.diocese_id=diocese.diocese_id");
-if(isset($_POST['submit']))
+
+if(isset($_POST['submit_add']))
   {
     $name_school = $_POST['nschool'];
     $diocese_name = $_POST['diocese'];

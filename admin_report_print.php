@@ -53,15 +53,9 @@ if(!isset($_SESSION))
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
           <div class="well">
             
-
-            <div class="row">
-              <div class="col-md-4">
-                <h3 align="left" id="header_table">Baseline Data Summary Results</h3>
-                <!--<h3 align="right"><?php //$dio=$_SESSION['diocese']; echo $dio; ?></h3>-->
-              </div>
 
             <div class="row">
               <div class="col-md-12">
@@ -76,10 +70,6 @@ if(!isset($_SESSION))
                       <th colspan="5">Years of Stay Overseas</th>
                     </tr>
                     
-                    
-                    
-
-
                     <tr>
                       
                       <th>Total</th>

@@ -177,9 +177,17 @@ require 'school_maindb.php';
                                                     <td><?php echo $stu[6]; ?></td>
                                                     <td><?php echo $stu[8]; ?></td>
                                                     <td><?php echo $stu[9]; ?></td>
-
+                                                    <?php
+                                                    $status= $stu[9];
+                                                    if ($status== "Taken"): ?>
                                                     <td align="center"><?php echo "<a href='school_student_feedback.php?id=$stu[0]'>";?><button class="btn btn-primary btn-md" name="feedback" title="Feedback"><span class="glyphicon glyphicon-comment"></span></button></a></td>
-
+                                                    <?php 
+                                                    else:
+                                                    ?>
+                                                    <td align="center"><button class="btn btn-primary btn-md" disabled><span class="glyphicon glyphicon-comment"></span></button></td>
+                                                    <?php
+                                                    endif;
+                                                    ?>
                                                     <td><p data-placement="top" data-toggle="tooltip" title="Profile"><?php echo "<a href='edit_students_school.php?id=$stu[0]'>";?>
                                                       <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
 

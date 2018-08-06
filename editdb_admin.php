@@ -12,7 +12,7 @@ ON coordinator.account_id=account.account_id
 WHERE account.username='$username'");
 $scn=mysqli_fetch_row($sch);
 $id=$_GET['id'];
-if(isset($_POST['submit']))
+if(isset($_POST['name_submit']))
 {
   $u1 = $_POST['ulname'];
   $u2 = $_POST['ufname'];
@@ -38,6 +38,7 @@ $mname=$res[2];
 $lname=$res[3];
 $g_level=$res[4];
 $gender=$res[6];
+$t_stat=$res[11];
 }
 
 ?>

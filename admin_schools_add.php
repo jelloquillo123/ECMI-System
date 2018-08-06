@@ -181,7 +181,7 @@ require 'admin_maindb.php';
                                     <div class="form-group">
                                         <br />
                                         <div style="text-align: center;">
-                                            <input type="submit" class="btn btn-primary btn-lg" name="submit" value = "Add School">
+                                            <input type="submit" class="btn btn-primary btn-lg" name="submit_add" value = "Add School">
                                         </div>
                                     </div>
 

@@ -17,7 +17,6 @@ if(isset($_POST['submit']))
   $u2 = $_POST['cfname'];
   $u3 = $_POST['cmname'];
   $u4 = $_POST['cuname'];
-  $u5 = $_POST['cpword'];
   $u6 = $_POST['cdio'];
   $u7 = $_POST['nsch'];
   mysqli_query($db,"UPDATE coordinator
@@ -33,7 +32,7 @@ if(isset($_POST['submit']))
     WHERE school_id='$id'");
         echo "<script>
         alert('Successfully Updated.');
-        window.location.href='admin_main.php';
+        window.location.href='admin_schools_list.php';
         </script>";
 }
 

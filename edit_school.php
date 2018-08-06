@@ -124,7 +124,7 @@ require 'admin_maindb.php';
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="well">
                         <h3 align="left" id="edit_header">Edit School</h3>
-                          <form class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                          <form class="form-horizontal" method="POST">
                             <div class="form-group">
                               <label class="control-label col-lg-3" for="nsch">Name of School:</label>
                               <div class="col-lg-9">
