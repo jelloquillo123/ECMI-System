@@ -8,9 +8,9 @@ if(isset($_POST['medsubmit'])){
                      
                       $_SESSION['diocese']=$_POST['diocese'];
 $info_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
-(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Male') as 'male',
-(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Female') as 'female',
-(SELECT COUNT(*) FROM student INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]'),
+(SELECT COUNT(*) FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Male') as 'male',
+(SELECT COUNT(*) FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Female') as 'female',
+(SELECT COUNT(*) FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]'),
 
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'tatay' AND e.diocese_id = '$_POST[diocese]') as 'tatay',
 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id INNER JOIN school b ON b.school_id=d.school_id INNER JOIN diocese e ON e.diocese_id=b.diocese_id WHERE a.parent_who = 'nanay' AND e.diocese_id = '$_POST[diocese]') as 'nanay',

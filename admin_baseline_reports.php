@@ -331,9 +331,9 @@ require 'admin_maindb.php';
                                             {   
 
                                               $info1_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
-                                                (SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Male') as 'male',
-                                                (SELECT COUNT(*) FROM student WHERE school_id='$school[0]' AND gender='Female') as 'female',
-                                                (SELECT COUNT(*) FROM student WHERE school_id='$school[0]'),
+                                                (SELECT COUNT(*) FROM pre_test f INNER JOIN student d ON f.stud_id = d.stud_id WHERE d.school_id='$school[0]' AND d.gender='Male') as 'male',
+                                                (SELECT COUNT(*) FROM pre_test f INNER JOIN student d ON f.stud_id = d.stud_id WHERE d.school_id='$school[0]' AND d.gender='Female') as 'female',
+                                                (SELECT COUNT(*) FROM pre_test f INNER JOIN student d ON f.stud_id = d.stud_id WHERE d.school_id='$school[0]'),
 
                                                 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'tatay' AND d.school_id = '$school[0]') as 'tatay',
                                                 (SELECT COUNT(a.parent_who) FROM parent a INNER JOIN family c ON c.parent_id = a.parent_id INNER JOIN student d ON d.fam_id = c.fam_id WHERE a.parent_who = 'nanay' AND d.school_id = '$school[0]') as 'nanay',
