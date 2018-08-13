@@ -16,18 +16,25 @@ if(isset($_POST['submit']))
   
   $query_acc="SELECT username FROM account";
   $checkuser=mysqli_query($db,$query_acc);
-    
-    while($chk=mysqli_fetch_row($checkuser)) {
-      if($n4==$chk){
+  $chk=mysqli_fetch_row($checkuser);
+      while($n4==$chk[0]){
       echo "<script>
-        alert('Usernmae already used.');
+        alert('Username already used!');
         window.location.href='createnew.php';
         </script>";
     }
-  }
-    
-      $hash_password = password_hash($n5, PASSWORD_DEFAULT);
+    $cnt=mysqli_query($db,"SELECT account_id from account");
+      
 
+      while($s=mysqli_fetch_assoc($cnt))
+      {
+        $cunt=$s['account_id'];
+      }
+
+      $cunt=$cunt+1;
+      $hash_password = password_hash($n5, PASSWORD_DEFAULT);
+      mysqli_query($db,"INSERT INTO admin (fname,mname,lname,account_id)
+        VALUES('$n2','$n3','$n1','$cunt')");
       mysqli_query($db,"INSERT INTO account (username,pword,user_id)
         VALUES('$n4','$hash_password','1')");
       echo "<script>
