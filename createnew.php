@@ -4,7 +4,7 @@ if(!isset($_SESSION))
     session_start(); 
 } 
 require 'connect.php';
-require 'admin_schoolsdb.php';
+require 'createnewdb.php';
 require 'admin_dsc.php';
 require 'admin_maindb.php';
 ?>
@@ -66,8 +66,6 @@ require 'admin_maindb.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
                 <a class="navbar-brand" style="color: #76ff03;">Administrator</a>
             </div>
             <!-- Top Menu Items -->
@@ -79,7 +77,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="createnew.php"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li> 
                         <li class="divider"></li>
                         <li>
@@ -132,46 +130,48 @@ require 'admin_maindb.php';
                         <div class="well">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h2 style="padding-bottom: 20px;">List of Schools</h2>
-                                </div>
-                                <div class="col-lg-6" style="text-align: right; padding-bottom: 20px;">
-                                    <a href="admin_schools_add.php" class="btn btn-primary"> Add School <span class="glyphicon glyphicon-plus"></span></a>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                              <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="schooltb" style="background-color:#fff;">
-                                <thead>
-                                  <tr>
-                                    <th data-breakpoints="xs sm md lg">School ID</th>
-                                    <th>School Name</th>
-                                    <th data-breakpoints="xs sm">Diocese</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                    <th>Expand</th>
-                                  </tr>  
-                                </thead>
-                                <?php 
-                                while($sc=mysqli_fetch_row($scool)){
-                                  ?>
-                                  <tr>
-                                    <th><?php echo $sc[0]?></th>
-                                    <td><?php echo $sc[1]?></td>
-                                    <td><?php echo $sc[2]?></td>
+                                    <form onsubmit="return confirm('Are you sure you sure about this?');" class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-                                      <td><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
-                                      <td><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                                      <td><button onclick="expand_sch(<?php echo $sc[0];?>)" class="btn btn-info btn-md" name="expand"><span class="glyphicon glyphicon-new-window"></span></button></a></td>
-                                      </tr>
-                                      <?php
-                                    }
-                                    ?>
-                              </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12" style="text-align: center;">
-                                    <a href="print_admin_schools.php" class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></a>
-                                </div> 
-                            </div>                
+                                    <h2 style="padding-bottom: 20px;">Signup Admin Account</h2>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
+                                        <div class="col-lg-7 col-sm-5">
+                                            <input type="text" class="form-control" id="coor_fname" name="fname" required>
+                                        </div>
+                                    </div>             
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" id="coor_mname" name="mname" required>
+                                        </div>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" id="coor_lname" name="lname" required>
+                                        </div>
+                                    </div>                                     
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="username">Username:</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" id="username" name="uname" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="password">Password:</label>
+                                        <div class="col-lg-7">
+                                            <input type="password" class="form-control" id="password" name="pword" required>
+                                        </div>
+                                    </div> 
+                                    <div class="form-group">
+                                        <br />
+                                        <div style="text-align: center;">
+                                            <input type="submit" class="btn btn-primary btn-lg" name="submit" value = "Submit">
+                                        </div>
+                                    </div>
+                                 </form>
+                                </div>
+                            </div>             
                         </div>
                     </div>
                 </div>
