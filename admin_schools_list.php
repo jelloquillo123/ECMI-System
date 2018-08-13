@@ -5,6 +5,7 @@ if(!isset($_SESSION))
 } 
 require 'connect.php';
 require 'admin_schoolsdb.php';
+require 'admin_dsc.php';
 require 'admin_maindb.php';
 ?>
 <!DOCTYPE html>
@@ -65,8 +66,6 @@ require 'admin_maindb.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
                 <a class="navbar-brand" style="color: #76ff03;">Administrator</a>
             </div>
             <!-- Top Menu Items -->
@@ -127,7 +126,7 @@ require 'admin_maindb.php';
                 <!-- /.row -->
 
                 <div class="row" id="body-content">
-                    <div class="col-lg-12">
+                    <div class="col-lg-10 col-lg-offset-1">
                         <div class="well">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -144,9 +143,6 @@ require 'admin_maindb.php';
                                     <th data-breakpoints="xs sm md lg">School ID</th>
                                     <th>School Name</th>
                                     <th data-breakpoints="xs sm">Diocese</th>
-                                    <th data-breakpoints="xs"># of Students</th>
-                                    <th data-breakpoints="xs sm">Contact #</th>
-                                    <th data-breakpoints="xs sm md">Email</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                     <th>Expand</th>
@@ -154,17 +150,11 @@ require 'admin_maindb.php';
                                 </thead>
                                 <?php 
                                 while($sc=mysqli_fetch_row($scool)){
-                                $student_num_query="SELECT COUNT(stud_id) FROM student WHERE student.school_id='$sc[0]'";
-                                $student_num_res=mysqli_query($db,$student_num_query);
-                                $ns=mysqli_fetch_row($student_num_res);
                                   ?>
                                   <tr>
-                                    <th><?php echo $sc[0]; ?></th>
-                                    <td><?php echo $sc[1]; ?></td>
-                                    <td><?php echo $sc[2]; ?></td>
-                                    <td><?php echo $ns[0];?></td>
-                                    <td><?php echo $sc[3]; ?></td>
-                                    <td><?php echo $sc[4]; ?></td>
+                                    <th><?php echo $sc[0]?></th>
+                                    <td><?php echo $sc[1]?></td>
+                                    <td><?php echo $sc[2]?></td>
 
                                       <td><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
                                       <td><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
