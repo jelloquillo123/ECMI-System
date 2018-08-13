@@ -846,6 +846,10 @@ require 'school_maindb.php';
                                 </div> 
                             </div>
 
+                            <?php
+                            if ($number_stud[0] == 0): 
+                            else:
+                            ?>
                             <h3 align="center">Significant Findings</h3><hr>
                             <!-- Google Charts -->
                             <div id="charts">
@@ -883,6 +887,9 @@ require 'school_maindb.php';
                                 </div>                                
                               </div>                                                        
                             </div>
+                            <?php
+                          endif;
+                            ?>
 
                         </div>
                         <!--/. Well -->

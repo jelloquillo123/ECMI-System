@@ -37,6 +37,11 @@ require 'admin_maindb.php';
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+        .error_message {
+            color: red;
+        }
+    </style>
 
 </head>
 
@@ -113,11 +118,17 @@ require 'admin_maindb.php';
 
                 <!-- /.row -->
 
+                <div class="row" style="padding-top: 40px;">
+                  <div class="col-lg-2">
+                    <a href="admin_schools_list.php" class="btn btn-primary"><span class="glyphicon glyphicon-menu-left"></span> Return to List</a>
+                  </div>
+                </div>
+
                 <div class="row" id="body-content">
                     <div class="col-lg-10 col-lg-offset-1">
                         <div class="well">
                             <h2 style="padding-bottom: 40px;">Add Participating School</h2>
-                            <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                            <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST">
 
                                 <h3 align="center">School</h3>
                                 <div class="row">
@@ -137,7 +148,7 @@ require 'admin_maindb.php';
                                             <label class="control-label col-lg-3" for="diocese">Diocese:</label>
                                             <div class="col-lg-7" style="padding-left: 30px;">
                                               <select name="diocese" id="diocese" class="form-control" required>
-                                                <option>Select Diocese</option>
+                                                <option value="">Select Diocese</option>
                                                 <?php
                                                 $i=1;
                                                 while($dion=mysqli_fetch_row($dio)){
@@ -171,11 +182,24 @@ require 'admin_maindb.php';
                                         <div class="col-lg-7">
                                             <input type="text" class="form-control" id="coor_lname" name="coor_lname" value="<?php echo $coor_lname; ?>" required>
                                         </div>
-                                    </div>                                     
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="coor_cnum">Contact Number:</label>
+                                        <div class="col-lg-7">
+                                            <input type="number" class="form-control" id="coor_cnum" name="coor_cnum" value="<?php echo $coor_cnum; ?>" required>
+                                        </div>
+                                    </div>   
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="coor_email">Email:</label>
+                                        <div class="col-lg-7">
+                                            <input type="email" class="form-control" id="coor_email" name="coor_email" value="<?php echo $coor_email; ?>">
+                                        </div>
+                                    </div>                                                                            
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="username">Username:</label>
                                         <div class="col-lg-7">
                                             <input type="text" class="form-control" id="username" name="uname" value="<?php echo $uname; ?>" required>
+                                            <span class="error_message"><?php echo $error_message_uname; ?></span>
                                         </div>
                                     </div> 
                                     <div class="form-group">

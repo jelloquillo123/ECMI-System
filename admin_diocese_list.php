@@ -132,9 +132,9 @@ require 'admin_maindb.php';
                               <table class="table table-hover tablecenter" data-sorting="true" data-filtering="true" data-paging="true" id="diocesetb" style="background-color:#fff;">
                                 <thead>
                                   <tr>
-                                    <th>Diocese ID</th>
+                                    <th data-breakpoints="xs sm md lg">Diocese ID</th>
                                     <th>Diocese Name</th>
-                                    <th># of Schools Included</th>
+                                    <th data-breakpoints="xs"># of Schools Included</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                   </tr> 

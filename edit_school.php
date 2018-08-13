@@ -168,6 +168,18 @@ require 'admin_maindb.php';
                               </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-sm-3" for="coor_cnum">Contact Number:</label>
+                                <div class="col-lg-7">
+                                    <input type="number" class="form-control" id="coor_cnum" name="coor_cnum" value="<?php echo $coor_cnum; ?>" required>
+                                </div>
+                            </div>   
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="coor_email">Email:</label>
+                                <div class="col-lg-7">
+                                    <input type="email" class="form-control" id="coor_email" name="coor_email" value="<?php echo $coor_email; ?>">
+                                </div>
+                            </div>                             
+                            <div class="form-group">
                               <label class="control-label col-lg-3" for="username">Username:</label>
                               <div class="col-lg-9">
                                 <input type="text" class="form-control" id="uname" name="cuname" value="<?php echo $usrnm ?>">
