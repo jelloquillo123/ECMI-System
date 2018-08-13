@@ -12,7 +12,7 @@ ON coordinator.account_id=account.account_id
 WHERE account.username='$username'");
 $scn=mysqli_fetch_row($sch);
 $id=$_GET['id'];
-if(isset($_POST['submit']))
+if(isset($_POST['name_submit']))
 {
   $u1 = $_POST['ulname'];
   $u2 = $_POST['ufname'];
@@ -38,11 +38,10 @@ $mname=$res[2];
 $lname=$res[3];
 $g_level=$res[4];
 $gender=$res[6];
-}
+$t_stat=$res[11];
 
-?>
 
-<?php
+if ($t_stat=="Taken"){
 $sql_ans=mysqli_query($db,"SELECT * FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id  WHERE pre_test.stud_id='$id' ");
 $ans=mysqli_fetch_row($sql_ans);
 
@@ -102,6 +101,11 @@ $feed8=mysqli_fetch_row($sql_feed8);
 $sql_feed9=mysqli_query($db,"SELECT $ans[10] from choices WHERE gr_group='1' AND q_num='9'    ");
 $feed9=mysqli_fetch_row($sql_feed9);
 
+}
+else{
 
+}
+
+}
 
 ?>

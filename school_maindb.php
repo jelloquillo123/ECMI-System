@@ -22,5 +22,7 @@ ON coordinator.account_id=account.account_id
 WHERE account.username='$username'");
 $scn=mysqli_fetch_row($sch);
 
+$query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.school_id='$scn[2]' AND t_stat='Taken'");
+$number_stud=mysqli_fetch_row($query);
 
 ?>

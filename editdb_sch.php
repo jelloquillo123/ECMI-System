@@ -12,6 +12,8 @@ ON coordinator.account_id=account.account_id
 WHERE account.username='$username'");
 $scn=mysqli_fetch_row($sch);
 $id=$_GET['id'];
+
+
 if(isset($_POST['submit']))
 {
   $u1 = $_POST['ulname'];
@@ -19,13 +21,30 @@ if(isset($_POST['submit']))
   $u3 = $_POST['umname'];
   $u4 = $_POST['uglevel'];
   $u5 = $_POST['ugender'];
-  mysqli_query($db,"UPDATE student 
+
+$update_query = "UPDATE student 
     SET lname='$u1', fname='$u2', mname='$u3', g_level='$u4', gender='$u5'
-    WHERE stud_id='$id'");
-        echo "<script>
+    WHERE stud_id='$id'";
+
+
+if (mysqli_query($db, $update_query)) {
+?>
+        <script>
         alert('Successfully Updated.');
         window.location.href='school_students.php';
-        </script>";
+        </script>
+<?php
+} 
+
+else {
+?>
+        <script>
+        alert('Error Updating Record. <?php echo mysqli_error($conn); ?>');
+        window.location.href='school_students.php';
+        </script>  
+<?php
+}
+
 }
 
 //selecting data associated with this particular id
@@ -38,10 +57,13 @@ $mname=$res[2];
 $lname=$res[3];
 $g_level=$res[4];
 $gender=$res[6];
+$t_stat=$res[11];
 }
 ?>
 
-      <?php
+<?php
+if ($t_stat == 'Taken'):
+
 $sql_ans=mysqli_query($db,"SELECT * FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id  WHERE pre_test.stud_id='$id' ");
 $ans=mysqli_fetch_row($sql_ans);
 
@@ -101,5 +123,8 @@ $feed8=mysqli_fetch_row($sql_feed8);
 $sql_feed9=mysqli_query($db,"SELECT $ans[10] from choices WHERE gr_group='1' AND q_num='9'    ");
 $feed9=mysqli_fetch_row($sql_feed9);*/
 
+else :
+
+endif;
 
 ?>

@@ -559,6 +559,8 @@ require 'school_maindb.php';
                                         <td><?php echo $ywr1[0];?></td>
                                       </tr>
                                     </table>
+                                    <h6><b>NOTE: <br> Recommended Paper size for printing is Legal(Landscape) <br> Only the students who already answered the PAT are listed</b></h6>
+
                                   </div>
                                 </div>
                             </div>
@@ -568,8 +570,14 @@ require 'school_maindb.php';
                                 </div> 
                             </div>
 
-                            <h3 align="center">Significant Findings</h3><hr>
                             <!-- Google Charts -->
+                            <?php
+                            if ($number_stud[0] == 0):
+                            ?>
+                            <?php
+                          else :
+                            ?>      
+                            <h3 align="center">Significant Findings</h3><hr>
                             <div id="charts">
                               <div class="row">
                                 <div class="col-md-offset-1 col-md-3">
@@ -591,6 +599,9 @@ require 'school_maindb.php';
                                 </div>
                               </div>                         
                             </div>
+                            <?php
+                          endif;
+                            ?>
 
                         </div>
                         <!--/. Well -->

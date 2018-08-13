@@ -408,6 +408,8 @@ require 'admin_maindb.php';
                                             </tr>";   
                                             ?>  
                                         </table>
+                                        <h6><b>NOTE: <br> Recommended Paper size for printing is Legal(Landscape) <br> Only the students who already answered the PAT are listed</b></h6>
+
                                     </div>
                                 </div>
                             </div>

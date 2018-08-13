@@ -131,7 +131,7 @@ require 'admin_maindb.php';
                                 </div>
                             </div>
 
-                            <form class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                            <form class="form-horizontal" method="POST">
 
                               <div class="form-group">
                                 <label class="control-label col-lg-3" for="lname">Last Name:</label>
@@ -195,7 +195,7 @@ require 'admin_maindb.php';
 
                               <div class="row">
                                 <div class="col-lg-12" style="text-align: center;">
-                                  <input type="submit" name="name" class="btn btn-primary" value="Edit Student">
+                                  <input type="submit" name="name_submit" class="btn btn-primary" value="Edit Student">
                                 </div>
                               </div>                             
 
@@ -206,12 +206,15 @@ require 'admin_maindb.php';
                     </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-lg-10 col-lg-offset-1">
+                <?php
+                if ($t_stat == "Not taken"):
+                ?>
+                <div class="row" style="display: none;">
+                  <div class="col-lg-8 col-lg-offset-2">
                     <div class="well">
                       <div class="row">
                         <div class="col-md-5" style="padding-bottom: 20px;">
-                          <h2>Student PTF Result</h2>
+                          <h2>Student PAT Result</h2>
                         </div>                       
                       </div>
                       <div class="row">
@@ -310,7 +313,116 @@ require 'admin_maindb.php';
                   </div>
                 </div>
 
+                <?php
+                else :
+                ?>
+                <div class="row">
+                  <div class="col-lg-8 col-lg-offset-2">
+                    <div class="well">
+                      <div class="row">
+                        <div class="col-md-5" style="padding-bottom: 20px;">
+                          <h2>Student PAT Result</h2>
+                        </div>                       
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p align="left" style="font-size:18px;"> 1.
 
+                          <?php
+                          echo $qs1[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed1[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                            2.  <?php
+                          echo $qs2[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed2[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          3. <?php
+                          echo $qs3[0];
+
+                          ?></p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed3[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          4.<?php
+                          echo $qs4[0];
+
+                          ?></p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed4[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          5. <?php
+                          echo $qs5[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed5[0]; ?> 
+                          </p>
+                          <br />
+
+                          <p align="left" style="font-size:18px;">
+                          6.  <?php
+                          echo $qs6[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed6[0]; ?> 
+                          </p>
+                          <br />
+                          <p align="left" style="font-size:18px;">
+                          7. <?php
+                          echo $qs7[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed7[0]; ?> 
+                          </p>
+                          <p align="left" style="font-size:18px;">
+                          8. <?php
+                          echo $qs8[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed8[0]; ?> 
+                          </p>
+                          <p align="left" style="font-size:18px;">
+                          9. <?php
+                          echo $qs9[0];
+
+                          ?>
+                          </p>
+                          <p align="left" style="font-size:18px; font-weight:bold;">
+                              Answer: <?php echo $feed9[0]; ?> 
+                          </p>                          
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <?php
+                endif; 
+                ?>
 
             </div>
             <!-- /.container-fluid -->

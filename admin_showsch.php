@@ -3,14 +3,11 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+$school=$_GET['id'];
+$_SESSION['school_expand']=$school;
 require 'connect.php';
 require 'admin_showdb.php';
 require 'admin_maindb.php';
-$school=$_GET['id'];
-$schn=mysqli_query($db,"SELECT school_name
-  FROM school
-  WHERE school_id='$school'");
-$sn=mysqli_fetch_row($schn);
 ?>
 
 <!DOCTYPE html>
@@ -535,8 +532,8 @@ $sn=mysqli_fetch_row($schn);
                     <div class="col-lg-12">
                       <div class="well">
                         <h2 style="padding-bottom: 20px;">Baseline Data Summary Results</h2>
-
-                        <div class="row">
+                        <h4><?php echo $scn[0]; ?></h4>
+                        <div class="row" style="padding-top: 20px;">
                           <div class="col-lg-12">
                             <div class="table-responsive">
                               <table class="table table-hover table-bordered" style="background-color:#fff;">
@@ -800,13 +797,15 @@ $sn=mysqli_fetch_row($schn);
                                   <td><?php echo $ywr1[0];?></td>
                                 </tr>
                               </table>
+                              <h6><b>NOTE: <br> Recommended Paper size for printing is Legal(Landscape) <br> Only the students who already answered the PAT are listed</b></h6>
+
                             </div>                             
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="col-lg-12" style="text-align: center;">
-                            <a href="printry1.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
+                            <a href="print_school_baseline_expand.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                           </div>                       
                         </div>
 
@@ -1331,15 +1330,25 @@ $sn=mysqli_fetch_row($schn);
                                   <td><?php echo $s34[0]; ?></td>
                                   <td><?php echo $s35[0]; ?></td>
                                 </tr>
-                              </table>                         
+                              </table>    
+                              <h6><b>NOTE: <br> Recommended Paper size for printing is Legal(Landscape) <br> Only the students who already answered the PAT are listed</b></h6>
+                     
                             </div>
                           </div>
                         </div>
                         <div class="row">                       
                           <div class="col-lg-12" style="text-align: center;">
-                            <a href="printry.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
+                            <a href="print_school_pat_reports_expand.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                           </div>  
                         </div>
+
+                          <?php
+                          if ($number_stud[0]==0):
+                          ?>
+
+                          <?php
+                        else :
+                          ?>
 
                         <h3 align="center">Significant Findings</h3><hr>
                         <!-- Google Charts -->
@@ -1378,7 +1387,9 @@ $sn=mysqli_fetch_row($schn);
                             </div>
                           </div>                
                         </div>
-                                            
+                        <?php
+                        endif;
+                        ?>        
                       </div>
                     </div>
                   </div>
