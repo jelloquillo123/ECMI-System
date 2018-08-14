@@ -63,8 +63,8 @@ if(isset($_POST['submit_add']))
 
       $schid=$schid+1;
       $coordid=$coordid+1;
-
-      $hash_password = password_hash($uname, PASSWORD_DEFAULT);
+      $default_pass="sdofp-ecmi";
+      $hash_password = password_hash($default_pass, PASSWORD_DEFAULT);
 
        mysqli_query($db, "INSERT INTO school (school_name,diocese_id,contact_num,contact_email) 
          VALUES ('$name_school','$diocese_id','$coor_cnum','$coor_email')");

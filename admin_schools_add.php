@@ -208,6 +208,8 @@ require 'admin_maindb.php';
                                             <input type="submit" class="btn btn-primary btn-lg" name="submit_add" value = "Add School">
                                         </div>
                                     </div>
+                                   <h6><b>Note: <br>Default Password: sdofp-ecmi </b></h6>
+
 
                             </form>
                         </div>

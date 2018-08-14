@@ -96,7 +96,7 @@ $qs9=mysqli_fetch_row($qt9);
 
 
 
-/*$sql_feed1=mysqli_query($db,"SELECT $ans[2] from choices WHERE gr_group='1' AND q_num='1'    ");
+$sql_feed1=mysqli_query($db,"SELECT $ans[2] from choices WHERE gr_group='1' AND q_num='1'    ");
 $feed1=mysqli_fetch_row($sql_feed1);
 
 $sql_feed2=mysqli_query($db,"SELECT $ans[3] from choices WHERE gr_group='1' AND q_num='2'    ");
@@ -121,7 +121,7 @@ $sql_feed8=mysqli_query($db,"SELECT $ans[9] from choices WHERE gr_group='1' AND 
 $feed8=mysqli_fetch_row($sql_feed8);
 
 $sql_feed9=mysqli_query($db,"SELECT $ans[10] from choices WHERE gr_group='1' AND q_num='9'    ");
-$feed9=mysqli_fetch_row($sql_feed9);*/
+$feed9=mysqli_fetch_row($sql_feed9);
 
 else :
 

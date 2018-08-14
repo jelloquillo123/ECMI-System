@@ -1,5 +1,5 @@
 <?php
 
-$db=mysqli_connect("localhost", "root", "12345");
+$db=mysqli_connect("localhost", "root", "");
 mysqli_select_db($db, 'sdofp');
 ?>

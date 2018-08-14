@@ -188,7 +188,8 @@ require 'school_maindb.php';
                             <div class="form-group" style="text-align: center;">
                                 <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Add Student">                                
                             </div>
-
+                            <h6><b>Note: <br>Default Username is Student Number<br>Default Password: sdofp-ecmi </b></h6>
+                            
                           </form>
                         </div>
                     </div>

@@ -12,6 +12,9 @@ $scool=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.dioc
        JOIN diocese
        ON school.diocese_id=diocese.diocese_id");
 
+$count_query=mysqli_query($db,"SELECT COUNT(diocese_id) FROM diocese");
+$dio_count=mysqli_fetch_row($count_query);
+
 
 if(isset($_POST['diocese_submit']))
   {

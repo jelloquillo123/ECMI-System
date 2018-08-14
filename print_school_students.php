@@ -1,12 +1,69 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 require 'connect.php';
-//require 'school_studentsdb.php';
 require 'glevels.php';
-
-$stud_count = $_SESSION['studcount'];
-
+require 'school_studentsdb.php';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+    <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
+  <style>
+  table, th, td {
+  border: 1px solid black;
+  }
+  </style>
+</head>
+<body onload="prints();">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>List of Students</h2>
+        <h4>Total Number of Students: <?php echo $stud_total[0]; ?></h4>
+        <h4><?php echo $scn[0]; ?></h4>
+
+          <div class="table-responsive" style="padding-top: 15px;">
+            <table class="table table-hover table-bordered" data-sorting="true" data-paging="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
+                <thead>
+                    <th>Student ID</th>
+                    <th>Last Name</th>
+                    <th data-breakpoints="xs sm">First Name</th>
+                    <th data-breakpoints="xs sm md">Middle Name</th>
+                    <th data-breakpoints="xs">Grade Level</th>
+                    <th data-breakpoints="xs sm md">Gender</th>
+                    <th data-breakpoints="xs md sm">Age</th>
+                    <th data-breakpoints="lg md sm xs">Parents Email</th>
+                    <th data-breakpoints="xs sm">Test status</th>
+                </thead>
+                <tbody>
+                    <tr>
+                      <?php
+                      while($stu=mysqli_fetch_row($stud)){
+                        ?>
+                        <th><?php echo $stu[0]; ?></th>
+                        <td><?php echo $stu[1]; ?></td>
+                        <td><?php echo $stu[2]; ?></td>
+                        <td><?php echo $stu[3]; ?></td>
+                        <td><?php echo $stu[4]; ?></td>
+                        <td><?php echo $stu[5]; ?></td>
+                        <td><?php echo $stu[6]; ?></td>
+                        <td><?php echo $stu[8]; ?></td>
+                        <td><?php echo $stu[9]; ?></td>
+                    </tr><?php } ?>
+
+                </tbody>
+            </table>           
+          </div>
+        
+      </div>
+    </div>
+  </div>
 
 <script>
 function prints(){
@@ -15,50 +72,5 @@ function prints(){
 }
 </script>
 
-
-
-<html>
-<head>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    
-</head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload = "prints();">
-
-
-<table class="table table-striped table-bordered" id="studenttb" style="background-color:#fff;">
-    <thead>
-      <tr>
-        <th>Student ID</th>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Middle Name</th>
-        <th>Grade Level</th>
-        <th>Gender</th>
-        <th>Age</th>
-        <th>Parents Email</th>
-        <th>Test status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-        $output = $_SESSION['output'];
-        echo $output;
-
-      ?>
-        
-
-
-    </tbody>
-
-  </table>
-
-  <h4>Total number of students = <?php echo $stud_count; ?></h4>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="js/jquery-3.1.1.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-            $("#studenttb").footable();
-          </script>
 </body>
 </html>

@@ -5,8 +5,10 @@ if(isset($_POST['medsubmit'])){
                       INNER JOIN diocese 
                       ON diocese.diocese_id=school.diocese_id
                       WHERE diocese.diocese_id='$_POST[diocese]'");
-                     
+                     $diocese_query=mysqli_query($db,"SELECT * FROM diocese WHERE diocese.diocese_id='$_POST[diocese]'");
+                     $dio_details=mysqli_fetch_row($diocese_query);
                       $_SESSION['diocese']=$_POST['diocese'];
+
 $info_sql=mysqli_query($db,"SELECT COUNT(stud_id) as 'all', 
 (SELECT COUNT(*) FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Male') as 'male',
 (SELECT COUNT(*) FROM pre_test INNER JOIN student ON pre_test.stud_id=student.stud_id INNER JOIN school ON school.school_id=student.school_id INNER JOIN diocese ON diocese.diocese_id=school.diocese_id WHERE diocese.diocese_id='$_POST[diocese]' AND student.gender='Female') as 'female',

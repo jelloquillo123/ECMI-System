@@ -5,7 +5,6 @@ if(!isset($_SESSION))
 } 
 require 'connect.php';
 require 'school_studentsdb.php';
-//session_start();
 $username = $_SESSION['username'];
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
   FROM school

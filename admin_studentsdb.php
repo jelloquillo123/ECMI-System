@@ -1,7 +1,7 @@
 <?php
 // $username = ($_SESSION['username']);
 $to=mysqli_query($db,"SELECT student.stud_id,student.lname,student.fname,student.mname,school.school_name,student.g_level,
-  student.gender,student.age,account.username,account.pword 
+  student.gender,student.age,account.username,student.t_stat
   FROM student
   JOIN school
   ON student.school_id=school.school_id

@@ -250,9 +250,9 @@ require 'admin_maindb.php';
 
 
 
-        <div id="main-body">
+        <div id="main-body" >
 
-            <div class="container-fluid">
+            <div class="container-fluid" style="height: 100%; min-height: 600px;">
 
 
                 <!-- /.row -->
@@ -275,7 +275,7 @@ require 'admin_maindb.php';
                                                 <option value=<?php echo $_POST['diocese']; ?>><?php echo 'Diocese of'." ".$dd1[0];?></option>
                                                 <?php
                                               }
-                                              echo "<option>Diocese of </option>";
+                                              
                                               $i=1;
                                               while($dion=mysqli_fetch_row($dio)){
                                                 $i=$i+1;
@@ -292,10 +292,22 @@ require 'admin_maindb.php';
                                     </form>
                                 </div>
                             </div>
-
+<?php
+if(!isset($_POST['medsubmit'])):
+?>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <h3 style="padding-top: 30px; padding-bottom: 30px;" align="center">Please select a diocese to view...</h3>
+                            </div>
+                          </div>
+<?php
+else:
+?>
+        
                             <div class="row" style="padding-top: 20px;">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
+                                      <h3 align="center" style="padding-bottom: 10px;">Diocese of <?php echo $dio_details[1]; ?></h3>
                                         <table class="table table-hover table-bordered" style="background-color: #fff;">
                                             <tr>
                                               <th rowspan="2">SCHOOL</th>
@@ -405,7 +417,9 @@ require 'admin_maindb.php';
                                             <td><b>".$info[16]."</b></td>
                                             <td><b>".$info[17]."</b></td>
                                             <td><b>".$info[18]."</b></td>
-                                            </tr>";   
+                                            </tr>";
+                                            if ($info[3]==0):
+                                            else:   
                                             ?>  
                                         </table>
                                         <h6><b>NOTE: <br> Recommended Paper size for printing is Legal(Landscape) <br> Only the students who already answered the PAT are listed</b></h6>
@@ -442,7 +456,10 @@ require 'admin_maindb.php';
                                 </div>
                               </div>                         
                             </div>
-
+<?php
+endif;
+endif;
+?>
                         </div>
                         <!--/. Well -->
                     </div>

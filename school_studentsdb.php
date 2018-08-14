@@ -57,8 +57,8 @@ if(isset($_POST['submit']))
       $today = date("Y-m-d");
       $diff = date_diff(date_create($n8),date_create($today));
       $ag = $diff->format('%y');
-
-      $hash_password = password_hash($n0, PASSWORD_DEFAULT);
+      $default_pass="sdofp-ecmi";
+      $hash_password = password_hash($default_pass, PASSWORD_DEFAULT);
 
       mysqli_query($db,"INSERT INTO account (username,pword,user_id)
         VALUES('$n0','$hash_password','3')");

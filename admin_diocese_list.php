@@ -165,7 +165,7 @@ require 'admin_maindb.php';
                               </table>
                             </div>
                             <div style="text-align: center;">                               
-                                <a href="#" class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></a>
+                                <a href="print_diocese.php" class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></a>
                             </div>
                         </div>
                     </div>

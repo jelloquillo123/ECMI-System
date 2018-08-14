@@ -164,15 +164,16 @@ require 'admin_maindb.php';
                                         <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
                                           <thead>
                                             <tr>
-                                              <th data-breakpoints="xs sm md">Student ID</th>
+                                              <th data-breakpoints="xs sm md lg">Student ID</th>
                                               <th>Last Name</th>
                                               <th>First Name</th>
                                               <th data-breakpoints="xs">Middle Name</th>
-                                              <th data-breakpoints="xs">School</th>
-                                              <th >Grade Level</th>
+                                              <th data-breakpoints="xs sm">School</th>
+                                              <th>Grade Level</th>
+                                              <th data-breakpoints="xs">Test Status</th>
                                               <th data-breakpoints="xs sm md">Gender</th>
                                               <th data-breakpoints="xs sm md">Age</th>
-                                              <th data-breakpoints="xs sm">Username</th>    
+                                              <th data-breakpoints="xs sm md lg">Username</th>    
                                               <th>Profile</th>
                                               <th>Delete</th>
                                             </tr>
@@ -180,21 +181,22 @@ require 'admin_maindb.php';
                                           <tbody id="show">
                                             <tr>
                                               <?php
-                                                while($toti=mysqli_fetch_row($to)){
+                                                while($stud=mysqli_fetch_row($to)){
                                                   ?>
-                                                  <th><?php echo $toti[0];?></th>
-                                                  <td><?php echo $toti[1];?></td>
-                                                  <td><?php echo $toti[2];?></td>
-                                                  <td><?php echo $toti[3];?></td>
-                                                  <td><?php echo $toti[4];?></td>
-                                                  <td><?php echo $toti[5];?></td>
-                                                  <td><?php echo $toti[6];?></td>
-                                                  <td><?php echo $toti[7];?></td>
-                                                  <td><?php echo $toti[8];?></td>                     
-                                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='edit_students_admin.php?id=<?php echo $toti[0];?>'>
+                                                  <th><?php echo $stud[0];?></th>
+                                                  <td><?php echo $stud[1];?></td>
+                                                  <td><?php echo $stud[2];?></td>
+                                                  <td><?php echo $stud[3];?></td>
+                                                  <td><?php echo $stud[4];?></td>
+                                                  <td><?php echo $stud[5];?></td>
+                                                  <td><?php echo $stud[9] ?></td>
+                                                  <td><?php echo $stud[6];?></td>
+                                                  <td><?php echo $stud[7];?></td>
+                                                  <td><?php echo $stud[8];?></td>                     
+                                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='edit_students_admin.php?id=<?php echo $stud[0];?>'>
                                                       <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
                                                     <td>
-                                                      <button onclick="del(<?php echo $toti[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                                      <button onclick="del(<?php echo $stud[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
                                                 
                                                  </tr>
                                                     <?php
