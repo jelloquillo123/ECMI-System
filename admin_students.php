@@ -65,7 +65,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li> 
                         <li class="divider"></li>
                         <li>

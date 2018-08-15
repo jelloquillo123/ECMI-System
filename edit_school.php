@@ -185,10 +185,13 @@ require 'admin_maindb.php';
                                 <input type="text" class="form-control" id="uname" name="cuname" value="<?php echo $usrnm ?>">
                               </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="padding-top: 30px;">
                               <br />
-                              <div class="col-lg-12" style="text-align: center;">
-                              <input type="submit" class="btn btn-primary btn-lg" align="center" name="submit" value = "Edit School">
+                              <div class="col-lg-6" style="text-align: center;">
+                              <input type="submit" class="btn btn-primary btn-lg" name="submit" value = "Edit School">
+                              </div>
+                              <div class="col-lg-6" style="text-align: center;">
+                              <input type="submit" class="btn btn-primary btn-lg" name="reset_pass" value = "Reset Password">
                               </div>
                             </div>
                           </form>   

@@ -306,7 +306,7 @@ require 'school_maindb.php';
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $coor_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
+                            <?php echo"<a href='school_changepass.php?id=$accid[0]'>"?><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li class="divider"></li>
                         <li>

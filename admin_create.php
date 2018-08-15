@@ -4,7 +4,7 @@ if(!isset($_SESSION))
     session_start(); 
 } 
 require 'connect.php';
-require 'createnewdb.php';
+require 'admin_createdb.php';
 require 'admin_dsc.php';
 require 'admin_maindb.php';
 ?>
@@ -77,7 +77,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li> 
                         <li class="divider"></li>
                         <li>
@@ -89,7 +89,7 @@ require 'admin_maindb.php';
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a href="admin_schools_list.php"><i class="fa fa-graduation-cap"></i> Schools </a>
                     </li>
                     <li>
@@ -120,21 +120,21 @@ require 'admin_maindb.php';
 
         <div id="main-body">
 
-            <div class="container-fluid">
+            <div class="container-fluid" style="height: 100%; min-height: 600px;">
 
 
                 <!-- /.row -->
 
                 <div class="row" id="body-content">
-                    <div class="col-lg-10 col-lg-offset-1">
+                    <div class="col-lg-6 col-lg-offset-3">
                         <div class="well">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <form onsubmit="return confirm('Are you sure you sure about this?');" class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                <div class="col-lg-12">
+                                    <form onsubmit="return confirm('Are you sure you want to add this Administrator?');" class="form-horizontal" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
                                     <h2 style="padding-bottom: 20px;">Signup Admin Account</h2>
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
+                                        <label class="control-label col-lg-3" for="coor_fname">First Name:</label>
                                         <div class="col-lg-7 col-sm-5">
                                             <input type="text" class="form-control" id="coor_fname" name="fname" required>
                                         </div>
@@ -158,17 +158,12 @@ require 'admin_maindb.php';
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="password">Password:</label>
-                                        <div class="col-lg-7">
-                                            <input type="password" class="form-control" id="password" name="pword" required>
-                                        </div>
-                                    </div> 
-                                    <div class="form-group">
                                         <br />
                                         <div style="text-align: center;">
                                             <input type="submit" class="btn btn-primary btn-lg" name="submit" value = "Submit">
                                         </div>
                                     </div>
+                                    <h6><b>Note: <br>Default Password: sdofp_Admin123 </b></h6>
                                  </form>
                                 </div>
                             </div>             
@@ -191,45 +186,6 @@ require 'admin_maindb.php';
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- FooTable JavaScript -->
-      <script src="js/footable.min.js"></script>
-      <script type="text/javascript">
-        $("#schooltb").footable();
-      </script>
-      <script type="text/javascript">
-        $("#diocesetb").footable();
-      </script>
-
-      
-      <script language="javascript">
-        function del_sch(x) {
-          var delo = confirm('Are you sure you want to delete?');
-          if(delo == true)
-          {
-            window.location.href="delete_school.php?id=" + x +"";
-          }
-
-        }
-        
-        function edit_sch(x) {
-          window.location.href ="edit_school.php?id=" + x + "";
-        }
-
-        function expand_sch(x) {
-          window.location.href = "admin_showsch.php?id=" + x + "";
-        }
-
-        function del_diocs(x){
-          var delete_sure = confirm('Are you sure you want to delete?');
-          if (delete_sure == true){
-            window.location.href = "delete_diocese.php?id=" + x + "";
-          }
-          
-        }
-
-
-      </script>
 
 </body>
 

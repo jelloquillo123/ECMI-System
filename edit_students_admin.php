@@ -65,7 +65,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li> 
                         <li class="divider"></li>
                         <li>
@@ -195,7 +195,7 @@ require 'admin_maindb.php';
 
                               <div class="row">
                                 <div class="col-lg-12" style="text-align: center;">
-                                  <input type="submit" name="name_submit" class="btn btn-primary" value="Edit Student">
+                                  <input onclick="confirm('Are you sure you want to edit this student?');" type="submit" name="name_submit" class="btn btn-primary" value="Edit Student">
                                 </div>
                               </div>                             
 

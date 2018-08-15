@@ -64,7 +64,7 @@ DOCTYPE html>
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li> 
                         <li class="divider"></li>
                         <li>
@@ -105,10 +105,10 @@ DOCTYPE html>
 
         <div id="main-body">
 
-            <div class="container-fluid">
+            <div class="container-fluid" >
                 <!-- /.row -->
 
-                <div class="row" id="body-content">
+                <div class="row" id="body-content" style="height: 100%; min-height: 600px;">
                     <div class="col-lg-10 col-lg-offset-1">
                         <div class="well">
                             <h2 style="padding-bottom: 40px;">Questions</h2>
@@ -120,8 +120,7 @@ DOCTYPE html>
                                           <label for="grdlvl">Grade Level</label>
                                           <select name="grdlvl" id="grde_lvl" class="form-control input-md">
 
-                                          <option value=<?php echo $_POST['grdlvl']; ?>><?php echo 'Grade'." ".$_POST['grdlvl'];?></option>
-                                          <option value="1">Grade 1</option>
+                                          <option value="1" disabled>Grade 1</option>
                                           <option value="2">Grade 2</option>
                                           <option value="3">Grade 3</option>
                                           <option value="4">Grade 4</option>
@@ -138,7 +137,13 @@ DOCTYPE html>
                                     </div>   
                                 </div>
                             </form>
-
+                            <?php
+                            if (!isset($_POST['submit'])):
+                            ?>
+                            <h3 align="center" style="padding-top: 30px; padding-bottom: 30px;">Please select a grade level...</h3>
+                            <?php
+                            else:
+                            ?>
                             <div class="row">
                                 <div class="col-lg-12">
                                   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-inline">
@@ -277,7 +282,9 @@ DOCTYPE html>
                                   </form>
                                 </div>
                             </div>
-
+                            <?php
+                          endif;
+                            ?>
                         </div>
                         <!--/. Well -->
                     </div>

@@ -210,7 +210,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li>                        
                         <li class="divider"></li>
                         <li>
@@ -252,12 +252,12 @@ require 'admin_maindb.php';
 
         <div id="main-body" >
 
-            <div class="container-fluid" style="height: 100%; min-height: 600px;">
+            <div class="container-fluid" >
 
 
                 <!-- /.row -->
 
-                <div class="row" id="body-content">
+                <div class="row" id="body-content" style="height: 100%; min-height: 600px;">
                     <div class="col-lg-12">
                         <div class="well">
                             <h2 style="padding-bottom: 20px;">Baseline Data Summary Results</h2>
@@ -417,9 +417,7 @@ else:
                                             <td><b>".$info[16]."</b></td>
                                             <td><b>".$info[17]."</b></td>
                                             <td><b>".$info[18]."</b></td>
-                                            </tr>";
-                                            if ($info[3]==0):
-                                            else:   
+                                            </tr>"; 
                                             ?>  
                                         </table>
                                         <h6><b>NOTE: <br> Recommended Paper size for printing is Legal(Landscape) <br> Only the students who already answered the PAT are listed</b></h6>
@@ -432,7 +430,10 @@ else:
                                     <a href="admin_report_print.php" class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></a>
                                 </div> 
                             </div>
-
+                            <?php
+                            if($info[3]==0):
+                            else:
+                            ?>
                             <h3 align="center">Significant Findings</h3><hr>
                             <!-- Google Charts -->
                             <div id="charts">

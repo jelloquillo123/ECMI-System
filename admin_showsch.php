@@ -470,7 +470,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li> 
                         <li class="divider"></li>
                         <li>
@@ -808,7 +808,10 @@ require 'admin_maindb.php';
                             <a href="print_school_baseline_expand.php"><button class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></button></a>
                           </div>                       
                         </div>
-
+                        <?php
+                        if ($cu1[0]==0):
+                        else:
+                        ?>
                         <h3 align="center">Significant Findings</h3><hr>
                         <!-- Google Charts -->
                         <div id="charts">
@@ -835,6 +838,9 @@ require 'admin_maindb.php';
                             </div>
                           </div>
                         </div>
+                        <?php
+                      endif;
+                        ?>
 
                       </div>
                     </div>

@@ -4,6 +4,7 @@ if(!isset($_SESSION))
     session_start(); 
 } 
 $username = $_SESSION['username'];
+
 $error_message="";
 $n0=""; $n1=""; $n2=""; $n3=""; $n6=""; $n7=""; $n8=""; $n9="";
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id

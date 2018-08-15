@@ -77,7 +77,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="createnew.php"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
                         </li> 
                         <li class="divider"></li>
                         <li>
@@ -142,10 +142,10 @@ require 'admin_maindb.php';
                                   <tr>
                                     <th data-breakpoints="xs sm md lg">School ID</th>
                                     <th>School Name</th>
-                                    <th data-breakpoints="xs sm">Diocese</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                    <th>Expand</th>
+                                    <th data-breakpoints="xs sm" style="text-align: center;">Diocese</th>
+                                    <th style="text-align: center;">Edit</th>
+                                    <th style="text-align: center;">Delete</th>
+                                    <th style="text-align: center;">Expand</th>
                                   </tr>  
                                 </thead>
                                 <?php 
@@ -154,7 +154,7 @@ require 'admin_maindb.php';
                                   <tr>
                                     <th><?php echo $sc[0]?></th>
                                     <td><?php echo $sc[1]?></td>
-                                    <td><?php echo $sc[2]?></td>
+                                    <td ><?php echo $sc[2]?></td>
 
                                       <td><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
                                       <td><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>

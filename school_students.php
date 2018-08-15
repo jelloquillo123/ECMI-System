@@ -68,7 +68,7 @@ require 'school_maindb.php';
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $coor_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="school_changepass.php"><i class="fa fa-fw fa-gear"></i> Change Password</a>
+                            <?php echo"<a href='school_changepass.php?id=$accid[0]'>"?><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -194,8 +194,8 @@ require 'school_maindb.php';
                                                     <td>
                                                     <button onclick="del(<?php echo $stu[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
 
-                                                    <td><?php echo "<a href='resetpw.php?id=$stu[7]'>";?>
-                                                    <button class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
+                                                    <td>
+                                                    <button onclick="resetpw(<?php echo $stu[7]; ?>)" class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>
                                                 </tr><?php } ?>
 
                                             </tbody>
@@ -232,6 +232,14 @@ require 'school_maindb.php';
     <script src="js/footable.js"></script>
     <script type="text/javascript">
       $("#studenttb").footable();
+    </script>
+    <script type="text/javascript">
+        function resetpw(x){
+            var reset_confirm= confirm('Are you sure you want to reset the password of this student?\n Default password: sdofp-ecmi');
+            if (reset_confirm==true){
+              window.location.href="edit_students_school.php?id=" +x+" ";   
+            }
+        }
     </script>
     <script language="javascript">
       function del(x) {
