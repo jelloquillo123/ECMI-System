@@ -115,7 +115,7 @@ require 'school_maindb.php';
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="well">
                             <h2 style="padding-bottom: 40px;">Add Student</h2>
-                          <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                          <form onsubmit="return confirm('Are you sure you want to add this student?');" class="form-horizontal" method="POST">
                             <div class="form-group row">
                               <label class="control-label col-sm-3" for="studnum">Student Number:</label>
                               <div class="col-sm-8">

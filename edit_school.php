@@ -191,7 +191,7 @@ require 'admin_maindb.php';
                               <input type="submit" class="btn btn-primary btn-lg" name="submit" value = "Edit School">
                               </div>
                               <div class="col-lg-6" style="text-align: center;">
-                              <input type="submit" class="btn btn-primary btn-lg" name="reset_pass" value = "Reset Password">
+                              <input type="submit" class="btn btn-danger btn-lg" name="reset_pass" value = "Reset Password">
                               </div>
                             </div>
                           </form>   

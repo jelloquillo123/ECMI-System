@@ -123,33 +123,28 @@ require 'feedbackdb.php';
                                 
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                                        <input type="hidden" name="fromEmail" value="<?php echo $email;?>" required/> 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h4>Email of Receiver:</h4>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="email" name="sendTo" value="<?php echo $em[0];?>" required/>
-                                            </div>
-                                        </div>  
+                                    <form method="POST">
+                                        <input type="hidden" name="fromEmail" value="<?php echo $email;?>" required/>
 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h4>Name of Receiver:</h4>
-                                            </div>
-                                            <div class="col-sm-8">
-                                            <input type="text" name="fromName" value="Parent of <?php echo $em[1]." ".$em[2];?>" required/>
-                                            </div>
+                                        <div class="form-group row">
+                                          <label class="control-label col-lg-3" for="sendTo">Email of Receiver:</label>
+                                          <div class="col-lg-8">
+                                            <input type="email" class="form-control" id="sendTo" name="sendTo" value="<?php echo $email;?>" required>
+                                          </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h4>Subject of Email:</h4>
-                                            </div>
-                                            <div class="col-sm-8">
-                                            <input type="text" name="subject" value="Pre-Awareness Test Results" required/>
-                                            </div>
+                                        <div class="form-group row">
+                                          <label class="control-label col-lg-3" for="fromName">Name of Receiver:</label>
+                                          <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="fromName" name="fromName" value="Parent of <?php echo $em[1]." ".$em[2];?>" required>
+                                          </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                          <label class="control-label col-lg-3" for="subject">Subject of Email:</label>
+                                          <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="subject" name="subject" value="Pre-Awareness Test Results" required>
+                                          </div>
                                         </div>
 
                                         <div class="row">

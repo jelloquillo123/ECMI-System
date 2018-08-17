@@ -48,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="student.php">Student</a>
+                <a class="navbar-brand">Student</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -97,57 +97,53 @@
 	<!--Table Personal Info -->
 	   <div class="row" style="font-family: mySecondFont;">
 	        <div class="col-lg-offset-3 col-lg-6 col-sm-offset-1 col-sm-10 col-xs-12" style="text-align: center;">
-            <div class="well">
-            <br />
+                <div class="well">
+                <br />
 		          <h3>Personal Information</h3>
 		            <table class="table table-hover responsive-table table-bordered" style="background-color:#fff;">
 		                <tr>
-                      
-	                       <td><b>Student ID</b></td>
-		                       <td><?php echo $stud_det[0] ?></td>
-	                        </tr>
-		                        <tr>
-	                             <td><b>Name</b></td>
-		                             <td><?php echo $stud_det[1]." ".$stud_det[2]." ".$stud_det[3] ?></td>
-	                              </tr>
-		                              <tr>
-	                                   <td><b>Grade Level</b></td>
-		                                   <td><?php echo $stud_det[4] ?></td>
-	                                    </tr>
-		                                     <tr>
-	                                          <td><b>Gender</b></td>
-		                                          <td><?php echo $stud_det[5] ?></td>
-	                                           </tr>
-		                                           <tr>
-	                                                 <td><b>Age</b></td>
-		                                                 <td><?php echo $stud_det[6] ?></td>
-	                                               </tr>
+                  
+                            <td><b>Student ID</b></td>
+	                        <td><?php echo $stud_det[0] ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td><?php echo $stud_det[1]." ".$stud_det[2]." ".$stud_det[3] ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Grade Level</b></td>
+                            <td><?php echo $stud_det[4] ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Gender</b></td>
+                            <td><?php echo $stud_det[5] ?></td>
+                        </tr>
+                       <tr>
+                            <td><b>Age</b></td>
+                            <td><?php echo $stud_det[6] ?></td>
+                       </tr>
 		            </table>
-                                                        <?php
-                                                        if($pts2==$studid){
-                                                        ?>
-                                                    
-                                                    <div>
-                                                    <button class="btn btn-primary" align="center" disabled>Start SDOFP Testing</button>
-                                                        
-                                                    </div>
+                        <?php
+                        if($pts2==$studid):
+                        ?>
+                    
+                    <div>
+                        <button class="btn btn-primary" align="center" disabled>Start SDOFP Testing</button>        
+                    </div>
 
-                                                    <?php
-                                                    }
-                                                    else{
-                                                    ?>
-                                                    <div>
-                                                        <a href="PTF.php" class="btn btn-primary" >Start SDOFP Testing</a>
-                                                    </div>
-
-                                                        
-
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                    <br />
-	               </div>
-             </div>
+                        <?php
+                        }
+                        else:
+                        ?>
+                    <div>
+                        <a href="PTF.php" class="btn btn-primary" >Start SDOFP Testing</a>
+                    </div>
+                        <?php
+                        endif;
+                        ?>
+                        <br />
+	           </div>
+            </div>
         </div>
     </div>
 

@@ -188,7 +188,7 @@ require 'school_maindb.php';
                                                     <?php
                                                     endif;
                                                     ?>
-                                                    <td><p data-placement="top" data-toggle="tooltip" title="Profile"><?php echo "<a href='edit_students_school.php?id=$stu[0]'>";?>
+                                                    <td><p data-placement="top" data-toggle="tooltip" title="Profile"><?php echo "<a href='school_students_profile.php?id=$stu[0]'>";?>
                                                       <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
 
                                                     <td>

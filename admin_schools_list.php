@@ -143,9 +143,9 @@ require 'admin_maindb.php';
                                     <th data-breakpoints="xs sm md lg">School ID</th>
                                     <th>School Name</th>
                                     <th data-breakpoints="xs sm" style="text-align: center;">Diocese</th>
-                                    <th style="text-align: center;">Edit</th>
-                                    <th style="text-align: center;">Delete</th>
-                                    <th style="text-align: center;">Expand</th>
+                                    <th style="text-align: center;"> Edit</th>
+                                    <th style="text-align: center;"> Delete</th>
+                                    <th style="text-align: center;"> Expand</th>
                                   </tr>  
                                 </thead>
                                 <?php 
@@ -154,12 +154,12 @@ require 'admin_maindb.php';
                                   <tr>
                                     <th><?php echo $sc[0]?></th>
                                     <td><?php echo $sc[1]?></td>
-                                    <td ><?php echo $sc[2]?></td>
+                                    <td style="text-align: center;"><?php echo $sc[2]?></td>
 
-                                      <td><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
-                                      <td><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                                      <td><button onclick="expand_sch(<?php echo $sc[0];?>)" class="btn btn-info btn-md" name="expand"><span class="glyphicon glyphicon-new-window"></span></button></a></td>
-                                      </tr>
+                                      <td style="text-align: center;"><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                                      <td style="text-align: center;"><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                      <td style="text-align: center;"><button onclick="expand_sch(<?php echo $sc[0];?>)" class="btn btn-info btn-md" name="expand"><span class="glyphicon glyphicon-new-window"></span></button></td>
+                                    </tr>
                                       <?php
                                     }
                                     ?>
