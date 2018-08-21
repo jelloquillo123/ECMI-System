@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 require 'connect.php';
 require 'school_reportsdb.php';
 ?>
@@ -519,6 +520,8 @@ require 'school_reportsdb.php';
 			          <td><?php echo $s35[0]; ?></td>                        
 			        </tr>
 			      </table>
+		            <h5><b>Total of Students taken PAT: <?php echo $taken_total[0]; ?></b></h5>
+		            <h5><b>Total of Students not yet taken PAT: <?php echo $nt_total[0]; ?></b></h5> 
 			  </div>
 
       </div>

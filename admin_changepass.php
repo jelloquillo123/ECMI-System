@@ -5,11 +5,9 @@ if(!isset($_SESSION))
 } 
 require 'admin_authentication.php';
 require 'connect.php';
-require 'admin_createdb.php';
-require 'admin_dsc.php';
 require 'admin_maindb.php';
+require 'admin_changepassdb.php';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,12 +25,13 @@ require 'admin_maindb.php';
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/sdofp-styles.css">
-    <link href="css/sb-admin.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-   <link href="css/footable.bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/sdofp-styles.css">
+
+    <link href="css/footable.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -44,13 +43,9 @@ require 'admin_maindb.php';
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-
-        .error_message{
-          color: red;
-          font-size: 15px;
-          font-family: myFirstFont;
-    }  
-    
+      .error_message{
+        color:red;
+      }
     </style>
 
 </head>
@@ -113,75 +108,51 @@ require 'admin_maindb.php';
 
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
-                    </li>                    
+                    </li>
                     
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
 
-
-
         <div id="main-body">
 
             <div class="container-fluid" style="height: 100%; min-height: 610px;">
-
-
                 <!-- /.row -->
-                <div class="row" style="padding-top: 40px;">
-                  <div class="col-lg-2">
-                    <a href="admin_list.php" class="btn btn-primary"><span class="glyphicon glyphicon-menu-left"></span> Return to List</a>
+                <div class="row" style="padding-top: 100px;">
+                  <div class="col-lg-offset-3 col-lg-6">
+                    <div class="well">
+                      <h4 align="left" style="padding-bottom: 20px;">Change Password</h4>
+                      <form class="form-horizontal" method="POST">
+                        <div class="form-group">
+                          <label class="control-label col-sm-3" for="opword">Old Password:</label>
+                          <div class="col-sm-8">
+                            <input type="Password" class="form-control" id="opword" name="opword" required>
+                            <span class="error_message"><?php echo $error_message; ?></span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-3" for="npword">New Password:</label>
+                          <div class="col-sm-8">
+                            <input type="Password" class="form-control" id="npword" name="npword" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-3" for="cpword">Confirm Password:</label>
+                          <div class="col-sm-8">
+                            <input type="Password" class="form-control" id="cpword" name="cpword" required>
+                            <span class="error_message"><?php echo $error_message_same; ?></span>
+                          </div>
+                        </div>
+                        <div style="text-align: center;">
+                          <input type="submit" onclick="confirm('Please confirm you want to change your password')" class="btn btn-primary" name="submit" value="Change Password">
+                        </div>        
+                      </form>
+                    </div>
                   </div>
                 </div>
-
-                <div class="row" id="body-content">
-                    <div class="col-lg-6 col-lg-offset-3">
-                        <div class="well">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form onsubmit="return confirm('Are you sure you want to add this Administrator?');" class="form-horizontal" method="POST">
-
-                                    <h2 style="padding-bottom: 20px;">Signup Admin Account</h2>
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-3" for="coor_fname">First Name:</label>
-                                        <div class="col-lg-7 col-sm-5">
-                                            <input type="text" class="form-control" id="coor_fname" name="fname" required>
-                                        </div>
-                                    </div>             
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
-                                        <div class="col-lg-7">
-                                            <input type="text" class="form-control" id="coor_mname" name="mname" required>
-                                        </div>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
-                                        <div class="col-lg-7">
-                                            <input type="text" class="form-control" id="coor_lname" name="lname" required>
-                                        </div>
-                                    </div>                                     
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3" for="username">Username:</label>
-                                        <div class="col-lg-7">
-                                            <input type="text" class="form-control" id="username" name="uname" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <br />
-                                        <div style="text-align: center;">
-                                            <input type="submit" class="btn btn-primary btn-lg" name="submit" value = "Submit">
-                                        </div>
-                                    </div>
-                                    <h6><b>Note: <br>Default Password: sdofp_admin123 </b></h6>
-                                 </form>
-                                </div>
-                            </div>             
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
             <!-- /.container-fluid -->

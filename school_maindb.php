@@ -1,4 +1,5 @@
 <?php
+require 'school_authentication.php';
 $user_name=$_SESSION['username'];
 $admin_name_query = "SELECT coordinator.fname , coordinator.mname , coordinator.lname FROM coordinator JOIN account ON coordinator.account_id = account.account_id WHERE account.username = '$user_name'";
 $admin_name_res=mysqli_query($db,$admin_name_query);
@@ -26,4 +27,7 @@ $query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE studen
 $number_stud=mysqli_fetch_row($query);
 $acc_id=mysqli_query($db,"SELECT account_id FROM account WHERE username='$username'");
 $accid=mysqli_fetch_row($acc_id);
+
+$sum_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.school_id='$scn[2]'");
+$total_stud=mysqli_fetch_row($sum_query);
 ?>

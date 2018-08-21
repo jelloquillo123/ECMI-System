@@ -23,6 +23,7 @@ if(isset($_POST['submit'])){
       $_SESSION['username'] = $_POST['username'];
 
             if ($account_fetch[2]==1){
+              $_SESSION['access']= "admin_level";
               echo "<script>
               alert('You are now logged in.');
               window.location.href='admin_schools_list.php';
@@ -30,6 +31,7 @@ if(isset($_POST['submit'])){
             }
 
             else if ($account_fetch[2]==2){
+              $_SESSION['access']= "school_level";
               echo "<script>
               alert('You are now logged in.');
               window.location.href='school_students.php';
@@ -37,6 +39,7 @@ if(isset($_POST['submit'])){
             }
 
             else if ($account_fetch[2]==3){
+              $_SESSION['access']= "stud_level";
               echo "<script>
               alert('You are now logged in.');
               window.location.href='student.php';

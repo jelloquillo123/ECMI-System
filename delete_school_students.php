@@ -1,5 +1,5 @@
 <?php
-  session_start();
+require 'school_authentication.php';
   require 'connect.php';
 
 $id=$_GET['id'];

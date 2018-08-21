@@ -1,4 +1,5 @@
 <?php
+require 'admin_authentication.php';
 require 'connect.php';
 $username=$_SESSION['username'];
 $sch=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.diocese_name
@@ -38,6 +39,45 @@ if(isset($_POST['submit']))
         </script>";
 }
 
+if(isset($_POST['reset_pass']))
+{
+
+
+$default_pass="sdofpecmi_school";
+
+$hash_pass=password_hash($default_pass,PASSWORD_DEFAULT);
+
+$account_selector_query=mysqli_query($db,"SELECT account.account_id FROM account JOIN coordinator ON account.account_id=coordinator.account_id WHERE coordinator.school_id='$id'");
+
+$acc_id_fetch=mysqli_fetch_row($account_selector_query);
+$acc_id=$acc_id_fetch[0];
+$update_query= "UPDATE account 
+    SET pword='$hash_pass'
+    WHERE account_id='$acc_id'";
+
+if (mysqli_query($db,$update_query)){
+?>
+    <script>
+    alert('Password Successfully Reset');
+    window.location.href='admin_schools_list.php';
+    </script>
+
+<?php
+}
+else {
+?>
+        <script>
+        alert('Error Updating Record. <?php echo mysqli_error($conn); ?>');
+        window.location.href='admin_schools_list.php';
+        </script> 
+<?php
+}
+
+?>
+
+<?php
+
+}
 //selecting data associated with this particular id
 $result = mysqli_query($db, "SELECT school.school_id,school.school_name,coordinator.fname,coordinator.mname,coordinator.lname,account.username,account.pword,diocese.diocese_name,diocese.diocese_id,school.contact_num,school.contact_email
 FROM coordinator 

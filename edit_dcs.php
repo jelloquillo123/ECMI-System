@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'admin_authentication.php';
 require 'connect.php';
 require 'admin_dsc.php';
 require 'edit_dcsdb.php';
@@ -64,7 +65,7 @@ require 'admin_maindb.php';
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $admin_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li style="padding-bottom: 5px;">
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
+                            <?php echo"<a href='admin_changepass.php?id=$acc_id'>"?><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-plus"></i> Create Administrator</a>
@@ -99,6 +100,9 @@ require 'admin_maindb.php';
                             </li>
 
                         </ul>
+                    </li>
+                    <li>
+                        <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
                     </li>
                     
                 </ul>

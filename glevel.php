@@ -1,4 +1,5 @@
 <?php  
+require 'admin_authentication.php';
  require 'connect.php'; 
  $output = '';
 $syear = $_POST['year'];

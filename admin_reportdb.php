@@ -1,4 +1,5 @@
 <?php
+require 'admin_authentication.php';
 if(isset($_POST['medsubmit'])){
                      $school_sql=mysqli_query($db,"SELECT school.school_id,school.school_name
                       FROM school 

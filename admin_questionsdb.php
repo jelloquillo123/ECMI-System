@@ -1,4 +1,5 @@
 <?php
+require 'admin_authentication.php';
 if(isset($_POST['submit'])){
 $qt1=mysqli_query($db,"SELECT questions.question,choices.a,choices.b,choices.c,choices.d FROM questions INNER JOIN choices ON questions.q_id=choices.q_id WHERE questions.gr_group='$_POST[grdlvl]' AND questions.q_num='1' ");
 $qs1=mysqli_fetch_row($qt1);

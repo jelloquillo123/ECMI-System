@@ -1,4 +1,3 @@
-
 <?php
 if(!isset($_SESSION)) 
 { 
@@ -6,8 +5,8 @@ if(!isset($_SESSION))
 } 
 require 'admin_authentication.php';
 require 'connect.php';
-require 'admin_schoolsdb.php';
 require 'admin_maindb.php';
+require 'admin_editdb.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +28,9 @@ require 'admin_maindb.php';
     <link rel="stylesheet" type="text/css" href="css/sdofp-styles.css">
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <!-- Morris Charts CSS -->
+   <link href="css/footable.bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -39,9 +41,13 @@ require 'admin_maindb.php';
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        .error_message {
-            color: red;
-        }
+
+        .error_message{
+          color: red;
+          font-size: 15px;
+          font-family: myFirstFont;
+    }  
+    
     </style>
 
 </head>
@@ -83,7 +89,7 @@ require 'admin_maindb.php';
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a href="admin_schools_list.php"><i class="fa fa-graduation-cap"></i> Schools </a>
                     </li>
                     <li>
@@ -104,7 +110,7 @@ require 'admin_maindb.php';
 
                         </ul>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
                     </li>
                     
@@ -117,108 +123,61 @@ require 'admin_maindb.php';
 
         <div id="main-body">
 
-            <div class="container-fluid">
+            <div class="container-fluid" style="height: 100%; min-height: 610px;">
 
 
                 <!-- /.row -->
-
                 <div class="row" style="padding-top: 40px;">
                   <div class="col-lg-2">
-                    <a href="admin_schools_list.php" class="btn btn-primary"><span class="glyphicon glyphicon-menu-left"></span> Return to List</a>
+                    <a href="admin_list.php" class="btn btn-primary"><span class="glyphicon glyphicon-menu-left"></span> Return to List</a>
                   </div>
                 </div>
 
                 <div class="row" id="body-content">
-                    <div class="col-lg-10 col-lg-offset-1">
+                    <div class="col-lg-6 col-lg-offset-3">
                         <div class="well">
-                            <h2 style="padding-bottom: 40px;">Add Participating School</h2>
-                            <form onsubmit="return confirm('Are you sure you want to add this school?');" class="form-horizontal" method="POST">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form onsubmit="return confirm('Are you sure you want to edit this Administrator?');" class="form-horizontal" method="POST">
 
-                                <h3 align="center">School</h3>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="school_name">Name of School:</label>
-                                            <div class="col-lg-7">
-                                            <input type="text" class="form-control" id="school_name" name="nschool" value="<?php echo $name_school;?>" required>
-                                            <span class="error_message"><?php echo $error_message; ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="diocese">Diocese:</label>
-                                            <div class="col-lg-7" style="padding-left: 30px;">
-                                              <select name="diocese" id="diocese" class="form-control" required>
-                                                <option value="">Select Diocese</option>
-                                                <?php
-                                                $i=1;
-                                                while($dion=mysqli_fetch_row($dio)){
-                                                  ?>
-                                                  <option value="<?php echo $dion[0] ?>"> Diocese of <?php echo $dion[1]?></option>
-                                                  <?php
-                                                  $i=$i+1;
-                                                }
-                                                ?>
-                                              </select> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h3 align="center">Coordinator</h3>
+                                    <h2 style="padding-bottom: 20px;">Edit Admin Account</h2>
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="coor_fname">First Name:</label>
+                                        <label class="control-label col-lg-3" for="coor_fname">First Name:</label>
                                         <div class="col-lg-7 col-sm-5">
-                                            <input type="text" class="form-control" id="coor_fname" name="coor_fname" value="<?php echo $coor_fname; ?>" required>
+                                            <input type="text" class="form-control" id="coor_fname" name="fname" value="<?php echo $a_fname; ?>" required>
                                         </div>
                                     </div>             
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="coor_mname">Middle Name:</label>
                                         <div class="col-lg-7">
-                                            <input type="text" class="form-control" id="coor_mname" name="coor_mname" value="<?php echo $coor_mname; ?>" required>
+                                            <input type="text" class="form-control" id="coor_mname" name="mname" value="<?php echo $a_mname; ?>" required>
                                         </div>
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="coor_lname">Last Name:</label>
                                         <div class="col-lg-7">
-                                            <input type="text" class="form-control" id="coor_lname" name="coor_lname" value="<?php echo $coor_lname; ?>" required>
+                                            <input type="text" class="form-control" id="coor_lname" name="lname" value="<?php echo $a_lname; ?>" required>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3" for="coor_cnum">Contact Number:</label>
-                                        <div class="col-lg-7">
-                                            <input type="number" class="form-control" id="coor_cnum" name="coor_cnum" value="<?php echo $coor_cnum; ?>" required>
-                                        </div>
-                                    </div>   
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3" for="coor_email">Email:</label>
-                                        <div class="col-lg-7">
-                                            <input type="email" placeholder="Optional" class="form-control" id="coor_email" name="coor_email" value="<?php echo $coor_email; ?>">
-                                        </div>
-                                    </div>                                                                            
+                                    </div>                                     
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="username">Username:</label>
                                         <div class="col-lg-7">
-                                            <input type="text" class="form-control" id="username" name="uname" value="<?php echo $uname; ?>" required>
-                                            <span class="error_message"><?php echo $error_message_uname; ?></span>
+                                            <input type="text" class="form-control" id="username" name="uname" value="<?php echo $a_uname; ?>" required>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="form-group">
                                         <br />
                                         <div style="text-align: center;">
-                                            <input type="submit" class="btn btn-primary btn-lg" name="submit_add" value = "Add School">
+                                            <input type="submit" class="btn btn-primary btn-lg" name="submit" value = "Submit">
                                         </div>
                                     </div>
-                                   <h6><b>Note: <br>Default Password: sdofpecmi_school </b></h6>
-
-
-                            </form>
+                                 </form>
+                                </div>
+                            </div>             
                         </div>
                     </div>
                 </div>
+
 
             </div>
             <!-- /.container-fluid -->

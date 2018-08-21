@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'admin_authentication.php';
 require 'connect.php';
 require 'admin_schoolsdb.php';
 require 'admin_dsc.php';
@@ -69,7 +70,7 @@ require 'admin_maindb.php';
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
-                            <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
+                            <?php echo"<a href='admin_changepass.php?id=$acc_id'>"?><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li> 
                         <li class="divider"></li>
                         <li>
@@ -100,6 +101,9 @@ require 'admin_maindb.php';
                                 <a href="admin_baseline_reports.php">Baseline Data Summary Results</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
                     </li>
                     
                 </ul>

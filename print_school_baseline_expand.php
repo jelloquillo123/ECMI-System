@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'admin_authentication.php';
 require 'connect.php';
 require 'admin_showdb.php';
 ?>
@@ -301,6 +302,8 @@ require 'admin_showdb.php';
                 <td><?php echo $ywr1[0];?></td>
               </tr>
             </table>
+            <h5><b>Total of Students taken PAT: <?php echo $taken_total[0]; ?></b></h5>
+            <h5><b>Total of Students not yet taken PAT: <?php echo $nt_total[0]; ?></b></h5> 
           </div>
 
       </div>

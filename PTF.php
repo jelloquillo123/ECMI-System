@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'student_authentication.php';
   require 'connect.php';
   require 'PTFdb.php';
 ?>

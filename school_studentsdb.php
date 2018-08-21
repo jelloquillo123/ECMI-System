@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 $username = $_SESSION['username'];
 
 $error_message="";
@@ -72,4 +73,10 @@ if(isset($_POST['submit']))
       </script>";
     }
 }
+
+$taken_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.t_stat='Taken' AND student.school_id='$school'");
+$taken_total=mysqli_fetch_row($taken_query);
+
+$not_taken_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.t_stat='Not taken' AND student.school_id='$school'");
+$nt_total=mysqli_fetch_row($not_taken_query);
 ?>

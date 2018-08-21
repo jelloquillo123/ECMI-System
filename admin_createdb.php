@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'admin_authentication.php';
 $username = $_SESSION['username'];
 $error_message="";
 $n1=""; $n2=""; $n3=""; $n4="";
@@ -31,7 +32,7 @@ if(isset($_POST['submit']))
       }
 
       $cunt=$cunt+1;
-      $default_pass="sdofp_Admin123";
+      $default_pass="sdofp_admin123";
       $hash_password = password_hash($default_pass, PASSWORD_DEFAULT);
       mysqli_query($db,"INSERT INTO admin (fname,mname,lname,account_id)
         VALUES('$n2','$n3','$n1','$cunt')");
@@ -39,7 +40,7 @@ if(isset($_POST['submit']))
         VALUES('$n4','$hash_password','1')");
       echo "<script>
       alert('Successfully Added an Account.');
-      window.location.href='admin_schools_list.php';
+      window.location.href='admin_list.php';
       </script>";
 }
 ?>

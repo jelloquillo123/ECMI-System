@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 require 'connect.php';
 require 'school_reportsdb.php';
 ?>
@@ -37,8 +38,8 @@ require 'school_reportsdb.php';
         <h4><?php echo $scn[0]; ?></h4>
         <h4>Diocese of <?php echo $scn[1]; ?></h4>
 
-          <div class="table-responsive" style="padding-top: 15px; text-align: center;">
-            <table class="table table-hover table-bordered" style="background-color:#fff;">
+          <div class="table-responsive" style="padding-top: 15px;">
+            <table class="table table-hover table-bordered" style="background-color:#fff; text-align: center;">
               <tr>
                 <th rowspan="2">GRADE/YEAR LEVEL</th>
                 <th colspan="3">Number of SDO</th>
@@ -299,6 +300,8 @@ require 'school_reportsdb.php';
                 <td><?php echo $ywr1[0];?></td>
               </tr>
             </table>
+            <h5><b>Total of Students taken PAT: <?php echo $taken_total[0]; ?></b></h5>
+            <h5><b>Total of Students not yet taken PAT: <?php echo $nt_total[0]; ?></b></h5>             
           </div>
 
       </div>

@@ -1,6 +1,6 @@
 <?php
 // session_start();
-
+require 'admin_authentication.php';
 $error_message="";
 $diocese_name="";
 require 'connect.php';

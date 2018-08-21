@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'admin_authentication.php';
 require 'connect.php';
 $error_message="";
 $error_message_uname="";
@@ -16,6 +17,10 @@ $coor_email="";
 
 $dio=mysqli_query($db,"SELECT * FROM diocese ORDER BY diocese_name");
 $scool=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.diocese_name,school.contact_num,school.contact_email FROM school JOIN diocese ON school.diocese_id=diocese.diocese_id");
+
+$school_count=mysqli_query($db,"SELECT COUNT(school_id) FROM school");
+$scount_fetch=mysqli_fetch_row($school_count);
+$scount=$scount_fetch[0];
 
 
 
@@ -63,7 +68,7 @@ if(isset($_POST['submit_add']))
 
       $schid=$schid+1;
       $coordid=$coordid+1;
-      $default_pass="sdofp-ecmi";
+      $default_pass="sdofpecmi_school";
       $hash_password = password_hash($default_pass, PASSWORD_DEFAULT);
 
        mysqli_query($db, "INSERT INTO school (school_name,diocese_id,contact_num,contact_email) 

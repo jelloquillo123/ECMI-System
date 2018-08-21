@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 require 'connect.php';
 require 'school_studentsdb.php';
 $username = $_SESSION['username'];

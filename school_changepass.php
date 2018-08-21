@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 require 'connect.php';
 require 'school_maindb.php';
 require 'school_changepassdb.php';
@@ -108,7 +109,7 @@ require 'school_changepassdb.php';
 
         <div id="main-body">
 
-            <div class="container-fluid" style="height: 100%; min-height: 600px;">
+            <div class="container-fluid" style="height: 100%; min-height: 610px;">
                 <!-- /.row -->
                 <div class="row" style="padding-top: 100px;">
                   <div class="col-lg-offset-3 col-lg-6">

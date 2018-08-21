@@ -1,22 +1,14 @@
 <?php
-require 'school_authentication.php';
-$sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id,account.account_id
-FROM school
-INNER JOIN diocese
-ON school.diocese_id=diocese.diocese_id
-INNER JOIN coordinator
-ON school.school_id=coordinator.school_id
-INNER JOIN account
-ON coordinator.account_id=account.account_id
-WHERE account.username='$username'");
-$scn=mysqli_fetch_row($sch);
-$pass_query=mysqli_query($db,"SELECT account.pword FROM account WHERE account.account_id='$scn[3]'");
-$pass_verify=mysqli_fetch_row($pass_query);
-$passcheck=$pass_verify[0];
-$id=$_GET['id'];
+require 'admin_authentication.php';
+
 $error_message="";
 $error_message_same="";
+$id=$_GET['id'];
 
+
+$pass_query=mysqli_query($db,"SELECT account.pword FROM account WHERE account.account_id='$id'");
+$pass_verify=mysqli_fetch_row($pass_query);
+$passcheck=$pass_verify[0];
 
 
 if(isset($_POST['submit']))

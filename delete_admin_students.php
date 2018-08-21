@@ -1,5 +1,5 @@
 <?php
-  session_start();
+require 'admin_authentication.php';
   require 'connect.php';
 
 $id=$_GET['id'];

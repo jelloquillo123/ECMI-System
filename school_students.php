@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 require 'connect.php';
 require 'school_studentsdb.php';
 require 'school_maindb.php';
@@ -108,7 +109,7 @@ require 'school_maindb.php';
 
                 <!-- /.row -->
 
-                <div class="row" id="body-content">
+                <div class="row" id="body-content" style="height: 100%; min-height: 610px;">
                     <div class="col-lg-12">
                         <div class="well">
                             <div class="row">   
@@ -200,10 +201,19 @@ require 'school_maindb.php';
 
                                             </tbody>
                                         </table>
+                                        <h5><b>Total of Students taken PAT: <?php echo $taken_total[0]; ?></b></h5>
+                                        <h5><b>Total of Students not yet taken PAT: <?php echo $nt_total[0]; ?></b></h5>                                        
                                     </div>
+                                    <?php
+                                    if ($total_stud[0]!=0):
+                                    ?>
                                     <div style="text-align: center;">
                                         <a href="print_school_students.php" class="btn btn-primary">Print <span class="glyphicon glyphicon-print"></span></a>
                                     </div>
+                                    <?php
+                                else:
+                                endif;
+                                    ?>
                                 </div>
                             </div>
                         <!--end of table div-->
@@ -237,7 +247,7 @@ require 'school_maindb.php';
         function resetpw(x){
             var reset_confirm= confirm('Are you sure you want to reset the password of this student?\n Default password: sdofp-ecmi');
             if (reset_confirm==true){
-              window.location.href="edit_students_school.php?id=" +x+" ";   
+              window.location.href="reset_password_students.php?id=" +x+" ";   
             }
         }
     </script>

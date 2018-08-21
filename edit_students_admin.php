@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'admin_authentication.php';
 require 'connect.php';
 require 'editdb_admin.php';
 require 'admin_maindb.php';
@@ -62,7 +63,7 @@ require 'admin_maindb.php';
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $admin_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li style="padding-bottom: 5px;">
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
+                            <?php echo"<a href='admin_changepass.php?id=$acc_id'>"?><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
                             <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
@@ -97,6 +98,9 @@ require 'admin_maindb.php';
                             </li>
 
                         </ul>
+                    </li>
+                    <li>
+                        <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
                     </li>
                     
                 </ul>
@@ -193,9 +197,9 @@ require 'admin_maindb.php';
       
                            
 
-                              <div class="row">
+                              <div class="row" style="padding-top: 20px;">
                                 <div class="col-lg-12" style="text-align: center;">
-                                  <input onclick="confirm('Are you sure you want to edit this student?');" type="submit" name="name_submit" class="btn btn-primary" value="Edit Student">
+                                  <input onclick="confirm('Are you sure you want to edit this student?');" type="submit" name="name_submit" class="btn btn-lg btn-primary" value="Edit Student">
                                 </div>
                               </div>                             
 

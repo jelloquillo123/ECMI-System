@@ -3,9 +3,9 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'admin_authentication.php';
 require 'connect.php';
 require 'admin_schoolsdb.php';
-require 'admin_dsc.php';
 require 'admin_maindb.php';
 ?>
 <!DOCTYPE html>
@@ -74,7 +74,7 @@ require 'admin_maindb.php';
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $admin_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li style="padding-bottom: 5px;">
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Change Password</a>
+                            <?php echo"<a href='admin_changepass.php?id=$acc_id'>"?><i class="fa fa-fw fa-gear"></i> Change Password</a>
                         </li>
                         <li>
                             <a href="admin_create.php"><i class="fa fa-plus"></i> Create Administrator</a>
@@ -110,6 +110,9 @@ require 'admin_maindb.php';
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
+                    </li>
                     
                 </ul>
             </div>
@@ -126,11 +129,14 @@ require 'admin_maindb.php';
                 <!-- /.row -->
 
                 <div class="row" id="body-content">
-                    <div class="col-lg-10 col-lg-offset-1">
+                    <div class="col-lg-12">
                         <div class="well">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h2 style="padding-bottom: 20px;">List of Schools</h2>
+                                    <div style="padding-bottom: 20px;">
+                                        <h2>List of Schools</h2>
+                                        <h4>Total number of participated schools: <?php echo $scount; ?></h4>
+                                    </div>
                                 </div>
                                 <div class="col-lg-6" style="text-align: right; padding-bottom: 20px;">
                                     <a href="admin_schools_add.php" class="btn btn-primary"> Add School <span class="glyphicon glyphicon-plus"></span></a>
@@ -143,6 +149,8 @@ require 'admin_maindb.php';
                                     <th data-breakpoints="xs sm md lg">School ID</th>
                                     <th>School Name</th>
                                     <th data-breakpoints="xs sm" style="text-align: center;">Diocese</th>
+                                    <th data-breakpoints="xs sm">Contact #</th>
+                                    <th data-breakpoints="xs sm md">Email</th>
                                     <th style="text-align: center;"> Edit</th>
                                     <th style="text-align: center;"> Delete</th>
                                     <th style="text-align: center;"> Expand</th>
@@ -155,6 +163,8 @@ require 'admin_maindb.php';
                                     <th><?php echo $sc[0]?></th>
                                     <td><?php echo $sc[1]?></td>
                                     <td style="text-align: center;"><?php echo $sc[2]?></td>
+                                    <td><?php echo $sc[3] ?></td>
+                                    <td><?php echo $sc[4] ?></td>
 
                                       <td style="text-align: center;"><button onclick="edit_sch(<?php echo $sc[0];?>)" class="btn btn-success btn-md" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></td>
                                       <td style="text-align: center;"><button onclick="del_sch(<?php echo $sc[0];?>)" class="btn btn-danger btn-md" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>

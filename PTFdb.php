@@ -1,4 +1,5 @@
 <?php
+require 'student_authentication.php';
 $username = ($_SESSION['username']);
 
   $stud=mysqli_query($db,"SELECT student.stud_id,student.fname,student.mname,student.lname,student.g_level,student.gender,student.age,student.fam_id

@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 require 'connect.php';
 require 'glevels.php';
 require 'school_studentsdb.php';
@@ -58,7 +59,9 @@ require 'school_studentsdb.php';
                     </tr><?php } ?>
 
                 </tbody>
-            </table>           
+            </table>    
+            <h5><b>Total of Students taken PAT: <?php echo $taken_total[0]; ?></b></h5>
+            <h5><b>Total of Students not yet taken PAT: <?php echo $nt_total[0]; ?></b></h5>       
           </div>
         
       </div>

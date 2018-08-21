@@ -1,4 +1,5 @@
 <?php
+require 'school_authentication.php';
 require 'connect.php';
 $username=$_SESSION['username'];
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id

@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+require 'school_authentication.php';
 require 'connect.php';
 require 'school_reportsdb.php';
 require 'school_maindb.php';
@@ -564,11 +565,18 @@ require 'school_maindb.php';
                                   </div>
                                 </div>
                             </div>
+                            <?php
+                            if ($total_stud[0]!=0):
+                            ?>
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: center;">
                                     <a href="print_school_baseline_reports.php" class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></a>
                                 </div> 
                             </div>
+                            <?php
+                            else:
+                            endif;
+                            ?>
 
                             <!-- Google Charts -->
                             <?php

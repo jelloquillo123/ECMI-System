@@ -1,6 +1,5 @@
-
 <?php
-
+require 'school_authentication.php';
 $username = ($_SESSION['username']);
 $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.school_id
 FROM school
@@ -12,6 +11,14 @@ INNER JOIN account
 ON coordinator.account_id=account.account_id
 WHERE account.username='$username'");
 $scn=mysqli_fetch_row($sch);
+
+$taken_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.t_stat='Taken' AND student.school_id='$scn[2]'");
+$taken_total=mysqli_fetch_row($taken_query);
+
+$not_taken_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.t_stat='Not taken' AND student.school_id='$scn[2]'");
+$nt_total=mysqli_fetch_row($not_taken_query);
+$sum_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.school_id='$scn[2]'");
+$total_stud=mysqli_fetch_row($sum_query);
 
 $school=$scn[2];
 

@@ -2,11 +2,11 @@
 if(!isset($_SESSION)) 
 { 
     session_start(); 
-}
+} 
 require 'admin_authentication.php';
 require 'connect.php';
-require 'admin_studentsdb.php';
 require 'admin_maindb.php';
+require 'admin_listdb.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +84,7 @@ require 'admin_maindb.php';
                     <li>
                         <a href="admin_diocese_list.php"><i class="fa fa-table"></i> Diocese</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="admin_students.php"><i class="glyphicon glyphicon-user"></i> Students</a>
                     </li>
                     <li>
@@ -99,7 +99,7 @@ require 'admin_maindb.php';
 
                         </ul>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
                     </li>
                     
@@ -117,91 +117,54 @@ require 'admin_maindb.php';
 
                 <!-- /.row -->
 
-                <div class="row" id="body-content">
-                    <div class="col-lg-12">
-                        <div class="well">
+                <div class="row" id="body-content" style="height: 100%; min-height: 610px;">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <div class="well" >
                             <div class="row">
                                 
-                                <div class="col-md-5">
+                                <div class="col-lg-5">
                                     <div style="padding-bottom: 20px;">
-                                      <h2>List of Students</h2>
-                                      <h4>Total number of students = <?php echo $total_student[0]; ?></h4>        
-                                    </div>
-                                    <div class="col-md-4">
-                                      <select name="syear" id="syear" class="form-control input-md x">
-                                          <option value=''>All Years</option>
-                                          <option value=2017>2017</option>
-                                          <option value=2018>2018</option>
-                                      </select>
-                                    
-                                    </div>
-                                    <div class="col-md-4">
-                                      <select name="glevel" id="glevel" class="form-control input-md x">
-                                          <option value="">All Grade Levels</option>
-                                        <?php
-                                        $i=1;
-                                        while($i<=11){
-                                          echo '
-                                          <option value="'.$i.'">Grade '.$i.'</option>
-                                          ';
-                                          $i=$i+1;
-                                        }
-                                        ?>
-                                      </select>
-                                    
-                                    </div>
-                                    
-                                    <div class="col-md-4">
-                                      <select name="status" id="status" class="form-control input-md x">
-                                          <option value="">All </option>
-                                            <option value="taken">Taken</option>
-                                            <option value="nottaken">Not taken</option>
-                                      </select> 
+                                      <h2>List of Administrators</h2>        
                                     </div>
                                 </div>
+                                <div class="col-lg-offset-1 col-lg-6" style="text-align: right; padding-bottom: 20px;">
+                                    <a href="admin_create.php" class="btn btn-primary"> Create Administrator <span class="glyphicon glyphicon-plus"></span></a>
+                                </div>                                
                             </div>
 
                             <!--Start of Table Div-->
                             <div class="row">
                                 <div class="col-lg-12">            
                                     <div class="table-responsive" id="show">
-                                        <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="studenttb" style="background-color:#fff;">
+                                        <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="admintb" style="background-color:#fff;">
                                           <thead>
                                             <tr>
-                                              <th data-breakpoints="xs sm md lg">Student ID</th>
+                                              <th data-breakpoints="xs sm md lg">Administrator ID</th>
                                               <th>Last Name</th>
                                               <th>First Name</th>
                                               <th data-breakpoints="xs">Middle Name</th>
-                                              <th data-breakpoints="xs sm">School</th>
-                                              <th>Grade Level</th>
-                                              <th data-breakpoints="xs">Test Status</th>
-                                              <th data-breakpoints="xs sm md">Gender</th>
-                                              <th data-breakpoints="xs sm md">Age</th>
-                                              <th data-breakpoints="xs sm md lg">Username</th>    
-                                              <th>Profile</th>
+                                              <th data-breakpoints="xs sm">Username</th>    
+                                              <th>Edit</th>
                                               <th>Delete</th>
+                                              <th>Reset</th>
                                             </tr>
                                           </thead>
-                                          <tbody id="show">
+                                          <tbody>
                                             <tr>
                                               <?php
-                                                while($stud=mysqli_fetch_row($to)){
+                                                while($admin=mysqli_fetch_row($admin_name_res)){
                                                   ?>
-                                                  <th><?php echo $stud[0];?></th>
-                                                  <td><?php echo $stud[1];?></td>
-                                                  <td><?php echo $stud[2];?></td>
-                                                  <td><?php echo $stud[3];?></td>
-                                                  <td><?php echo $stud[4];?></td>
-                                                  <td><?php echo $stud[5];?></td>
-                                                  <td><?php echo $stud[9] ?></td>
-                                                  <td><?php echo $stud[6];?></td>
-                                                  <td><?php echo $stud[7];?></td>
-                                                  <td><?php echo $stud[8];?></td>                     
-                                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='edit_students_admin.php?id=<?php echo $stud[0];?>'>
-                                                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-user"></span></button></a></p></td>
+                                                  <th><?php echo $admin[3];?></th>
+                                                  <td><?php echo $admin[2];?></td>
+                                                  <td><?php echo $admin[0];?></td>
+                                                  <td><?php echo $admin[1];?></td>
+                                                  <td><?php echo $admin[4];?></td>                     
+                                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='admin_edit.php?id=<?php echo $admin[3];?>'>
+                                                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                                                     <td>
-                                                      <button onclick="del(<?php echo $stud[0];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                                                
+                                                      <button onclick="del(<?php echo $admin[3];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                                    <td>
+                                                    <button onclick="resetpw(<?php echo $admin[5]; ?>)" class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>    
                                                  </tr>
                                                     <?php
                                                     
@@ -209,8 +172,6 @@ require 'admin_maindb.php';
                                                 ?>
                                             </tbody>
                                         </table>
-                                        <h5><b>Total of Students taken PAT: <?php echo $taken_total[0]; ?></b></h5>
-                                        <h5><b>Total of Students not yet taken PAT: <?php echo $nt_total[0]; ?></b></h5>
                                     </div>
                                 </div>
                             </div>
@@ -237,14 +198,22 @@ require 'admin_maindb.php';
 
           <script src="js/footable.min.js"></script>
           <script type="text/javascript">
-            $("#studenttb").footable();
+            $("#admintb").footable();
+          </script>
+          <script type="text/javascript">
+              function resetpw(x){
+                  var reset_confirm= confirm('Are you sure you want to reset the password of this Administrator?\n Default password: sdofp_admin123');
+                  if (reset_confirm==true){
+                    window.location.href="reset_password_admin.php?id=" +x+" ";   
+                  }
+              }
           </script>
           <script language="javascript">
             function del(x) {
               var delo = confirm('Are you sure you want to delete?');
               if(delo == true)
               {
-                window.location.href="delete_admin_students.php?id=" +x+" ";
+                window.location.href="delete_admin.php?id=" +x+" ";
               }
 
             }

@@ -1,5 +1,5 @@
-
 <?php
+require 'admin_authentication.php';
 $username = ($_SESSION['username']);
 $school_session=$_SESSION['school_expand'];
 $schn=mysqli_query($db,"SELECT school_name
@@ -21,9 +21,15 @@ $sch=mysqli_query($db,"SELECT school.school_name,diocese.diocese_name,school.sch
 
 $scn=mysqli_fetch_row($sch);
 
-if(isset($_POST['expand']))
+$taken_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.t_stat='Taken' AND student.school_id='$school_session'");
+$taken_total=mysqli_fetch_row($taken_query);
 
-	$$school_session=$scn[2];
+$not_taken_query=mysqli_query($db,"SELECT COUNT(student.stud_id) FROM student WHERE student.t_stat='Not taken' AND student.school_id='$school_session'");
+$nt_total=mysqli_fetch_row($not_taken_query);
+
+
+
+$school_session=$scn[2];
 
 $total=mysqli_query($db,"SELECT COUNT('pre_test.stud_id') from student INNER JOIN pre_test ON student.stud_id=pre_test.stud_id where student.school_id='$school_session'");
 //grade level

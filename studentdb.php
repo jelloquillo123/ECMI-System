@@ -1,5 +1,9 @@
-
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+require 'student_authentication.php';
 $username = ($_SESSION['username']);
 
 $pts=mysqli_query($db,"SELECT pre_test.stud_id FROM pre_test

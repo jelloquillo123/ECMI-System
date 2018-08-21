@@ -1,6 +1,7 @@
 <?php
-  session_start();
+
   require 'connect.php';
+  require 'admin_schoolsdb.php';
 ?>
 
 
@@ -47,7 +48,10 @@ function prints(){
 
 <body onload = "prints();">
 
-  <h1 style="padding-bottom: 20px;">List of Schools</h1>
+<div style="padding-bottom: 20px;">
+  <h1>List of Schools</h1>
+  <h4>Total number of participated schools: <?php echo $scount; ?></h4>
+</div>
 
 <div class="well">
   
@@ -61,10 +65,6 @@ function prints(){
                         </tr>  
                         </thead>
                           <?php 
-                          $scool=mysqli_query($db,"SELECT school.school_id,school.school_name,diocese.diocese_name 
-                                              FROM school
-                                              JOIN diocese
-                                                ON school.diocese_id=diocese.diocese_id");
                           while($sc=mysqli_fetch_row($scool)){
                           ?>
                         <tr>
