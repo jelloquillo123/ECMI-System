@@ -258,8 +258,6 @@ require 'admin_maindb.php';
         <div id="main-body">
 
             <div class="container-fluid" >
-
-
                 <!-- /.row -->
 
                 <div class="row" id="body-content" style="height: 100%; min-height: 610px;">

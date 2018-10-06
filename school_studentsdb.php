@@ -62,8 +62,8 @@ if(isset($_POST['submit']))
       $default_pass="sdofp-ecmi";
       $hash_password = password_hash($default_pass, PASSWORD_DEFAULT);
 
-      mysqli_query($db,"INSERT INTO account (username,pword,user_id)
-        VALUES('$n0','$hash_password','3')");
+      mysqli_query($db,"INSERT INTO account (username,pword,user_id,account_id)
+        VALUES('$n0','$hash_password','3','$stuid')");
 
       mysqli_query($db, "INSERT INTO student (stud_id,fname,lname,mname,school_id,g_level,gender,account_id,age,email,t_stat,year) 
         VALUES ('$n0','$n2','$n1','$n3','$school','$n6','$n7','$stuid','$ag','$n9','Not taken','$year')");

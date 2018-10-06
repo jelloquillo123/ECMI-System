@@ -117,7 +117,7 @@ require 'admin_maindb.php';
 
                 <!-- /.row -->
 
-                <div class="row" id="body-content">
+                <div class="row" id="body-content" style="height: 100%; min-height: 610px;">
                     <div class="col-lg-12">
                         <div class="well">
                             <div class="row">

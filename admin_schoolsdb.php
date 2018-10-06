@@ -71,18 +71,25 @@ if(isset($_POST['submit_add']))
       $default_pass="sdofpecmi_school";
       $hash_password = password_hash($default_pass, PASSWORD_DEFAULT);
 
-       mysqli_query($db, "INSERT INTO school (school_name,diocese_id,contact_num,contact_email) 
-         VALUES ('$name_school','$diocese_id','$coor_cnum','$coor_email')");
 
-       $verify_query=mysqli_query($db,"SELECT school_id FROM school WHERE school_name='$name_school'");
-       $verify_id=mysqli_fetch_row($verify_query);
-       $verified_id=$verify_id[0];
-
-       mysqli_query($db,"INSERT INTO account (username,pword,user_id,account_id) 
+       $query0=mysqli_query($db, "INSERT INTO school (school_id,school_name,diocese_id,contact_num,contact_email) 
+         VALUES ('$schid','$name_school','$diocese_id','$coor_cnum','$coor_email')");
+       $query1=mysqli_query($db,"INSERT INTO account (username,pword,user_id,account_id) 
          VALUES ('$uname','$hash_password','2','$coordid')");
-       mysqli_query($db,"INSERT INTO coordinator (fname,mname,lname,school_id,account_id) 
-         VALUES ('$coor_fname','$coor_mname','$coor_lname','$verified_id','$coordid')" );
-       header("Location:admin_schools_list.php");
+       $query2=mysqli_query($db,"INSERT INTO coordinator (fname,mname,lname,school_id,account_id) 
+         VALUES ('$coor_fname','$coor_mname','$coor_lname','$schid','$coordid')" );
+       if ($query0 && $query1 && $query2){
+      echo "<script>
+      alert('Successfully Added School.');
+      window.location.href='admin_schools_list.php';
+      </script>";
+       }
+       else{
+      echo "<script>
+      alert('Error creating record.');
+      window.location.href='admin_schools_list.php';
+      </script>";        
+       }
 
     }
 

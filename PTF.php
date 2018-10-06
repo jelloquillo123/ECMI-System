@@ -445,7 +445,7 @@ echo $qs5[3];
 ?></label>
     </p>
   <p>
-      <input id="c5" type="radio" name="q5" value="c" required>
+      <input id="c5" type="radio" name="q5" value="d" required>
       <label for="c5">d.<?php
 echo $qs5[4];
 
@@ -489,7 +489,7 @@ echo $qs6[3];
     </p>
 
         <p>
-      <input id="c6" type="radio" name="q6" value="c" required>
+      <input id="c6" type="radio" name="q6" value="d" required>
       <label for="c6">d. <?php
 echo $qs6[4];
 
@@ -531,7 +531,7 @@ echo $qs7[3];
 ?></label>
     </p>
   <p>
-      <input id="c7" type="radio" name="q7" value="c" required>
+      <input id="c7" type="radio" name="q7" value="d" required>
       <label for="c7">d.<?php
 echo $qs7[4];
 
@@ -573,7 +573,7 @@ echo $qs8[3];
     </p>
 
     <p>
-      <input id="c8" type="radio" name="q8" value="c" required>
+      <input id="c8" type="radio" name="q8" value="d" required>
       <label for="c8">d.<?php
 echo $qs8[4];
 
@@ -612,13 +612,6 @@ echo $qs9[3];
 
 ?></label>
     </p>
-  <p>
-      <input id="c9" type="radio" name="q9" value="c" required>
-      <label for="c9">d.<?php
-echo $qs9[4];
-
-?></label>
-    </p>
 
 
   </div>
@@ -628,7 +621,7 @@ echo $qs9[4];
 <!--Pre-Awareness Button  -->
 <div style="text-align: center;">
 	
-    <input type="submit" name="submit" class="btn btn-lg btn-primary" value="Submit">
+    <input type="submit" name="submit" onclick="confirm('Sigurado ka na ba sa iyong mga sagot?');" class="btn btn-lg btn-primary" value="Submit">
 </div>
 
 </form>

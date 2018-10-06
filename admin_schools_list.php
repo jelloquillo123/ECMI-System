@@ -113,6 +113,10 @@ require 'admin_maindb.php';
                     <li>
                         <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
                     </li>
+                    <li>
+                        <a href="admin_reset_pat.php"><span class="glyphicon glyphicon-refresh"></span> Reset PAT</a>
+                    </li>                    
+
                     
                 </ul>
             </div>
@@ -128,7 +132,7 @@ require 'admin_maindb.php';
 
                 <!-- /.row -->
 
-                <div class="row" id="body-content">
+                <div class="row" id="body-content" style="height: 100%; min-height: 610px;">
                     <div class="col-lg-12">
                         <div class="well">
                             <div class="row">
@@ -175,11 +179,18 @@ require 'admin_maindb.php';
                                     ?>
                               </table>
                             </div>
+                            <?php
+                            if ($scount==0):
+                            else:
+                            ?>
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: center;">
                                     <a href="print_admin_schools.php" class="btn btn-primary"> Print <span class="glyphicon glyphicon-print"></span></a>
                                 </div> 
-                            </div>                
+                            </div>
+                            <?php
+                        endif;
+                            ?>                
                         </div>
                     </div>
                 </div>

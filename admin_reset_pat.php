@@ -6,7 +6,7 @@ if(!isset($_SESSION))
 require 'admin_authentication.php';
 require 'connect.php';
 require 'admin_maindb.php';
-require 'admin_listdb.php';
+require 'admin_resetdb.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +38,11 @@ require 'admin_listdb.php';
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+      .error_message{
+        color: red;
+      }
+    </style>
 
 </head>
 
@@ -118,64 +123,28 @@ require 'admin_listdb.php';
                 <!-- /.row -->
 
                 <div class="row" id="body-content" style="height: 100%; min-height: 610px;">
-                    <div class="col-lg-10 col-lg-offset-1">
+                    <div class="col-lg-6 col-lg-offset-3">
                         <div class="well" >
-                            <div class="row">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <h2>Reset Pre-Awareness Test Results</h2>
+                            </div>                            
+                          </div>
+                          <form method="POST">
+                            <div class="row" style="padding-top: 60px;">
+                      
+                              <div class="form-group" style="padding-left: 30px; padding-right: 30px;">
+                                <label for="pass_word">Enter password for verification:</label>
+                                <input type="password" name="pass_word" id="pass_word" class="form-control">
+                                <span class="error_message"><?php echo $error_message; ?></span>
+                              </div>
+                              <div style="text-align: center;">
+                                <input type="submit" class="btn btn-danger" onclick="confirm('Are you sure you want to Reset the Pre-Awareness Test?');" name="reset_btn" value="Reset">
                                 
-                                <div class="col-lg-5">
-                                    <div style="padding-bottom: 20px;">
-                                      <h2>List of Administrators</h2>        
-                                    </div>
-                                </div>
-                                <div class="col-lg-offset-1 col-lg-6" style="text-align: right; padding-bottom: 20px;">
-                                    <a href="admin_create.php" class="btn btn-primary"> Create Administrator <span class="glyphicon glyphicon-plus"></span></a>
-                                </div>                                
-                            </div>
-
-                            <!--Start of Table Div-->
-                            <div class="row">
-                                <div class="col-lg-12">            
-                                    <div class="table-responsive" id="show">
-                                        <table class="table table-hover tablecenter" data-paging="true" data-sorting="true" data-filtering="true" id="admintb" style="background-color:#fff;">
-                                          <thead>
-                                            <tr>
-                                              <th data-breakpoints="xs sm md lg">Administrator ID</th>
-                                              <th>Last Name</th>
-                                              <th>First Name</th>
-                                              <th data-breakpoints="xs">Middle Name</th>
-                                              <th data-breakpoints="xs sm">Username</th>    
-                                              <th>Edit</th>
-                                              <th>Delete</th>
-                                              <th>Reset</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <?php
-                                                while($admin=mysqli_fetch_row($admin_name_res)){
-                                                  ?>
-                                                  <th><?php echo $admin[3];?></th>
-                                                  <td><?php echo $admin[2];?></td>
-                                                  <td><?php echo $admin[0];?></td>
-                                                  <td><?php echo $admin[1];?></td>
-                                                  <td><?php echo $admin[4];?></td>                     
-                                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href='admin_edit.php?id=<?php echo $admin[3];?>'>
-                                                      <button class="btn btn-success btn-md" data-title="Edit" data-toggle="modal" data-target="#edit" name="edit"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-                                                    <td>
-                                                      <button onclick="del(<?php echo $admin[3];?>)" class="btn btn-danger btn-md" data-title="Delete" data-toggle="modal" data-target="#delete" name="delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
-                                                    <td>
-                                                    <button onclick="resetpw(<?php echo $admin[5]; ?>)" class="btn btn-warning btn-md" data-title="passreset" data-toggle="modal" data-target="#passreset" name="passreset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button></a></td>    
-                                                 </tr>
-                                                    <?php
-                                                    
-                                                  }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        <!--end of table div-->
+                              </div>
+                        
+                            </div>      
+                          </form>
 
                         </div>
                     </div>

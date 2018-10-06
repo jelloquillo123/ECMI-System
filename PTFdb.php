@@ -49,33 +49,16 @@ while($pp=mysqli_fetch_assoc($pare))
     }
 
       $pares=$pares+1;
-  $fam_c=mysqli_query($db,"SELECT fam_id FROM family");  
-  while($fam_co=mysqli_fetch_assoc($fam_c))
-  {
-
-    $fam_cou=$fam_co['fam_id'];
-
-  }
-
-$fam_cou=$fam_cou+1;
-
-
-
 
     mysqli_query($db,"INSERT INTO parent
-    (parent_who,country_id,job_id,years_stay,parent_when)
-    VALUES ('$p1','$p2','$p3','$p4','$p5')");
+    (parent_id,parent_who,country_id,job_id,years_stay,parent_when,stud_id)
+    VALUES ('$pares','$p1','$p2','$p3','$p4','$p5','$stud_det[0]')");
     
 
     mysqli_query($db, "INSERT INTO pre_test 
     (stud_id,question_1,question_2,question_3,question_4,question_5,question_6,question_7,question_8,question_9) 
     VALUES ('$stud_det[0]','$v1','$v2','$v3','$v4','$v5','$v6','$v7','$v8','$v9')");
-    
-    //mali na to
-     mysqli_query($db, "INSERT INTO family (fam_id,parent_id)
-        VALUES ('$stud_det[7]','$pares')");
 
-     mysqli_query($db,"UPDATE student SET fam_id='$fam_cou' WHERE stud_id='$stud_det[0]'  ");
 
      mysqli_query($db,"UPDATE student SET t_stat='Taken' WHERE stud_id='$stud_det[0]' ");
 
