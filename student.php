@@ -61,7 +61,7 @@ require 'student_authentication.php';
                 <ul class="nav navbar-nav navbar-right">
                     <p class="navbar-text" style="color: #f5f5f5;"><?php echo $stud_det[1]." ".$stud_det[2]." ".$stud_det[3] ?></p>
                       <li class="button">
-                        <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
+                        <a href="logout.php" onclick="return confirm('Are you sure you want to logout?');"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                       </li>
                 </ul>
               </div>

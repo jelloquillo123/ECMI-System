@@ -49,7 +49,7 @@ require 'student_authentication.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="student.php">Student</a>
+                <a class="navbar-brand">Student</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -58,7 +58,7 @@ require 'student_authentication.php';
                 <ul class="nav navbar-nav navbar-right">
                     <p class="navbar-text" style="color: #f5f5f5;"><?php echo $stud_det[1]." ".$stud_det[2]." ".$stud_det[3] ?></p>
                       <li class="button">
-                        <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
+                        <a href="logout.php" onclick="return confirm('Are you sure you want to logout? \nPlease note: Uncompleted survey will not be retained upon logging out.');" ><span class="glyphicon glyphicon-log-out"></span><b> Logout</b></a>
                       </li>
                 </ul>
               </div>
@@ -79,7 +79,7 @@ require 'student_authentication.php';
                   <div class="well" style="background-color: white;">
                   <div class="row">
                     <div class="col-lg-4 col-xs-12 col-sm-12" style="padding-top:15px;">
-                      <a href="school_main.php"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
+                      <a href="#"><img src="pictures/logo.jpg" class="img-responsive logo" alt="ECMI LOGO" /></a>
                     </div>
                     <div class="col-lg-8 text-center" style="padding-top: 15px;">
                         <h1>ECMI-Sons and Daughters of OFW Program Website</h1>               
@@ -621,7 +621,7 @@ echo $qs9[3];
 <!--Pre-Awareness Button  -->
 <div style="text-align: center;">
 	
-    <input type="submit" name="submit" onclick="confirm('Sigurado ka na ba sa iyong mga sagot?');" class="btn btn-lg btn-primary" value="Submit">
+    <input type="submit" name="submit" onclick="return confirm('Sigurado ka na ba sa iyong mga sagot?');" class="btn btn-lg btn-primary" value="Submit">
 </div>
 
 </form>

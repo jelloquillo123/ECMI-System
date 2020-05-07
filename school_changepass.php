@@ -137,7 +137,7 @@ require 'school_changepassdb.php';
                           </div>
                         </div>
                         <div style="text-align: center;">
-                          <input type="submit" onclick="confirm('Please confirm you want to change your password')" class="btn btn-primary" name="submit" value="Change Password">
+                          <input type="submit" onclick="return confirm('Please confirm you want to change your password')" class="btn btn-primary" name="submit" value="Change Password">
                         </div>        
                       </form>
                     </div>

@@ -113,7 +113,7 @@ require 'admin_maindb.php';
 
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="admin_list.php"><i class=" fa fa-dashboard"></i> Administrator</a>
                     </li>                    
                     

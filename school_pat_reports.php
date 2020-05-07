@@ -418,7 +418,45 @@ require 'school_maindb.php';
                                         <th>b</th>
                                         <th>c</th>
                                       </tr>
-                                      <tr>
+                                        <?php
+                                          for($x=1;$x<=10;$x++){ //grade level
+                                            echo "<tr>";
+                                            echo "<th>GRADE".$x."</th>";
+                                            for($y=1;$y<=4;$y++){ //question 1-4
+                                              echo "<td>".${'g'.$x.'q'.$y.'a'}[0]."</td>";
+                                              echo "<td>".${'g'.$x.'q'.$y.'b'}[0]."</td>";
+                                              echo "<td>".${'g'.$x.'q'.$y.'c'}[0]."</td>";
+                                              echo "<td>".${'g'.$x.'q'.$y.'d'}[0]."</td>";
+                                              echo "<td>".${'g'.$x.'q'.$y.'e'}[0]."</td>";
+                                            }
+                                            for($y=5;$y<=9;$y++){ //question 1-9
+                                              echo "<td>".${'g'.$x.'q'.$y.'a'}[0]."</td>";
+                                              echo "<td>".${'g'.$x.'q'.$y.'b'}[0]."</td>";
+                                              echo "<td>".${'g'.$x.'q'.$y.'c'}[0]."</td>";
+                                            }                                            
+                                            echo "</tr>";
+                                          }
+                                        ?>
+                                        <?php
+                                          echo "<tr>";
+                                          echo "<th>Grand Total</th>";
+                                          for($x=1;$x<=4;$x++){
+                                            echo "<td>".${"question".$x."A"}[0]."</td>";
+                                            echo "<td>".${"question".$x."B"}[0]."</td>";
+                                            echo "<td>".${"question".$x."C"}[0]."</td>";
+                                            echo "<td>".${"question".$x."D"}[0]."</td>";
+                                            echo "<td>".${"question".$x."E"}[0]."</td>";
+                                          }
+                                          for($x=5;$x<=9;$x++){
+                                            echo "<td>".${"question".$x."A"}[0]."</td>";
+                                            echo "<td>".${"question".$x."B"}[0]."</td>";
+                                            echo "<td>".${"question".$x."C"}[0]."</td>";
+                                          }
+                                          echo "</tr>";
+
+                                        ?>
+                                      
+<!--                                       <tr>
                                         <th>GRADE 1</th>
                                         <td><?php echo $h_1[0]; ?></td>
                                         <td><?php echo $h_2[0]; ?></td>
@@ -496,81 +534,81 @@ require 'school_maindb.php';
                                       </tr>
                                       <tr>
                                         <th>GRADE 3</th>
-                                        <td><?php echo $j_1[0]; ?></td>
-                                        <td><?php echo $j_2[0]; ?></td>
-                                        <td><?php echo $j_3[0]; ?></td>
-                                        <td><?php echo $j_4[0]; ?></td>
-                                        <td><?php echo $j_5[0]; ?></td>
-                                        <td><?php echo $j_6[0]; ?></td>
-                                        <td><?php echo $j_7[0]; ?></td>
-                                        <td><?php echo $j_8[0]; ?></td>
-                                        <td><?php echo $j_9[0]; ?></td>
-                                        <td><?php echo $j_10[0]; ?></td>
-                                        <td><?php echo $j_11[0]; ?></td>
-                                        <td><?php echo $j_12[0]; ?></td>
-                                        <td><?php echo $j_13[0]; ?></td>
-                                        <td><?php echo $j_14[0]; ?></td>
-                                        <td><?php echo $j_15[0]; ?></td>
-                                        <td><?php echo $j_16[0]; ?></td>
-                                        <td><?php echo $j_17[0]; ?></td>
-                                        <td><?php echo $j_18[0]; ?></td>
-                                        <td><?php echo $j_19[0]; ?></td>
-                                        <td><?php echo $j_20[0]; ?></td>
-                                        <td><?php echo $j_21[0]; ?></td>
-                                        <td><?php echo $j_22[0]; ?></td>
-                                        <td><?php echo $j_23[0]; ?></td>
-                                        <td><?php echo $j_24[0]; ?></td>
-                                        <td><?php echo $j_25[0]; ?></td>
-                                        <td><?php echo $j_26[0]; ?></td>
-                                        <td><?php echo $j_27[0]; ?></td>
-                                        <td><?php echo $j_28[0]; ?></td>
-                                        <td><?php echo $j_29[0]; ?></td>
-                                        <td><?php echo $j_30[0]; ?></td>
-                                        <td><?php echo $j_31[0]; ?></td>
-                                        <td><?php echo $j_32[0]; ?></td>
-                                        <td><?php echo $j_33[0]; ?></td>
-                                        <td><?php echo $j_34[0]; ?></td>
-                                        <td><?php echo $j_35[0]; ?></td>  
+                                          <td><?php echo $g3q1a[0]; ?></td>
+                                          <td><?php echo $g3q1b[0]; ?></td>
+                                          <td><?php echo $g3q1c[0]; ?></td>
+                                          <td><?php echo $g3q1d[0]; ?></td>
+                                          <td><?php echo $g3q1e[0]; ?></td>
+                                          <td><?php echo $g3q2a[0]; ?></td>
+                                          <td><?php echo $g3q2b[0]; ?></td>
+                                          <td><?php echo $g3q2c[0]; ?></td>
+                                          <td><?php echo $g3q2d[0]; ?></td>
+                                          <td><?php echo $g3q2e[0]; ?></td>                                          
+                                          <td><?php echo $g3q3a[0]; ?></td>
+                                          <td><?php echo $g3q3b[0]; ?></td>
+                                          <td><?php echo $g3q3c[0]; ?></td>
+                                          <td><?php echo $g3q3d[0]; ?></td>
+                                          <td><?php echo $g3q3e[0]; ?></td>
+                                          <td><?php echo $g3q4a[0]; ?></td>
+                                          <td><?php echo $g3q4b[0]; ?></td>
+                                          <td><?php echo $g3q4c[0]; ?></td>
+                                          <td><?php echo $g3q4d[0]; ?></td>
+                                          <td><?php echo $g3q4e[0]; ?></td>
+                                          <td><?php echo $g3q5a[0]; ?></td>
+                                          <td><?php echo $g3q5b[0]; ?></td>
+                                          <td><?php echo $g3q5c[0]; ?></td>
+                                          <td><?php echo $g3q6a[0]; ?></td>
+                                          <td><?php echo $g3q6b[0]; ?></td>
+                                          <td><?php echo $g3q6c[0]; ?></td>
+                                          <td><?php echo $g3q7a[0]; ?></td>
+                                          <td><?php echo $g3q7b[0]; ?></td>
+                                          <td><?php echo $g3q7c[0]; ?></td>
+                                          <td><?php echo $g3q8a[0]; ?></td>
+                                          <td><?php echo $g3q8b[0]; ?></td>
+                                          <td><?php echo $g3q8c[0]; ?></td>
+                                          <td><?php echo $g3q9a[0]; ?></td>
+                                          <td><?php echo $g3q9b[0]; ?></td>
+                                          <td><?php echo $g3q9c[0]; ?></td>       
                                         </tr>
                                         <tr>
                                           <th>GRADE 4</th>
-                                          <td><?php echo $a_1[0]; ?></td>
-                                          <td><?php echo $a_2[0]; ?></td>
-                                          <td><?php echo $a_3[0]; ?></td>
-                                          <td><?php echo $a_4[0]; ?></td>
-                                          <td><?php echo $a_5[0]; ?></td>
-                                          <td><?php echo $a_6[0]; ?></td>
-                                          <td><?php echo $a_7[0]; ?></td>
-                                          <td><?php echo $a_8[0]; ?></td>
-                                          <td><?php echo $a_9[0]; ?></td>
-                                          <td><?php echo $a_10[0]; ?></td>
-                                          <td><?php echo $a_11[0]; ?></td>
-                                          <td><?php echo $a_12[0]; ?></td>
-                                          <td><?php echo $a_13[0]; ?></td>
-                                          <td><?php echo $a_14[0]; ?></td>
-                                          <td><?php echo $a_15[0]; ?></td>
-                                          <td><?php echo $a_16[0]; ?></td>
-                                          <td><?php echo $a_17[0]; ?></td>
-                                          <td><?php echo $a_18[0]; ?></td>
-                                          <td><?php echo $a_19[0]; ?></td>
-                                          <td><?php echo $a_20[0]; ?></td>
-                                          <td><?php echo $a_21[0]; ?></td>
-                                          <td><?php echo $a_22[0]; ?></td>
-                                          <td><?php echo $a_23[0]; ?></td>
-                                          <td><?php echo $a_24[0]; ?></td>
-                                          <td><?php echo $a_25[0]; ?></td>
-                                          <td><?php echo $a_26[0]; ?></td>
-                                          <td><?php echo $a_27[0]; ?></td>
-                                          <td><?php echo $a_28[0]; ?></td>
-                                          <td><?php echo $a_29[0]; ?></td>
-                                          <td><?php echo $a_30[0]; ?></td>
-                                          <td><?php echo $a_31[0]; ?></td>
-                                          <td><?php echo $a_32[0]; ?></td>
-                                          <td><?php echo $a_33[0]; ?></td>
-                                          <td><?php echo $a_34[0]; ?></td>
-                                          <td><?php echo $a_35[0]; ?></td>
-                                        </tr>
-                                        <tr>
+                                          <td><?php echo $g4q1a[0]; ?></td>
+                                          <td><?php echo $g4q1b[0]; ?></td>
+                                          <td><?php echo $g4q1c[0]; ?></td>
+                                          <td><?php echo $g4q1d[0]; ?></td>
+                                          <td><?php echo $g4q1e[0]; ?></td>
+                                          <td><?php echo $g4q2a[0]; ?></td>
+                                          <td><?php echo $g4q2b[0]; ?></td>
+                                          <td><?php echo $g4q2c[0]; ?></td>
+                                          <td><?php echo $g4q2d[0]; ?></td>
+                                          <td><?php echo $g4q2e[0]; ?></td>                                          
+                                          <td><?php echo $g4q3a[0]; ?></td>
+                                          <td><?php echo $g4q3b[0]; ?></td>
+                                          <td><?php echo $g4q3c[0]; ?></td>
+                                          <td><?php echo $g4q3d[0]; ?></td>
+                                          <td><?php echo $g4q3e[0]; ?></td>
+                                          <td><?php echo $g4q4a[0]; ?></td>
+                                          <td><?php echo $g4q4b[0]; ?></td>
+                                          <td><?php echo $g4q4c[0]; ?></td>
+                                          <td><?php echo $g4q4d[0]; ?></td>
+                                          <td><?php echo $g4q4e[0]; ?></td>
+                                          <td><?php echo $g4q5a[0]; ?></td>
+                                          <td><?php echo $g4q5b[0]; ?></td>
+                                          <td><?php echo $g4q5c[0]; ?></td>
+                                          <td><?php echo $g4q6a[0]; ?></td>
+                                          <td><?php echo $g4q6b[0]; ?></td>
+                                          <td><?php echo $g4q6c[0]; ?></td>
+                                          <td><?php echo $g4q7a[0]; ?></td>
+                                          <td><?php echo $g4q7b[0]; ?></td>
+                                          <td><?php echo $g4q7c[0]; ?></td>
+                                          <td><?php echo $g4q8a[0]; ?></td>
+                                          <td><?php echo $g4q8b[0]; ?></td>
+                                          <td><?php echo $g4q8c[0]; ?></td>
+                                          <td><?php echo $g4q9a[0]; ?></td>
+                                          <td><?php echo $g4q9b[0]; ?></td>
+                                          <td><?php echo $g4q9c[0]; ?></td>                                                                 
+                                        </tr> -->
+<!--                                         <tr>
                                           <th>GRADE 5</th>
                                           <td><?php echo $b_1[0]; ?></td>
                                           <td><?php echo $b_2[0]; ?></td>
@@ -797,45 +835,7 @@ require 'school_maindb.php';
                                           <td><?php echo $g_33[0]; ?></td>
                                           <td><?php echo $g_34[0]; ?></td>
                                           <td><?php echo $g_35[0]; ?></td>
-                                        </tr>
-                                        <tr style="font-weight: bold;">
-                                          <th>Grand Total:</th>
-                                          <td><?php echo $s1[0]; ?></td>
-                                          <td><?php echo $s2[0]; ?></td>
-                                          <td><?php echo $s3[0]; ?></td>
-                                          <td><?php echo $s4[0]; ?></td>
-                                          <td><?php echo $s5[0]; ?></td>
-                                          <td><?php echo $s6[0]; ?></td>
-                                          <td><?php echo $s7[0]; ?></td>
-                                          <td><?php echo $s8[0]; ?></td>
-                                          <td><?php echo $s9[0]; ?></td>
-                                          <td><?php echo $s10[0]; ?></td>
-                                          <td><?php echo $s11[0]; ?></td>
-                                          <td><?php echo $s12[0]; ?></td>
-                                          <td><?php echo $s13[0]; ?></td>
-                                          <td><?php echo $s14[0]; ?></td>
-                                          <td><?php echo $s15[0]; ?></td>
-                                          <td><?php echo $s16[0]; ?></td>
-                                          <td><?php echo $s17[0]; ?></td>
-                                          <td><?php echo $s18[0]; ?></td>
-                                          <td><?php echo $s19[0]; ?></td>
-                                          <td><?php echo $s20[0]; ?></td>
-                                          <td><?php echo $s21[0]; ?></td>
-                                          <td><?php echo $s22[0]; ?></td>
-                                          <td><?php echo $s23[0]; ?></td>
-                                          <td><?php echo $s24[0]; ?></td>
-                                          <td><?php echo $s25[0]; ?></td>
-                                          <td><?php echo $s26[0]; ?></td>
-                                          <td><?php echo $s27[0]; ?></td>
-                                          <td><?php echo $s28[0]; ?></td>
-                                          <td><?php echo $s29[0]; ?></td>
-                                          <td><?php echo $s30[0]; ?></td>
-                                          <td><?php echo $s31[0]; ?></td>
-                                          <td><?php echo $s32[0]; ?></td>
-                                          <td><?php echo $s33[0]; ?></td>
-                                          <td><?php echo $s34[0]; ?></td>
-                                          <td><?php echo $s35[0]; ?></td>                        
-                                        </tr>
+                                        </tr> -->
                                       </table>
                                       <h6><b>NOTE: <br> Recommended Paper size for printing is Legal(Landscape) <br> Only the students who already answered the PAT are listed</b></h6>
                                   </div>

@@ -331,7 +331,7 @@ require 'school_maindb.php';
                                         <td>GRADE 1</td>
                                         <td><?php echo $jr1[0];  ?></td>
                                         <td><?php echo $gen1[0];  ?></td>
-                                        <td><?php echo $gen11[0];  ?></td>
+                                        <td><?php echo $gef1[0];  ?></td>
                                         <td><?php echo $pp1[0]; ?></td>
                                         <td><?php echo $ps1[0]; ?></td>
                                         <td><?php echo $pn1[0]; ?></td>
@@ -352,7 +352,7 @@ require 'school_maindb.php';
                                         <td>GRADE 2</td>
                                         <td><?php echo $jr2[0];  ?></td>
                                         <td><?php echo $gen2[0];  ?></td>
-                                        <td><?php echo $gen12[0];  ?></td>
+                                        <td><?php echo $gef2[0];  ?></td>
                                         <td><?php echo $pp2[0]; ?></td>
                                         <td><?php echo $ps2[0]; ?></td>
                                         <td><?php echo $pn2[0]; ?></td>
@@ -373,7 +373,7 @@ require 'school_maindb.php';
                                         <td>GRADE 3</td>
                                         <td><?php echo $jr3[0];  ?></td>
                                         <td><?php echo $gen3[0];  ?></td>
-                                        <td><?php echo $gen13[0];  ?></td>
+                                        <td><?php echo $gef3[0];  ?></td>
                                         <td><?php echo $pp3[0]; ?></td>
                                         <td><?php echo $ps3[0]; ?></td>
                                         <td><?php echo $pn3[0]; ?></td>
@@ -394,7 +394,7 @@ require 'school_maindb.php';
                                         <td>GRADE 4</td>
                                         <td><?php echo $jr4[0];  ?></td>
                                         <td><?php echo $gen4[0];  ?></td>
-                                        <td><?php echo $gen14[0];  ?></td>
+                                        <td><?php echo $gef4[0];  ?></td>
                                         <td><?php echo $pp4[0]; ?></td>
                                         <td><?php echo $ps4[0]; ?></td>
                                         <td><?php echo $pn4[0]; ?></td>
@@ -411,11 +411,11 @@ require 'school_maindb.php';
                                         <td><?php echo $yq4[0]; ?></td>
                                         <td><?php echo $yw4[0]; ?></td>
                                       </tr>
-                                      <tr>
+<!--                                       <tr>
                                         <td>GRADE 5</td>
                                         <td><?php echo $jr5[0];  ?></td>
                                         <td><?php echo $gen5[0];  ?></td>
-                                        <td><?php echo $gen15[0];  ?></td>
+                                        <td><?php echo $gef5[0];  ?></td>
                                         <td><?php echo $pp5[0]; ?></td>
                                         <td><?php echo $ps5[0]; ?></td>
                                         <td><?php echo $pn5[0]; ?></td>
@@ -436,7 +436,7 @@ require 'school_maindb.php';
                                         <td>GRADE 6</td>
                                         <td><?php echo $jr6[0];  ?></td>
                                         <td><?php echo $gen6[0];  ?></td>
-                                        <td><?php echo $gen16[0];  ?></td>
+                                        <td><?php echo $gef6[0];  ?></td>
                                         <td><?php echo $pp6[0]; ?></td>
                                         <td><?php echo $ps6[0]; ?></td>
                                         <td><?php echo $pn6[0]; ?></td>
@@ -457,7 +457,7 @@ require 'school_maindb.php';
                                         <td>GRADE 7</td>
                                         <td><?php echo $jr7[0];  ?></td>
                                         <td><?php echo $gen7[0];  ?></td>
-                                        <td><?php echo $gen17[0];  ?></td>
+                                        <td><?php echo $gef7[0];  ?></td>
                                         <td><?php echo $pp7[0]; ?></td>
                                         <td><?php echo $ps7[0]; ?></td>
                                         <td><?php echo $pn7[0]; ?></td>
@@ -478,7 +478,7 @@ require 'school_maindb.php';
                                         <td>GRADE 8</td>
                                         <td><?php echo $jr8[0];  ?></td>
                                         <td><?php echo $gen8[0];  ?></td>
-                                        <td><?php echo $gen18[0];  ?></td>
+                                        <td><?php echo $gef8[0];  ?></td>
                                         <td><?php echo $pp8[0]; ?></td>
                                         <td><?php echo $ps8[0]; ?></td>
                                         <td><?php echo $pn8[0]; ?></td>
@@ -499,7 +499,7 @@ require 'school_maindb.php';
                                         <td>GRADE 9</td>
                                         <td><?php echo $jr9[0];  ?></td>
                                         <td><?php echo $gen9[0];  ?></td>
-                                        <td><?php echo $gen19[0];  ?></td>
+                                        <td><?php echo $gef9[0];  ?></td>
                                         <td><?php echo $pp9[0]; ?></td>
                                         <td><?php echo $ps9[0]; ?></td>
                                         <td><?php echo $pn9[0]; ?></td>
@@ -520,7 +520,7 @@ require 'school_maindb.php';
                                         <td>GRADE 10</td>
                                         <td><?php echo $jr10[0];  ?></td>
                                         <td><?php echo $gen10[0];  ?></td>
-                                        <td><?php echo $gen20[0];  ?></td>
+                                        <td><?php echo $gef10[0];  ?></td>
                                         <td><?php echo $pp10[0]; ?></td>
                                         <td><?php echo $ps10[0]; ?></td>
                                         <td><?php echo $pn10[0]; ?></td>
@@ -537,7 +537,7 @@ require 'school_maindb.php';
                                         <td><?php echo $yq10[0]; ?></td>
                                         <td><?php echo $yw10[0]; ?></td>
                                       </tr>
-
+ -->
                                       <tr style="font-weight: bold;">
                                         <th>GRAND TOTAL</th>
                                         <td><?php echo $cu1[0];?></td>
